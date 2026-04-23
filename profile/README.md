@@ -11,10 +11,6 @@
 </p>
 
 <p align="center">
-  <img src="./assets/brand-hero-banner.png" alt="PHP Fast Forward hero banner" width="960">
-</p>
-
-<p align="center">
   <a href="https://github.com/php-fast-forward/framework">
     <img src="https://img.shields.io/badge/Framework-core-1E293B?logo=github&logoColor=white" alt="Framework repository">
   </a>
@@ -71,6 +67,10 @@ Fast Forward already spans more than 30 public repositories. Some are active pac
 - [`fast-forward/container`](https://github.com/php-fast-forward/container) aggregates PSR-11 containers and service providers with a clean integration story.
 - [`fast-forward/config`](https://github.com/php-fast-forward/config) provides flexible, layered configuration loading with caching and provider support.
 - [`fast-forward/clock`](https://github.com/php-fast-forward/clock), [`fast-forward/fork`](https://github.com/php-fast-forward/fork), and [`fast-forward/iterators`](https://github.com/php-fast-forward/iterators) extend the ecosystem with focused, production-friendly building blocks.
+
+<p align="center">
+  <img src="./assets/brand-hero-banner.png" alt="PHP Fast Forward hero banner" width="960">
+</p>
 
 ## Public roadmap
 
