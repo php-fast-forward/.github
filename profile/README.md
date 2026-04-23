@@ -56,10 +56,6 @@ Fast Forward already spans more than 30 public repositories. Some are active pac
 - [`fast-forward/config`](https://github.com/php-fast-forward/config) provides flexible, layered configuration loading with caching and provider support.
 - [`fast-forward/clock`](https://github.com/php-fast-forward/clock), [`fast-forward/fork`](https://github.com/php-fast-forward/fork), and [`fast-forward/iterators`](https://github.com/php-fast-forward/iterators) extend the ecosystem with focused, production-friendly building blocks.
 
-<p align="center">
-  <img src="./assets/brand-hero-banner.png" alt="PHP Fast Forward hero banner" width="960">
-</p>
-
 ## Public roadmap
 
 Several public repositories in the organization are there because the shape of the ecosystem matters, even before every module is implemented.
@@ -108,6 +104,10 @@ $container = container(FrameworkServiceProvider::class);
 ```
 
 That is the direction: fewer classes, less manual plumbing, better defaults, cleaner boundaries.
+
+<p align="center">
+  <img src="./assets/brand-hero-banner.png" alt="PHP Fast Forward hero banner" width="960">
+</p>
 
 ## Build with us
 
