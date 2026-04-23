@@ -11,27 +11,15 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/php-fast-forward/framework">
-    <img src="https://img.shields.io/badge/Framework-core-1E293B?logo=github&logoColor=white" alt="Framework repository">
-  </a>
-  <a href="https://github.com/php-fast-forward/dev-tools">
-    <img src="https://img.shields.io/badge/Dev%20Tools-agentic%20tooling-F28D1A?logo=github&logoColor=white" alt="Dev Tools repository">
-  </a>
-  <a href="https://github.com/php-fast-forward/http">
-    <img src="https://img.shields.io/badge/HTTP-PSR--7%2F17%2F18-0F766E?logo=github&logoColor=white" alt="HTTP repository">
-  </a>
+  [![Framework](https://img.shields.io/badge/Framework-core-1E293B?logo=github&logoColor=white)](https://github.com/php-fast-forward/framework)
+  [![Dev Tools](https://img.shields.io/badge/Dev%20Tools-agentic%20tooling-F28D1A?logo=github&logoColor=white)](https://github.com/php-fast-forward/dev-tools)
+  [![HTTP](https://img.shields.io/badge/HTTP-PSR--7%2F17%2F18-0F766E?logo=github&logoColor=white)](https://github.com/php-fast-forward/http)
 </p>
 
 <p align="center">
-  <a href="https://github.com/php-fast-forward/event-dispatcher">
-    <img src="https://img.shields.io/badge/Event%20Dispatcher-PSR--14-7C3AED?logo=github&logoColor=white" alt="Event Dispatcher repository">
-  </a>
-  <a href="https://github.com/php-fast-forward/container">
-    <img src="https://img.shields.io/badge/Container-PSR--11-2563EB?logo=github&logoColor=white" alt="Container repository">
-  </a>
-  <a href="https://github.com/php-fast-forward/fork">
-    <img src="https://img.shields.io/badge/Fork-parallelism-475569?logo=github&logoColor=white" alt="Fork repository">
-  </a>
+  [![Event Dispatcher](https://img.shields.io/badge/Event%20Dispatcher-PSR--14-7C3AED?logo=github&logoColor=white)](https://github.com/php-fast-forward/event-dispatcher)
+  [![Container](https://img.shields.io/badge/Container-PSR--11-2563EB?logo=github&logoColor=white)](https://github.com/php-fast-forward/container)
+  [![Fork](https://img.shields.io/badge/Fork-parallelism-475569?logo=github&logoColor=white)](https://github.com/php-fast-forward/fork)
 </p>
 
 ## Why Fast Forward exists
