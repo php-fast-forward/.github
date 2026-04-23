@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">PHP Fast Forward installation documentation mockup</title>
+  <desc id="desc">A documentation mockup showing installation and bootstrap snippets for the Fast Forward framework.</desc>
+  <defs>
+    <linearGradient id="pageGlow" x1="1120" y1="150" x2="1540" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#21D4FD" stop-opacity="0.55"/>
+      <stop offset="0.45" stop-color="#3A5BFF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#7A36FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="chevronGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#7A36FF"/>
+      <stop offset="0.55" stop-color="#2D6CFF"/>
+      <stop offset="1" stop-color="#24D6F6"/>
+    </linearGradient>
+    <filter id="blur" x="1040" y="40" width="480" height="820" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="54" result="effect1_foregroundBlur"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="980" fill="#07112F"/>
+  <g opacity="0.65">
+    <path d="M1040 118C1266 152 1434 282 1584 492" stroke="#2B63FF" stroke-width="3"/>
+    <path d="M996 198C1250 242 1440 388 1592 682" stroke="#7A36FF" stroke-width="3"/>
+    <path d="M950 286C1230 330 1438 478 1594 830" stroke="#27D9FF" stroke-width="3"/>
+  </g>
+  <g filter="url(#blur)">
+    <circle cx="1300" cy="430" r="170" fill="url(#pageGlow)"/>
+  </g>
+
+  <rect x="40" y="40" width="1520" height="900" rx="36" fill="#0A1437"/>
+  <rect x="80" y="86" width="1440" height="808" rx="30" fill="#F8FAFF"/>
+  <path d="M80 116C80 99.431 93.431 86 110 86H412V894H110C93.431 894 80 880.569 80 864V116Z" fill="#10183F"/>
+  <rect x="412" y="86" width="1108" height="808" rx="30" fill="#F8FAFF"/>
+
+  <text x="118" y="148" fill="#F9FBFF" font-size="24" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">PHP Fast Forward</text>
+  <text x="118" y="178" fill="#9AA7D8" font-size="15" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Docs</text>
+
+  <rect x="116" y="214" width="250" height="54" rx="16" fill="#152050" stroke="#263266"/>
+  <circle cx="145" cy="242" r="10" stroke="#B9C5FF" stroke-width="2"/>
+  <path d="M152 249L160 257" stroke="#B9C5FF" stroke-width="2" stroke-linecap="round"/>
+  <text x="176" y="248" fill="#CBD3FF" font-size="17" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Search docs...</text>
+
+  <text x="118" y="324" fill="#FFFFFF" font-size="15" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Getting Started</text>
+  <rect x="116" y="342" width="250" height="52" rx="14" fill="#5147E5"/>
+  <circle cx="144" cy="368" r="5" fill="#C3D3FF"/>
+  <text x="164" y="374" fill="#FFFFFF" font-size="17" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Installation</text>
+  <text x="164" y="422" fill="#CBD3FF" font-size="16" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Bootstrap setup</text>
+  <text x="164" y="462" fill="#CBD3FF" font-size="16" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Configuration</text>
+
+  <text x="118" y="544" fill="#FFFFFF" font-size="15" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Concepts</text>
+  <text x="118" y="590" fill="#CBD3FF" font-size="16" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">PSR-first design</text>
+  <text x="118" y="628" fill="#CBD3FF" font-size="16" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Providers</text>
+  <text x="118" y="666" fill="#CBD3FF" font-size="16" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Roadmap modules</text>
+
+  <rect x="116" y="714" width="250" height="146" rx="18" fill="#162154" stroke="#263266"/>
+  <rect x="138" y="742" width="42" height="42" rx="14" fill="#22316D"/>
+  <path d="M159 748L149 769H160L156 780L172 762H162L167 748H159Z" fill="#78A7FF"/>
+  <text x="198" y="769" fill="#FFFFFF" font-size="21" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Fast by default</text>
+  <text x="138" y="814" fill="#C0CCFF" font-size="16" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Minimal bootstrap and clean</text>
+  <text x="138" y="838" fill="#C0CCFF" font-size="16" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">contracts from the start.</text>
+
+  <text x="460" y="126" fill="#7F8AB8" font-size="16" font-weight="600" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Docs</text>
+  <text x="506" y="126" fill="#A4AED5" font-size="16" font-weight="600" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">&gt;</text>
+  <text x="524" y="126" fill="#7F8AB8" font-size="16" font-weight="600" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Getting Started</text>
+  <text x="666" y="126" fill="#A4AED5" font-size="16" font-weight="600" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">&gt;</text>
+  <text x="684" y="126" fill="#111A44" font-size="16" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Installation</text>
+
+  <rect x="460" y="154" width="174" height="36" rx="13" fill="#ECE7FF"/>
+  <text x="490" y="178" fill="#5A46E8" font-size="16" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Getting Started</text>
+
+  <text x="460" y="248" fill="#111A44" font-size="48" font-weight="800" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Installation</text>
+  <text x="460" y="292" fill="#4F5C8A" font-size="21" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Install Fast Forward with Composer and bootstrap</text>
+  <text x="460" y="320" fill="#4F5C8A" font-size="21" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">your container in a few lines.</text>
+
+  <text x="460" y="374" fill="#111A44" font-size="28" font-weight="800" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">1. Install via Composer</text>
+  <text x="460" y="410" fill="#55628F" font-size="21" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Require the framework metapackage:</text>
+
+  <rect x="460" y="426" width="688" height="68" rx="18" fill="#0F173A"/>
+  <circle cx="498" cy="460" r="11" fill="#1B6B42"/>
+  <text x="491" y="467" fill="#90FFB7" font-size="25" font-weight="700" font-family="Menlo, Consolas, 'Liberation Mono', monospace">$</text>
+  <text x="526" y="467" fill="#E6EDF7" font-size="17" font-weight="500" font-family="Menlo, Consolas, 'Liberation Mono', monospace">composer require fast-forward/framework</text>
+
+  <text x="460" y="548" fill="#111A44" font-size="28" font-weight="800" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">2. Bootstrap the framework</text>
+  <text x="460" y="582" fill="#55628F" font-size="20" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Start with the same minimal setup shown in the README:</text>
+
+  <rect x="460" y="608" width="688" height="206" rx="22" fill="#0F173A"/>
+  <text x="478" y="642" fill="#7F8BA6" font-size="15" font-weight="500" font-family="Menlo, Consolas, 'Liberation Mono', monospace">&lt;?php</text>
+  <text x="478" y="680" xml:space="preserve" letter-spacing="-0.25" font-size="17" font-weight="500" font-family="Menlo, Consolas, 'Liberation Mono', monospace"><tspan fill="#C792EA">declare</tspan><tspan fill="#D6DEEB">(</tspan><tspan fill="#82AAFF">strict_types</tspan><tspan fill="#D6DEEB">=</tspan><tspan fill="#F78C6C">1</tspan><tspan fill="#D6DEEB">);</tspan></text>
+  <text x="478" y="718" xml:space="preserve" letter-spacing="-0.55" font-size="17" font-weight="500" font-family="Menlo, Consolas, 'Liberation Mono', monospace"><tspan fill="#C792EA">use</tspan><tspan fill="#D6DEEB"> </tspan><tspan fill="#89DDFF">FastForward\Framework\ServiceProvider\</tspan><tspan fill="#FFCB6B">FrameworkServiceProvider</tspan><tspan fill="#D6DEEB">;</tspan></text>
+  <text x="478" y="756" xml:space="preserve" letter-spacing="-0.4" font-size="17" font-weight="500" font-family="Menlo, Consolas, 'Liberation Mono', monospace"><tspan fill="#C792EA">use</tspan><tspan fill="#D6DEEB"> </tspan><tspan fill="#C792EA">function</tspan><tspan fill="#D6DEEB"> </tspan><tspan fill="#89DDFF">FastForward\Container\</tspan><tspan fill="#82AAFF">container</tspan><tspan fill="#D6DEEB">;</tspan></text>
+  <text x="478" y="794" xml:space="preserve" letter-spacing="-0.25" font-size="17" font-weight="500" font-family="Menlo, Consolas, 'Liberation Mono', monospace"><tspan fill="#F07178">$container</tspan><tspan fill="#D6DEEB"> = </tspan><tspan fill="#82AAFF">container</tspan><tspan fill="#D6DEEB">(</tspan><tspan fill="#FFCB6B">FrameworkServiceProvider</tspan><tspan fill="#D6DEEB">::</tspan><tspan fill="#C792EA">class</tspan><tspan fill="#D6DEEB">);</tspan></text>
+
+  <rect x="1170" y="196" width="272" height="190" rx="22" fill="#FFFFFF" stroke="#DDE5FF"/>
+  <text x="1198" y="244" fill="#111A44" font-size="24" font-weight="800" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Why it works</text>
+  <text x="1198" y="286" fill="#4F5C8A" font-size="18" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Standards first.</text>
+  <text x="1198" y="314" fill="#4F5C8A" font-size="18" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Proven components.</text>
+  <rect x="1198" y="332" width="216" height="38" rx="14" fill="#EEF3FF"/>
+  <text x="1263" y="356" fill="#325CFF" font-size="16" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">PSR-first</text>
+
+  <rect x="1170" y="410" width="272" height="190" rx="22" fill="#FFFFFF" stroke="#DDE5FF"/>
+  <text x="1198" y="456" fill="#111A44" font-size="24" font-weight="800" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">On this page</text>
+  <text x="1198" y="502" fill="#394567" font-size="18" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">1. Install</text>
+  <text x="1198" y="536" fill="#607096" font-size="18" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">2. Bootstrap</text>
+  <text x="1198" y="570" fill="#607096" font-size="18" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">3. What comes next?</text>
+
+  <rect x="1170" y="614" width="272" height="188" rx="22" fill="#FFFFFF" stroke="#DDE5FF"/>
+  <rect x="1198" y="642" width="42" height="42" rx="14" fill="#EEF3FF"/>
+  <path d="M1219 648L1210 668H1220L1216 678L1232 660H1222L1227 648H1219Z" fill="#4A63FF"/>
+  <text x="1258" y="669" fill="#111A44" font-size="24" font-weight="800" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Pro tip</text>
+  <text x="1198" y="716" fill="#4F5C8A" font-size="17" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Keep app code on interfaces.</text>
+  <text x="1198" y="744" fill="#4F5C8A" font-size="17" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Let tooling evolve behind</text>
+  <text x="1198" y="772" fill="#4F5C8A" font-size="17" font-weight="500" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">bridges and adapters.</text>
+
+  <g opacity="0.16">
+    <path d="M1322 124L1400 204L1322 284H1274L1352 204L1274 124H1322Z" fill="url(#chevronGradient)"/>
+    <path d="M1258 124L1336 204L1258 284H1210L1288 204L1210 124H1258Z" fill="url(#chevronGradient)"/>
+    <path d="M1194 124L1272 204L1194 284H1146L1224 204L1146 124H1194Z" fill="url(#chevronGradient)"/>
+  </g>
+</svg>
