@@ -106,7 +106,7 @@ $container = container(FrameworkServiceProvider::class);
 That is the direction: fewer classes, less manual plumbing, better defaults, cleaner boundaries.
 
 <p align="center">
-  <img src="./assets/brand-hero-banner.png" alt="PHP Fast Forward hero banner" width="960">
+  <img src="./assets/brand-hero-banner.png" alt="PHP Fast Forward hero banner">
 </p>
 
 ## Build with us
