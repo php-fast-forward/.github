@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/mascot-wordmark-horizontal.svg" alt="PHP Fast Forward" width="760">
+  <img src="./assets/brand-wordmark-banner.svg" alt="PHP Fast Forward" width="760">
 </p>
 
 <p align="center">
