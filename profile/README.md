@@ -20,6 +20,7 @@
   <a href="https://github.com/php-fast-forward/event-dispatcher"><img src="https://img.shields.io/badge/Event%20Dispatcher-PSR--14-7C3AED?logo=github&logoColor=white" alt="Event Dispatcher repository"></a>
   <a href="https://github.com/php-fast-forward/container"><img src="https://img.shields.io/badge/Container-PSR--11-2563EB?logo=github&logoColor=white" alt="Container repository"></a>
   <a href="https://github.com/php-fast-forward/fork"><img src="https://img.shields.io/badge/Fork-parallelism-475569?logo=github&logoColor=white" alt="Fork repository"></a>
+  <a href="https://github.com/php-fast-forward/enum"><img src="https://img.shields.io/badge/Enum-domain%20objects-0EA5E9?logo=github&logoColor=white" alt="Enum repository"></a>
 </p>
 
 ## Why Fast Forward exists
@@ -54,6 +55,7 @@ Fast Forward already spans more than 30 public repositories. Some are active pac
 - [`fast-forward/event-dispatcher`](https://github.com/php-fast-forward/event-dispatcher) brings PSR-14 dispatching, named events, subscribers, priorities, and attribute-based listeners.
 - [`fast-forward/container`](https://github.com/php-fast-forward/container) aggregates PSR-11 containers and service providers with a clean integration story.
 - [`fast-forward/config`](https://github.com/php-fast-forward/config) provides flexible, layered configuration loading with caching and provider support.
+- [`fast-forward/enum`](https://github.com/php-fast-forward/enum) ships domain-first enums, reusable enum helper traits, and state-machine transition helpers.
 - [`fast-forward/clock`](https://github.com/php-fast-forward/clock), [`fast-forward/fork`](https://github.com/php-fast-forward/fork), and [`fast-forward/iterators`](https://github.com/php-fast-forward/iterators) extend the ecosystem with focused, production-friendly building blocks.
 
 ## Public roadmap
