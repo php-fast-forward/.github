@@ -33,6 +33,16 @@ runs:
       run: |
         set -euo pipefail
 
+        if [ -n "${FAST_FORWARD_ACTIONS_BIN:-}" ]; then
+          "${FAST_FORWARD_ACTIONS_BIN}" php:detect-project --github-output
+          exit 0
+        fi
+
+        if command -v fast-forward-actions >/dev/null 2>&1; then
+          fast-forward-actions php:detect-project --github-output
+          exit 0
+        fi
+
         composer_json=false
         docs_source=false
         php_files=false

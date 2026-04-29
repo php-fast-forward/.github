@@ -22,6 +22,16 @@ runs:
       id: resolve
       shell: bash
       run: |
+        if [ -n "${FAST_FORWARD_ACTIONS_BIN:-}" ]; then
+          "${FAST_FORWARD_ACTIONS_BIN}" php:resolve-version --github-output
+          exit 0
+        fi
+
+        if command -v fast-forward-actions >/dev/null 2>&1; then
+          fast-forward-actions php:resolve-version --github-output
+          exit 0
+        fi
+
         python3 <<'PY'
         from __future__ import annotations
 
