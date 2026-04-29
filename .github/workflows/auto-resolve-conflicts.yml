@@ -18,23 +18,6 @@ on:
                 required: false
                 type: string
                 default: ''
-    workflow_dispatch:
-        inputs:
-            base-ref:
-                description: Base branch inspected for open pull requests.
-                required: false
-                type: string
-                default: main
-            pull-request-number:
-                description: Optional pull request number to inspect. Leave empty to scan open pull requests targeting the base branch.
-                required: false
-                type: string
-                default: ''
-    push:
-        branches: [ "main" ]
-    pull_request:
-        types: [opened, reopened, synchronize, ready_for_review]
-
 permissions:
     actions: write
     contents: write

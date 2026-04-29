@@ -33,38 +33,6 @@ on:
                 required: false
                 type: string
                 default: release/v
-    workflow_dispatch:
-        inputs:
-            changelog-file:
-                description: Path to the managed changelog file.
-                required: false
-                type: string
-                default: CHANGELOG.md
-            dev-tools-version:
-                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
-                required: false
-                type: string
-                default: ^1.0
-            project:
-                description: Optional GitHub Project V2 number for consumer repositories. Leave empty to use the configured repository variable or the php-fast-forward default.
-                required: false
-                type: string
-                default: ''
-            version:
-                description: Optional version to promote. Leave empty to infer from Unreleased.
-                required: false
-                type: string
-                default: ''
-            release-branch-prefix:
-                description: Prefix used for release-preparation branches.
-                required: false
-                type: string
-                default: release/v
-    pull_request:
-        types: [opened, reopened, synchronize]
-    pull_request_target:
-        types: [closed]
-
 permissions:
     actions: write
     contents: write

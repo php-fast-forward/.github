@@ -28,33 +28,6 @@ on:
                 required: false
                 type: boolean
                 default: false
-    workflow_dispatch:
-        inputs:
-            dev-tools-version:
-                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
-                required: false
-                type: string
-                default: ^1.0
-            min-coverage:
-                description: Minimum line coverage percentage enforced by dev-tools tests.
-                required: false
-                type: number
-                default: 80
-            max-outdated:
-                description: Maximum number of outdated packages allowed by the dependencies command.
-                required: false
-                type: string
-                default: '-1'
-            publish-required-statuses:
-                description: Mirror required test matrix checks as commit statuses for workflow-dispatched runs.
-                required: false
-                type: boolean
-                default: false
-    pull_request:
-        types: [opened, synchronize, reopened]
-    push:
-        branches: [ "main" ]
-
 permissions:
     contents: read
     statuses: write

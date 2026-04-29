@@ -1,10 +1,6 @@
 name: Pull Request Label Sync
 
 on:
-  pull_request_target:
-    types: [opened, reopened, synchronize]
-  pull_request:
-    types: [opened, reopened, synchronize]
   workflow_call:
     inputs:
       automation-ref:
