@@ -1,0 +1,17 @@
+name: Delete Wiki Preview Branch
+description: Delete a wiki preview branch when it exists.
+
+inputs:
+  preview-branch:
+    description: Preview branch name in the wiki repository.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Delete preview branch
+      shell: bash
+      env:
+        INPUT_PREVIEW_BRANCH: ${{ inputs.preview-branch }}
+      working-directory: .github/wiki
+      run: ${{ github.action_path }}/run.sh

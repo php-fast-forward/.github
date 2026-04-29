@@ -1,0 +1,11 @@
+name: Copy Linked Issue Labels
+description: Copy labels from a pull request's linked issue onto the pull request.
+
+runs:
+  using: composite
+  steps:
+    - name: Copy linked issue labels
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: ${{ github.action_path }}/run.sh

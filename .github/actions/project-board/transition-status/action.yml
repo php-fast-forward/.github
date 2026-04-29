@@ -1,0 +1,51 @@
+name: Transition Project Board Status
+description: Move all matching issue and pull-request items from one project status to another.
+
+inputs:
+  project:
+    description: Optional GitHub Project V2 number. Fast Forward repositories MAY omit it to use the first organization project.
+    required: false
+    default: ''
+  from-status:
+    description: Source project status name.
+    required: false
+    default: ''
+  from-statuses:
+    description: Comma-separated source project status names.
+    required: false
+    default: ''
+  to-status:
+    description: Destination project status name.
+    required: true
+  include-current-pull-request:
+    description: Whether to include the current pull request item in the transition pass.
+    required: false
+    default: 'false'
+
+outputs:
+  moved-count:
+    description: Number of project items moved to the destination status.
+    value: ${{ steps.transition.outputs.moved-count }}
+  skipped-count:
+    description: Number of project items inspected but not moved.
+    value: ${{ steps.transition.outputs.skipped-count }}
+  source-statuses:
+    description: Comma-separated source statuses used for the transition.
+    value: ${{ steps.transition.outputs.source-statuses }}
+
+runs:
+  using: composite
+  steps:
+    - id: transition
+      uses: actions/github-script@v8
+      env:
+        INPUT_PROJECT: ${{ inputs.project }}
+        INPUT_FROM_STATUS: ${{ inputs.from-status }}
+        INPUT_FROM_STATUSES: ${{ inputs.from-statuses }}
+        INPUT_TO_STATUS: ${{ inputs.to-status }}
+        INPUT_INCLUDE_CURRENT_PULL_REQUEST: ${{ inputs.include-current-pull-request }}
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          const run = require(`${process.env.GITHUB_ACTION_PATH}/run.cjs`);
+          await run({github, context, core});

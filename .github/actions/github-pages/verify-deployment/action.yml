@@ -1,0 +1,34 @@
+name: Verify GitHub Pages Deployment
+description: Health-check a set of GitHub Pages URLs with retry/backoff.
+
+inputs:
+  base-url:
+    description: Base URL of the deployed site.
+    required: true
+  title:
+    description: Annotation title used when a check fails.
+    required: true
+  checks:
+    description: Newline-separated list of relative_path|label entries.
+    required: true
+  attempts:
+    description: Number of retry attempts.
+    required: false
+    default: '6'
+  delay:
+    description: Delay in seconds between retries.
+    required: false
+    default: '5'
+
+runs:
+  using: composite
+  steps:
+    - name: Verify deployment
+      shell: bash
+      env:
+        INPUT_BASE_URL: ${{ inputs.base-url }}
+        INPUT_TITLE: ${{ inputs.title }}
+        INPUT_CHECKS: ${{ inputs.checks }}
+        INPUT_ATTEMPTS: ${{ inputs.attempts }}
+        INPUT_DELAY: ${{ inputs.delay }}
+      run: ${{ github.action_path }}/run.sh

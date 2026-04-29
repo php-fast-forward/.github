@@ -1,0 +1,85 @@
+name: Auto-resolve Predictable Conflicts
+
+on:
+    workflow_call:
+        inputs:
+            automation-ref:
+                description: Ref of php-fast-forward/.github used when checking out shared actions.
+                required: false
+                type: string
+                default: ''
+            base-ref:
+                description: Base branch inspected for open pull requests.
+                required: false
+                type: string
+                default: main
+            pull-request-number:
+                description: Optional pull request number to inspect.
+                required: false
+                type: string
+                default: ''
+    workflow_dispatch:
+        inputs:
+            base-ref:
+                description: Base branch inspected for open pull requests.
+                required: false
+                type: string
+                default: main
+            pull-request-number:
+                description: Optional pull request number to inspect. Leave empty to scan open pull requests targeting the base branch.
+                required: false
+                type: string
+                default: ''
+    push:
+        branches: [ "main" ]
+    pull_request:
+        types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+    actions: write
+    contents: write
+    pull-requests: write
+
+concurrency:
+    group: ${{ github.event_name == 'pull_request' && format('auto-resolve-conflicts-pr-{0}', github.event.pull_request.number) || format('auto-resolve-conflicts-{0}', github.ref) }}
+    cancel-in-progress: true
+
+env:
+    FORCE_COLOR: '1'
+
+jobs:
+    resolve_predictable_conflicts:
+        name: Resolve Predictable Conflicts
+        runs-on: ubuntu-latest
+        env:
+            BASE_REF: ${{ inputs.base-ref || github.event.pull_request.base.ref || github.event.repository.default_branch || 'main' }}
+            PULL_REQUEST_NUMBER: ${{ inputs.pull-request-number || github.event.pull_request.number || '' }}
+            AUTO_RESOLVE_ROOT_VERSION: ${{ github.event_name == 'pull_request' && format('dev-{0}', github.event.pull_request.head.ref) || 'dev-main' }}
+            GH_TOKEN: ${{ github.token }}
+
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+
+            - name: Checkout shared workflow action source
+              uses: actions/checkout@v6
+              with:
+                  repository: php-fast-forward/.github
+                  ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && github.sha) || 'main' }}
+                  path: .fast-forward-actions
+                  sparse-checkout: |
+                      .github/actions
+
+            - name: Setup PHP and install dependencies
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              with:
+                  php-version: '8.3'
+                  root-version: ${{ env.AUTO_RESOLVE_ROOT_VERSION }}
+                  install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
+
+            - name: Resolve predictable pull request conflicts
+              uses: ./.fast-forward-actions/.github/actions/github/resolve-predictable-conflicts
+              with:
+                  base-ref: ${{ env.BASE_REF }}
+                  pull-request-number: ${{ env.PULL_REQUEST_NUMBER }}

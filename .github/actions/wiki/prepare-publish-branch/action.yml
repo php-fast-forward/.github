@@ -1,0 +1,27 @@
+name: Prepare Wiki Publish Branch
+description: Prepare the wiki publish branch from a preview branch.
+
+inputs:
+  publish-branch:
+    description: Publish branch name in the wiki repository.
+    required: true
+  preview-branch:
+    description: Preview branch name in the wiki repository.
+    required: true
+
+outputs:
+  expected-preview-sha:
+    description: Preview branch SHA expected on the publish branch after push.
+    value: ${{ steps.prepare.outputs.expected-preview-sha }}
+
+runs:
+  using: composite
+  steps:
+    - id: prepare
+      name: Prepare publish branch
+      shell: bash
+      env:
+        INPUT_PUBLISH_BRANCH: ${{ inputs.publish-branch }}
+        INPUT_PREVIEW_BRANCH: ${{ inputs.preview-branch }}
+      working-directory: .github/wiki
+      run: ${{ github.action_path }}/run.sh

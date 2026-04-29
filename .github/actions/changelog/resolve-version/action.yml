@@ -1,0 +1,30 @@
+name: Resolve Changelog Release Version
+description: Resolve the release version from workflow input or infer it from the changelog.
+
+inputs:
+  changelog-file:
+    description: Managed changelog path.
+    required: true
+  version:
+    description: Optional explicit version.
+    required: false
+    default: ''
+
+outputs:
+  value:
+    description: Resolved release version.
+    value: ${{ steps.resolve.outputs.value }}
+  source:
+    description: Resolution source, either input or inferred.
+    value: ${{ steps.resolve.outputs.source }}
+
+runs:
+  using: composite
+  steps:
+    - id: resolve
+      name: Resolve version
+      shell: bash
+      env:
+        INPUT_CHANGELOG_FILE: ${{ inputs.changelog-file }}
+        INPUT_VERSION: ${{ inputs.version }}
+      run: ${{ github.action_path }}/run.sh

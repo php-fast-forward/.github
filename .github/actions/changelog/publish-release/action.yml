@@ -1,0 +1,35 @@
+name: Publish GitHub Release
+description: Create or update a GitHub release from a rendered release-notes file.
+
+inputs:
+  version:
+    description: Release version without leading v.
+    required: true
+  target:
+    description: Commit SHA or ref the release should target.
+    required: true
+  notes-file:
+    description: Rendered release-notes file path.
+    required: false
+    default: .dev-tools/release-notes.md
+
+runs:
+  using: composite
+  steps:
+    - id: publish
+      name: Publish release
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        INPUT_VERSION: ${{ inputs.version }}
+        INPUT_TARGET: ${{ inputs.target }}
+        INPUT_NOTES_FILE: ${{ inputs.notes-file }}
+      run: ${{ github.action_path }}/run.sh
+
+outputs:
+  operation:
+    description: Whether the release was created or updated.
+    value: ${{ steps.publish.outputs.operation }}
+  url:
+    description: URL of the published GitHub release.
+    value: ${{ steps.publish.outputs.url }}

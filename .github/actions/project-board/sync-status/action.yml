@@ -1,0 +1,27 @@
+name: Sync Project Board Status
+description: Sync a GitHub Issue or Pull Request status into the configured Project V2.
+
+inputs:
+  project:
+    description: Target GitHub Project V2 number.
+    required: true
+  organization:
+    description: Organization or user owner of the target project.
+    required: true
+  resource-node-id:
+    description: GraphQL node id of the issue or pull request to update.
+    required: true
+  status-value:
+    description: Target status option name.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: leonsteinhaeuser/project-beta-automations@v2.2.1
+      with:
+        gh_token: ${{ github.token }}
+        organization: ${{ inputs.organization }}
+        project_id: ${{ inputs.project }}
+        resource_node_id: ${{ inputs.resource-node-id }}
+        status_value: ${{ inputs.status-value }}

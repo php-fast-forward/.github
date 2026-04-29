@@ -1,0 +1,26 @@
+name: Resolve Project Board
+description: Resolve the GitHub Project V2 number for Fast Forward workflows.
+
+inputs:
+  project:
+    description: Optional GitHub Project V2 number provided explicitly by the caller.
+    required: false
+    default: ''
+
+outputs:
+  project-number:
+    description: Resolved GitHub Project V2 number or an empty string when no safe default exists.
+    value: ${{ steps.resolve.outputs.project-number }}
+
+runs:
+  using: composite
+  steps:
+    - id: resolve
+      uses: actions/github-script@v8
+      env:
+        INPUT_PROJECT: ${{ inputs.project }}
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          const run = require(`${process.env.GITHUB_ACTION_PATH}/run.cjs`);
+          await run({github, context, core});

@@ -1,0 +1,16 @@
+name: Write Workflow Step Summary
+description: Append deterministic Markdown to GITHUB_STEP_SUMMARY when content is available.
+
+inputs:
+  markdown:
+    description: Markdown content to append to the workflow step summary.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Append summary
+      shell: bash
+      env:
+        INPUT_MARKDOWN: ${{ inputs.markdown }}
+      run: ${{ github.action_path }}/run.sh

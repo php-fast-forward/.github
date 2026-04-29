@@ -1,0 +1,153 @@
+name: Project Board Automation
+
+on:
+  workflow_call:
+    inputs:
+      automation-ref:
+        description: Ref of php-fast-forward/.github used when checking out shared actions.
+        required: false
+        type: string
+        default: ''
+      project:
+        description: Optional GitHub Project V2 number for consumer repositories. When omitted, php-fast-forward repositories default to the first organization project.
+        required: false
+        type: string
+        default: ''
+  issues:
+    types: [opened, reopened, closed]
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review, converted_to_draft, closed]
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  repository-projects: write
+
+jobs:
+  resolve-project:
+    runs-on: ubuntu-latest
+    outputs:
+      project_number: ${{ steps.resolve.outputs.project-number }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Checkout shared workflow action source
+        uses: actions/checkout@v6
+        with:
+          repository: php-fast-forward/.github
+          ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+      - id: resolve
+        uses: ./.fast-forward-actions/.github/actions/project-board/resolve
+        with:
+          project: ${{ inputs.project || vars.PROJECT || '' }}
+
+  assign-author:
+    if: ${{ github.event_name == 'pull_request_target' && (github.event.action == 'opened' || github.event.action == 'reopened') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto assign PR author
+        uses: toshimaru/auto-author-assign@v3.0.1
+        with:
+          repo-token: ${{ github.token }}
+
+  sync-issue-status:
+    needs: resolve-project
+    if: github.event_name == 'issues' && needs.resolve-project.outputs.project_number != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Checkout shared workflow action source
+        uses: actions/checkout@v6
+        with:
+          repository: php-fast-forward/.github
+          ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+      - uses: ./.fast-forward-actions/.github/actions/project-board/sync-status
+        with:
+          organization: ${{ github.repository_owner }}
+          project: ${{ needs.resolve-project.outputs.project_number }}
+          resource-node-id: ${{ github.event.issue.node_id }}
+          status-value: ${{ github.event.action == 'closed' && 'Merged' || 'Backlog' }}
+
+  sync-pull-request-metadata:
+    needs: resolve-project
+    if: github.event_name == 'pull_request_target' && needs.resolve-project.outputs.project_number != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Checkout shared workflow action source
+        uses: actions/checkout@v6
+        with:
+          repository: php-fast-forward/.github
+          ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+      - uses: ./.fast-forward-actions/.github/actions/project-board/sync-linked-pr-metadata
+
+  sync-pull-request-status:
+    needs: resolve-project
+    if: github.event_name == 'pull_request_target' && needs.resolve-project.outputs.project_number != ''
+    runs-on: ubuntu-latest
+    outputs:
+      linked_issue_node_id: ${{ steps.compute.outputs.linked-issue-node-id }}
+      linked_issue_status: ${{ steps.compute.outputs.linked-issue-status }}
+      pull_request_status: ${{ steps.compute.outputs.pull-request-status }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Checkout shared workflow action source
+        uses: actions/checkout@v6
+        with:
+          repository: php-fast-forward/.github
+          ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+      - id: compute
+        uses: ./.fast-forward-actions/.github/actions/project-board/resolve-pr-status
+
+      - uses: ./.fast-forward-actions/.github/actions/project-board/sync-status
+        with:
+          organization: ${{ github.repository_owner }}
+          project: ${{ needs.resolve-project.outputs.project_number }}
+          resource-node-id: ${{ github.event.pull_request.node_id }}
+          status-value: ${{ steps.compute.outputs.pull-request-status }}
+
+      - if: steps.compute.outputs.linked-issue-node-id != '' && steps.compute.outputs.linked-issue-status != ''
+        uses: ./.fast-forward-actions/.github/actions/project-board/sync-status
+        with:
+          organization: ${{ github.repository_owner }}
+          project: ${{ needs.resolve-project.outputs.project_number }}
+          resource-node-id: ${{ steps.compute.outputs.linked-issue-node-id }}
+          status-value: ${{ steps.compute.outputs.linked-issue-status }}
+
+  sync-review-state:
+    needs: resolve-project
+    if: github.event_name == 'pull_request_review' && needs.resolve-project.outputs.project_number != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Checkout shared workflow action source
+        uses: actions/checkout@v6
+        with:
+          repository: php-fast-forward/.github
+          ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+      - id: compute
+        uses: ./.fast-forward-actions/.github/actions/project-board/resolve-review-status
+
+      - uses: ./.fast-forward-actions/.github/actions/project-board/sync-status
+        with:
+          organization: ${{ github.repository_owner }}
+          project: ${{ needs.resolve-project.outputs.project_number }}
+          resource-node-id: ${{ github.event.pull_request.node_id }}
+          status-value: ${{ steps.compute.outputs.status }}
