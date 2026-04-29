@@ -41,6 +41,8 @@ concurrency:
 
 env:
     FORCE_COLOR: '1'
+    FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+    FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
 
 jobs:
     resolve_predictable_conflicts:
@@ -56,15 +58,53 @@ jobs:
             - uses: actions/checkout@v6
               with:
                   fetch-depth: 0
+
+            - name: Resolve shared action ref
+              id: shared_actions
+              shell: bash
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+                  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+              run: |
+                  set -euo pipefail
+
+                  if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+                      ref="${FAST_FORWARD_ACTIONS_REF}"
+                  elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+                      if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                          ref="${BASE_SHA}"
+                      else
+                          ref="${CURRENT_REF:-main}"
+                      fi
+                  else
+                      ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+                      if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+                          ref="main"
+                      fi
+                  fi
+
+                  echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+            - name: Checkout shared action source
+              uses: actions/checkout@v6
+              with:
+                  repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+                  ref: ${{ steps.shared_actions.outputs.ref }}
+                  path: .fast-forward-actions
+                  sparse-checkout: |
+                      .github/actions
+
             - name: Setup PHP and install dependencies
-              uses: php-fast-forward/.github/.github/actions/php/setup-composer@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
               with:
                   php-version: '8.3'
                   root-version: ${{ env.AUTO_RESOLVE_ROOT_VERSION }}
                   install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
 
             - name: Resolve predictable pull request conflicts
-              uses: php-fast-forward/.github/.github/actions/github/resolve-predictable-conflicts@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/github/resolve-predictable-conflicts
               with:
                   base-ref: ${{ env.BASE_REF }}
                   pull-request-number: ${{ env.PULL_REQUEST_NUMBER }}

@@ -21,14 +21,57 @@ permissions:
   pull-requests: write
   repository-projects: write
 
+env:
+  FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+  FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
+
 jobs:
   resolve-project:
     runs-on: ubuntu-latest
     outputs:
       project_number: ${{ steps.resolve.outputs.project-number }}
     steps:
+      - &resolve_shared_action_ref
+        name: Resolve shared action ref
+        id: shared_actions
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+              ref="${FAST_FORWARD_ACTIONS_REF}"
+          elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+            if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                ref="${BASE_SHA}"
+            else
+                ref="${CURRENT_REF:-main}"
+            fi
+          else
+            ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+            if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+              ref="main"
+            fi
+          fi
+
+          echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+      - &checkout_shared_action_source
+        name: Checkout shared action source
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+          ref: ${{ steps.shared_actions.outputs.ref }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+
       - id: resolve
-        uses: php-fast-forward/.github/.github/actions/project-board/resolve@task/2-extract-shared-workflows
+        uses: ./.fast-forward-actions/.github/actions/project-board/resolve
         with:
           project: ${{ inputs.project || vars.PROJECT || '' }}
 
@@ -46,7 +89,10 @@ jobs:
     if: github.event_name == 'issues' && needs.resolve-project.outputs.project_number != ''
     runs-on: ubuntu-latest
     steps:
-      - uses: php-fast-forward/.github/.github/actions/project-board/sync-status@task/2-extract-shared-workflows
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
+
+      - uses: ./.fast-forward-actions/.github/actions/project-board/sync-status
         with:
           organization: ${{ github.repository_owner }}
           project: ${{ needs.resolve-project.outputs.project_number }}
@@ -58,7 +104,10 @@ jobs:
     if: github.event_name == 'pull_request_target' && needs.resolve-project.outputs.project_number != ''
     runs-on: ubuntu-latest
     steps:
-      - uses: php-fast-forward/.github/.github/actions/project-board/sync-linked-pr-metadata@task/2-extract-shared-workflows
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
+
+      - uses: ./.fast-forward-actions/.github/actions/project-board/sync-linked-pr-metadata
 
   sync-pull-request-status:
     needs: resolve-project
@@ -69,10 +118,13 @@ jobs:
       linked_issue_status: ${{ steps.compute.outputs.linked-issue-status }}
       pull_request_status: ${{ steps.compute.outputs.pull-request-status }}
     steps:
-      - id: compute
-        uses: php-fast-forward/.github/.github/actions/project-board/resolve-pr-status@task/2-extract-shared-workflows
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
 
-      - uses: php-fast-forward/.github/.github/actions/project-board/sync-status@task/2-extract-shared-workflows
+      - id: compute
+        uses: ./.fast-forward-actions/.github/actions/project-board/resolve-pr-status
+
+      - uses: ./.fast-forward-actions/.github/actions/project-board/sync-status
         with:
           organization: ${{ github.repository_owner }}
           project: ${{ needs.resolve-project.outputs.project_number }}
@@ -80,7 +132,7 @@ jobs:
           status-value: ${{ steps.compute.outputs.pull-request-status }}
 
       - if: steps.compute.outputs.linked-issue-node-id != '' && steps.compute.outputs.linked-issue-status != ''
-        uses: php-fast-forward/.github/.github/actions/project-board/sync-status@task/2-extract-shared-workflows
+        uses: ./.fast-forward-actions/.github/actions/project-board/sync-status
         with:
           organization: ${{ github.repository_owner }}
           project: ${{ needs.resolve-project.outputs.project_number }}
@@ -92,10 +144,13 @@ jobs:
     if: github.event_name == 'pull_request_review' && needs.resolve-project.outputs.project_number != ''
     runs-on: ubuntu-latest
     steps:
-      - id: compute
-        uses: php-fast-forward/.github/.github/actions/project-board/resolve-review-status@task/2-extract-shared-workflows
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
 
-      - uses: php-fast-forward/.github/.github/actions/project-board/sync-status@task/2-extract-shared-workflows
+      - id: compute
+        uses: ./.fast-forward-actions/.github/actions/project-board/resolve-review-status
+
+      - uses: ./.fast-forward-actions/.github/actions/project-board/sync-status
         with:
           organization: ${{ github.repository_owner }}
           project: ${{ needs.resolve-project.outputs.project_number }}

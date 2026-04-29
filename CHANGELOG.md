@@ -13,4 +13,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Replace consumer-facing `automation-ref` plumbing with versioned remote action refs pinned by release automation (#3)
+- Replace consumer-facing `automation-ref` plumbing with shared-action source checkout resolved inside reusable workflows (#3)

@@ -33,10 +33,11 @@ repository because the reusable workflows depend on actions across these areas:
 - step summary rendering
 - wiki preview and publication helpers
 
-Reusable workflows reference these composite actions through remote
-`php-fast-forward/.github/.github/actions/...@ref` action calls. Consumer
-wrappers only choose the reusable workflow ref; the called workflow owns its
-internal action refs.
+Reusable workflows reference these composite actions through local
+`.fast-forward-actions/.github/actions/...` paths after explicitly checking out
+`php-fast-forward/.github` into `.fast-forward-actions`. Consumer wrappers only
+choose the reusable workflow ref; the called workflow owns its internal action
+source checkout.
 
 This repository also adds `.github/actions/dev-tools/setup` so reusable
 workflows can locate an existing project-local `dev-tools` binary or install
@@ -51,9 +52,10 @@ need.
 The reusable workflows keep their original local triggers in this repository so
 changes can be smoke-tested here before consumer wrappers are updated.
 
-The changelog release workflow pins internal shared-action refs to `vX.Y.Z`
-during `.github` release publication before creating the tag, keeping released
-workflow tags immutable and compatible with Dependabot updates in consumers.
+Shared-action source checkout resolves to the current ref for local runs in this
+repository, the latest stable `.github` release for consumer `workflow_call`
+runs, and `main` when no release exists yet. Consumer repositories can set
+`FAST_FORWARD_ACTIONS_REF` as a temporary smoke-test override.
 
 ## Remaining in dev-tools
 

@@ -7,6 +7,8 @@ permissions:
 
 env:
   FORCE_COLOR: '1'
+  FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+  FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
 
 jobs:
   publish:
@@ -34,9 +36,48 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config --global --add safe.directory "$GITHUB_WORKSPACE/.github/wiki"
 
+      - &resolve_shared_action_ref
+        name: Resolve shared action ref
+        id: shared_actions
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+              ref="${FAST_FORWARD_ACTIONS_REF}"
+          elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+            if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                ref="${BASE_SHA}"
+            else
+                ref="${CURRENT_REF:-main}"
+            fi
+          else
+            ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+            if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+              ref="main"
+            fi
+          fi
+
+          echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+      - &checkout_shared_action_source
+        name: Checkout shared action source
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+          ref: ${{ steps.shared_actions.outputs.ref }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+
       - name: Prepare wiki publish branch from preview branch
         id: prepare_publish
-        uses: php-fast-forward/.github/.github/actions/wiki/prepare-publish-branch@task/2-extract-shared-workflows
+        uses: ./.fast-forward-actions/.github/actions/wiki/prepare-publish-branch
         with:
           publish-branch: ${{ env.WIKI_PUBLISH_BRANCH }}
           preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
@@ -46,18 +87,18 @@ jobs:
         run: git push --force-with-lease origin HEAD:"${WIKI_PUBLISH_BRANCH}"
 
       - name: Validate wiki publish branch
-        uses: php-fast-forward/.github/.github/actions/wiki/validate-publish-branch@task/2-extract-shared-workflows
+        uses: ./.fast-forward-actions/.github/actions/wiki/validate-publish-branch
         with:
           publish-branch: ${{ env.WIKI_PUBLISH_BRANCH }}
           preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
           expected-preview-sha: ${{ steps.prepare_publish.outputs.expected-preview-sha }}
 
       - name: Delete wiki preview branch
-        uses: php-fast-forward/.github/.github/actions/wiki/delete-preview-branch@task/2-extract-shared-workflows
+        uses: ./.fast-forward-actions/.github/actions/wiki/delete-preview-branch
         with:
           preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
 
-      - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
+      - uses: ./.fast-forward-actions/.github/actions/summary/write
         with:
           markdown: |
             ## Wiki Publish Summary
@@ -89,12 +130,15 @@ jobs:
       - name: Mark wiki workspace as safe for git
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE/.github/wiki"
 
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
+
       - name: Delete wiki preview branch
-        uses: php-fast-forward/.github/.github/actions/wiki/delete-preview-branch@task/2-extract-shared-workflows
+        uses: ./.fast-forward-actions/.github/actions/wiki/delete-preview-branch
         with:
           preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
 
-      - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
+      - uses: ./.fast-forward-actions/.github/actions/summary/write
         with:
           markdown: |
             ## Wiki Preview Cleanup Summary
@@ -121,11 +165,14 @@ jobs:
       - name: Mark wiki workspace as safe for git
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE/.github/wiki"
 
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
+
       - name: Delete wiki branches for closed pull requests
         id: cleanup
-        uses: php-fast-forward/.github/.github/actions/wiki/cleanup-orphaned-previews@task/2-extract-shared-workflows
+        uses: ./.fast-forward-actions/.github/actions/wiki/cleanup-orphaned-previews
 
-      - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
+      - uses: ./.fast-forward-actions/.github/actions/summary/write
         with:
           markdown: |
             ## Wiki Orphan Cleanup Summary

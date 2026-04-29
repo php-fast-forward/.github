@@ -72,6 +72,8 @@ concurrency:
 
 env:
     FORCE_COLOR: '1'
+    FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+    FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
 
 jobs:
     resolve_php:
@@ -82,9 +84,49 @@ jobs:
 
         steps:
             - uses: actions/checkout@v6
+
+            - &resolve_shared_action_ref
+              name: Resolve shared action ref
+              id: shared_actions
+              shell: bash
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+                  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+              run: |
+                  set -euo pipefail
+
+                  if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+                      ref="${FAST_FORWARD_ACTIONS_REF}"
+                  elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+                      if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                          ref="${BASE_SHA}"
+                      else
+                          ref="${CURRENT_REF:-main}"
+                      fi
+                  else
+                      ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+                      if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+                          ref="main"
+                      fi
+                  fi
+
+                  echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+            - &checkout_shared_action_source
+              name: Checkout shared action source
+              uses: actions/checkout@v6
+              with:
+                  repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+                  ref: ${{ steps.shared_actions.outputs.ref }}
+                  path: .fast-forward-actions
+                  sparse-checkout: |
+                      .github/actions
+
             - name: Resolve workflow PHP version
               id: resolve
-              uses: php-fast-forward/.github/.github/actions/php/resolve-version@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/php/resolve-version
 
     validate_pull_request:
         name: Validate PR Changelog
@@ -103,15 +145,18 @@ jobs:
             - uses: actions/checkout@v6
               with:
                   fetch-depth: 0
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
             - name: Setup PHP and install dependencies
-              uses: php-fast-forward/.github/.github/actions/php/setup-composer@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
               with:
                   php-version: ${{ needs.resolve_php.outputs.php-version }}
                   root-version: ${{ env.CHANGELOG_ROOT_VERSION }}
                   install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
 
             - name: Setup Fast Forward DevTools
-              uses: php-fast-forward/.github/.github/actions/dev-tools/setup@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
               with:
                   version: ${{ inputs.dev-tools-version || '^1.0' }}
 
@@ -121,7 +166,7 @@ jobs:
             - name: Create Dependabot changelog entry when missing
               id: dependabot_entry
               if: ${{ (github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.user.login == 'app/dependabot' || startsWith(github.event.pull_request.head.ref, 'dependabot/')) && github.event.pull_request.head.repo.full_name == github.repository }}
-              uses: php-fast-forward/.github/.github/actions/changelog/create-dependabot-entry@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/changelog/create-dependabot-entry
               with:
                   changelog-file: ${{ env.CHANGELOG_FILE }}
                   base-ref: ${{ env.BASE_REF }}
@@ -133,7 +178,7 @@ jobs:
               run: |
                   "${DEV_TOOLS_BIN}" changelog:check --file="${CHANGELOG_FILE}" --against="origin/${BASE_REF}"
 
-            - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
+            - uses: ./.fast-forward-actions/.github/actions/summary/write
               with:
                   markdown: |
                       ## Changelog Validation Summary
@@ -191,21 +236,24 @@ jobs:
                   token: ${{ github.token }}
                   ref: ${{ github.event.repository.default_branch }}
                   fetch-depth: 0
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
             - name: Setup PHP and install dependencies
-              uses: php-fast-forward/.github/.github/actions/php/setup-composer@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
               with:
                   php-version: ${{ needs.resolve_php.outputs.php-version }}
                   root-version: ${{ env.CHANGELOG_ROOT_VERSION }}
                   install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
 
             - name: Setup Fast Forward DevTools
-              uses: php-fast-forward/.github/.github/actions/dev-tools/setup@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
               with:
                   version: ${{ inputs.dev-tools-version || '^1.0' }}
 
             - name: Resolve release version
               id: version
-              uses: php-fast-forward/.github/.github/actions/changelog/resolve-version@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/changelog/resolve-version
               with:
                   changelog-file: ${{ env.CHANGELOG_FILE }}
                   version: ${{ inputs.version || '' }}
@@ -218,7 +266,7 @@ jobs:
                   "${DEV_TOOLS_BIN}" changelog:promote "${RELEASE_VERSION}" --file="${CHANGELOG_FILE}" --date="${release_date}"
 
             - name: Render release notes preview
-              uses: php-fast-forward/.github/.github/actions/changelog/render-release-notes@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/changelog/render-release-notes
               with:
                   changelog-file: ${{ env.CHANGELOG_FILE }}
                   version: ${{ steps.version.outputs.value }}
@@ -240,7 +288,7 @@ jobs:
 
                       - promote `Unreleased` into `${{ steps.version.outputs.value }}`
                       - prepare the GitHub release body from `${{ env.CHANGELOG_FILE }}`
-                      - when this workflow runs for `php-fast-forward/.github`, publish-time automation pins internal shared-action refs to `v${{ steps.version.outputs.value }}` before creating the tag
+                      - reusable workflows resolve shared-action source refs without requiring direct writes to the protected default branch
 
                       ## Version Resolution
 
@@ -254,13 +302,14 @@ jobs:
               run: gh workflow run tests.yml --ref "${RELEASE_BRANCH}" -f publish-required-statuses=true
 
             - uses: actions/checkout@v6
-            - uses: php-fast-forward/.github/.github/actions/project-board/transition-status@task/2-extract-shared-workflows
+            - *checkout_shared_action_source
+            - uses: ./.fast-forward-actions/.github/actions/project-board/transition-status
               with:
                   project: ${{ inputs.project || vars.PROJECT || '' }}
                   from-status: Merged
                   to-status: Release Prepared
 
-            - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
+            - uses: ./.fast-forward-actions/.github/actions/summary/write
               with:
                   markdown: |
                       ## Release Preparation Summary
@@ -288,133 +337,59 @@ jobs:
                   token: ${{ github.token }}
                   ref: ${{ github.event.pull_request.base.ref }}
                   fetch-depth: 0
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
             - name: Setup PHP and install dependencies
-              uses: php-fast-forward/.github/.github/actions/php/setup-composer@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
               with:
                   php-version: ${{ needs.resolve_php.outputs.php-version }}
                   root-version: ${{ env.CHANGELOG_ROOT_VERSION }}
                   install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
 
             - name: Setup Fast Forward DevTools
-              uses: php-fast-forward/.github/.github/actions/dev-tools/setup@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
               with:
                   version: ${{ inputs.dev-tools-version || '^1.0' }}
 
             - name: Resolve merged release version
               id: version
-              uses: php-fast-forward/.github/.github/actions/changelog/resolve-merged-version@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/changelog/resolve-merged-version
               with:
                   head-ref: ${{ github.event.pull_request.head.ref }}
                   release-branch-prefix: ${{ env.RELEASE_BRANCH_PREFIX }}
 
-            - name: Pin shared action refs for .github release
-              id: pin_action_refs
-              if: github.repository == 'php-fast-forward/.github'
-              env:
-                  RELEASE_TAG: v${{ steps.version.outputs.value }}
-              run: |
-                  set -euo pipefail
-
-                  php <<'PHP'
-                  <?php
-
-                  declare(strict_types=1);
-
-                  $releaseTag = getenv('RELEASE_TAG');
-
-                  if (! is_string($releaseTag) || '' === $releaseTag) {
-                      fwrite(STDERR, "RELEASE_TAG is required.\n");
-                      exit(1);
-                  }
-
-                  $directory = new RecursiveDirectoryIterator(
-                      '.github/workflows',
-                      FilesystemIterator::SKIP_DOTS,
-                  );
-                  $files = new RecursiveIteratorIterator($directory);
-                  $pattern = <<<'REGEX'
-                  ~php-fast-forward/\.github/\.github/actions/([A-Za-z0-9._/-]+)@[A-Za-z0-9._/-]+~
-                  REGEX;
-
-                  foreach ($files as $file) {
-                      if (! $file instanceof SplFileInfo || ! $file->isFile()) {
-                          continue;
-                      }
-
-                      if (! in_array($file->getExtension(), ['yml', 'yaml'], true)) {
-                          continue;
-                      }
-
-                      $path = $file->getPathname();
-                      $contents = file_get_contents($path);
-
-                      if (! is_string($contents)) {
-                          fwrite(STDERR, "Could not read {$path}.\n");
-                          exit(1);
-                      }
-
-                      $updated = preg_replace(
-                          $pattern,
-                          'php-fast-forward/.github/.github/actions/$1@' . $releaseTag,
-                          $contents,
-                      );
-
-                      if (! is_string($updated)) {
-                          fwrite(STDERR, "Could not update {$path}.\n");
-                          exit(1);
-                      }
-
-                      if ($updated !== $contents) {
-                          file_put_contents($path, $updated);
-                      }
-                  }
-                  PHP
-
-                  if git diff --quiet -- .github/workflows; then
-                      echo "changed=false" >> "${GITHUB_OUTPUT}"
-                      echo "target=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
-                      exit 0
-                  fi
-
-                  git config user.name "github-actions[bot]"
-                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-                  git add .github/workflows
-                  git commit -m "Pin shared action refs for ${RELEASE_TAG}"
-                  git push origin "HEAD:${{ github.event.pull_request.base.ref }}"
-
-                  echo "changed=true" >> "${GITHUB_OUTPUT}"
-                  echo "target=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
-
             - name: Render release notes
-              uses: php-fast-forward/.github/.github/actions/changelog/render-release-notes@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/changelog/render-release-notes
               with:
                   changelog-file: ${{ env.CHANGELOG_FILE }}
                   version: ${{ steps.version.outputs.value }}
 
             - name: Publish GitHub release
               id: publish_release
-              uses: php-fast-forward/.github/.github/actions/changelog/publish-release@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/changelog/publish-release
               with:
                   version: ${{ steps.version.outputs.value }}
-                  target: ${{ steps.pin_action_refs.outputs.target || github.event.pull_request.merge_commit_sha || github.sha }}
+                  target: ${{ github.event.pull_request.merge_commit_sha || github.sha }}
 
             - uses: actions/checkout@v6
+            - *checkout_shared_action_source
             - id: release_project_status
-              uses: php-fast-forward/.github/.github/actions/project-board/transition-status@task/2-extract-shared-workflows
+              uses: ./.fast-forward-actions/.github/actions/project-board/transition-status
               with:
                   project: ${{ inputs.project || vars.PROJECT || '' }}
                   from-statuses: Release Prepared,Merged
                   to-status: Released
                   include-current-pull-request: 'true'
 
-            - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
+            - uses: ./.fast-forward-actions/.github/actions/summary/write
               with:
                   markdown: |
                       ## Release Publication Summary
 
                       - Changelog file: `${{ env.CHANGELOG_FILE }}`
                       - Published tag: `v${{ steps.version.outputs.value }}`
-                      - Shared action refs pinned before tag: `${{ steps.pin_action_refs.outputs.changed || 'not applicable' }}`
+                      - Shared action ref source: `${{ steps.shared_actions.outputs.ref }}`
                       - Release operation: `${{ steps.publish_release.outputs.operation }}`
                       - Release URL: ${{ steps.publish_release.outputs.url }}
                       - Project items released: `${{ steps.release_project_status.outputs.moved-count }}`
