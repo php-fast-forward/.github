@@ -1,0 +1,29 @@
+name: Cleanup Orphaned GitHub Pages Previews
+description: Remove preview directories for pull requests that are no longer open.
+
+inputs:
+  path:
+    description: Checked-out gh-pages working tree path.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - id: cleanup
+      name: Cleanup orphaned previews
+      shell: bash
+      env:
+        INPUT_PATH: ${{ inputs.path }}
+        GH_TOKEN: ${{ github.token }}
+      run: ${{ github.action_path }}/run.sh
+
+outputs:
+  deleted:
+    description: Number of deleted preview directories.
+    value: ${{ steps.cleanup.outputs.deleted }}
+  skipped:
+    description: Number of retained preview directories.
+    value: ${{ steps.cleanup.outputs.skipped }}
+  unresolved:
+    description: Number of unresolved preview directories.
+    value: ${{ steps.cleanup.outputs.unresolved }}

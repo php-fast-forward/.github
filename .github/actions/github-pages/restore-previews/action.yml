@@ -1,0 +1,20 @@
+name: Restore GitHub Pages Previews
+description: Copy existing preview directories from a checked-out gh-pages tree into the new publish target.
+
+inputs:
+  source:
+    description: Checked-out gh-pages directory that may contain previews.
+    required: true
+  target:
+    description: Publish target directory that should receive existing previews.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Restore previews
+      shell: bash
+      env:
+        INPUT_SOURCE: ${{ inputs.source }}
+        INPUT_TARGET: ${{ inputs.target }}
+      run: ${{ github.action_path }}/run.sh

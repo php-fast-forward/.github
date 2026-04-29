@@ -1,0 +1,86 @@
+name: Setup Fast Forward GitHub Actions Runtime
+description: Resolve or globally install the fast-forward/github-actions command runtime.
+
+inputs:
+  version:
+    description: Composer version constraint or branch for fast-forward/github-actions.
+    required: false
+    default: dev-main
+  repository:
+    description: Composer VCS repository used when installing branch refs.
+    required: false
+    default: https://github.com/php-fast-forward/github-actions
+  prefer-local:
+    description: Use a project-local vendor/bin/fast-forward-actions binary when available.
+    required: false
+    default: 'true'
+  composer-home:
+    description: COMPOSER_HOME used for global installs.
+    required: false
+    default: ''
+  cache-dir:
+    description: Composer cache directory used for global installs.
+    required: false
+    default: /tmp/composer-cache
+
+outputs:
+  command:
+    description: Absolute fast-forward-actions command path.
+    value: ${{ steps.resolve.outputs.command }}
+  source:
+    description: Where the command was resolved from.
+    value: ${{ steps.resolve.outputs.source }}
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve or install Fast Forward GitHub Actions runtime
+      id: resolve
+      shell: bash
+      env:
+        COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ github.token }}"} }'
+        INPUT_CACHE_DIR: ${{ inputs.cache-dir }}
+        INPUT_COMPOSER_HOME: ${{ inputs.composer-home }}
+        INPUT_PREFER_LOCAL: ${{ inputs.prefer-local }}
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_VERSION: ${{ inputs.version }}
+      run: |
+        set -euo pipefail
+
+        command_path=''
+        command_source=''
+
+        if [ "${INPUT_PREFER_LOCAL}" = "true" ] && [ -x "${GITHUB_WORKSPACE}/vendor/bin/fast-forward-actions" ]; then
+          command_path="${GITHUB_WORKSPACE}/vendor/bin/fast-forward-actions"
+          command_source='project'
+        elif command -v fast-forward-actions >/dev/null 2>&1; then
+          command_path="$(command -v fast-forward-actions)"
+          command_source='path'
+        fi
+
+        if [ -z "${command_path}" ]; then
+          composer_home="${INPUT_COMPOSER_HOME:-${RUNNER_TEMP}/fast-forward-composer-home}"
+          mkdir -p "${composer_home}" "${INPUT_CACHE_DIR}"
+
+          export COMPOSER_HOME="${composer_home}"
+          export COMPOSER_CACHE_DIR="${INPUT_CACHE_DIR}"
+
+          composer global config --no-plugins repositories.fast-forward-github-actions vcs "${INPUT_REPOSITORY}"
+          composer global require --no-plugins --no-scripts --no-interaction --prefer-dist --no-progress "fast-forward/github-actions:${INPUT_VERSION}"
+
+          command_path="${composer_home}/vendor/bin/fast-forward-actions"
+          command_source='composer-global'
+
+          echo "${composer_home}/vendor/bin" >> "${GITHUB_PATH}"
+          echo "COMPOSER_HOME=${composer_home}" >> "${GITHUB_ENV}"
+        fi
+
+        if [ ! -x "${command_path}" ]; then
+          echo "::error::Resolved fast-forward-actions command is not executable: ${command_path}"
+          exit 1
+        fi
+
+        echo "FAST_FORWARD_ACTIONS_BIN=${command_path}" >> "${GITHUB_ENV}"
+        echo "command=${command_path}" >> "${GITHUB_OUTPUT}"
+        echo "source=${command_source}" >> "${GITHUB_OUTPUT}"
+        "${command_path}" --version

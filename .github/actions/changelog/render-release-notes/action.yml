@@ -1,0 +1,25 @@
+name: Render Release Notes
+description: Render a changelog section into a release-notes file.
+
+inputs:
+  changelog-file:
+    description: Managed changelog path.
+    required: true
+  version:
+    description: Release version to render.
+    required: true
+  output-file:
+    description: Output file path for rendered release notes.
+    required: false
+    default: .dev-tools/release-notes.md
+
+runs:
+  using: composite
+  steps:
+    - name: Render release notes
+      shell: bash
+      env:
+        INPUT_CHANGELOG_FILE: ${{ inputs.changelog-file }}
+        INPUT_VERSION: ${{ inputs.version }}
+        INPUT_OUTPUT_FILE: ${{ inputs.output-file }}
+      run: ${{ github.action_path }}/run.sh

@@ -1,0 +1,30 @@
+name: Render Rigorous Review Request
+description: Render a deterministic review brief for a pull request that is ready for rigorous review.
+
+inputs:
+  pull-request-number:
+    description: Pull request number to review.
+    required: false
+    default: ''
+
+outputs:
+  pull-request-number:
+    description: Resolved pull request number.
+    value: ${{ steps.render.outputs.pull-request-number }}
+  comment:
+    description: Sticky pull-request comment body.
+    value: ${{ steps.render.outputs.comment }}
+  summary:
+    description: GitHub Actions step summary body.
+    value: ${{ steps.render.outputs.summary }}
+
+runs:
+  using: composite
+  steps:
+    - id: render
+      uses: actions/github-script@v8
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          const run = require(`${process.env.GITHUB_ACTION_PATH}/run.cjs`);
+          await run({github, context, core});

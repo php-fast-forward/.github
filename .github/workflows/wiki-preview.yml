@@ -1,0 +1,166 @@
+name: Update Wiki Preview
+
+on:
+  workflow_call:
+    inputs:
+      dev-tools-version:
+        description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
+        required: false
+        type: string
+        default: ^1.0
+
+permissions:
+  contents: read
+
+env:
+  FORCE_COLOR: '1'
+  FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+  FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
+
+jobs:
+  resolve_php:
+    name: Resolve PHP Version
+    runs-on: ubuntu-latest
+    outputs:
+      php-version: ${{ steps.resolve.outputs.php-version }}
+      php-version-source: ${{ steps.resolve.outputs.php-version-source }}
+
+    steps:
+      - uses: actions/checkout@v6
+      - &resolve_shared_action_ref
+        name: Resolve shared action ref
+        id: shared_actions
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+              ref="${FAST_FORWARD_ACTIONS_REF}"
+          elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+            if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                ref="${BASE_SHA}"
+            else
+                ref="${CURRENT_REF:-main}"
+            fi
+          else
+            ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+            if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+              ref="main"
+            fi
+          fi
+
+          echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+      - &checkout_shared_action_source
+        name: Checkout shared action source
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+          ref: ${{ steps.shared_actions.outputs.ref }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+
+      - name: Resolve workflow PHP version
+        id: resolve
+        uses: ./.fast-forward-actions/.github/actions/php/resolve-version
+
+  preview:
+    needs: resolve_php
+    name: Update Wiki Preview
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: read
+
+    env:
+      WIKI_PREVIEW_BRANCH: pr-${{ github.event.pull_request.number }}
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v6
+        with:
+          token: ${{ github.token }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          submodules: recursive
+          fetch-depth: 0
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
+
+      - name: Setup PHP and install dependencies
+        uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+        with:
+          php-version: ${{ needs.resolve_php.outputs.php-version }}
+          root-version: dev-${{ github.event.pull_request.head.ref }}
+          safe-directories: |
+            ${{ github.workspace }}/.github/wiki
+
+      - name: Setup Fast Forward DevTools
+        uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+        with:
+          version: ${{ inputs.dev-tools-version || '^1.0' }}
+
+      - name: Prepare wiki preview branch
+        uses: ./.fast-forward-actions/.github/actions/wiki/prepare-preview-branch
+        with:
+          preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
+
+      - name: Create Docs Markdown
+        env:
+          COMPOSER_ROOT_VERSION: dev-${{ github.event.pull_request.head.ref }}
+        run: |
+          "${DEV_TOOLS_BIN}" wiki --target=.github/wiki
+
+      - name: Commit & push wiki preview branch
+        id: wiki_commit
+        uses: EndBug/add-and-commit@v10
+        with:
+          cwd: .github/wiki
+          add: .
+          message: "Update wiki docs for PR #${{ github.event.pull_request.number }}"
+          default_author: github_actions
+          push: origin HEAD:${{ env.WIKI_PREVIEW_BRANCH }}
+
+      - name: Check submodule pointer changes
+        id: submodule_status
+        run: |
+          if git diff --quiet -- .github/wiki; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit parent repo submodule pointer
+        if: steps.submodule_status.outputs.changed == 'true'
+        id: parent_commit
+        uses: EndBug/add-and-commit@v10
+        with:
+          add: .github/wiki
+          message: "Update wiki submodule pointer for PR #${{ github.event.pull_request.number }}"
+          default_author: github_actions
+          pull: "--rebase --autostash"
+          push: true
+
+      - name: Dispatch tests for wiki pointer commit
+        if: steps.submodule_status.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: gh workflow run tests.yml --ref "${HEAD_REF}" -f publish-required-statuses=true
+
+      - uses: ./.fast-forward-actions/.github/actions/summary/write
+        with:
+          markdown: |
+            ## Wiki Preview Summary
+
+            - Preview branch: `${{ env.WIKI_PREVIEW_BRANCH }}`
+            - Submodule pointer changed: `${{ steps.submodule_status.outputs.changed }}`
+            - Parent repository pointer commit result: `${{ steps.submodule_status.outputs.changed == 'true' && 'updated' || 'unchanged' }}`
+            - Tests dispatch result: `${{ steps.submodule_status.outputs.changed == 'true' && 'requested' || 'not needed' }}`

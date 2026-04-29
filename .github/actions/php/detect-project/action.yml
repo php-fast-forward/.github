@@ -1,0 +1,95 @@
+name: Detect PHP Project Surface
+description: Detect Composer, PHPUnit, PHP files, and docs in the checked-out repository.
+
+outputs:
+  composer-json:
+    description: Whether the repository has composer.json.
+    value: ${{ steps.detect.outputs.composer-json }}
+  docs-source:
+    description: Whether the repository has a non-empty docs directory.
+    value: ${{ steps.detect.outputs.docs-source }}
+  php-files:
+    description: Whether the repository has PHP files in known project directories.
+    value: ${{ steps.detect.outputs.php-files }}
+  phpunit-config:
+    description: Whether the repository has phpunit.xml or phpunit.xml.dist.
+    value: ${{ steps.detect.outputs.phpunit-config }}
+  test-files:
+    description: Whether the repository has PHP test files under tests.
+    value: ${{ steps.detect.outputs.test-files }}
+  testable:
+    description: Whether the repository has enough PHPUnit surface to run tests.
+    value: ${{ steps.detect.outputs.testable }}
+  reportable:
+    description: Whether the repository has enough surface to generate dev-tools reports.
+    value: ${{ steps.detect.outputs.reportable }}
+
+runs:
+  using: composite
+  steps:
+    - name: Detect PHP project surface
+      id: detect
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        if [ -n "${FAST_FORWARD_ACTIONS_BIN:-}" ]; then
+          "${FAST_FORWARD_ACTIONS_BIN}" php:detect-project --github-output
+          exit 0
+        fi
+
+        if command -v fast-forward-actions >/dev/null 2>&1; then
+          fast-forward-actions php:detect-project --github-output
+          exit 0
+        fi
+
+        composer_json=false
+        docs_source=false
+        php_files=false
+        phpunit_config=false
+        test_files=false
+
+        if [ -f composer.json ]; then
+          composer_json=true
+        fi
+
+        if [ -f phpunit.xml ] || [ -f phpunit.xml.dist ]; then
+          phpunit_config=true
+        fi
+
+        if [ -d docs ] && find docs -type f ! -name '.DS_Store' -print -quit | grep -q .; then
+          docs_source=true
+        fi
+
+        if [ -d tests ] && find tests -type f -name '*.php' -print -quit | grep -q .; then
+          test_files=true
+        fi
+
+        for directory in app bin config public src tests; do
+          if [ -d "${directory}" ] && find "${directory}" -type f -name '*.php' -print -quit | grep -q .; then
+            php_files=true
+            break
+          fi
+        done
+
+        testable=false
+        if [ "${composer_json}" = "true" ] && [ "${phpunit_config}" = "true" ] && [ "${test_files}" = "true" ]; then
+          testable=true
+        fi
+
+        reportable=false
+        if [ "${testable}" = "true" ] && [ "${docs_source}" = "true" ] && [ "${php_files}" = "true" ]; then
+          reportable=true
+        fi
+
+        {
+          echo "composer-json=${composer_json}"
+          echo "docs-source=${docs_source}"
+          echo "php-files=${php_files}"
+          echo "phpunit-config=${phpunit_config}"
+          echo "test-files=${test_files}"
+          echo "testable=${testable}"
+          echo "reportable=${reportable}"
+        } >> "${GITHUB_OUTPUT}"
+
+        echo "::notice title=PHP project surface::composer-json=${composer_json}, docs-source=${docs_source}, php-files=${php_files}, phpunit-config=${phpunit_config}, test-files=${test_files}, testable=${testable}, reportable=${reportable}"

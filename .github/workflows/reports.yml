@@ -1,0 +1,387 @@
+name: Generate Reports and Deploy to GitHub Pages
+
+on:
+    workflow_call:
+        inputs:
+            cleanup-previews:
+                description: Remove stale pull request previews without publishing production reports.
+                required: false
+                type: boolean
+                default: false
+            dev-tools-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
+                required: false
+                type: string
+                default: ^1.0
+    workflow_dispatch:
+        inputs:
+            cleanup-previews:
+                description: Remove stale pull request previews without publishing production reports.
+                required: false
+                type: boolean
+                default: false
+            dev-tools-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
+                required: false
+                type: string
+                default: ^1.0
+    schedule:
+        - cron: '41 3 * * *'
+    pull_request:
+        types: [ "opened", "synchronize", "reopened", "closed" ]
+    push:
+        branches: [ "main" ]
+
+permissions:
+    contents: read
+
+concurrency:
+    group: ${{ github.event_name == 'pull_request' && format('reports-preview-pr-{0}', github.event.pull_request.number) || 'reports-pages' }}
+    cancel-in-progress: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
+
+env:
+    FORCE_COLOR: '1'
+    FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+    FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
+
+jobs:
+    resolve_php:
+        name: Resolve PHP Version
+        runs-on: ubuntu-latest
+        outputs:
+            php-version: ${{ steps.resolve.outputs.php-version }}
+            php-version-source: ${{ steps.resolve.outputs.php-version-source }}
+            repository-has-composer-json: ${{ steps.detect.outputs.composer-json }}
+            repository-has-docs-source: ${{ steps.detect.outputs.docs-source }}
+            repository-has-php-files: ${{ steps.detect.outputs.php-files }}
+            repository-has-phpunit-config: ${{ steps.detect.outputs.phpunit-config }}
+            repository-has-test-files: ${{ steps.detect.outputs.test-files }}
+            repository-is-reportable: ${{ steps.detect.outputs.reportable }}
+
+        steps:
+            - uses: actions/checkout@v6
+            - &resolve_shared_action_ref
+              name: Resolve shared action ref
+              id: shared_actions
+              shell: bash
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+                  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+              run: |
+                  set -euo pipefail
+
+                  if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+                      ref="${FAST_FORWARD_ACTIONS_REF}"
+                  elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+                      if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                          ref="${BASE_SHA}"
+                      else
+                          ref="${CURRENT_REF:-main}"
+                      fi
+                  else
+                      ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+                      if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+                          ref="main"
+                      fi
+                  fi
+
+                  echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+            - &checkout_shared_action_source
+              name: Checkout shared action source
+              uses: actions/checkout@v6
+              with:
+                  repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+                  ref: ${{ steps.shared_actions.outputs.ref }}
+                  path: .fast-forward-actions
+                  sparse-checkout: |
+                      .github/actions
+
+            - name: Resolve workflow PHP version
+              id: resolve
+              uses: ./.fast-forward-actions/.github/actions/php/resolve-version
+
+            - name: Detect PHP project report surface
+              id: detect
+              uses: ./.fast-forward-actions/.github/actions/php/detect-project
+
+    reports:
+        needs: resolve_php
+        if: github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.cleanup-previews) && (github.event_name != 'pull_request' || github.event.action != 'closed') && needs.resolve_php.outputs.repository-is-reportable == 'true'
+        name: Generate Reports
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        env:
+            REPORTS_TARGET: .dev-tools
+            REPORTS_ROOT_VERSION: ${{ github.event_name == 'pull_request' && format('dev-{0}', github.event.pull_request.head.ref) || 'dev-main' }}
+
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                fetch-depth: 0
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - name: Setup PHP and install dependencies
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              with:
+                php-version: ${{ needs.resolve_php.outputs.php-version }}
+                extensions: pcov, pcntl
+                coverage: pcov
+                root-version: ${{ env.REPORTS_ROOT_VERSION }}
+
+            - name: Setup Fast Forward DevTools
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              with:
+                version: ${{ inputs.dev-tools-version || '^1.0' }}
+
+            - name: Generate reports
+              env:
+                COMPOSER_ROOT_VERSION: ${{ env.REPORTS_ROOT_VERSION }}
+              run: |
+                "${DEV_TOOLS_BIN}" reports --target="${REPORTS_TARGET}" --coverage="${REPORTS_TARGET}/coverage" --metrics="${REPORTS_TARGET}/metrics"
+
+            - name: Fix permissions
+              run: |
+                chmod -c -R +rX "${REPORTS_TARGET}/" | while IFS= read -r line; do
+                    echo "::warning title=Invalid file permissions automatically fixed::$line"
+                done
+
+            - name: Add .nojekyll
+              run: touch "${REPORTS_TARGET}/.nojekyll"
+
+            - name: Remove repository-local caches from published output
+              run: rm -rf "${REPORTS_TARGET}/cache"
+
+            - name: Restore previews from gh-pages
+              if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+              uses: actions/checkout@v6
+              continue-on-error: true
+              with:
+                ref: gh-pages
+                path: gh-pages-current
+
+            - name: Copy existing previews into publish directory
+              if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+              uses: ./.fast-forward-actions/.github/actions/github-pages/restore-previews
+              with:
+                source: gh-pages-current
+                target: ${{ env.REPORTS_TARGET }}
+
+            - name: Deploy main reports
+              if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_branch: gh-pages
+                publish_dir: ./${{ env.REPORTS_TARGET }}/
+                destination_dir: .
+                keep_files: false
+                force_orphan: false
+
+            - name: Deploy PR preview
+              if: github.event_name == 'pull_request'
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_branch: gh-pages
+                publish_dir: ./${{ env.REPORTS_TARGET }}/
+                destination_dir: previews/pr-${{ github.event.pull_request.number }}
+                keep_files: false
+                force_orphan: false
+
+    verify_main_reports:
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !(github.event_name == 'workflow_dispatch' && inputs.cleanup-previews)
+        name: Verify Main Reports Deployment
+        needs: reports
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v6
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - uses: ./.fast-forward-actions/.github/actions/github-pages/verify-deployment
+              with:
+                base-url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+                title: Reports health check failed
+                checks: |
+                  /|Reports index
+                  /coverage/|Coverage report
+                  /metrics/|Metrics report
+
+    verify_preview_reports:
+        if: github.event_name == 'pull_request' && github.event.action != 'closed'
+        name: Verify Pull Request Reports Preview
+        needs: reports
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v6
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - uses: ./.fast-forward-actions/.github/actions/github-pages/verify-deployment
+              with:
+                base-url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}
+                title: Preview health check failed
+                checks: |
+                  /|Preview reports index
+                  /coverage/|Preview coverage report
+                  /metrics/|Preview metrics report
+
+    comment_preview:
+        if: github.event_name == 'pull_request' && github.event.action != 'closed'
+        name: Comment Pull Request Preview URLs
+        needs:
+            - reports
+            - verify_preview_reports
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
+
+        steps:
+            - name: Comment preview URLs on pull request
+              uses: marocchino/sticky-pull-request-comment@v3
+              with:
+                header: pr-preview
+                message: |
+                  🚀 Preview is available for this pull request.
+
+                  - Docs: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/
+                  - Coverage: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/coverage/
+                  - Metrics: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/metrics/
+
+    cleanup_preview:
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        name: Cleanup Pull Request Preview
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                ref: ${{ github.event.repository.default_branch }}
+            - name: Checkout gh-pages
+              uses: actions/checkout@v6
+              with:
+                ref: gh-pages
+                path: gh-pages
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - uses: ./.fast-forward-actions/.github/actions/github-pages/remove-preview
+              with:
+                path: gh-pages
+                pull-request-number: ${{ github.event.pull_request.number }}
+
+            - name: Push changes
+              run: |
+                cd gh-pages
+                git push
+
+    cleanup_orphaned_previews:
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.cleanup-previews)
+        name: Cleanup Orphaned Pull Request Previews
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: read
+        outputs:
+            deleted: ${{ steps.cleanup.outputs.deleted }}
+            skipped: ${{ steps.cleanup.outputs.skipped }}
+            unresolved: ${{ steps.cleanup.outputs.unresolved }}
+
+        steps:
+            - uses: actions/checkout@v6
+            - name: Checkout gh-pages
+              uses: actions/checkout@v6
+              with:
+                ref: gh-pages
+                path: gh-pages
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - uses: ./.fast-forward-actions/.github/actions/github-pages/cleanup-orphaned-previews
+              id: cleanup
+              with:
+                path: gh-pages
+
+            - name: Push changes
+              run: |
+                cd gh-pages
+                git push
+
+    summarize:
+        if: ${{ always() }}
+        name: Summarize Reports Workflow
+        needs:
+            - resolve_php
+            - reports
+            - verify_main_reports
+            - verify_preview_reports
+            - cleanup_preview
+            - cleanup_orphaned_previews
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - id: build_summary
+              env:
+                TRIGGER_LABEL: ${{ github.event_name }}${{ github.event.action && format(':{0}', github.event.action) || '' }}
+              run: |
+                {
+                  echo 'markdown<<EOF'
+                  echo '## Reports Workflow Summary'
+                  echo
+                  echo "- Workflow PHP version: \`${{ needs.resolve_php.outputs.php-version }}\`"
+                  echo "- PHP version source: \`${{ needs.resolve_php.outputs.php-version-source }}\`"
+                  echo "- Composer project detected: \`${{ needs.resolve_php.outputs.repository-has-composer-json }}\`"
+                  echo "- Docs source detected: \`${{ needs.resolve_php.outputs.repository-has-docs-source }}\`"
+                  echo "- PHP files detected: \`${{ needs.resolve_php.outputs.repository-has-php-files }}\`"
+                  echo "- PHPUnit configuration detected: \`${{ needs.resolve_php.outputs.repository-has-phpunit-config }}\`"
+                  echo "- PHPUnit test files detected: \`${{ needs.resolve_php.outputs.repository-has-test-files }}\`"
+                  echo "- Reports generation required: \`${{ needs.resolve_php.outputs.repository-is-reportable }}\`"
+                  echo "- Reports job result: \`${{ needs.reports.result }}\`"
+                  echo "- Main verification result: \`${{ needs.verify_main_reports.result }}\`"
+                  echo "- Preview verification result: \`${{ needs.verify_preview_reports.result }}\`"
+                  echo "- Closed-preview cleanup result: \`${{ needs.cleanup_preview.result }}\`"
+                  echo "- Orphan cleanup result: \`${{ needs.cleanup_orphaned_previews.result }}\`"
+                  echo "- Trigger: \`${TRIGGER_LABEL}\`"
+
+                  if [ "${{ needs.resolve_php.outputs.repository-is-reportable }}" = "true" ] && { [ "${{ github.event_name }}" = "push" ] || { [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.cleanup-previews }}" != "true" ]; }; }; then
+                    echo "- Docs: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+                    echo "- Coverage: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/coverage/"
+                    echo "- Metrics: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/metrics/"
+                    echo "- Deployment verification: \`${{ needs.verify_main_reports.result }}\`"
+                  fi
+
+                  if [ "${{ needs.resolve_php.outputs.repository-is-reportable }}" = "true" ] && [ "${{ github.event_name }}" = "pull_request" ] && [ "${{ github.event.action }}" != "closed" ]; then
+                    echo "- Preview docs: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/"
+                    echo "- Preview coverage: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/coverage/"
+                    echo "- Preview metrics: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/metrics/"
+                    echo "- Preview verification: \`${{ needs.verify_preview_reports.result }}\`"
+                  fi
+
+                  if [ "${{ github.event_name }}" = "pull_request" ] && [ "${{ github.event.action }}" = "closed" ]; then
+                    echo "- Deleted preview path: \`previews/pr-${{ github.event.pull_request.number }}\`"
+                    echo "- Cleanup result: \`${{ needs.cleanup_preview.result }}\`"
+                  fi
+
+                  if [ "${{ github.event_name }}" = "schedule" ] || { [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.cleanup-previews }}" = "true" ]; }; then
+                    echo "- Cleanup summary: deleted=${{ needs.cleanup_orphaned_previews.outputs.deleted || '0' }}, skipped=${{ needs.cleanup_orphaned_previews.outputs.skipped || '0' }}, unresolved=${{ needs.cleanup_orphaned_previews.outputs.unresolved || '0' }}"
+                  fi
+
+                  echo 'EOF'
+                } >> "$GITHUB_OUTPUT"
+
+            - uses: ./.fast-forward-actions/.github/actions/summary/write
+              with:
+                markdown: ${{ steps.build_summary.outputs.markdown }}

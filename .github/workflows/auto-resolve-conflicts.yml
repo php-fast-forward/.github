@@ -1,0 +1,110 @@
+name: Auto-resolve Predictable Conflicts
+
+on:
+    workflow_call:
+        inputs:
+            base-ref:
+                description: Base branch inspected for open pull requests.
+                required: false
+                type: string
+                default: main
+            pull-request-number:
+                description: Optional pull request number to inspect.
+                required: false
+                type: string
+                default: ''
+    workflow_dispatch:
+        inputs:
+            base-ref:
+                description: Base branch inspected for open pull requests.
+                required: false
+                type: string
+                default: main
+            pull-request-number:
+                description: Optional pull request number to inspect. Leave empty to scan open pull requests targeting the base branch.
+                required: false
+                type: string
+                default: ''
+    push:
+        branches: [ "main" ]
+    pull_request:
+        types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+    actions: write
+    contents: write
+    pull-requests: write
+
+concurrency:
+    group: ${{ github.event_name == 'pull_request' && format('auto-resolve-conflicts-pr-{0}', github.event.pull_request.number) || format('auto-resolve-conflicts-{0}', github.ref) }}
+    cancel-in-progress: true
+
+env:
+    FORCE_COLOR: '1'
+    FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+    FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
+
+jobs:
+    resolve_predictable_conflicts:
+        name: Resolve Predictable Conflicts
+        runs-on: ubuntu-latest
+        env:
+            BASE_REF: ${{ inputs.base-ref || github.event.pull_request.base.ref || github.event.repository.default_branch || 'main' }}
+            PULL_REQUEST_NUMBER: ${{ inputs.pull-request-number || github.event.pull_request.number || '' }}
+            AUTO_RESOLVE_ROOT_VERSION: ${{ github.event_name == 'pull_request' && format('dev-{0}', github.event.pull_request.head.ref) || 'dev-main' }}
+            GH_TOKEN: ${{ github.token }}
+
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+
+            - name: Resolve shared action ref
+              id: shared_actions
+              shell: bash
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+                  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+              run: |
+                  set -euo pipefail
+
+                  if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+                      ref="${FAST_FORWARD_ACTIONS_REF}"
+                  elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+                      if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                          ref="${BASE_SHA}"
+                      else
+                          ref="${CURRENT_REF:-main}"
+                      fi
+                  else
+                      ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+                      if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+                          ref="main"
+                      fi
+                  fi
+
+                  echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+            - name: Checkout shared action source
+              uses: actions/checkout@v6
+              with:
+                  repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+                  ref: ${{ steps.shared_actions.outputs.ref }}
+                  path: .fast-forward-actions
+                  sparse-checkout: |
+                      .github/actions
+
+            - name: Setup PHP and install dependencies
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              with:
+                  php-version: '8.3'
+                  root-version: ${{ env.AUTO_RESOLVE_ROOT_VERSION }}
+                  install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
+
+            - name: Resolve predictable pull request conflicts
+              uses: ./.fast-forward-actions/.github/actions/github/resolve-predictable-conflicts
+              with:
+                  base-ref: ${{ env.BASE_REF }}
+                  pull-request-number: ${{ env.PULL_REQUEST_NUMBER }}

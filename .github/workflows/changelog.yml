@@ -1,0 +1,397 @@
+name: Changelog Automation
+
+on:
+    workflow_call:
+        inputs:
+            changelog-file:
+                description: Path to the managed changelog file.
+                required: false
+                type: string
+                default: CHANGELOG.md
+            dev-tools-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
+                required: false
+                type: string
+                default: ^1.0
+            project:
+                description: Optional GitHub Project V2 number for consumer repositories. When omitted, php-fast-forward repositories default to the first organization project.
+                required: false
+                type: string
+                default: ''
+            version:
+                description: Optional version to promote during manual release preparation.
+                required: false
+                type: string
+                default: ''
+            release-branch-prefix:
+                description: Prefix used for release-preparation branches.
+                required: false
+                type: string
+                default: release/v
+    workflow_dispatch:
+        inputs:
+            changelog-file:
+                description: Path to the managed changelog file.
+                required: false
+                type: string
+                default: CHANGELOG.md
+            dev-tools-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
+                required: false
+                type: string
+                default: ^1.0
+            project:
+                description: Optional GitHub Project V2 number for consumer repositories. Leave empty to use the configured repository variable or the php-fast-forward default.
+                required: false
+                type: string
+                default: ''
+            version:
+                description: Optional version to promote. Leave empty to infer from Unreleased.
+                required: false
+                type: string
+                default: ''
+            release-branch-prefix:
+                description: Prefix used for release-preparation branches.
+                required: false
+                type: string
+                default: release/v
+    pull_request:
+        types: [opened, reopened, synchronize]
+    pull_request_target:
+        types: [closed]
+
+permissions:
+    actions: write
+    contents: write
+    pull-requests: write
+    repository-projects: write
+
+concurrency:
+    group: ${{ github.event.pull_request.number && format('changelog-pr-{0}', github.event.pull_request.number) || format('changelog-{0}', github.ref) }}
+    cancel-in-progress: ${{ github.event.pull_request.merged != true }}
+
+env:
+    FORCE_COLOR: '1'
+    FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+    FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
+
+jobs:
+    resolve_php:
+        name: Resolve PHP Version
+        runs-on: ubuntu-latest
+        outputs:
+            php-version: ${{ steps.resolve.outputs.php-version }}
+
+        steps:
+            - uses: actions/checkout@v6
+
+            - &resolve_shared_action_ref
+              name: Resolve shared action ref
+              id: shared_actions
+              shell: bash
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+                  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+              run: |
+                  set -euo pipefail
+
+                  if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+                      ref="${FAST_FORWARD_ACTIONS_REF}"
+                  elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+                      if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                          ref="${BASE_SHA}"
+                      else
+                          ref="${CURRENT_REF:-main}"
+                      fi
+                  else
+                      ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+                      if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+                          ref="main"
+                      fi
+                  fi
+
+                  echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+            - &checkout_shared_action_source
+              name: Checkout shared action source
+              uses: actions/checkout@v6
+              with:
+                  repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+                  ref: ${{ steps.shared_actions.outputs.ref }}
+                  path: .fast-forward-actions
+                  sparse-checkout: |
+                      .github/actions
+
+            - name: Resolve workflow PHP version
+              id: resolve
+              uses: ./.fast-forward-actions/.github/actions/php/resolve-version
+
+    validate_pull_request:
+        name: Validate PR Changelog
+        needs: resolve_php
+        if: ${{ github.event.pull_request.number && github.event.pull_request.merged != true && !startsWith(github.event.pull_request.head.ref, inputs.release-branch-prefix || 'release/v') }}
+        runs-on: ubuntu-latest
+        env:
+            CHANGELOG_FILE: ${{ inputs.changelog-file || 'CHANGELOG.md' }}
+            CHANGELOG_ROOT_VERSION: ${{ github.event.pull_request.head.ref && format('dev-{0}', github.event.pull_request.head.ref) || 'dev-main' }}
+            BASE_REF: ${{ github.event.pull_request.base.ref }}
+            HEAD_REF: ${{ github.event.pull_request.head.ref }}
+            PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
+            PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - name: Setup PHP and install dependencies
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              with:
+                  php-version: ${{ needs.resolve_php.outputs.php-version }}
+                  root-version: ${{ env.CHANGELOG_ROOT_VERSION }}
+                  install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
+
+            - name: Setup Fast Forward DevTools
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              with:
+                  version: ${{ inputs.dev-tools-version || '^1.0' }}
+
+            - name: Fetch base branch reference
+              run: git fetch --no-tags --depth=1 origin "+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
+
+            - name: Create Dependabot changelog entry when missing
+              id: dependabot_entry
+              if: ${{ (github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.user.login == 'app/dependabot' || startsWith(github.event.pull_request.head.ref, 'dependabot/')) && github.event.pull_request.head.repo.full_name == github.repository }}
+              uses: ./.fast-forward-actions/.github/actions/changelog/create-dependabot-entry
+              with:
+                  changelog-file: ${{ env.CHANGELOG_FILE }}
+                  base-ref: ${{ env.BASE_REF }}
+                  head-ref: ${{ env.HEAD_REF }}
+                  pull-request-number: ${{ env.PULL_REQUEST_NUMBER }}
+                  pull-request-title: ${{ env.PULL_REQUEST_TITLE }}
+
+            - name: Verify changelog update
+              run: |
+                  "${DEV_TOOLS_BIN}" changelog:check --file="${CHANGELOG_FILE}" --against="origin/${BASE_REF}"
+
+            - uses: ./.fast-forward-actions/.github/actions/summary/write
+              with:
+                  markdown: |
+                      ## Changelog Validation Summary
+
+                      - Changelog file: `${{ env.CHANGELOG_FILE }}`
+                      - Compared base ref: `origin/${{ env.BASE_REF }}`
+                      - Dependabot fallback status: `${{ steps.dependabot_entry.outputs.status || 'not needed' }}`
+                      - Dependabot fallback entry created: `${{ steps.dependabot_entry.outputs.created || 'false' }}`
+                      - Dependabot fallback generated message: `${{ steps.dependabot_entry.outputs.message || 'not needed' }}`
+                      - Validation result: success
+
+    changelog_validation:
+        name: Changelog Validation
+        needs:
+            - resolve_php
+            - validate_pull_request
+        if: ${{ always() && github.event.pull_request.number && github.event.pull_request.merged != true }}
+        runs-on: ubuntu-latest
+        env:
+            RELEASE_BRANCH_PREFIX: ${{ inputs.release-branch-prefix || 'release/v' }}
+            VALIDATION_RESULT: ${{ needs.validate_pull_request.result }}
+
+        steps:
+            - name: Require changelog validation result
+              env:
+                  HEAD_REF: ${{ github.event.pull_request.head.ref }}
+              run: |
+                  if [[ "${HEAD_REF}" == "${RELEASE_BRANCH_PREFIX}"* ]]; then
+                      echo "Release preparation branch detected; changelog validation is intentionally skipped."
+                      exit 0
+                  fi
+
+                  if [ "${VALIDATION_RESULT}" = "success" ]; then
+                      echo "Changelog validation passed."
+                      exit 0
+                  fi
+
+                  echo "::error::Changelog validation did not pass for this pull request."
+                  echo "Validation result: ${VALIDATION_RESULT}"
+                  exit 1
+
+    prepare_release_pull_request:
+        name: Prepare Release Pull Request
+        needs: resolve_php
+        if: ${{ !github.event.pull_request.number }}
+        runs-on: ubuntu-latest
+        env:
+            CHANGELOG_FILE: ${{ inputs.changelog-file || 'CHANGELOG.md' }}
+            RELEASE_BRANCH_PREFIX: ${{ inputs.release-branch-prefix || 'release/v' }}
+            CHANGELOG_ROOT_VERSION: ${{ format('dev-{0}', github.event.repository.default_branch) }}
+
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                  token: ${{ github.token }}
+                  ref: ${{ github.event.repository.default_branch }}
+                  fetch-depth: 0
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - name: Setup PHP and install dependencies
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              with:
+                  php-version: ${{ needs.resolve_php.outputs.php-version }}
+                  root-version: ${{ env.CHANGELOG_ROOT_VERSION }}
+                  install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
+
+            - name: Setup Fast Forward DevTools
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              with:
+                  version: ${{ inputs.dev-tools-version || '^1.0' }}
+
+            - name: Resolve release version
+              id: version
+              uses: ./.fast-forward-actions/.github/actions/changelog/resolve-version
+              with:
+                  changelog-file: ${{ env.CHANGELOG_FILE }}
+                  version: ${{ inputs.version || '' }}
+
+            - name: Promote changelog release
+              env:
+                  RELEASE_VERSION: ${{ steps.version.outputs.value }}
+              run: |
+                  release_date="$(date -u +%F)"
+                  "${DEV_TOOLS_BIN}" changelog:promote "${RELEASE_VERSION}" --file="${CHANGELOG_FILE}" --date="${release_date}"
+
+            - name: Render release notes preview
+              uses: ./.fast-forward-actions/.github/actions/changelog/render-release-notes
+              with:
+                  changelog-file: ${{ env.CHANGELOG_FILE }}
+                  version: ${{ steps.version.outputs.value }}
+
+            - name: Create release preparation pull request
+              id: create_pr
+              uses: peter-evans/create-pull-request@v8
+              with:
+                  token: ${{ github.token }}
+                  branch: ${{ env.RELEASE_BRANCH_PREFIX }}${{ steps.version.outputs.value }}
+                  delete-branch: false
+                  base: ${{ github.event.repository.default_branch }}
+                  add-paths: |
+                      ${{ env.CHANGELOG_FILE }}
+                  commit-message: Prepare release v${{ steps.version.outputs.value }}
+                  title: Prepare release v${{ steps.version.outputs.value }}
+                  body: |
+                      ## Summary
+
+                      - promote `Unreleased` into `${{ steps.version.outputs.value }}`
+                      - prepare the GitHub release body from `${{ env.CHANGELOG_FILE }}`
+                      - reusable workflows resolve shared-action source refs without requiring direct writes to the protected default branch
+
+                      ## Version Resolution
+
+                      - source: `${{ steps.version.outputs.source }}`
+
+            - name: Dispatch required tests for release pull request
+              if: ${{ steps.create_pr.outputs.pull-request-number != '' }}
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  RELEASE_BRANCH: ${{ env.RELEASE_BRANCH_PREFIX }}${{ steps.version.outputs.value }}
+              run: gh workflow run tests.yml --ref "${RELEASE_BRANCH}" -f publish-required-statuses=true
+
+            - uses: actions/checkout@v6
+            - *checkout_shared_action_source
+            - uses: ./.fast-forward-actions/.github/actions/project-board/transition-status
+              with:
+                  project: ${{ inputs.project || vars.PROJECT || '' }}
+                  from-status: Merged
+                  to-status: Release Prepared
+
+            - uses: ./.fast-forward-actions/.github/actions/summary/write
+              with:
+                  markdown: |
+                      ## Release Preparation Summary
+
+                      - Changelog file: `${{ env.CHANGELOG_FILE }}`
+                      - Release version: `${{ steps.version.outputs.value }}`
+                      - Version source: `${{ steps.version.outputs.source }}`
+                      - Pull request operation: `${{ steps.create_pr.outputs.pull-request-operation || 'none' }}`
+                      - Pull request URL: ${{ steps.create_pr.outputs.pull-request-url || 'not created' }}
+                      - Required test dispatch: `${{ steps.create_pr.outputs.pull-request-number != '' && 'requested' || 'not needed' }}`
+
+    publish_merged_release:
+        name: Publish Merged Release
+        needs: resolve_php
+        if: ${{ github.event.pull_request.merged == true && github.event.pull_request.base.ref == github.event.repository.default_branch && github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.event.pull_request.head.ref, inputs.release-branch-prefix || 'release/v') }}
+        runs-on: ubuntu-latest
+        env:
+            CHANGELOG_FILE: ${{ inputs.changelog-file || 'CHANGELOG.md' }}
+            RELEASE_BRANCH_PREFIX: ${{ inputs.release-branch-prefix || 'release/v' }}
+            CHANGELOG_ROOT_VERSION: ${{ format('dev-{0}', github.event.repository.default_branch) }}
+
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                  token: ${{ github.token }}
+                  ref: ${{ github.event.pull_request.base.ref }}
+                  fetch-depth: 0
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - name: Setup PHP and install dependencies
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              with:
+                  php-version: ${{ needs.resolve_php.outputs.php-version }}
+                  root-version: ${{ env.CHANGELOG_ROOT_VERSION }}
+                  install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
+
+            - name: Setup Fast Forward DevTools
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              with:
+                  version: ${{ inputs.dev-tools-version || '^1.0' }}
+
+            - name: Resolve merged release version
+              id: version
+              uses: ./.fast-forward-actions/.github/actions/changelog/resolve-merged-version
+              with:
+                  head-ref: ${{ github.event.pull_request.head.ref }}
+                  release-branch-prefix: ${{ env.RELEASE_BRANCH_PREFIX }}
+
+            - name: Render release notes
+              uses: ./.fast-forward-actions/.github/actions/changelog/render-release-notes
+              with:
+                  changelog-file: ${{ env.CHANGELOG_FILE }}
+                  version: ${{ steps.version.outputs.value }}
+
+            - name: Publish GitHub release
+              id: publish_release
+              uses: ./.fast-forward-actions/.github/actions/changelog/publish-release
+              with:
+                  version: ${{ steps.version.outputs.value }}
+                  target: ${{ github.event.pull_request.merge_commit_sha || github.sha }}
+
+            - uses: actions/checkout@v6
+            - *checkout_shared_action_source
+            - id: release_project_status
+              uses: ./.fast-forward-actions/.github/actions/project-board/transition-status
+              with:
+                  project: ${{ inputs.project || vars.PROJECT || '' }}
+                  from-statuses: Release Prepared,Merged
+                  to-status: Released
+                  include-current-pull-request: 'true'
+
+            - uses: ./.fast-forward-actions/.github/actions/summary/write
+              with:
+                  markdown: |
+                      ## Release Publication Summary
+
+                      - Changelog file: `${{ env.CHANGELOG_FILE }}`
+                      - Published tag: `v${{ steps.version.outputs.value }}`
+                      - Shared action ref source: `${{ steps.shared_actions.outputs.ref }}`
+                      - Release operation: `${{ steps.publish_release.outputs.operation }}`
+                      - Release URL: ${{ steps.publish_release.outputs.url }}
+                      - Project items released: `${{ steps.release_project_status.outputs.moved-count }}`
+                      - Project items skipped: `${{ steps.release_project_status.outputs.skipped-count }}`
+                      - Project source statuses: `${{ steps.release_project_status.outputs.source-statuses }}`

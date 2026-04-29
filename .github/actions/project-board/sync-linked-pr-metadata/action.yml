@@ -1,0 +1,12 @@
+name: Sync Linked Pull Request Metadata
+description: Copy milestone and inferable project metadata from the linked issue to the pull request.
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/github-script@v8
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          const run = require(`${process.env.GITHUB_ACTION_PATH}/run.cjs`);
+          await run({github, context, core});

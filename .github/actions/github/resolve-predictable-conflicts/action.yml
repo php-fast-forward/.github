@@ -1,0 +1,23 @@
+name: Resolve Predictable PR Conflicts
+description: Resolve open pull requests conflicted only by CHANGELOG.md drift or workflow-managed .github/wiki pointers.
+
+inputs:
+  base-ref:
+    description: Base branch inspected for open pull requests.
+    required: false
+    default: main
+  pull-request-number:
+    description: Optional pull request number to inspect. When omitted, all open pull requests targeting the base branch are scanned.
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve predictable conflicts
+      shell: bash
+      env:
+        INPUT_BASE_REF: ${{ inputs.base-ref }}
+        INPUT_PULL_REQUEST_NUMBER: ${{ inputs.pull-request-number }}
+        DEV_TOOLS_CONFLICT_RESOLVER: ${{ github.action_path }}/resolve-changelog.php
+      run: ${{ github.action_path }}/run.sh

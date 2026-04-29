@@ -1,0 +1,44 @@
+name: Create Dependabot Changelog Entry
+description: Create and push a minimal changelog entry for a same-repository Dependabot pull request when the branch still lacks one.
+
+inputs:
+  changelog-file:
+    description: Managed changelog path.
+    required: true
+  base-ref:
+    description: Base branch reference used for changelog comparison.
+    required: true
+  head-ref:
+    description: Pull request head branch ref.
+    required: true
+  pull-request-number:
+    description: Pull request number.
+    required: true
+  pull-request-title:
+    description: Pull request title used as the fallback changelog message source.
+    required: true
+
+outputs:
+  created:
+    description: Whether a changelog entry was created and pushed.
+    value: ${{ steps.create.outputs.created }}
+  status:
+    description: Whether the branch already had an entry, auto-created one, or still remains missing.
+    value: ${{ steps.create.outputs.status }}
+  message:
+    description: Generated changelog entry message, or empty when no entry was needed.
+    value: ${{ steps.create.outputs.message }}
+
+runs:
+  using: composite
+  steps:
+    - id: create
+      name: Create entry when missing
+      shell: bash
+      env:
+        INPUT_CHANGELOG_FILE: ${{ inputs.changelog-file }}
+        INPUT_BASE_REF: ${{ inputs.base-ref }}
+        INPUT_HEAD_REF: ${{ inputs.head-ref }}
+        INPUT_PULL_REQUEST_NUMBER: ${{ inputs.pull-request-number }}
+        INPUT_PULL_REQUEST_TITLE: ${{ inputs.pull-request-title }}
+      run: ${{ github.action_path }}/run.sh

@@ -1,0 +1,25 @@
+name: Validate Wiki Publish Branch
+description: Validate that the wiki publish branch matches the expected preview SHA.
+
+inputs:
+  publish-branch:
+    description: Publish branch name in the wiki repository.
+    required: true
+  preview-branch:
+    description: Preview branch name in the wiki repository.
+    required: true
+  expected-preview-sha:
+    description: Preview branch SHA expected on the publish branch.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Validate publish branch
+      shell: bash
+      env:
+        INPUT_PUBLISH_BRANCH: ${{ inputs.publish-branch }}
+        INPUT_PREVIEW_BRANCH: ${{ inputs.preview-branch }}
+        INPUT_EXPECTED_PREVIEW_SHA: ${{ inputs.expected-preview-sha }}
+      working-directory: .github/wiki
+      run: ${{ github.action_path }}/run.sh

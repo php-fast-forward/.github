@@ -1,0 +1,182 @@
+name: Maintain Wiki Publication
+
+on:
+  workflow_call:
+permissions:
+  contents: read
+
+env:
+  FORCE_COLOR: '1'
+  FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+  FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
+
+jobs:
+  publish:
+    name: Publish Wiki Master
+    if: github.event_name == 'pull_request_target' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+
+    env:
+      WIKI_PUBLISH_BRANCH: master
+      WIKI_PREVIEW_BRANCH: pr-${{ github.event.pull_request.number }}
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v6
+        with:
+          token: ${{ github.token }}
+          ref: main
+          submodules: recursive
+          fetch-depth: 0
+      - name: Mark workspace as safe for git
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/.github/wiki"
+
+      - &resolve_shared_action_ref
+        name: Resolve shared action ref
+        id: shared_actions
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+              ref="${FAST_FORWARD_ACTIONS_REF}"
+          elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+            if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                ref="${BASE_SHA}"
+            else
+                ref="${CURRENT_REF:-main}"
+            fi
+          else
+            ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+            if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+              ref="main"
+            fi
+          fi
+
+          echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+      - &checkout_shared_action_source
+        name: Checkout shared action source
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+          ref: ${{ steps.shared_actions.outputs.ref }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+
+      - name: Prepare wiki publish branch from preview branch
+        id: prepare_publish
+        uses: ./.fast-forward-actions/.github/actions/wiki/prepare-publish-branch
+        with:
+          publish-branch: ${{ env.WIKI_PUBLISH_BRANCH }}
+          preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
+
+      - name: Push wiki publish branch
+        working-directory: .github/wiki
+        run: git push --force-with-lease origin HEAD:"${WIKI_PUBLISH_BRANCH}"
+
+      - name: Validate wiki publish branch
+        uses: ./.fast-forward-actions/.github/actions/wiki/validate-publish-branch
+        with:
+          publish-branch: ${{ env.WIKI_PUBLISH_BRANCH }}
+          preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
+          expected-preview-sha: ${{ steps.prepare_publish.outputs.expected-preview-sha }}
+
+      - name: Delete wiki preview branch
+        uses: ./.fast-forward-actions/.github/actions/wiki/delete-preview-branch
+        with:
+          preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
+
+      - uses: ./.fast-forward-actions/.github/actions/summary/write
+        with:
+          markdown: |
+            ## Wiki Publish Summary
+
+            - Publish branch: `${{ env.WIKI_PUBLISH_BRANCH }}`
+            - Preview branch: `${{ env.WIKI_PREVIEW_BRANCH }}`
+            - Expected preview SHA: `${{ steps.prepare_publish.outputs.expected-preview-sha }}`
+            - Publish validation: completed
+            - Preview cleanup: `${{ env.WIKI_PREVIEW_BRANCH }}` deleted
+
+  cleanup_closed_preview:
+    name: Delete Closed PR Wiki Preview
+    if: github.event_name == 'pull_request_target' && github.event.pull_request.merged == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    env:
+      WIKI_PREVIEW_BRANCH: pr-${{ github.event.pull_request.number }}
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v6
+        with:
+          token: ${{ github.token }}
+          ref: main
+          submodules: recursive
+          fetch-depth: 0
+      - name: Mark wiki workspace as safe for git
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE/.github/wiki"
+
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
+
+      - name: Delete wiki preview branch
+        uses: ./.fast-forward-actions/.github/actions/wiki/delete-preview-branch
+        with:
+          preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
+
+      - uses: ./.fast-forward-actions/.github/actions/summary/write
+        with:
+          markdown: |
+            ## Wiki Preview Cleanup Summary
+
+            - Deleted preview branch: `${{ env.WIKI_PREVIEW_BRANCH }}`
+            - Trigger: closed pull request without merge
+
+  cleanup_orphaned_previews:
+    name: Delete Orphaned Wiki Previews
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v6
+        with:
+          token: ${{ github.token }}
+          ref: main
+          submodules: recursive
+          fetch-depth: 0
+      - name: Mark wiki workspace as safe for git
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE/.github/wiki"
+
+      - *resolve_shared_action_ref
+      - *checkout_shared_action_source
+
+      - name: Delete wiki branches for closed pull requests
+        id: cleanup
+        uses: ./.fast-forward-actions/.github/actions/wiki/cleanup-orphaned-previews
+
+      - uses: ./.fast-forward-actions/.github/actions/summary/write
+        with:
+          markdown: |
+            ## Wiki Orphan Cleanup Summary
+
+            - Deleted preview branches: `${{ steps.cleanup.outputs.deleted || '0' }}`
+            - Retained preview branches: `${{ steps.cleanup.outputs.skipped || '0' }}`
+            - Unresolved preview branches: `${{ steps.cleanup.outputs.unresolved || '0' }}`

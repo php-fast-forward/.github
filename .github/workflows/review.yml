@@ -1,0 +1,87 @@
+name: Rigorous Pull Request Review
+
+on:
+  workflow_call:
+    inputs:
+      pull-request-number:
+        description: Pull request number to review when the workflow is called manually or through a consumer wrapper.
+        required: false
+        type: string
+        default: ''
+  pull_request_target:
+    types: [ready_for_review]
+  workflow_dispatch:
+    inputs:
+      pull-request-number:
+        description: Pull request number to review manually.
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+env:
+  FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+  FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
+
+jobs:
+  request-rigorous-review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: Resolve shared action ref
+        id: shared_actions
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+              ref="${FAST_FORWARD_ACTIONS_REF}"
+          elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+            if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                ref="${BASE_SHA}"
+            else
+                ref="${CURRENT_REF:-main}"
+            fi
+          else
+            ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+            if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+              ref="main"
+            fi
+          fi
+
+          echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+      - name: Checkout shared action source
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+          ref: ${{ steps.shared_actions.outputs.ref }}
+          path: .fast-forward-actions
+          sparse-checkout: |
+            .github/actions
+
+      - id: render
+        uses: ./.fast-forward-actions/.github/actions/review/render-request
+        with:
+          pull-request-number: ${{ inputs.pull-request-number || github.event.inputs.pull-request-number || github.event.pull_request.number || '' }}
+
+      - name: Write step summary
+        env:
+          REVIEW_SUMMARY: ${{ steps.render.outputs.summary }}
+        run: |
+          printf '%s\n' "$REVIEW_SUMMARY" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Comment review request on pull request
+        uses: marocchino/sticky-pull-request-comment@v3
+        with:
+          number: ${{ steps.render.outputs.pull-request-number }}
+          header: rigorous-review
+          message: ${{ steps.render.outputs.comment }}

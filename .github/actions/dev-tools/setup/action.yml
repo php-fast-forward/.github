@@ -1,0 +1,91 @@
+name: Setup Fast Forward DevTools
+description: Resolve a local dev-tools binary or install fast-forward/dev-tools globally.
+
+inputs:
+  version:
+    description: Composer version constraint or branch for fast-forward/dev-tools.
+    required: false
+    default: ^1.0
+  repository:
+    description: Composer VCS repository used when installing branch refs.
+    required: false
+    default: https://github.com/php-fast-forward/dev-tools
+  prefer-local:
+    description: Use a project-local vendor/bin/dev-tools binary when available.
+    required: false
+    default: 'true'
+  composer-home:
+    description: COMPOSER_HOME used for global installs.
+    required: false
+    default: ''
+  cache-dir:
+    description: Composer cache directory used for global installs.
+    required: false
+    default: /tmp/composer-cache
+
+outputs:
+  command:
+    description: Absolute dev-tools command path.
+    value: ${{ steps.resolve.outputs.command }}
+  source:
+    description: Where the command was resolved from.
+    value: ${{ steps.resolve.outputs.source }}
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve or install dev-tools
+      id: resolve
+      shell: bash
+      env:
+        COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ github.token }}"} }'
+        INPUT_CACHE_DIR: ${{ inputs.cache-dir }}
+        INPUT_COMPOSER_HOME: ${{ inputs.composer-home }}
+        INPUT_PREFER_LOCAL: ${{ inputs.prefer-local }}
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_VERSION: ${{ inputs.version }}
+      run: |
+        set -euo pipefail
+
+        command_path=''
+        command_source=''
+
+        if [ "${INPUT_PREFER_LOCAL}" = "true" ] && [ -x "${GITHUB_WORKSPACE}/vendor/bin/dev-tools" ]; then
+          command_path="${GITHUB_WORKSPACE}/vendor/bin/dev-tools"
+          command_source='project'
+        elif command -v dev-tools >/dev/null 2>&1; then
+          command_path="$(command -v dev-tools)"
+          command_source='path'
+        fi
+
+        if [ -z "${command_path}" ]; then
+          composer_home="${INPUT_COMPOSER_HOME:-${RUNNER_TEMP}/fast-forward-composer-home}"
+          mkdir -p "${composer_home}" "${INPUT_CACHE_DIR}"
+
+          export COMPOSER_HOME="${composer_home}"
+          export COMPOSER_CACHE_DIR="${INPUT_CACHE_DIR}"
+
+          composer global config --no-plugins allow-plugins.fast-forward/dev-tools true
+          composer global config --no-plugins allow-plugins.ergebnis/composer-normalize true
+          composer global config --no-plugins allow-plugins.phpdocumentor/shim true
+          composer global config --no-plugins allow-plugins.phpro/grumphp-shim true
+          composer global config --no-plugins allow-plugins.pyrech/composer-changelogs true
+          composer global config --no-plugins repositories.fast-forward-dev-tools vcs "${INPUT_REPOSITORY}"
+          composer global require --no-interaction --prefer-dist --no-progress --no-scripts "fast-forward/dev-tools:${INPUT_VERSION}"
+
+          command_path="${composer_home}/vendor/bin/dev-tools"
+          command_source='composer-global'
+
+          echo "${composer_home}/vendor/bin" >> "${GITHUB_PATH}"
+          echo "COMPOSER_HOME=${composer_home}" >> "${GITHUB_ENV}"
+        fi
+
+        if [ ! -x "${command_path}" ]; then
+          echo "::error::Resolved dev-tools command is not executable: ${command_path}"
+          exit 1
+        fi
+
+        echo "DEV_TOOLS_BIN=${command_path}" >> "${GITHUB_ENV}"
+        echo "command=${command_path}" >> "${GITHUB_OUTPUT}"
+        echo "source=${command_source}" >> "${GITHUB_OUTPUT}"
+        "${command_path}" --version

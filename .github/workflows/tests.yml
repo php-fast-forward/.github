@@ -1,0 +1,298 @@
+name: Run PHPUnit Tests
+
+on:
+    workflow_call:
+        inputs:
+            dev-tools-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
+                required: false
+                type: string
+                default: ^1.0
+            github-actions-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/github-actions.
+                required: false
+                type: string
+                default: dev-main
+            min-coverage:
+                description: Minimum line coverage percentage enforced by dev-tools tests.
+                required: false
+                type: number
+                default: 80
+            max-outdated:
+                description: Maximum number of outdated packages allowed by the dependencies command.
+                required: false
+                type: string
+                default: '-1'
+            publish-required-statuses:
+                description: Mirror required test matrix checks as commit statuses for workflow-dispatched runs.
+                required: false
+                type: boolean
+                default: false
+    workflow_dispatch:
+        inputs:
+            dev-tools-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
+                required: false
+                type: string
+                default: ^1.0
+            github-actions-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/github-actions.
+                required: false
+                type: string
+                default: dev-main
+            min-coverage:
+                description: Minimum line coverage percentage enforced by dev-tools tests.
+                required: false
+                type: number
+                default: 80
+            max-outdated:
+                description: Maximum number of outdated packages allowed by the dependencies command.
+                required: false
+                type: string
+                default: '-1'
+            publish-required-statuses:
+                description: Mirror required test matrix checks as commit statuses for workflow-dispatched runs.
+                required: false
+                type: boolean
+                default: false
+    pull_request:
+        types: [opened, synchronize, reopened]
+    push:
+        branches: [ "main" ]
+
+permissions:
+    contents: read
+    statuses: write
+
+concurrency:
+    group: ${{ github.event_name == 'pull_request' && format('tests-pr-{0}', github.event.pull_request.number) || format('tests-{0}', github.ref) }}
+    cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+    FORCE_COLOR: '1'
+    FAST_FORWARD_ACTIONS_REPOSITORY: php-fast-forward/.github
+    FAST_FORWARD_ACTIONS_REF: ${{ github.repository != 'php-fast-forward/.github' && vars.FAST_FORWARD_ACTIONS_REF || '' }}
+
+jobs:
+    resolve_php:
+        name: Resolve PHP Version
+        runs-on: ubuntu-latest
+        outputs:
+            php-version: ${{ steps.resolve.outputs.php-version }}
+            php-version-source: ${{ steps.resolve.outputs.php-version-source }}
+            repository-has-composer-json: ${{ steps.detect.outputs.composer-json }}
+            repository-has-php-files: ${{ steps.detect.outputs.php-files }}
+            repository-has-phpunit-config: ${{ steps.detect.outputs.phpunit-config }}
+            repository-has-test-files: ${{ steps.detect.outputs.test-files }}
+            repository-is-testable: ${{ steps.detect.outputs.testable }}
+            test-matrix: ${{ steps.resolve.outputs.test-matrix }}
+
+        steps:
+            - uses: actions/checkout@v6
+            - &resolve_shared_action_ref
+              name: Resolve shared action ref
+              id: shared_actions
+              shell: bash
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  CURRENT_REF: ${{ github.head_ref || github.ref_name }}
+                  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+              run: |
+                  set -euo pipefail
+
+                  if [ -n "${FAST_FORWARD_ACTIONS_REF}" ]; then
+                      ref="${FAST_FORWARD_ACTIONS_REF}"
+                  elif [ "${GITHUB_REPOSITORY}" = "${FAST_FORWARD_ACTIONS_REPOSITORY}" ]; then
+                      if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ] && [ -n "${BASE_SHA:-}" ]; then
+                          ref="${BASE_SHA}"
+                      else
+                          ref="${CURRENT_REF:-main}"
+                      fi
+                  else
+                      ref="$(gh api "repos/${FAST_FORWARD_ACTIONS_REPOSITORY}/releases/latest" --jq .tag_name 2>/dev/null || true)"
+
+                      if [ -z "${ref}" ] || [ "${ref}" = "null" ]; then
+                          ref="main"
+                      fi
+                  fi
+
+                  echo "ref=${ref}" >> "${GITHUB_OUTPUT}"
+
+            - &checkout_shared_action_source
+              name: Checkout shared action source
+              uses: actions/checkout@v6
+              with:
+                  repository: ${{ env.FAST_FORWARD_ACTIONS_REPOSITORY }}
+                  ref: ${{ steps.shared_actions.outputs.ref }}
+                  path: .fast-forward-actions
+                  sparse-checkout: |
+                      .github/actions
+
+            - name: Setup Fast Forward GitHub Actions runtime
+              uses: ./.fast-forward-actions/.github/actions/github-actions/setup
+              with:
+                  version: ${{ vars.FAST_FORWARD_GITHUB_ACTIONS_VERSION || inputs.github-actions-version || 'dev-main' }}
+
+            - name: Resolve workflow PHP version
+              id: resolve
+              uses: ./.fast-forward-actions/.github/actions/php/resolve-version
+
+            - name: Detect PHP project test surface
+              id: detect
+              uses: ./.fast-forward-actions/.github/actions/php/detect-project
+
+    tests:
+        needs: resolve_php
+        if: needs.resolve_php.outputs.repository-is-testable == 'true'
+        name: Run Tests
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix: ${{ fromJson(needs.resolve_php.outputs.test-matrix) }}
+        env:
+            TESTS_ROOT_VERSION: ${{ github.event_name == 'pull_request' && format('dev-{0}', github.event.pull_request.head.ref) || 'dev-main' }}
+        steps:
+            - uses: actions/checkout@v6
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - name: Setup PHP and install dependencies
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              with:
+                php-version: ${{ matrix.php-version }}
+                extensions: pcov, pcntl
+                coverage: pcov
+                root-version: ${{ env.TESTS_ROOT_VERSION }}
+                install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
+
+            - name: Setup Fast Forward DevTools
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              with:
+                version: ${{ inputs.dev-tools-version || '^1.0' }}
+
+            - name: Composer Audit
+              env:
+                COMPOSER_ROOT_VERSION: ${{ env.TESTS_ROOT_VERSION }}
+              run: composer audit
+
+            - name: Resolve minimum coverage
+              id: minimum-coverage
+              run: echo "value=${INPUT_MIN_COVERAGE:-80}" >> "$GITHUB_OUTPUT"
+              env:
+                  INPUT_MIN_COVERAGE: ${{ inputs.min-coverage }}
+
+            - name: Run PHPUnit tests
+              env:
+                COMPOSER_ROOT_VERSION: ${{ env.TESTS_ROOT_VERSION }}
+              run: |
+                "${DEV_TOOLS_BIN}" tests --coverage=.dev-tools/coverage --min-coverage=${{ steps.minimum-coverage.outputs.value }}
+
+            - name: Publish required test status
+              if: ${{ always() && inputs.publish-required-statuses }}
+              env:
+                GH_TOKEN: ${{ github.token }}
+                TARGET_SHA: ${{ github.sha }}
+                TARGET_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+                TEST_CONTEXT: Run Tests (${{ matrix.php-version }})
+                TEST_RESULT: ${{ job.status }}
+              run: |
+                if [ "${TEST_RESULT}" = "success" ]; then
+                  state="success"
+                  description="Workflow-dispatched PHPUnit job passed."
+                else
+                  state="failure"
+                  description="Workflow-dispatched PHPUnit job result: ${TEST_RESULT}."
+                fi
+
+                gh api \
+                  --method POST \
+                  "repos/${GITHUB_REPOSITORY}/statuses/${TARGET_SHA}" \
+                  -f state="${state}" \
+                  -f context="${TEST_CONTEXT}" \
+                  -f description="${description}" \
+                  -f target_url="${TARGET_URL}"
+
+    dependency-health:
+        needs: resolve_php
+        if: needs.resolve_php.outputs.repository-is-testable == 'true'
+        name: Dependency Health
+        runs-on: ubuntu-latest
+        env:
+            TESTS_ROOT_VERSION: ${{ github.event_name == 'pull_request' && format('dev-{0}', github.event.pull_request.head.ref) || 'dev-main' }}
+        steps:
+            - uses: actions/checkout@v6
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - name: Setup PHP and install dependencies
+              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              with:
+                php-version: ${{ needs.resolve_php.outputs.php-version }}
+                root-version: ${{ env.TESTS_ROOT_VERSION }}
+                install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
+
+            - name: Setup Fast Forward DevTools
+              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              with:
+                version: ${{ inputs.dev-tools-version || '^1.0' }}
+
+            - name: Run dependency health check
+              env:
+                COMPOSER_ROOT_VERSION: ${{ env.TESTS_ROOT_VERSION }}
+              run: |
+                "${DEV_TOOLS_BIN}" dependencies --max-outdated=${{ inputs.max-outdated || -1 }}
+
+    summarize:
+        if: ${{ always() }}
+        name: Summarize Test Workflow
+        needs:
+            - resolve_php
+            - tests
+            - dependency-health
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - *resolve_shared_action_ref
+            - *checkout_shared_action_source
+
+            - uses: ./.fast-forward-actions/.github/actions/summary/write
+              with:
+                markdown: |
+                  ## Tests Workflow Summary
+
+                  - Workflow PHP version: `${{ needs.resolve_php.outputs.php-version }}`
+                  - PHP version source: `${{ needs.resolve_php.outputs.php-version-source }}`
+                  - Composer project detected: `${{ needs.resolve_php.outputs.repository-has-composer-json }}`
+                  - PHP files detected: `${{ needs.resolve_php.outputs.repository-has-php-files }}`
+                  - PHPUnit configuration detected: `${{ needs.resolve_php.outputs.repository-has-phpunit-config }}`
+                  - PHPUnit test files detected: `${{ needs.resolve_php.outputs.repository-has-test-files }}`
+                  - PHPUnit execution required: `${{ needs.resolve_php.outputs.repository-is-testable }}`
+                  - Test matrix: `${{ needs.resolve_php.outputs.test-matrix }}`
+                  - Minimum coverage threshold: `${{ inputs.min-coverage || 80 }}`
+                  - Dependency health `max-outdated`: `${{ inputs.max-outdated || -1 }}`
+                  - Tests job result: `${{ needs.tests.result }}`
+                  - Dependency health result: `${{ needs.dependency-health.result }}`
+
+    publish_required_statuses:
+        if: ${{ always() && inputs.publish-required-statuses && needs.resolve_php.outputs.repository-is-testable == 'true' }}
+        name: Publish Required Test Statuses
+        needs:
+            - resolve_php
+        runs-on: ubuntu-latest
+        steps:
+            - name: Publish pending required test statuses
+              env:
+                GH_TOKEN: ${{ github.token }}
+                TARGET_SHA: ${{ github.sha }}
+                TARGET_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+                TEST_MATRIX: ${{ needs.resolve_php.outputs.test-matrix }}
+              run: |
+                php -r "foreach (json_decode(getenv('TEST_MATRIX'), true, 512, JSON_THROW_ON_ERROR)['php-version'] as \$version) { echo \$version, PHP_EOL; }" | while IFS= read -r php_version; do
+                  gh api \
+                    --method POST \
+                    "repos/${GITHUB_REPOSITORY}/statuses/${TARGET_SHA}" \
+                    -f state="pending" \
+                    -f context="Run Tests (${php_version})" \
+                    -f description="Workflow-dispatched PHPUnit job is pending." \
+                    -f target_url="${TARGET_URL}"
+                done

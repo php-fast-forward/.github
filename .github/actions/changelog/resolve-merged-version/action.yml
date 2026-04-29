@@ -1,0 +1,26 @@
+name: Resolve Merged Release Version
+description: Derive the released version from a merged release branch name.
+
+inputs:
+  head-ref:
+    description: Pull request head ref.
+    required: true
+  release-branch-prefix:
+    description: Release branch prefix.
+    required: true
+
+outputs:
+  value:
+    description: Resolved release version.
+    value: ${{ steps.resolve.outputs.value }}
+
+runs:
+  using: composite
+  steps:
+    - id: resolve
+      name: Resolve merged version
+      shell: bash
+      env:
+        INPUT_HEAD_REF: ${{ inputs.head-ref }}
+        INPUT_RELEASE_BRANCH_PREFIX: ${{ inputs.release-branch-prefix }}
+      run: ${{ github.action_path }}/run.sh

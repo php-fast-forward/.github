@@ -1,0 +1,17 @@
+name: Prepare Wiki Preview Branch
+description: Prepare the wiki preview branch for a pull request.
+
+inputs:
+  preview-branch:
+    description: Preview branch name in the wiki repository.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Prepare preview branch
+      shell: bash
+      env:
+        INPUT_PREVIEW_BRANCH: ${{ inputs.preview-branch }}
+      working-directory: .github/wiki
+      run: ${{ github.action_path }}/run.sh

@@ -1,0 +1,18 @@
+name: Resolve Review Project Status
+description: Resolve the target project status for a pull request after a review event.
+
+outputs:
+  status:
+    description: Target project status for the reviewed pull request.
+    value: ${{ steps.resolve.outputs.status }}
+
+runs:
+  using: composite
+  steps:
+    - id: resolve
+      uses: actions/github-script@v8
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          const run = require(`${process.env.GITHUB_ACTION_PATH}/run.cjs`);
+          await run({github, context, core});

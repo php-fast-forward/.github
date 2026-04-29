@@ -1,0 +1,20 @@
+name: Remove GitHub Pages Preview
+description: Remove a pull-request preview directory from a checked-out gh-pages tree and commit the change when needed.
+
+inputs:
+  path:
+    description: Checked-out gh-pages working tree path.
+    required: true
+  pull-request-number:
+    description: Pull request number whose preview should be removed.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Remove preview
+      shell: bash
+      env:
+        INPUT_PATH: ${{ inputs.path }}
+        INPUT_PULL_REQUEST_NUMBER: ${{ inputs.pull-request-number }}
+      run: ${{ github.action_path }}/run.sh
