@@ -3,11 +3,6 @@ name: Generate Reports and Deploy to GitHub Pages
 on:
     workflow_call:
         inputs:
-            automation-ref:
-                description: Ref of php-fast-forward/.github used when checking out shared actions.
-                required: false
-                type: string
-                default: ''
             cleanup-previews:
                 description: Remove stale pull request previews without publishing production reports.
                 required: false
@@ -63,22 +58,13 @@ jobs:
 
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
             - name: Resolve workflow PHP version
               id: resolve
-              uses: ./.fast-forward-actions/.github/actions/php/resolve-version
+              uses: php-fast-forward/.github/.github/actions/php/resolve-version@task/2-extract-shared-workflows
 
             - name: Detect PHP project report surface
               id: detect
-              uses: ./.fast-forward-actions/.github/actions/php/detect-project
+              uses: php-fast-forward/.github/.github/actions/php/detect-project@task/2-extract-shared-workflows
 
     reports:
         needs: resolve_php
@@ -96,17 +82,8 @@ jobs:
             - uses: actions/checkout@v6
               with:
                 fetch-depth: 0
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
             - name: Setup PHP and install dependencies
-              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              uses: php-fast-forward/.github/.github/actions/php/setup-composer@task/2-extract-shared-workflows
               with:
                 php-version: ${{ needs.resolve_php.outputs.php-version }}
                 extensions: pcov, pcntl
@@ -114,7 +91,7 @@ jobs:
                 root-version: ${{ env.REPORTS_ROOT_VERSION }}
 
             - name: Setup Fast Forward DevTools
-              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              uses: php-fast-forward/.github/.github/actions/dev-tools/setup@task/2-extract-shared-workflows
               with:
                 version: ${{ inputs.dev-tools-version || '^1.0' }}
 
@@ -146,7 +123,7 @@ jobs:
 
             - name: Copy existing previews into publish directory
               if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-              uses: ./.fast-forward-actions/.github/actions/github-pages/restore-previews
+              uses: php-fast-forward/.github/.github/actions/github-pages/restore-previews@task/2-extract-shared-workflows
               with:
                 source: gh-pages-current
                 target: ${{ env.REPORTS_TARGET }}
@@ -181,16 +158,7 @@ jobs:
 
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
-            - uses: ./.fast-forward-actions/.github/actions/github-pages/verify-deployment
+            - uses: php-fast-forward/.github/.github/actions/github-pages/verify-deployment@task/2-extract-shared-workflows
               with:
                 base-url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
                 title: Reports health check failed
@@ -207,16 +175,7 @@ jobs:
 
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
-            - uses: ./.fast-forward-actions/.github/actions/github-pages/verify-deployment
+            - uses: php-fast-forward/.github/.github/actions/github-pages/verify-deployment@task/2-extract-shared-workflows
               with:
                 base-url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}
                 title: Preview health check failed
@@ -258,22 +217,13 @@ jobs:
             - uses: actions/checkout@v6
               with:
                 ref: ${{ github.event.repository.default_branch }}
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
             - name: Checkout gh-pages
               uses: actions/checkout@v6
               with:
                 ref: gh-pages
                 path: gh-pages
 
-            - uses: ./.fast-forward-actions/.github/actions/github-pages/remove-preview
+            - uses: php-fast-forward/.github/.github/actions/github-pages/remove-preview@task/2-extract-shared-workflows
               with:
                 path: gh-pages
                 pull-request-number: ${{ github.event.pull_request.number }}
@@ -297,22 +247,13 @@ jobs:
 
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
             - name: Checkout gh-pages
               uses: actions/checkout@v6
               with:
                 ref: gh-pages
                 path: gh-pages
 
-            - uses: ./.fast-forward-actions/.github/actions/github-pages/cleanup-orphaned-previews
+            - uses: php-fast-forward/.github/.github/actions/github-pages/cleanup-orphaned-previews@task/2-extract-shared-workflows
               id: cleanup
               with:
                 path: gh-pages
@@ -335,15 +276,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
             - id: build_summary
               env:
                 TRIGGER_LABEL: ${{ github.event_name }}${{ github.event.action && format(':{0}', github.event.action) || '' }}
@@ -393,6 +325,6 @@ jobs:
                   echo 'EOF'
                 } >> "$GITHUB_OUTPUT"
 
-            - uses: ./.fast-forward-actions/.github/actions/summary/write
+            - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
               with:
                 markdown: ${{ steps.build_summary.outputs.markdown }}

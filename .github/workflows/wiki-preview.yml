@@ -3,11 +3,6 @@ name: Update Wiki Preview
 on:
   workflow_call:
     inputs:
-      automation-ref:
-        description: Ref of php-fast-forward/.github used when checking out shared actions.
-        required: false
-        type: string
-        default: ''
       dev-tools-version:
         description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
         required: false
@@ -30,18 +25,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-      - name: Checkout shared workflow action source
-        uses: actions/checkout@v6
-        with:
-          repository: php-fast-forward/.github
-          ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-          path: .fast-forward-actions
-          sparse-checkout: |
-            .github/actions
-
       - name: Resolve workflow PHP version
         id: resolve
-        uses: ./.fast-forward-actions/.github/actions/php/resolve-version
+        uses: php-fast-forward/.github/.github/actions/php/resolve-version@task/2-extract-shared-workflows
 
   preview:
     needs: resolve_php
@@ -64,18 +50,8 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           submodules: recursive
           fetch-depth: 0
-
-      - name: Checkout shared workflow action source
-        uses: actions/checkout@v6
-        with:
-          repository: php-fast-forward/.github
-          ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-          path: .fast-forward-actions
-          sparse-checkout: |
-            .github/actions
-
       - name: Setup PHP and install dependencies
-        uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+        uses: php-fast-forward/.github/.github/actions/php/setup-composer@task/2-extract-shared-workflows
         with:
           php-version: ${{ needs.resolve_php.outputs.php-version }}
           root-version: dev-${{ github.event.pull_request.head.ref }}
@@ -83,12 +59,12 @@ jobs:
             ${{ github.workspace }}/.github/wiki
 
       - name: Setup Fast Forward DevTools
-        uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+        uses: php-fast-forward/.github/.github/actions/dev-tools/setup@task/2-extract-shared-workflows
         with:
           version: ${{ inputs.dev-tools-version || '^1.0' }}
 
       - name: Prepare wiki preview branch
-        uses: ./.fast-forward-actions/.github/actions/wiki/prepare-preview-branch
+        uses: php-fast-forward/.github/.github/actions/wiki/prepare-preview-branch@task/2-extract-shared-workflows
         with:
           preview-branch: ${{ env.WIKI_PREVIEW_BRANCH }}
 
@@ -135,7 +111,7 @@ jobs:
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
         run: gh workflow run tests.yml --ref "${HEAD_REF}" -f publish-required-statuses=true
 
-      - uses: ./.fast-forward-actions/.github/actions/summary/write
+      - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
         with:
           markdown: |
             ## Wiki Preview Summary

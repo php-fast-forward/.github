@@ -10,3 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Extract shared GitHub workflows and actions into the organization automation repository (#3)
+
+### Changed
+
+- Replace consumer-facing `automation-ref` plumbing with versioned remote action refs pinned by release automation (#3)

@@ -3,11 +3,6 @@ name: Run PHPUnit Tests
 on:
     workflow_call:
         inputs:
-            automation-ref:
-                description: Ref of php-fast-forward/.github used when checking out shared actions.
-                required: false
-                type: string
-                default: ''
             dev-tools-version:
                 description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
                 required: false
@@ -82,22 +77,13 @@ jobs:
 
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
             - name: Resolve workflow PHP version
               id: resolve
-              uses: ./.fast-forward-actions/.github/actions/php/resolve-version
+              uses: php-fast-forward/.github/.github/actions/php/resolve-version@task/2-extract-shared-workflows
 
             - name: Detect PHP project test surface
               id: detect
-              uses: ./.fast-forward-actions/.github/actions/php/detect-project
+              uses: php-fast-forward/.github/.github/actions/php/detect-project@task/2-extract-shared-workflows
 
     tests:
         needs: resolve_php
@@ -111,17 +97,8 @@ jobs:
             TESTS_ROOT_VERSION: ${{ github.event_name == 'pull_request' && format('dev-{0}', github.event.pull_request.head.ref) || 'dev-main' }}
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
             - name: Setup PHP and install dependencies
-              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              uses: php-fast-forward/.github/.github/actions/php/setup-composer@task/2-extract-shared-workflows
               with:
                 php-version: ${{ matrix.php-version }}
                 extensions: pcov, pcntl
@@ -130,7 +107,7 @@ jobs:
                 install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
 
             - name: Setup Fast Forward DevTools
-              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              uses: php-fast-forward/.github/.github/actions/dev-tools/setup@task/2-extract-shared-workflows
               with:
                 version: ${{ inputs.dev-tools-version || '^1.0' }}
 
@@ -185,24 +162,15 @@ jobs:
             TESTS_ROOT_VERSION: ${{ github.event_name == 'pull_request' && format('dev-{0}', github.event.pull_request.head.ref) || 'dev-main' }}
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
             - name: Setup PHP and install dependencies
-              uses: ./.fast-forward-actions/.github/actions/php/setup-composer
+              uses: php-fast-forward/.github/.github/actions/php/setup-composer@task/2-extract-shared-workflows
               with:
                 php-version: ${{ needs.resolve_php.outputs.php-version }}
                 root-version: ${{ env.TESTS_ROOT_VERSION }}
                 install-options: --prefer-dist --no-progress --no-interaction --no-plugins --no-scripts
 
             - name: Setup Fast Forward DevTools
-              uses: ./.fast-forward-actions/.github/actions/dev-tools/setup
+              uses: php-fast-forward/.github/.github/actions/dev-tools/setup@task/2-extract-shared-workflows
               with:
                 version: ${{ inputs.dev-tools-version || '^1.0' }}
 
@@ -222,16 +190,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v6
-            - name: Checkout shared workflow action source
-              uses: actions/checkout@v6
-              with:
-                repository: php-fast-forward/.github
-                ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-                path: .fast-forward-actions
-                sparse-checkout: |
-                  .github/actions
-
-            - uses: ./.fast-forward-actions/.github/actions/summary/write
+            - uses: php-fast-forward/.github/.github/actions/summary/write@task/2-extract-shared-workflows
               with:
                 markdown: |
                   ## Tests Workflow Summary

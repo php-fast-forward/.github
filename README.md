@@ -47,13 +47,21 @@ The organization automation split follows
 - consumer repositories keep thin workflow files that call reusable workflows
   from this repository
 
-Reusable workflows checkout this repository into `.fast-forward-actions` before
-calling local composite actions. Workflows that need the Fast Forward CLI use
+Reusable workflows call composite actions from this repository through remote
+GitHub Action references instead of asking consumers to checkout implementation
+files. Consumer wrappers SHOULD call reusable workflows by tag, for example
+`php-fast-forward/.github/.github/workflows/tests.yml@v0.1.0`, so Dependabot can
+propose shared automation updates. Workflows that need the Fast Forward CLI use
 `.github/actions/dev-tools/setup`, which prefers an existing project-local
 `vendor/bin/dev-tools` binary and otherwise installs `fast-forward/dev-tools`
 globally through Composer. The setup action accepts a `version` input so wrapper
 workflows can test a specific `dev-tools` branch or version without requiring
 the consumer package to depend on `fast-forward/dev-tools`.
+
+During `.github` releases, the changelog publication workflow pins internal
+composite-action references to the release tag before creating the GitHub
+release. That keeps tagged reusable workflows self-contained while avoiding a
+second ref input in consumer wrappers.
 
 The shared workflows keep their local repository triggers here as a smoke test
 for the reusable implementation. PHP testing and report jobs detect whether the

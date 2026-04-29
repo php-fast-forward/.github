@@ -7,10 +7,6 @@ on:
     types: [opened, reopened, synchronize]
   workflow_call:
     inputs:
-      automation-ref:
-        type: string
-        default: ''
-        description: Ref of php-fast-forward/.github used when checking out shared actions.
       copy_issue_labels:
         type: boolean
         default: true
@@ -28,14 +24,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Checkout shared workflow action source
-        uses: actions/checkout@v6
-        with:
-          repository: php-fast-forward/.github
-          ref: ${{ inputs.automation-ref != '' && inputs.automation-ref || (github.repository == 'php-fast-forward/.github' && (github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha)) || 'main' }}
-          path: .fast-forward-actions
-          sparse-checkout: |
-            .github/actions
-
       - name: Copy labels from issue to PR
-        uses: ./.fast-forward-actions/.github/actions/label-sync/copy-linked-issue-labels
+        uses: php-fast-forward/.github/.github/actions/label-sync/copy-linked-issue-labels@task/2-extract-shared-workflows
