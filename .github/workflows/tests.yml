@@ -131,7 +131,7 @@ jobs:
             - name: Setup Fast Forward GitHub Actions runtime
               uses: ./.fast-forward-actions/.github/actions/github-actions/setup
               with:
-                  version: ${{ inputs.github-actions-version || vars.FAST_FORWARD_GITHUB_ACTIONS_VERSION || 'dev-main' }}
+                  version: ${{ vars.FAST_FORWARD_GITHUB_ACTIONS_VERSION || inputs.github-actions-version || 'dev-main' }}
 
             - name: Resolve workflow PHP version
               id: resolve
