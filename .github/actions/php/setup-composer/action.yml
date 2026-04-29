@@ -71,4 +71,10 @@ runs:
         COMPOSER_CACHE_DIR: ${{ inputs.cache-dir }}
         COMPOSER_ROOT_VERSION: ${{ inputs.root-version }}
         INPUT_INSTALL_OPTIONS: ${{ inputs.install-options }}
-      run: composer install ${INPUT_INSTALL_OPTIONS}
+      run: |
+        if [ ! -f composer.json ]; then
+          echo "::notice title=Composer install skipped::composer.json was not found in ${GITHUB_WORKSPACE}."
+          exit 0
+        fi
+
+        composer install ${INPUT_INSTALL_OPTIONS}

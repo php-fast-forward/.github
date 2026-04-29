@@ -13,6 +13,15 @@ on:
         required: false
         type: string
         default: ''
+  pull_request_target:
+    types: [ready_for_review]
+  workflow_dispatch:
+    inputs:
+      pull-request-number:
+        description: Pull request number to review manually.
+        required: true
+        type: string
+
 permissions:
   contents: read
   pull-requests: write

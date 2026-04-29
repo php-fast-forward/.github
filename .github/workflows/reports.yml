@@ -18,6 +18,25 @@ on:
                 required: false
                 type: string
                 default: ^1.0
+    workflow_dispatch:
+        inputs:
+            cleanup-previews:
+                description: Remove stale pull request previews without publishing production reports.
+                required: false
+                type: boolean
+                default: false
+            dev-tools-version:
+                description: Composer version constraint or branch used when globally installing fast-forward/dev-tools.
+                required: false
+                type: string
+                default: ^1.0
+    schedule:
+        - cron: '41 3 * * *'
+    pull_request:
+        types: [ "opened", "synchronize", "reopened", "closed" ]
+    push:
+        branches: [ "main" ]
+
 permissions:
     contents: read
 
@@ -35,6 +54,12 @@ jobs:
         outputs:
             php-version: ${{ steps.resolve.outputs.php-version }}
             php-version-source: ${{ steps.resolve.outputs.php-version-source }}
+            repository-has-composer-json: ${{ steps.detect.outputs.composer-json }}
+            repository-has-docs-source: ${{ steps.detect.outputs.docs-source }}
+            repository-has-php-files: ${{ steps.detect.outputs.php-files }}
+            repository-has-phpunit-config: ${{ steps.detect.outputs.phpunit-config }}
+            repository-has-test-files: ${{ steps.detect.outputs.test-files }}
+            repository-is-reportable: ${{ steps.detect.outputs.reportable }}
 
         steps:
             - uses: actions/checkout@v6
@@ -51,9 +76,13 @@ jobs:
               id: resolve
               uses: ./.fast-forward-actions/.github/actions/php/resolve-version
 
+            - name: Detect PHP project report surface
+              id: detect
+              uses: ./.fast-forward-actions/.github/actions/php/detect-project
+
     reports:
         needs: resolve_php
-        if: github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.cleanup-previews) && (github.event_name != 'pull_request' || github.event.action != 'closed')
+        if: github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.cleanup-previews) && (github.event_name != 'pull_request' || github.event.action != 'closed') && needs.resolve_php.outputs.repository-is-reportable == 'true'
         name: Generate Reports
         runs-on: ubuntu-latest
         permissions:
@@ -325,6 +354,12 @@ jobs:
                   echo
                   echo "- Workflow PHP version: \`${{ needs.resolve_php.outputs.php-version }}\`"
                   echo "- PHP version source: \`${{ needs.resolve_php.outputs.php-version-source }}\`"
+                  echo "- Composer project detected: \`${{ needs.resolve_php.outputs.repository-has-composer-json }}\`"
+                  echo "- Docs source detected: \`${{ needs.resolve_php.outputs.repository-has-docs-source }}\`"
+                  echo "- PHP files detected: \`${{ needs.resolve_php.outputs.repository-has-php-files }}\`"
+                  echo "- PHPUnit configuration detected: \`${{ needs.resolve_php.outputs.repository-has-phpunit-config }}\`"
+                  echo "- PHPUnit test files detected: \`${{ needs.resolve_php.outputs.repository-has-test-files }}\`"
+                  echo "- Reports generation required: \`${{ needs.resolve_php.outputs.repository-is-reportable }}\`"
                   echo "- Reports job result: \`${{ needs.reports.result }}\`"
                   echo "- Main verification result: \`${{ needs.verify_main_reports.result }}\`"
                   echo "- Preview verification result: \`${{ needs.verify_preview_reports.result }}\`"
@@ -332,14 +367,14 @@ jobs:
                   echo "- Orphan cleanup result: \`${{ needs.cleanup_orphaned_previews.result }}\`"
                   echo "- Trigger: \`${TRIGGER_LABEL}\`"
 
-                  if [ "${{ github.event_name }}" = "push" ] || { [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.cleanup-previews }}" != "true" ]; }; then
+                  if [ "${{ needs.resolve_php.outputs.repository-is-reportable }}" = "true" ] && { [ "${{ github.event_name }}" = "push" ] || { [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.cleanup-previews }}" != "true" ]; }; }; then
                     echo "- Docs: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
                     echo "- Coverage: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/coverage/"
                     echo "- Metrics: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/metrics/"
                     echo "- Deployment verification: \`${{ needs.verify_main_reports.result }}\`"
                   fi
 
-                  if [ "${{ github.event_name }}" = "pull_request" ] && [ "${{ github.event.action }}" != "closed" ]; then
+                  if [ "${{ needs.resolve_php.outputs.repository-is-reportable }}" = "true" ] && [ "${{ github.event_name }}" = "pull_request" ] && [ "${{ github.event.action }}" != "closed" ]; then
                     echo "- Preview docs: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/"
                     echo "- Preview coverage: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/coverage/"
                     echo "- Preview metrics: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/pr-${{ github.event.pull_request.number }}/metrics/"

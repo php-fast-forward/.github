@@ -13,6 +13,13 @@ on:
         required: false
         type: string
         default: ''
+  issues:
+    types: [opened, reopened, closed]
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review, converted_to_draft, closed]
+  pull_request_review:
+    types: [submitted, dismissed]
+
 permissions:
   contents: read
   issues: write

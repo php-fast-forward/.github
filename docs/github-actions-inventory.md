@@ -38,6 +38,14 @@ workflows can locate an existing project-local `dev-tools` binary or install
 `fast-forward/dev-tools` globally when a consumer repository does not require
 the package directly.
 
+The PHP action group also includes `.github/actions/php/detect-project`, used by
+test and report workflows to skip PHPUnit/report generation when a repository
+does not have the Composer, PHPUnit, documentation, or test files those jobs
+need.
+
+The reusable workflows keep their original local triggers in this repository so
+changes can be smoke-tested here before consumer wrappers are updated.
+
 ## Remaining in dev-tools
 
 The `dev-tools` repository remains responsible for:

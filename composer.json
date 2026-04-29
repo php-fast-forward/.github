@@ -1,0 +1,69 @@
+{
+    "name": "fast-forward/github-automation",
+    "description": "Organization profile and shared GitHub automation for PHP Fast Forward repositories.",
+    "license": "MIT",
+    "type": "project",
+    "keywords": [
+        "automation",
+        "fast-forward",
+        "github",
+        "github-actions",
+        "workflows"
+    ],
+    "readme": "README.md",
+    "authors": [
+        {
+            "name": "Felipe Sayao Lobato Abreu",
+            "email": "github@mentordosnerds.com",
+            "homepage": "https://github.com/coisa",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://github.com/php-fast-forward/.github",
+    "support": {
+        "issues": "https://github.com/php-fast-forward/.github/issues",
+        "source": "https://github.com/php-fast-forward/.github"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/php-fast-forward"
+        },
+        {
+            "type": "custom",
+            "url": "https://www.paypal.com/donate/?business=JLDAF45XZ8D84"
+        }
+    ],
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "fast-forward/dev-tools": "^1.0"
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "fast-forward/dev-tools": true,
+            "phpdocumentor/shim": true,
+            "phpro/grumphp-shim": true,
+            "pyrech/composer-changelogs": true
+        },
+        "platform": {
+            "php": "8.3.0"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        },
+        "grumphp": {
+            "config-default-path": "vendor/fast-forward/dev-tools/grumphp.yml"
+        }
+    },
+    "scripts": {
+        "dev-tools": "dev-tools",
+        "dev-tools:fix": "@dev-tools --fix"
+    }
+}

@@ -23,6 +23,8 @@ framework or tooling repositories themselves.
   workflows shared by Fast Forward repositories
 - [`.github/actions`](./.github/actions) contains composite actions used by the
   shared workflows
+- [`composer.json`](./composer.json) installs local development tooling so this
+  repository can run the same shared workflows it publishes
 - [`docs/github-actions-inventory.md`](./docs/github-actions-inventory.md)
   records which workflow and action surfaces moved here first
 
@@ -52,6 +54,12 @@ calling local composite actions. Workflows that need the Fast Forward CLI use
 globally through Composer. The setup action accepts a `version` input so wrapper
 workflows can test a specific `dev-tools` branch or version without requiring
 the consumer package to depend on `fast-forward/dev-tools`.
+
+The shared workflows keep their local repository triggers here as a smoke test
+for the reusable implementation. PHP testing and report jobs detect whether the
+checked-out repository has Composer metadata, PHPUnit configuration, and test
+files before running, so documentation-only or automation-only repositories can
+consume the workflows without producing false failures.
 
 The first extraction keeps wrappers in `dev-tools` until the coordinated
 consumer-facing wrapper update is ready. Release-safe references for those
