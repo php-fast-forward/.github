@@ -1,0 +1,62 @@
+name: Brand or asset request
+description: Request profile, mascot, or design asset work in php-fast-forward/.github.
+title: "[Brand]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit brand and asset requests in [php-fast-forward/.github](https://github.com/php-fast-forward/.github/issues).
+        This organization template may also appear in package repositories; package bugs and code changes belong in their affected repository.
+        Review [design.md](https://github.com/php-fast-forward/.github/blob/main/design.md), [style.md](https://github.com/php-fast-forward/.github/blob/main/style.md), [soul.md](https://github.com/php-fast-forward/.github/blob/main/soul.md), and [the asset catalog](https://github.com/php-fast-forward/.github/blob/main/assets/README.md).
+        Keep references and uploads suitable for public reading. Use the affected repository's security policy for vulnerabilities.
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose and audience
+      description: What should this change help someone understand or do? Who will use it?
+    validations:
+      required: true
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Requested change
+      options:
+        - Existing asset correction or export
+        - Mascot pose or illustration
+        - Profile or documentation presentation
+        - Design token or component
+        - Visual identity proposal
+    validations:
+      required: true
+  - type: textarea
+    id: intended_surface
+    attributes:
+      label: Intended surface and requirements
+      description: Name the page or context, size, format, background, and accessibility needs.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References and provenance
+      description: Link asset IDs or public references. Record origin, author or method where known, and reuse permissions. Mark unknown information, or state that no references exist yet.
+    validations:
+      required: true
+  - type: textarea
+    id: design_evidence
+    attributes:
+      label: Proposed result and review evidence
+      description: Describe the result, include a public-safe preview if available, and explain relevant design, style, or character rules or proposed contract changes.
+    validations:
+      required: true
+  - type: checkboxes
+    id: submission_checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing requests and the asset catalog for related work.
+          required: true
+        - label: The references and uploads contain no secrets, personal data, or confidential material.
+          required: true
+        - label: I recorded source and permission status, including anything that is unknown.
+          required: true

@@ -1,0 +1,31 @@
+name: Feature request
+description: Describe a use case and a proposed improvement in the affected repository.
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search existing requests first and use the affected repository.
+        Submit central profile, mascot, or design work through the brand form in [php-fast-forward/.github](https://github.com/php-fast-forward/.github/issues).
+        Keep examples and references suitable for public reading; omit secrets, personal information, and confidential material.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and use case
+      description: Who needs this, what are they trying to do, and what makes the current approach difficult?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed result
+      description: Describe the improvement, affected package or component, and how someone would use it. Examples are welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe existing options, workarounds, and relevant tradeoffs. State if you have not found an alternative.
+    validations:
+      required: true

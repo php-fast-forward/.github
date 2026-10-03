@@ -113,6 +113,10 @@ That is the direction: fewer classes, less manual plumbing, better defaults, cle
 
 ## Build with us
 
+The shared [brand and mascot kit](https://github.com/php-fast-forward/.github/blob/main/assets/README.md)
+documents the fox, visual system, reusable assets, and reference artwork. Use it
+when creating a package banner, documentation page, or community contribution.
+
 If you have ever wanted the momentum of modern PHP frameworks without the coupling tax they usually ask you to accept, you are exactly who Fast Forward is being built for.
 
 Explore the organization, star the repositories that resonate with you, open issues, send pull requests, and help shape a PHP ecosystem that moves fast without teaching people to slow their architecture down.

@@ -1,0 +1,46 @@
+:root {
+  --ff-icon-sprite-url: url('./icon_sprite.png');
+  --ff-icon-size: 64px;
+}
+
+.ff-icon {
+  width: var(--ff-icon-size);
+  height: var(--ff-icon-size);
+  display: inline-block;
+  background-image: var(--ff-icon-sprite-url);
+  background-repeat: no-repeat;
+  background-size: 512px 256px;
+}
+
+.ff-icon--docs-book { background-position: -0px -0px; }
+.ff-icon--package-cube { background-position: -64px -0px; }
+.ff-icon--copy { background-position: -128px -0px; }
+.ff-icon--bolt { background-position: -192px -0px; }
+.ff-icon--modular-spark { background-position: -256px -0px; }
+.ff-icon--shield-psr { background-position: -320px -0px; }
+.ff-icon--star-open { background-position: -384px -0px; }
+.ff-icon--globe-http { background-position: -448px -0px; }
+.ff-icon--container-cube { background-position: -0px -64px; }
+.ff-icon--event-bolt { background-position: -64px -64px; }
+.ff-icon--clock { background-position: -128px -64px; }
+.ff-icon--dev-tools { background-position: -192px -64px; }
+.ff-icon--layers-factory { background-position: -256px -64px; }
+.ff-icon--php { background-position: -320px -64px; }
+.ff-icon--puzzle-psr { background-position: -384px -64px; }
+.ff-icon--leaf-lightweight { background-position: -448px -64px; }
+.ff-icon--code { background-position: -0px -128px; }
+.ff-icon--search { background-position: -64px -128px; }
+.ff-icon--home { background-position: -128px -128px; }
+.ff-icon--chevron-right { background-position: -192px -128px; }
+.ff-icon--chevron-down { background-position: -256px -128px; }
+.ff-icon--info { background-position: -320px -128px; }
+.ff-icon--github { background-position: -384px -128px; }
+.ff-icon--discord { background-position: -448px -128px; }
+.ff-icon--x-social { background-position: -0px -192px; }
+.ff-icon--youtube { background-position: -64px -192px; }
+.ff-icon--arrow-forward { background-position: -128px -192px; }
+.ff-icon--terminal { background-position: -192px -192px; }
+.ff-icon--community-users { background-position: -256px -192px; }
+.ff-icon--external-link { background-position: -320px -192px; }
+.ff-icon--security-shield { background-position: -384px -192px; }
+.ff-icon--menu { background-position: -448px -192px; }

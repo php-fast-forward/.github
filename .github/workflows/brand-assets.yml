@@ -1,0 +1,40 @@
+name: Brand assets
+
+on:
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'design.md'
+      - 'references/**'
+      - 'profile/assets/**'
+      - 'scripts/validate-brand.py'
+      - 'scripts/export-design.mjs'
+      - 'tests/test_brand_assets.py'
+      - '.github/workflows/brand-assets.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/**'
+      - 'design.md'
+      - 'references/**'
+      - 'profile/assets/**'
+      - 'scripts/validate-brand.py'
+      - 'scripts/export-design.mjs'
+      - 'tests/test_brand_assets.py'
+      - '.github/workflows/brand-assets.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Verify delivered assets
+        run: python3 scripts/validate-brand.py
+      - name: Verify corruption and safety failure modes
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Lint design and verify reproducible token exports
+        run: node scripts/export-design.mjs --check

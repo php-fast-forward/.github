@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source": "design.md",
+  "source_sha256": "cd659b234b989fe4ad39cea86a72c231656e5504f69922336e7c0714f226a99a",
+  "generator": "@google/design.md@0.4.0",
+  "outputs": [
+    {
+      "path": "tokens.json",
+      "format": "dtcg",
+      "sha256": "33082ef8910aa5dc8662aba6536e5c4dcbd3c743cea6235821e6d9789807948d"
+    },
+    {
+      "path": "tailwind.theme.json",
+      "format": "json-tailwind",
+      "sha256": "7c8872e530d15cbd403e631c39927a91ffd3a9c49866682e3ef1d8a08faaf211"
+    },
+    {
+      "path": "theme.css",
+      "format": "css-tailwind",
+      "sha256": "1e104b06fcdb4476b2d63f5686f6a9bb5f225492ac345a8f255ea24aa0dae586"
+    }
+  ]
+}

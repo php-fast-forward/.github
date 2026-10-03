@@ -1,0 +1,86 @@
+{
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#6d28d9",
+        "primary-hover": "#5b21b6",
+        "blue": "#2563eb",
+        "cyan": "#22d3ee",
+        "navy": "#050b20",
+        "ink": "#142033",
+        "muted": "#475569",
+        "neutral": "#f6f8ff",
+        "white": "#ffffff",
+        "border": "#cbd5e1",
+        "fox-orange": "#f28d1a",
+        "fox-cream": "#fff3df",
+        "fox-outline": "#592d19"
+      },
+      "fontFamily": {
+        "h1": [
+          "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+        ],
+        "h2": [
+          "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+        ],
+        "body-md": [
+          "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+        ],
+        "label": [
+          "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+        ],
+        "code": [
+          "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+        ]
+      },
+      "fontSize": {
+        "h1": [
+          "3rem",
+          {
+            "letterSpacing": "-0.03em",
+            "fontWeight": "750"
+          }
+        ],
+        "h2": [
+          "2rem",
+          {
+            "fontWeight": "700"
+          }
+        ],
+        "body-md": [
+          "1rem",
+          {
+            "fontWeight": "400"
+          }
+        ],
+        "label": [
+          "0.875rem",
+          {
+            "fontWeight": "600"
+          }
+        ],
+        "code": [
+          "0.875rem",
+          {
+            "fontWeight": "400"
+          }
+        ]
+      },
+      "borderRadius": {
+        "sm": "6px",
+        "md": "12px",
+        "lg": "20px",
+        "pill": "999px"
+      },
+      "spacing": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "2xl": "48px",
+        "3xl": "64px"
+      }
+    }
+  }
+}

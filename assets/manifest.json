@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "identity_version": "2026-10-03",
+  "description": "Selected reusable assets and classified references; visual canon is design.md.",
+  "assets": [
+    {
+      "id": "background-footer",
+      "path": "assets/backgrounds/footer-trails.png",
+      "category": "background",
+      "status": "canonical",
+      "role": "Dark footer trails",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/03_backgrounds/footer_background_light_trails.png",
+        "source_sha256": "41034968ba866387f06c540c49eb2d838500c87b0f696d709585d319d8bcdd3d"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "41034968ba866387f06c540c49eb2d838500c87b0f696d709585d319d8bcdd3d",
+      "bytes": 843347,
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "background-fox-forward",
+      "path": "assets/backgrounds/fox-forward.png",
+      "category": "background",
+      "status": "canonical",
+      "role": "Editorial fox and chevrons composition",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/03_backgrounds/hero_background_with_fox_and_arrows.png",
+        "source_sha256": "3f84cd1fd4966a4144a1a3b355267870c367326f172d7e390fa980f64d509971"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "3f84cd1fd4966a4144a1a3b355267870c367326f172d7e390fa980f64d509971",
+      "bytes": 1415938,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "background-hero",
+      "path": "assets/backgrounds/hero-trails.png",
+      "category": "background",
+      "status": "canonical",
+      "role": "Dark hero trails",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/03_backgrounds/hero_background_light_trails.png",
+        "source_sha256": "62427aa0080f6148bc654daa1a1f3699ed565899221125280866cb7e1072c5f4"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "62427aa0080f6148bc654daa1a1f3699ed565899221125280866cb7e1072c5f4",
+      "bytes": 952363,
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "brand-avatar-navy",
+      "path": "assets/brand/avatar-navy.png",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Square avatar on navy",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/github_avatar_fox_navy_background.png",
+        "source_sha256": "eb1a4ad2eea501c937bf1bc6e4572ce86bf41f80303d4805cc8438a0e0aa0ea5"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "eb1a4ad2eea501c937bf1bc6e4572ce86bf41f80303d4805cc8438a0e0aa0ea5",
+      "bytes": 326254,
+      "format": "png",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "brand-mark-fox",
+      "path": "assets/brand/mark-with-fox.png",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Framework mark with neutral fox",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_mark_with_fox_transparent_cropped.png",
+        "source_sha256": "43ee673e5e47e2718dad6fe79642fde4bd54e9767575963f13cc6f683d94d7d8"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "43ee673e5e47e2718dad6fe79642fde4bd54e9767575963f13cc6f683d94d7d8",
+      "bytes": 459870,
+      "format": "png",
+      "width": 1009,
+      "height": 842,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "brand-mark",
+      "path": "assets/brand/mark.png",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Framework mark",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_mark_arrows_transparent_cropped.png",
+        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
+      "bytes": 236386,
+      "format": "png",
+      "width": 1072,
+      "height": 543,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "brand-wordmark-light",
+      "path": "assets/brand/wordmark-light.png",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Wordmark for light surfaces",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_horizontal_text_transparent_cropped.png",
+        "source_sha256": "687896b5ff7aa712e5e5d4a60fe11cdf120e24e7fb78a614d5a4c2e7a504f36f"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "687896b5ff7aa712e5e5d4a60fe11cdf120e24e7fb78a614d5a4c2e7a504f36f",
+      "bytes": 190937,
+      "format": "png",
+      "width": 1581,
+      "height": 281,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "brand-wordmark-fox-light",
+      "path": "assets/brand/wordmark-with-fox-light.png",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Fox wordmark for light surfaces",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_horizontal_with_fox_transparent_cropped.png",
+        "source_sha256": "6bf687ea5a01e886d16229613ce20b143a2b29b64aacac1c366e7d8d27271a36"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "6bf687ea5a01e886d16229613ce20b143a2b29b64aacac1c366e7d8d27271a36",
+      "bytes": 272703,
+      "format": "png",
+      "width": 1632,
+      "height": 439,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "fox-reading-sparkles",
+      "path": "assets/mascot/fox-reading-sparkles.png",
+      "category": "mascot",
+      "status": "canonical",
+      "role": "Documentation and concepts",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_reading_book_sparkles_transparent_cropped.png",
+        "source_sha256": "b881d2cca528f9f55d5e101ff61c46825442ee3a1b16c2f88825676cfa1f7b21"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "b881d2cca528f9f55d5e101ff61c46825442ee3a1b16c2f88825676cfa1f7b21",
+      "bytes": 966786,
+      "format": "png",
+      "width": 1092,
+      "height": 1007,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "fox-reading-wave",
+      "path": "assets/mascot/fox-reading-wave.png",
+      "category": "mascot",
+      "status": "canonical",
+      "role": "Learning and first steps",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_reading_open_book_transparent_cropped.png",
+        "source_sha256": "521d871a5f2b95b9134635897cf827b06905bda46f57d1850f80e737033ec8e6"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "521d871a5f2b95b9134635897cf827b06905bda46f57d1850f80e737033ec8e6",
+      "bytes": 943886,
+      "format": "png",
+      "width": 1216,
+      "height": 990,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "fox-welcome",
+      "path": "assets/mascot/fox-welcome.png",
+      "category": "mascot",
+      "status": "canonical",
+      "role": "Primary neutral reference; welcome and appreciation",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_footer_heart_balloon_transparent_cropped.png",
+        "source_sha256": "6c8eae7c1987ce8145ef0d6d3a861ec6aadd16d64bec5e2f61f67346425d2e58"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "6c8eae7c1987ce8145ef0d6d3a861ec6aadd16d64bec5e2f61f67346425d2e58",
+      "bytes": 1077535,
+      "format": "png",
+      "width": 1197,
+      "height": 1093,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "legacy-brand-hero-banner",
+      "path": "profile/assets/brand-hero-banner.png",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/brand-hero-banner.png",
+        "source_sha256": "f1fd2ee997e74eead4631fb1ce0504c4294c1091502f3de0520f7b49f4ac6be9",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "f1fd2ee997e74eead4631fb1ce0504c4294c1091502f3de0520f7b49f4ac6be9",
+      "bytes": 1358622,
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "legacy-brand-wordmark-banner",
+      "path": "profile/assets/brand-wordmark-banner.svg",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/brand-wordmark-banner.svg",
+        "source_sha256": "49bf76546be53867274929ca7d329f4a890c5b532e187a9e45d3b6fb2b93f186",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "49bf76546be53867274929ca7d329f4a890c5b532e187a9e45d3b6fb2b93f186",
+      "bytes": 207020,
+      "format": "svg",
+      "embedded_raster": true
+    },
+    {
+      "id": "legacy-docs-installation-mockup",
+      "path": "profile/assets/docs-installation-mockup.svg",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/docs-installation-mockup.svg",
+        "source_sha256": "018d99e02bf067138a263cbf477c0ed7aca15d46ac6d2a5cf0a2e7bc5d917f25",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "018d99e02bf067138a263cbf477c0ed7aca15d46ac6d2a5cf0a2e7bc5d917f25",
+      "bytes": 13096,
+      "format": "svg",
+      "embedded_raster": false
+    },
+    {
+      "id": "legacy-mascot-wave-heart",
+      "path": "profile/assets/mascot-wave-heart.svg",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/mascot-wave-heart.svg",
+        "source_sha256": "66a5a0d85dde0543b9844474932cc10cc9ff59220f6e33af98aff1960df8aa2a",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "66a5a0d85dde0543b9844474932cc10cc9ff59220f6e33af98aff1960df8aa2a",
+      "bytes": 1212543,
+      "format": "svg",
+      "embedded_raster": true
+    },
+    {
+      "id": "legacy-mascot-wordmark-horizontal",
+      "path": "profile/assets/mascot-wordmark-horizontal.svg",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/mascot-wordmark-horizontal.svg",
+        "source_sha256": "c370e39e574c0bdbdb18d776fb593598112bfe986794957e13464cbca855368c",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "c370e39e574c0bdbdb18d776fb593598112bfe986794957e13464cbca855368c",
+      "bytes": 328423,
+      "format": "svg",
+      "embedded_raster": true
+    },
+    {
+      "id": "reference-package-dev-tools",
+      "path": "references/ecosystem/dev-tools.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "role": "Existing public package artwork",
+      "provenance": {
+        "source": "https://github.com/php-fast-forward/dev-tools/blob/f2dbd184cd874140bd5e85d15edadd49d42ba87c/docs/_static/mascot-banner.png",
+        "source_sha256": "12fe5ab6b4e53a616c7f2589c0262c9daca98642a4b99a5b048f60ab7fbacdca",
+        "repository": "php-fast-forward/dev-tools",
+        "source_commit": "f2dbd184cd874140bd5e85d15edadd49d42ba87c",
+        "git_blob_sha": "9860d6d7b89f495005aeecb8e316ce067edb1d27",
+        "public_default_branch_verified_on": "2026-10-03",
+        "visual_notes": [
+          "Established package costume: orange fox with purple hoodie, white wrench-and-gear chest emblem and amber eyes.",
+          "Glossy shaded fur, rounded 3D icon tiles, lavender surfaces; mascot operates a tooling mixing console.",
+          "No headphones. This is a package variant and does not replace the neutral unclothed base fox."
+        ]
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "12fe5ab6b4e53a616c7f2589c0262c9daca98642a4b99a5b048f60ab7fbacdca",
+      "bytes": 2258972,
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-enum",
+      "path": "references/ecosystem/enum.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "role": "Existing public package artwork",
+      "provenance": {
+        "source": "https://github.com/php-fast-forward/enum/blob/14a5d4175e58dce2c410df1e0a003fd706d7a2c4/docs/_static/enum-mascot-banner.png",
+        "source_sha256": "129bea6fb7c083c7c6aec7c392b98253adbd947cad960d91ede08537bea86b9a",
+        "repository": "php-fast-forward/enum",
+        "source_commit": "14a5d4175e58dce2c410df1e0a003fd706d7a2c4",
+        "git_blob_sha": "a08197fc1715f5447adc52fe9c5d3f7a2ed721a1",
+        "public_default_branch_verified_on": "2026-10-03",
+        "visual_notes": [
+          "Package variant: purple hoodie with white PHP-like chest emblem, pointer pose and violet eyes.",
+          "Glossy shaded fur, soft lavender scene, code cards and rounded UI tiles.",
+          "Violet eye color is a variant deviation rather than canonical anatomy; no headphones."
+        ]
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "129bea6fb7c083c7c6aec7c392b98253adbd947cad960d91ede08537bea86b9a",
+      "bytes": 1841331,
+      "format": "png",
+      "width": 1693,
+      "height": 929,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-framework",
+      "path": "references/ecosystem/framework.png",
+      "category": "ecosystem",
+      "status": "reference",
+      "role": "Existing public package artwork",
+      "provenance": {
+        "source": "https://github.com/php-fast-forward/framework/blob/dac7ef8e4cfd8d39f36d526a6a4345958bcc83eb/docs/_static/mascot.png",
+        "source_sha256": "7e19237f0dca9e6534381203fc5dc69685e986551d7a107e51a6136e1e986f8f",
+        "repository": "php-fast-forward/framework",
+        "source_commit": "dac7ef8e4cfd8d39f36d526a6a4345958bcc83eb",
+        "git_blob_sha": "35304abcd8b3420838c42a22a49c84185c646411",
+        "public_default_branch_verified_on": "2026-10-03",
+        "visual_notes": [
+          "Legacy ecosystem banner: unclothed orange fox, white muzzle/chest/tail tip, amber eyes, dark brown contours.",
+          "Navy background with violet-blue-cyan connection trails, chevron wordmark, outlined ecosystem cards.",
+          "Confirms neutral fox continuity with the organization profile and backup identity; embedded product copy remains a historical reference."
+        ]
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "7e19237f0dca9e6534381203fc5dc69685e986551d7a107e51a6136e1e986f8f",
+      "bytes": 1473461,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-icon-collection-reference-transparent-cropped-png",
+      "path": "references/icons/icon_collection_reference_transparent_cropped.png",
+      "category": "icons",
+      "status": "reference",
+      "role": "Archived icon reference; rights not recorded",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/05_icons/icon_collection_reference_transparent_cropped.png",
+        "source_sha256": "617d82040efc9115160e05c410fc1126b2b9ba8453642da740e278ad49df5d0d"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "617d82040efc9115160e05c410fc1126b2b9ba8453642da740e278ad49df5d0d",
+      "bytes": 607184,
+      "format": "png",
+      "width": 1336,
+      "height": 929,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "reference-icon-sprite-css",
+      "path": "references/icons/icon_sprite.css",
+      "category": "icons",
+      "status": "reference",
+      "role": "Archived icon reference; rights not recorded",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/05_icons/icon_sprite.css",
+        "source_sha256": "625a291dcd59d40a7fbb56f9f7dbf077839346602c86677e4ad955be62c1ab3f",
+        "transformation": "Corrected sprite image URL to icon_sprite.png; geometry unchanged."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "a4bcf96154ec5cb014daadc2fa3047a17e6123521157e3de92c9fb62f797bde9",
+      "bytes": 2183,
+      "format": "css"
+    },
+    {
+      "id": "reference-icon-sprite-png",
+      "path": "references/icons/icon_sprite.png",
+      "category": "icons",
+      "status": "reference",
+      "role": "Archived icon reference; rights not recorded",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/05_icons/icon_sprite.png",
+        "source_sha256": "28da6ecb76f81c58fe075fa65ebe805cd6df7e42771130d95503dea5e9bf39f5"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "28da6ecb76f81c58fe075fa65ebe805cd6df7e42771130d95503dea5e9bf39f5",
+      "bytes": 71632,
+      "format": "png",
+      "width": 1024,
+      "height": 512,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "reference-icon-sprite-svg",
+      "path": "references/icons/icon_sprite.svg",
+      "category": "icons",
+      "status": "reference",
+      "role": "Archived icon reference; rights not recorded",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/05_icons/icon_sprite.svg",
+        "source_sha256": "e6e4ba7b51eac60f9cb3a0fd495f47faf574c0f599aebccc1dbc6930c48641f6"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "e6e4ba7b51eac60f9cb3a0fd495f47faf574c0f599aebccc1dbc6930c48641f6",
+      "bytes": 13485,
+      "format": "svg",
+      "embedded_raster": false
+    },
+    {
+      "id": "reference-icon-sprite-manifest-json",
+      "path": "references/icons/icon_sprite_manifest.json",
+      "category": "icons",
+      "status": "reference",
+      "role": "Archived icon reference; rights not recorded",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/05_icons/icon_sprite_manifest.json",
+        "source_sha256": "1bccbbd469425d75b94ae609ffbbbd2e813aaad08ed5d5c930e55b72b9a95554"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "1bccbbd469425d75b94ae609ffbbbd2e813aaad08ed5d5c930e55b72b9a95554",
+      "bytes": 8919,
+      "format": "json"
+    },
+    {
+      "id": "reference-icon-symbols-svg",
+      "path": "references/icons/icon_symbols.svg",
+      "category": "icons",
+      "status": "reference",
+      "role": "Archived icon reference; rights not recorded",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/05_icons/icon_symbols.svg",
+        "source_sha256": "cd275338a016ab5bacc5eeffebb151ddc0a0be561ae55ad560395fbbb7c933a8"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "cd275338a016ab5bacc5eeffebb151ddc0a0be561ae55ad560395fbbb7c933a8",
+      "bytes": 11137,
+      "format": "svg",
+      "embedded_raster": false
+    },
+    {
+      "id": "exploratory-coffee-fox",
+      "path": "references/mascot/fox-coffee-books.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "role": "Divergent chibi reading illustration",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_reading_coffee_books_transparent_cropped.png",
+        "source_sha256": "5f64488e24ecbe17b9c7b46d4ec388d736e0ecf7fef317a6db47efdcb0fcc0c9"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "5f64488e24ecbe17b9c7b46d4ec388d736e0ecf7fef317a6db47efdcb0fcc0c9",
+      "bytes": 1192860,
+      "format": "png",
+      "width": 929,
+      "height": 781,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "exploratory-technical-fox",
+      "path": "references/mascot/fox-technical-headphones.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "role": "Divergent technical costume and face",
+      "provenance": {
+        "source": "supplied-backup:mascot-tech-banner.png",
+        "source_sha256": "06be6cbc0c02562a35dabff463ef4be4ead391ebc19d65da37108943bc341997"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "06be6cbc0c02562a35dabff463ef4be4ead391ebc19d65da37108943bc341997",
+      "bytes": 2457888,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "reference-documentation",
+      "path": "references/website/documentation.png",
+      "category": "website",
+      "status": "reference",
+      "role": "Future docs layout; embedded API and claims unverified",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/04_mockups/documentation_layout_preview.png",
+        "source_sha256": "63f5c124e68f74ec322c4685e9373958542fcd293dbcc95b9339501733400836"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "63f5c124e68f74ec322c4685e9373958542fcd293dbcc95b9339501733400836",
+      "bytes": 893420,
+      "format": "png",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-landing",
+      "path": "references/website/landing-page.png",
+      "category": "website",
+      "status": "reference",
+      "role": "Future landing composition; embedded claims unverified",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/04_mockups/landing_page_design_full.png",
+        "source_sha256": "389025c965bb179f826180f29219c53bfaa537796a6bee0419428818a8da70bf"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "389025c965bb179f826180f29219c53bfaa537796a6bee0419428818a8da70bf",
+      "bytes": 1132261,
+      "format": "png",
+      "width": 935,
+      "height": 1683,
+      "mode": "RGB",
+      "has_alpha": false
+    }
+  ]
+}
