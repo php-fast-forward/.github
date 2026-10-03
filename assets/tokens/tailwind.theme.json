@@ -18,25 +18,46 @@
       },
       "fontFamily": {
         "h1": [
-          "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif"
         ],
         "h2": [
-          "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif"
         ],
         "body-md": [
-          "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif"
         ],
         "label": [
-          "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif"
         ],
         "code": [
-          "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Consolas",
+          "monospace"
         ]
       },
       "fontSize": {
         "h1": [
           "3rem",
           {
+            "lineHeight": "1.1",
             "letterSpacing": "-0.03em",
             "fontWeight": "750"
           }
@@ -44,24 +65,32 @@
         "h2": [
           "2rem",
           {
+            "lineHeight": "1.2",
+            "letterSpacing": "0px",
             "fontWeight": "700"
           }
         ],
         "body-md": [
           "1rem",
           {
+            "lineHeight": "1.6",
+            "letterSpacing": "0px",
             "fontWeight": "400"
           }
         ],
         "label": [
           "0.875rem",
           {
+            "lineHeight": "1.4",
+            "letterSpacing": "0px",
             "fontWeight": "600"
           }
         ],
         "code": [
           "0.875rem",
           {
+            "lineHeight": "1.6",
+            "letterSpacing": "0px",
             "fontWeight": "400"
           }
         ]

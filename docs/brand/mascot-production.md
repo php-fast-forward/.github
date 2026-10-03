@@ -1,83 +1,71 @@
-# Producing consistent fox artwork
+# Producing consistent Dash artwork
 
-Read [design.md](../../design.md), [soul.md](../../soul.md), and the
-[matrix](index.html#matrix). The [manifest](../../assets/manifest.json) identifies
-the exact references and delivered bytes.
+Read [DESIGN.md](../../DESIGN.md), [SOUL.md](../../SOUL.md), [STYLE.md](../../STYLE.md),
+and the [pose matrix](index.html#matrix). Use the versioned
+[dash-art skill](../../skills/dash-art/SKILL.md) for a new repository illustration.
+The [manifest](../../assets/manifest.json) resolves each reference to actual bytes.
 
-## Reference stack
+## Reference hierarchy
 
 | Priority | Manifest ID | What it establishes |
 | --- | --- | --- |
-| Primary | `fox-welcome` | Neutral face, silhouette, markings, warm eyes, brown contour. |
-| Corroborating | `fox-reading-wave` | The same neutral family in a learning pose. |
-| Corroborating | `fox-reading-sparkles` | Expression, paws, tail, and book relationship. |
-| Brand context | `brand-mark-fox` | Character relationship to the forward chevrons. |
-| Package costume | `reference-package-dev-tools` | Purple hoodie, tool emblem, glossy package family. |
-| Comparison only | `reference-package-enum` | Violet eyes are a deviation, not neutral canon. |
+| Primary developer master | `dash-developer-welcome` | Default face, upright proportions, dimensional fur/cloth, hoodie, one tail. |
+| Same-collection support | `dash-developer-reading`, `dash-developer-guide`, `dash-developer-build` | Learning, presenting, and composing poses with the developer identity. |
+| Secondary editorial master | `dash-editorial-hoodie` | Newly authored cute face, compact proportions, painted contours and hoodie. |
+| Same-collection support | `dash-editorial-reading`, `dash-editorial-guide`, `dash-editorial-build` | Editorial learning, presenting, and composing poses. |
+| Costume/context evidence | `reference-package-event-dispatcher`, `reference-package-fork`, `reference-package-dev-tools` | Established developer banner family; their text is not an API specification. |
+| Historical comparison | `reference-package-enum`, `reference-package-framework`, legacy profile URLs | Recorded older interpretations; not substitutes for the current masters. |
 
-Coffee/books and technical/headphone explorations are not primary face
-references. A costume reference does not establish hidden body anatomy.
+**Developer is the default.** Editorial is a deliberate secondary choice for
+welcoming, community, or a softer institutional application. Supply the actual
+master for the selected collection; a text description alone is insufficient.
+Keep that collection's face, proportions, and rendering together. The original
+cute source-pack exports are archived in the ignored local backup.
 
-## Production matrix
+## Delivered pose matrix
 
-Current exports supply welcome, reading/wave, reading/questions, and mark lockup.
-These rows plan new derivatives; they do not claim those assets already exist.
-
-| Planned derivative | Context | Pose / prop | Family |
+| Context | Pose / prop | Developer | Editorial |
 | --- | --- | --- | --- |
-| Expression sheet | Character consistency | Calm, curious, thinking, pleased | Neutral |
-| Model sheet | Illustration production | Front, three-quarter, profile, back; new views need review | Neutral |
-| Pointing / guiding | Navigation or explanation | Open paw indicating adjacent content | Neutral |
-| Building / composing | Component guide | Simple blocks or connectors | Neutral |
-| Investigating | Troubleshooting | Thoughtful expression and magnifier | Neutral |
-| Milestone / thanks | Contribution or release | Restrained celebratory gesture | Neutral |
-| Costume sheet | Tooling campaigns | Purple hoodie and documented package emblem | Glossy package |
+| Welcome / appreciation | Open-paw greeting | [Welcome](../../assets/mascot/dash-developer-welcome.png) | [Welcome](../../assets/mascot/dash-editorial-hoodie.png) |
+| Documentation / learning | Plain open book | [Reading](../../assets/mascot/dash-developer-reading.png) | [Reading](../../assets/mascot/dash-editorial-reading.png) |
+| Explanation / next step | Open-paw guiding gesture | [Guiding](../../assets/mascot/dash-developer-guide.png) | [Guiding](../../assets/mascot/dash-editorial-guide.png) |
+| Composition / building | Two plain connected blocks | [Composing](../../assets/mascot/dash-developer-build.png) | [Composing](../../assets/mascot/dash-editorial-build.png) |
 
-Record source IDs, commit/hashes, tool/version where known, exact prompt,
-dimensions, alpha, edits, and review status. Use new filenames. Newly generated
-views do not automatically become canon.
+These eight images are selected reference poses with real alpha. They are not a
+front/side/back orthographic model sheet. New hidden anatomy remains authored
+interpretation requiring visual review.
 
-## Neutral illustration brief
+## Brief and production
 
-Supply the primary and corroborating images as actual references. Replace the
-bracketed context before production:
+Specify audience, purpose, collection, package, pose, minimal props, background,
+text space, format and destination. Use the matching master plus a relevant
+same-collection pose. Preserve amber/brown eyes, orange and cream markings,
+triangular ears, nose, paws, exactly one cream-tipped tail, and the purple hoodie
+with two cream drawstrings. Keep the shared chest plain; separately compose a
+reviewed package emblem when needed. The skill's
+[prompt/receipt template](../../skills/dash-art/references/prompt-and-receipt.md)
+contains the reusable production fields.
 
-> Create a new illustration of the PHP Fast Forward fox using the supplied
-> welcome and reading images. Preserve the primary fox's face, amber/brown eyes,
-> small dark nose, rounded cream muzzle and cheeks, orange tuft and fur, large
-> triangular ears with cream inner fur, cream chest and tail tip, warm brown
-> contour, dark paws, and full sweeping tail. Match the neutral reference's
-> drawing style and proportions. Communicate [reader context] through [pose and
-> optional prop]. Keep the expression friendly, curious, and composed. Keep all
-> ears, paws, and tail inside the canvas. Use a real transparent background with
-> clear padding. No clothing, headphones, text, code, UI screenshots, watermarks,
-> or newly interpreted logo.
+Use the image capability for raster illustration. Add exact titles, commands,
+code and marks through deterministic composition afterward. Reserve clean
+space for this text; do not use banner screenshots as evidence for product APIs.
+New filenames and recorded sources preserve the identity chain.
 
-Use existing logo exports separately. Commands and interface labels remain
-editable text. For a scene, explicitly replace the cutout background instruction
-with the intended surface.
+For a cutout, inspect actual transparent pixels and the silhouette on light and
+navy. Hidden RGB values in alpha-zero pixels do not form a visible background;
+look for visible edge haze, clipping or a painted checkerboard in the rendered
+result. Compare face, markings, eyes, hoodie, limbs, and tail at the intended
+size. A file-integrity pass cannot establish likeness or licensing.
 
-## Package illustration brief
+The [generation receipts](dash-generation.json) contain the exact prompts,
+source hashes, tool information exposed, edits, and output identities used for
+this collection. Built-in image generation produced the raster files; no model
+identifier was asserted when the tool did not expose it.
 
-Supply both the neutral face and verified package costume references:
+## Next reference work
 
-> Create a PHP Fast Forward illustration for [package and reader context].
-> Preserve the neutral fox's recognizable face, orange and cream markings,
-> amber/brown eyes, ears, and full tail. Use the established purple hoodie and
-> glossy package rendering family from the supplied Dev Tools image. Compose
-> [pose and interaction] with [minimal props]. Keep the anatomy readable and
-> expression warm. Reserve clean space for separately composed title and code.
-> Do not generate code, metrics, versions, performance claims, third-party
-> logos, or new eye colors. Leave the chest suitable for adding a documented
-> package emblem separately. Use [transparent or specified scene background].
-
-## Review before cataloging
-
-Compare face and silhouette with the primary image at the intended display size.
-Check eyes, markings, ear/tail completeness, extra limbs, pose clarity, alpha
-edges, and rendering consistency. Inspect cutouts on light and navy surfaces.
-Confirm that props, symbols, and costumes are intentional.
-
-Automated validation covers the delivered file contract. Likeness and new views
-require editorial review. Classify a new output as `exploratory` until selected
-for the kit through that review.
+A deliberate future sheet can add expressions and orthographic front/profile/
+back views per collection. Keep the developer and editorial sheets separate and
+review each new view before promoting it to the kit. Record rights, source/tool
+information and any separately composed font or symbol. Logo lettering masters
+and broader source-rights work remain tracked in issue #8.

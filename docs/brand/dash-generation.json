@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-03",
+  "character": "Dash",
+  "primary_collection": "developer",
+  "secondary_collection": "editorial",
+  "records": [
+    {
+      "id": "dash-editorial-hoodie",
+      "collection": "editorial",
+      "status": "selected-reference",
+      "destination": "assets/mascot/dash-editorial-hoodie.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: identity-preserve.\nAsset type: reusable transparent mascot costume illustration for PHP Fast Forward.\nInput image 1 is the primary edit target: the neutral waving fox. Input image 2 is supporting costume context only: purple hoodie from the Dev Tools package banner.\nPrimary request: create the same full-body waving fox as input 1 wearing a simple purple hoodie. Preserve the exact recognizable face, large rounded amber-brown eyes with bright catchlights, warm brown drawing contours, orange forehead tuft, cream muzzle/cheeks, pink-and-cream large ears, tiny dark nose, dark brown paws, seated full-body pose, waving open paw, fluffy sweeping tail with cream tip, and the original hand-painted 2D illustration style and proportions. Remove only the floating heart speech bubble and add the hoodie costume. Use violet fabric around #6D28D9 with darker folds and two subtle cream drawstrings; no chest emblem, text or logos. Retain the visible tail and both feet and do not hide ears or the waving paw. Do not turn this into the glossy 3D style from image 2; image 2 supplies the hoodie concept only. One fox, no props, no background or ground, no border. Real transparent alpha, no baked checkerboard; comfortable clear padding on all four edges. No headphones, extra limbs, duplicated tail, new eye color, watermark or lettering.",
+      "sources": [
+        {
+          "path": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_footer_heart_balloon_transparent_cropped.png",
+          "sha256": "6c8eae7c1987ce8145ef0d6d3a861ec6aadd16d64bec5e2f61f67346425d2e58",
+          "role": "Original neutral face and illustration style; retained in local archive",
+          "included_in_public_kit": false
+        },
+        {
+          "path": "references/ecosystem/dev-tools.png",
+          "sha256": "12fe5ab6b4e53a616c7f2589c0262c9daca98642a4b99a5b048f60ab7fbacdca",
+          "role": "Hoodie concept only",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+        "bytes": 1244120,
+        "width": 1312,
+        "height": 1199,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    },
+    {
+      "id": "dash-editorial-reading",
+      "collection": "editorial",
+      "status": "selected-reference",
+      "destination": "assets/mascot/dash-editorial-reading.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: identity-preserve.\nAsset type: reusable transparent editorial illustration of Dash, PHP Fast Forward's fox.\nInput image 1 is the sole PRIMARY character and rendering reference: Dash's approved waving purple-hoodie illustration. Create one new pose of exactly this fox. Preserve its round face, large amber-brown eyes with white catchlights, eyebrow shape, small dark nose, orange pointed forehead tuft, pink/cream large triangular ears with brown rims, rounded cream cheeks and muzzle, warm brown outlines, dark brown paws, orange fur, exactly one fluffy sweeping orange tail with its cream tip, and the same hand-painted dimensional 2D shading. Preserve the same purple hoodie and two cream drawstrings with knotted ends, no emblem. Keep the face and body proportions matched to the primary reference; do not use glossy 3D banner rendering or a different fox model.\nReal transparent alpha, no background, floor, rectangular shadow, checkerboard, border, label, lettering, watermark or logo. Comfortable clear padding with complete ears, paws and tail. Exactly one fox, two arms, two feet, one tail; no headphones or shoes.\nSituation: documentation and learning. The fox sits comfortably holding a single open cream-paged book with a plain dark violet cover. Both paws support the book naturally. Head inclined a little toward the pages, attentive warm smile. Keep the eyes visible and face recognizable. Show both seated feet and full sweeping tail. Empty pages: no writing, code, symbols, sparkles or speech bubbles.",
+      "sources": [
+        {
+          "path": "assets/mascot/dash-editorial-hoodie.png",
+          "sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+          "role": "Primary editorial identity master",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "e0389e36c14d7d4176a82db0e08461ec364c4d45c00d31247947970d8d218551",
+        "bytes": 1313121,
+        "width": 1312,
+        "height": 1199,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    },
+    {
+      "id": "dash-editorial-guide",
+      "collection": "editorial",
+      "status": "selected-reference",
+      "destination": "assets/mascot/dash-editorial-guide.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: identity-preserve.\nAsset type: reusable transparent editorial illustration of Dash, PHP Fast Forward's fox.\nInput image 1 is the sole PRIMARY character and rendering reference: Dash's approved waving purple-hoodie illustration. Create one new pose of exactly this fox. Preserve its round face, large amber-brown eyes with white catchlights, eyebrow shape, small dark nose, orange pointed forehead tuft, pink/cream large triangular ears with brown rims, rounded cream cheeks and muzzle, warm brown outlines, dark brown paws, orange fur, exactly one fluffy sweeping orange tail with its cream tip, and the same hand-painted dimensional 2D shading. Preserve the same purple hoodie and two cream drawstrings with knotted ends, no emblem. Keep the face and body proportions matched to the primary reference; do not use glossy 3D banner rendering or a different fox model.\nReal transparent alpha, no background, floor, rectangular shadow, checkerboard, border, label, lettering, watermark or logo. Comfortable clear padding with complete ears, paws and tail. Exactly one fox, two arms, two feet, one tail; no headphones or shoes.\nSituation: explaining the next step. The fox sits in a friendly three-quarter pose, looks toward the viewer and extends one open paw gently toward the side to indicate adjacent content. The other paw rests naturally. Friendly composed smile, no index-finger distortion, no pointing stick, book, interface or props. Keep both feet visible and the whole tail clearly readable.",
+      "sources": [
+        {
+          "path": "assets/mascot/dash-editorial-hoodie.png",
+          "sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+          "role": "Primary editorial identity master",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "30797ab924e979662ce01e47cd101a429b50c8dd854d1f118575f0fcf066401c",
+        "bytes": 1225215,
+        "width": 1312,
+        "height": 1199,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    },
+    {
+      "id": "dash-editorial-build",
+      "collection": "editorial",
+      "status": "selected-reference",
+      "destination": "assets/mascot/dash-editorial-build.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: identity-preserve.\nAsset type: reusable transparent editorial illustration of Dash, PHP Fast Forward's fox.\nInput image 1 is the sole PRIMARY character and rendering reference: Dash's approved waving purple-hoodie illustration. Create one new pose of exactly this fox. Preserve its round face, large amber-brown eyes with white catchlights, eyebrow shape, small dark nose, orange pointed forehead tuft, pink/cream large triangular ears with brown rims, rounded cream cheeks and muzzle, warm brown outlines, dark brown paws, orange fur, exactly one fluffy sweeping orange tail with its cream tip, and the same hand-painted dimensional 2D shading. Preserve the same purple hoodie and two cream drawstrings with knotted ends, no emblem. Keep the face and body proportions matched to the primary reference; do not use glossy 3D banner rendering or a different fox model.\nReal transparent alpha, no background, floor, rectangular shadow, checkerboard, border, label, lettering, watermark or logo. Comfortable clear padding with complete ears, paws and tail. Exactly one fox, two arms, two feet, one tail; no headphones or shoes.\nSituation: composing reusable software components. The fox sits with two simple small geometric rounded cuboid blocks, one violet and one blue, with no markings. The blocks sit together near the fox's paws; one paw calmly places the top block while the other steadies the lower block. This is a small visual metaphor, not a real device. Interested pleased expression, all eyes/ears and full tail visible, same face proportions as the approved illustration. No extra blocks, wires, letters, diagram, UI, or machinery.",
+      "sources": [
+        {
+          "path": "assets/mascot/dash-editorial-hoodie.png",
+          "sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+          "role": "Primary editorial identity master",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "c6bec169f8a014ba3952f65efc254d77c2895ab552726a7e5cb0052a3ca17891",
+        "bytes": 1245674,
+        "width": 1312,
+        "height": 1199,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    },
+    {
+      "id": "dash-developer-welcome",
+      "collection": "developer",
+      "status": "selected-reference",
+      "destination": "assets/mascot/dash-developer-welcome.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: background-extraction.\nEdit target: input image 1. Remove ONLY all atmospheric orange, purple, cream and dark background haze/glow from around this fox. Keep the fox itself, face, fur, purple hoodie, pose, raised paw, feet and tail exactly unchanged. Produce a clean transparent cutout: all pixels outside the character alpha zero, character opaque with natural fur edge antialiasing. Preserve comfortable clear padding, no floor/shadow and no new objects, text, logo or pose change.",
+      "sources": [
+        {
+          "path": "backup/dash/generated-intermediates/developer-welcome-glow.png",
+          "sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+          "role": "Initial generated developer face/pose master; archived before final cutout review",
+          "included_in_public_kit": false
+        }
+      ],
+      "output": {
+        "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+        "bytes": 2010542,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    },
+    {
+      "id": "dash-developer-reading",
+      "collection": "developer",
+      "status": "selected-reference",
+      "destination": "assets/mascot/dash-developer-reading.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: identity-preserve.\nAsset type: reusable transparent developer illustration of Dash, PHP Fast Forward's main fox mascot.\nInput image 1 is the PRIMARY exact character and rendering reference. Keep its professional polished dimensional fur/cloth rendering, more upright body and longer muzzle, same amber-brown eyes and catchlights, brow shape, small dark nose, orange pointed forehead tuft, tall pink/cream ears with brown rims, cream cheek mask/muzzle, dark paw pads, orange fur, one cream-tipped full orange tail, violet hoodie, same two cream drawstrings/knotted ends and plain chest. Preserve the face proportions, body proportions and clothing details. ONE fox with two arms, two feet and ONE tail.\nBackground constraint: STRICT clean cutout with real transparent alpha. Every pixel outside the fox or specified prop must be completely transparent, with NO atmospheric glow, fog, colored halo, bokeh, scene, black backing, checkerboard, floor or shadow. The character itself is fully opaque. Comfortable padding, no clipped ears, paws, feet or tail. No text, logo, emblem, headphones, shoes, code or watermarks.\nSituation: learning and documentation. Dash sits comfortably, holding a single open book with plain cream pages and a dark violet cover using both paws. Head inclined slightly to the pages while his face and warm eyes remain visible. Attentive composed smile. Retain both feet and full tail. Blank pages, no writing, symbols, speech bubbles or sparkles.",
+      "sources": [
+        {
+          "path": "backup/dash/generated-intermediates/developer-welcome-glow.png",
+          "sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+          "role": "Initial generated developer face/pose master; archived before final cutout review",
+          "included_in_public_kit": false
+        }
+      ],
+      "output": {
+        "sha256": "bb87dc5d6a8bbcde4510ca5f99e19a6a216a577b9c83aac2c5947454e2b1e982",
+        "bytes": 2214296,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    },
+    {
+      "id": "dash-developer-guide",
+      "collection": "developer",
+      "status": "selected-reference",
+      "destination": "assets/mascot/dash-developer-guide.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: identity-preserve.\nAsset type: reusable transparent developer illustration of Dash, PHP Fast Forward's main fox mascot.\nInput image 1 is the PRIMARY exact character and rendering reference. Keep its professional polished dimensional fur/cloth rendering, more upright body and longer muzzle, same amber-brown eyes and catchlights, brow shape, small dark nose, orange pointed forehead tuft, tall pink/cream ears with brown rims, cream cheek mask/muzzle, dark paw pads, orange fur, one cream-tipped full orange tail, violet hoodie, same two cream drawstrings/knotted ends and plain chest. Preserve the face proportions, body proportions and clothing details. ONE fox with two arms, two feet and ONE tail.\nBackground constraint: STRICT clean cutout with real transparent alpha. Every pixel outside the fox or specified prop must be completely transparent, with NO atmospheric glow, fog, colored halo, bokeh, scene, black backing, checkerboard, floor or shadow. The character itself is fully opaque. Comfortable padding, no clipped ears, paws, feet or tail. No text, logo, emblem, headphones, shoes, code or watermarks.\nSituation: navigation and explaining the next step. Dash stands in a calm front three-quarter pose, extending one open paw toward the side as a welcoming guiding gesture. Other paw rests naturally near the hoodie pocket. Look toward the reader with a confident kind smile; warm eyes and exact same face. Keep both feet and full tail visible. No pointing finger distortion or props.",
+      "sources": [
+        {
+          "path": "backup/dash/generated-intermediates/developer-welcome-glow.png",
+          "sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+          "role": "Initial generated developer face/pose master; archived before final cutout review",
+          "included_in_public_kit": false
+        }
+      ],
+      "output": {
+        "sha256": "84f32b5236d9905f609f379abc15d8ccf1253503e402de658c8005d3923e6e93",
+        "bytes": 2164660,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    },
+    {
+      "id": "dash-developer-build",
+      "collection": "developer",
+      "status": "selected-reference",
+      "destination": "assets/mascot/dash-developer-build.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: identity-preserve.\nAsset type: reusable transparent developer illustration of Dash, PHP Fast Forward's main fox mascot.\nInput image 1 is the PRIMARY exact character and rendering reference. Keep its professional polished dimensional fur/cloth rendering, more upright body and longer muzzle, same amber-brown eyes and catchlights, brow shape, small dark nose, orange pointed forehead tuft, tall pink/cream ears with brown rims, cream cheek mask/muzzle, dark paw pads, orange fur, one cream-tipped full orange tail, violet hoodie, same two cream drawstrings/knotted ends and plain chest. Preserve the face proportions, body proportions and clothing details. ONE fox with two arms, two feet and ONE tail.\nBackground constraint: STRICT clean cutout with real transparent alpha. Every pixel outside the fox or specified prop must be completely transparent, with NO atmospheric glow, fog, colored halo, bokeh, scene, black backing, checkerboard, floor or shadow. The character itself is fully opaque. Comfortable padding, no clipped ears, paws, feet or tail. No text, logo, emblem, headphones, shoes, code or watermarks.\nSituation: composing reusable software components. Dash sits, thoughtfully placing one plain violet rounded cuboid block onto a plain blue rounded cuboid block. One paw places the upper block, the other steadies the lower block. Interested pleased smile and the exact same recognizable face as the master. Two small blocks only, no markings or letters; keep his body readable, both ears and feet and full tail visible. No other devices, wires, diagrams, interface or machinery.",
+      "sources": [
+        {
+          "path": "backup/dash/generated-intermediates/developer-welcome-glow.png",
+          "sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+          "role": "Initial generated developer face/pose master; archived before final cutout review",
+          "included_in_public_kit": false
+        }
+      ],
+      "output": {
+        "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303",
+        "bytes": 2128379,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    },
+    {
+      "id": "dash-developer-welcome-initial",
+      "collection": "developer",
+      "status": "archived-intermediate",
+      "destination": "backup/dash/generated-intermediates/developer-welcome-glow.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Use case: illustration-story.\nAsset type: standalone transparent master reference of Dash, the developer mascot of PHP Fast Forward.\nInput image 1: PRIMARY character reference, the fox at the center of the Event Dispatcher banner. Input image 2: supporting reference for the same fox face and purple hoodie in the Fork banner. Input image 3: supporting glossy fabric/fur rendering from Dev Tools.\nCreate ONE clean full-body isolated illustration of that same recognizable fox, in a relaxed front three-quarter standing welcome pose, one paw gently raised with its palm visible. Match the developer-banner rendering family: polished dimensional shaded fur and cloth, a somewhat longer fox muzzle, proportionate warm amber-brown eyes, confident but kind brows and smile, pointed orange forehead tuft, tall triangular ears with dark brown rims and pink/cream interiors, white-cream cheek mask and muzzle, black/dark nose, orange fur and one full fluffy orange tail with a cream tip. Keep the face closest to the Event Dispatcher primary, avoiding the more round oversized chibi face of the neutral editorial kit. Purple hoodie around #6D28D9, cream drawstrings, small realistic fabric folds, no chest emblem. Fur-covered orange legs and brown paws; no pants, shoes, devices or props. Compose a calm capable developer companion rather than a hyperactive baby toy. This is the full-body master pose used for subsequent illustrations, with readable anatomy and exactly two arms, two legs, one tail. Keep all ears, feet, tail and paws inside the canvas with comfortable transparent padding. Real alpha transparency, no ground/shadow rectangle, no checkerboard, background, interface, code, labels, text, logo, badge, headphones or watermark.",
+      "sources": [
+        {
+          "path": "references/ecosystem/event-dispatcher.png",
+          "sha256": "86db340858ffb798d7416601ffef474d020ede1904786ecd7045590a5af3ccaf",
+          "role": "Primary developer character context",
+          "included_in_public_kit": true
+        },
+        {
+          "path": "references/ecosystem/fork.png",
+          "sha256": "fc0812a2bbcaa50eb8a79c361aa95dde11f3b5422b4901527ecdbcc65b68a980",
+          "role": "Corroborating developer face/costume",
+          "included_in_public_kit": true
+        },
+        {
+          "path": "references/ecosystem/dev-tools.png",
+          "sha256": "12fe5ab6b4e53a616c7f2589c0262c9daca98642a4b99a5b048f60ab7fbacdca",
+          "role": "Developer fur/cloth finish",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+        "bytes": 2039085,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "has_alpha": true
+      },
+      "review": {
+        "date": "2026-10-03",
+        "likeness": "Compared visually within collection: face, markings, hoodie, ears, paws and one tail.",
+        "anatomy": "Authored poses; not an orthographic turnaround.",
+        "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
+        "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
+      }
+    }
+  ]
+}

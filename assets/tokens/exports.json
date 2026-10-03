@@ -1,23 +1,25 @@
 {
   "schema_version": 1,
-  "source": "design.md",
-  "source_sha256": "cd659b234b989fe4ad39cea86a72c231656e5504f69922336e7c0714f226a99a",
+  "source": "DESIGN.md",
+  "source_sha256": "3ce37c01bab64aacb8f61a35e419672c62e3b89ffbbfd56e9a3232bfef44f763",
   "generator": "@google/design.md@0.4.0",
+  "normalization": "scripts/design-exports.mjs",
+  "normalization_sha256": "da0890be9271630def471f51f18d8bc7e4041c352e99e80e1dfd2bb0a3ab128a",
   "outputs": [
     {
       "path": "tokens.json",
       "format": "dtcg",
-      "sha256": "33082ef8910aa5dc8662aba6536e5c4dcbd3c743cea6235821e6d9789807948d"
+      "sha256": "426941e7ae029805fb5454ec0359c9f818233d0c806831653f8b824b3dc972e5"
     },
     {
       "path": "tailwind.theme.json",
       "format": "json-tailwind",
-      "sha256": "7c8872e530d15cbd403e631c39927a91ffd3a9c49866682e3ef1d8a08faaf211"
+      "sha256": "08732a06756125c7d54e1d7280d36cc73c773969aeb162b201a22156bf19d2b7"
     },
     {
       "path": "theme.css",
       "format": "css-tailwind",
-      "sha256": "1e104b06fcdb4476b2d63f5686f6a9bb5f225492ac345a8f255ea24aa0dae586"
+      "sha256": "3192e1a9d7228300e0be0a23b95df8297439f440df74fac2abd53383c3cea2f2"
     }
   ]
 }

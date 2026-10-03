@@ -20,7 +20,7 @@ Use public, sanitized material in examples, screenshots, and logs. Exclude secre
 
 ## Brand and asset contributions
 
-For work in the design repository, read [design.md](https://github.com/php-fast-forward/.github/blob/main/design.md), [style.md](https://github.com/php-fast-forward/.github/blob/main/style.md), [soul.md](https://github.com/php-fast-forward/.github/blob/main/soul.md), and [the asset guide](https://github.com/php-fast-forward/.github/blob/main/assets/README.md). The [asset manifest](https://github.com/php-fast-forward/.github/blob/main/assets/manifest.json) records asset identity, origin, and reuse status.
+For work in the design repository, read [DESIGN.md](https://github.com/php-fast-forward/.github/blob/main/DESIGN.md), [STYLE.md](https://github.com/php-fast-forward/.github/blob/main/STYLE.md), [SOUL.md](https://github.com/php-fast-forward/.github/blob/main/SOUL.md), and [the asset guide](https://github.com/php-fast-forward/.github/blob/main/assets/README.md). The [asset manifest](https://github.com/php-fast-forward/.github/blob/main/assets/manifest.json) records asset identity, origin, and reuse status.
 
 Keep editable sources, references, and reusable exports identifiable. Record the origin, author or generation method where known, transformations, and permission or license status. Mark unknown information explicitly. Storage in the repository does not itself grant reuse rights, and a repository license must not be assumed to cover every illustration, font, logo, or reference.
 

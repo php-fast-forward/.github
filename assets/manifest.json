@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "identity_version": "2026-10-03",
-  "description": "Selected reusable assets and classified references; visual canon is design.md.",
+  "description": "Selected reusable assets and classified references; visual canon is DESIGN.md.",
   "assets": [
     {
       "id": "background-footer",
@@ -23,25 +23,6 @@
       "has_alpha": false
     },
     {
-      "id": "background-fox-forward",
-      "path": "assets/backgrounds/fox-forward.png",
-      "category": "background",
-      "status": "canonical",
-      "role": "Editorial fox and chevrons composition",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/03_backgrounds/hero_background_with_fox_and_arrows.png",
-        "source_sha256": "3f84cd1fd4966a4144a1a3b355267870c367326f172d7e390fa980f64d509971"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "3f84cd1fd4966a4144a1a3b355267870c367326f172d7e390fa980f64d509971",
-      "bytes": 1415938,
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "mode": "RGB",
-      "has_alpha": false
-    },
-    {
       "id": "background-hero",
       "path": "assets/backgrounds/hero-trails.png",
       "category": "background",
@@ -59,44 +40,6 @@
       "height": 941,
       "mode": "RGB",
       "has_alpha": false
-    },
-    {
-      "id": "brand-avatar-navy",
-      "path": "assets/brand/avatar-navy.png",
-      "category": "brand",
-      "status": "canonical",
-      "role": "Square avatar on navy",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/github_avatar_fox_navy_background.png",
-        "source_sha256": "eb1a4ad2eea501c937bf1bc6e4572ce86bf41f80303d4805cc8438a0e0aa0ea5"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "eb1a4ad2eea501c937bf1bc6e4572ce86bf41f80303d4805cc8438a0e0aa0ea5",
-      "bytes": 326254,
-      "format": "png",
-      "width": 1024,
-      "height": 1024,
-      "mode": "RGB",
-      "has_alpha": false
-    },
-    {
-      "id": "brand-mark-fox",
-      "path": "assets/brand/mark-with-fox.png",
-      "category": "brand",
-      "status": "canonical",
-      "role": "Framework mark with neutral fox",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_mark_with_fox_transparent_cropped.png",
-        "source_sha256": "43ee673e5e47e2718dad6fe79642fde4bd54e9767575963f13cc6f683d94d7d8"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "43ee673e5e47e2718dad6fe79642fde4bd54e9767575963f13cc6f683d94d7d8",
-      "bytes": 459870,
-      "format": "png",
-      "width": 1009,
-      "height": 842,
-      "mode": "RGBA",
-      "has_alpha": true
     },
     {
       "id": "brand-mark",
@@ -133,82 +76,6 @@
       "format": "png",
       "width": 1581,
       "height": 281,
-      "mode": "RGBA",
-      "has_alpha": true
-    },
-    {
-      "id": "brand-wordmark-fox-light",
-      "path": "assets/brand/wordmark-with-fox-light.png",
-      "category": "brand",
-      "status": "canonical",
-      "role": "Fox wordmark for light surfaces",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_horizontal_with_fox_transparent_cropped.png",
-        "source_sha256": "6bf687ea5a01e886d16229613ce20b143a2b29b64aacac1c366e7d8d27271a36"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "6bf687ea5a01e886d16229613ce20b143a2b29b64aacac1c366e7d8d27271a36",
-      "bytes": 272703,
-      "format": "png",
-      "width": 1632,
-      "height": 439,
-      "mode": "RGBA",
-      "has_alpha": true
-    },
-    {
-      "id": "fox-reading-sparkles",
-      "path": "assets/mascot/fox-reading-sparkles.png",
-      "category": "mascot",
-      "status": "canonical",
-      "role": "Documentation and concepts",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_reading_book_sparkles_transparent_cropped.png",
-        "source_sha256": "b881d2cca528f9f55d5e101ff61c46825442ee3a1b16c2f88825676cfa1f7b21"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "b881d2cca528f9f55d5e101ff61c46825442ee3a1b16c2f88825676cfa1f7b21",
-      "bytes": 966786,
-      "format": "png",
-      "width": 1092,
-      "height": 1007,
-      "mode": "RGBA",
-      "has_alpha": true
-    },
-    {
-      "id": "fox-reading-wave",
-      "path": "assets/mascot/fox-reading-wave.png",
-      "category": "mascot",
-      "status": "canonical",
-      "role": "Learning and first steps",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_reading_open_book_transparent_cropped.png",
-        "source_sha256": "521d871a5f2b95b9134635897cf827b06905bda46f57d1850f80e737033ec8e6"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "521d871a5f2b95b9134635897cf827b06905bda46f57d1850f80e737033ec8e6",
-      "bytes": 943886,
-      "format": "png",
-      "width": 1216,
-      "height": 990,
-      "mode": "RGBA",
-      "has_alpha": true
-    },
-    {
-      "id": "fox-welcome",
-      "path": "assets/mascot/fox-welcome.png",
-      "category": "mascot",
-      "status": "canonical",
-      "role": "Primary neutral reference; welcome and appreciation",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_footer_heart_balloon_transparent_cropped.png",
-        "source_sha256": "6c8eae7c1987ce8145ef0d6d3a861ec6aadd16d64bec5e2f61f67346425d2e58"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "6c8eae7c1987ce8145ef0d6d3a861ec6aadd16d64bec5e2f61f67346425d2e58",
-      "bytes": 1077535,
-      "format": "png",
-      "width": 1197,
-      "height": 1093,
       "mode": "RGBA",
       "has_alpha": true
     },
@@ -316,7 +183,7 @@
         "visual_notes": [
           "Established package costume: orange fox with purple hoodie, white wrench-and-gear chest emblem and amber eyes.",
           "Glossy shaded fur, rounded 3D icon tiles, lavender surfaces; mascot operates a tooling mixing console.",
-          "No headphones. This is a package variant and does not replace the neutral unclothed base fox."
+          "Historical public hoodie reference; the newly authored Dash developer master now governs future package artwork."
         ]
       },
       "rights": "Not recorded in supplied source; no new asset license is asserted.",
@@ -326,7 +193,8 @@
       "width": 1774,
       "height": 887,
       "mode": "RGB",
-      "has_alpha": false
+      "has_alpha": false,
+      "family": "developer"
     },
     {
       "id": "reference-package-enum",
@@ -354,7 +222,8 @@
       "width": 1693,
       "height": 929,
       "mode": "RGB",
-      "has_alpha": false
+      "has_alpha": false,
+      "family": "developer"
     },
     {
       "id": "reference-package-framework",
@@ -382,7 +251,8 @@
       "width": 1536,
       "height": 1024,
       "mode": "RGB",
-      "has_alpha": false
+      "has_alpha": false,
+      "family": "historical-editorial"
     },
     {
       "id": "reference-icon-collection-reference-transparent-cropped-png",
@@ -486,44 +356,6 @@
       "embedded_raster": false
     },
     {
-      "id": "exploratory-coffee-fox",
-      "path": "references/mascot/fox-coffee-books.png",
-      "category": "mascot",
-      "status": "exploratory",
-      "role": "Divergent chibi reading illustration",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/02_mascots/fox_reading_coffee_books_transparent_cropped.png",
-        "source_sha256": "5f64488e24ecbe17b9c7b46d4ec388d736e0ecf7fef317a6db47efdcb0fcc0c9"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "5f64488e24ecbe17b9c7b46d4ec388d736e0ecf7fef317a6db47efdcb0fcc0c9",
-      "bytes": 1192860,
-      "format": "png",
-      "width": 929,
-      "height": 781,
-      "mode": "RGBA",
-      "has_alpha": true
-    },
-    {
-      "id": "exploratory-technical-fox",
-      "path": "references/mascot/fox-technical-headphones.png",
-      "category": "mascot",
-      "status": "exploratory",
-      "role": "Divergent technical costume and face",
-      "provenance": {
-        "source": "supplied-backup:mascot-tech-banner.png",
-        "source_sha256": "06be6cbc0c02562a35dabff463ef4be4ead391ebc19d65da37108943bc341997"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "06be6cbc0c02562a35dabff463ef4be4ead391ebc19d65da37108943bc341997",
-      "bytes": 2457888,
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "mode": "RGBA",
-      "has_alpha": true
-    },
-    {
       "id": "reference-documentation",
       "path": "references/website/documentation.png",
       "category": "website",
@@ -560,6 +392,734 @@
       "height": 1683,
       "mode": "RGB",
       "has_alpha": false
+    },
+    {
+      "id": "reference-package-agents",
+      "path": "references/ecosystem/agents.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/agents/docs/_static/mascot-banner.png",
+        "source_sha256": "c8f248fef95ffff8649cc9987ed9fe652a8e6cab40ecbc3a9e3b6f451b5a5318",
+        "repository": "php-fast-forward/agents",
+        "source_scope": "tracked-local-branch",
+        "local_branch": "task/1-initial-agents-package",
+        "local_checkout_head": "e8b0f95695b2ff79b228c939837df80141a4a62b",
+        "source_tracked": true,
+        "source_in_local_head": true,
+        "git_blob_sha": "d54c7b9ded0a4a145673c4bc87442c36f98a2f14",
+        "public_default_branch_head_on_audit": "92c785da6fba85d5e0b414e32ee8c1b344e37f06",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "resource bundle chest emblem",
+          "box and folder props",
+          "light lavender background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "c8f248fef95ffff8649cc9987ed9fe652a8e6cab40ecbc3a9e3b6f451b5a5318",
+      "bytes": 2422381,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-changelog",
+      "path": "references/ecosystem/changelog.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/changelog/docs/_static/mascot-banner.png",
+        "source_sha256": "1aba6b4222b9f51f528f010832d891955350b50b3d6dcc3fd37711a65fe6bc52",
+        "repository": "php-fast-forward/changelog",
+        "source_scope": "untracked-local-source",
+        "local_branch": "task/1-bootstrap-standalone-changelog-package",
+        "local_checkout_head": "3454616467dec4be832c9e432d9788dabe652091",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "5d79fbae102dd7b47f71333d3fdf1a0a9ffddbf8",
+        "public_default_branch_head_on_audit": "556ecf882ca841102f0474f3367a8f18d54db634",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "document/check chest emblem",
+          "writing pen and notebook",
+          "light lavender background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "1aba6b4222b9f51f528f010832d891955350b50b3d6dcc3fd37711a65fe6bc52",
+      "bytes": 2368709,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-clock",
+      "path": "references/ecosystem/clock.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/clock/docs/_static/mascot-banner.png",
+        "source_sha256": "5578c516e465c665387ef6fc788987a560fb727d6a2e4782fbb806d86b70aef6",
+        "repository": "php-fast-forward/clock",
+        "source_scope": "untracked-local-source",
+        "local_branch": "main",
+        "local_checkout_head": "d578f5385d7add0bd614ce7d2aa8311cced33234",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "f1b982b46943fef9c08e547ffda6d7ba6adfe9fb",
+        "public_default_branch_head_on_audit": "d578f5385d7add0bd614ce7d2aa8311cced33234",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "clock chest emblem",
+          "handheld glowing clock",
+          "light lavender background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "5578c516e465c665387ef6fc788987a560fb727d6a2e4782fbb806d86b70aef6",
+      "bytes": 2076902,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-composer-installers",
+      "path": "references/ecosystem/composer-installers.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/composer-installers/docs/_static/mascot-banner.png",
+        "source_sha256": "c00b9f06a0fc4f88623705ebaf72afff02e2dc72ad2a955d80cf6a758741623e",
+        "repository": "php-fast-forward/composer-installers",
+        "source_scope": "untracked-local-source",
+        "local_branch": "main",
+        "local_checkout_head": "c7e2568e3480eed950fbb6621b235265de71dfe4",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "c903a8c992830d540fae11e05cf79b40e46110c0",
+        "public_default_branch_head_on_audit": "c7e2568e3480eed950fbb6621b235265de71dfe4",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "package cube chest emblem",
+          "box and folder props",
+          "light lavender background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "c00b9f06a0fc4f88623705ebaf72afff02e2dc72ad2a955d80cf6a758741623e",
+      "bytes": 2256287,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-config",
+      "path": "references/ecosystem/config.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/config/docs/_static/mascot-banner.png",
+        "source_sha256": "bf26ec54f07482a0ec34a8e82769a15cb0d49b5497c8d8b04419709692905534",
+        "repository": "php-fast-forward/config",
+        "source_scope": "untracked-local-source",
+        "local_branch": "main",
+        "local_checkout_head": "bee3ac57a9f7f0a377022d5723c71e7c9bea4242",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "57b3a888158524b1313007336b05d98b867a671e",
+        "public_default_branch_head_on_audit": "bee3ac57a9f7f0a377022d5723c71e7c9bea4242",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "gear chest emblem",
+          "glowing configuration cube",
+          "dark navy background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "bf26ec54f07482a0ec34a8e82769a15cb0d49b5497c8d8b04419709692905534",
+      "bytes": 2235506,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-container",
+      "path": "references/ecosystem/container.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/container/docs/_static/mascot-banner.png",
+        "source_sha256": "4fa62e482e8c9b9415365e03e85cc26a791b4a797123bb8ee0f949ae052f46b5",
+        "repository": "php-fast-forward/container",
+        "source_scope": "untracked-local-source",
+        "local_branch": "main",
+        "local_checkout_head": "e9af924a0c92a3ebc0992ecede07631ae943accf",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "c2849e3050dddfa7ddc3490f72dea297c85295f1",
+        "public_default_branch_head_on_audit": "e9af924a0c92a3ebc0992ecede07631ae943accf",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "wire cube chest emblem",
+          "glowing container cube",
+          "dark navy background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "4fa62e482e8c9b9415365e03e85cc26a791b4a797123bb8ee0f949ae052f46b5",
+      "bytes": 2213330,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-defer",
+      "path": "references/ecosystem/defer.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/defer/docs/_static/mascot-banner.png",
+        "source_sha256": "0997c0ea41aff048c27ae6d4e7bca9d48ad4a8cee63b01911bc8e832d333b004",
+        "repository": "php-fast-forward/defer",
+        "source_scope": "untracked-local-source",
+        "local_branch": "main",
+        "local_checkout_head": "d0d4847121b995a4dbd9ffd31b0831856dc9975f",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "c3d60e616fc70710d4b09b64e536449522ad7268",
+        "public_default_branch_head_on_audit": "d0d4847121b995a4dbd9ffd31b0831856dc9975f",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "clock/return chest emblem",
+          "resource box and glowing clock token",
+          "light lavender background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "0997c0ea41aff048c27ae6d4e7bca9d48ad4a8cee63b01911bc8e832d333b004",
+      "bytes": 2087726,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-event-dispatcher",
+      "path": "references/ecosystem/event-dispatcher.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/event-dispatcher/docs/_static/mascot-banner.png",
+        "source_sha256": "86db340858ffb798d7416601ffef474d020ede1904786ecd7045590a5af3ccaf",
+        "repository": "php-fast-forward/event-dispatcher",
+        "source_scope": "untracked-local-source",
+        "local_branch": "main",
+        "local_checkout_head": "41f473b73577d661334ac467f5677a0a26d7a161",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "92def24fe53e27c28c3ca93f414ac0e7609bf614",
+        "public_default_branch_head_on_audit": "41f473b73577d661334ac467f5677a0a26d7a161",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "broadcast chest emblem",
+          "event cards and routing diagram",
+          "dark navy background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "86db340858ffb798d7416601ffef474d020ede1904786ecd7045590a5af3ccaf",
+      "bytes": 2280473,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-fork",
+      "path": "references/ecosystem/fork.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/fork/docs/_static/mascot-banner.png",
+        "source_sha256": "fc0812a2bbcaa50eb8a79c361aa95dde11f3b5422b4901527ecdbcc65b68a980",
+        "repository": "php-fast-forward/fork",
+        "source_scope": "untracked-local-source",
+        "local_branch": "main",
+        "local_checkout_head": "97d7637ff02f1142256f78d9d4ac95a0a06a7d28",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "66303f7b34aa97d66d35edb1944882254474dbee",
+        "public_default_branch_head_on_audit": "97d7637ff02f1142256f78d9d4ac95a0a06a7d28",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "process tree chest emblem",
+          "worker orchestration console",
+          "dark navy background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "fc0812a2bbcaa50eb8a79c361aa95dde11f3b5422b4901527ecdbcc65b68a980",
+      "bytes": 2169393,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-github-actions",
+      "path": "references/ecosystem/github-actions.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/github-actions/docs/_static/mascot-banner.png",
+        "source_sha256": "bd1aa529b88328ec7aca54ea51cb495cb1dc8e90639cb6968e9f12c4d22bddac",
+        "repository": "php-fast-forward/github-actions",
+        "source_scope": "untracked-local-source",
+        "local_branch": "task/1-bootstrap-console-runtime",
+        "local_checkout_head": "28da75de2b349d4c01809994d1661062f7daf0dd",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "c6794cf345ed7644573abc614cea571e1f7a5244",
+        "public_default_branch_head_on_audit": "124bb800b6acc89c0c96209fb164b8b5ef743762",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "workflow graph chest emblem",
+          "automation console",
+          "light lavender background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "bd1aa529b88328ec7aca54ea51cb495cb1dc8e90639cb6968e9f12c4d22bddac",
+      "bytes": 2431724,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "reference-package-iterators",
+      "path": "references/ecosystem/iterators.png",
+      "category": "ecosystem",
+      "status": "package-variant",
+      "family": "developer",
+      "role": "Locally supplied package illustration; not claimed as shipped default-branch art",
+      "provenance": {
+        "source": "local-checkout:php-fast-forward/iterators/docs/_static/mascot-banner.png",
+        "source_sha256": "2da1304b1af27844f853aca004954bb7277b9c9713392ef76952db404b3e0dc9",
+        "repository": "php-fast-forward/iterators",
+        "source_scope": "untracked-local-source",
+        "local_branch": "main",
+        "local_checkout_head": "c339bab21b85140c22ab517c1ef9d2c7cd27d82c",
+        "source_tracked": false,
+        "source_in_local_head": false,
+        "git_blob_sha": "5fdf5cbcf892e3b6ca1f1ff9824d24aa5df5db5e",
+        "public_default_branch_head_on_audit": "c339bab21b85140c22ab517c1ef9d2c7cd27d82c",
+        "source_on_public_default_branch": false,
+        "verified_on": "2026-10-03",
+        "visual_notes": [
+          "purple hoodie",
+          "cream drawstrings",
+          "orange fur",
+          "brown eyes",
+          "circular arrows chest emblem",
+          "data sequence and transformations",
+          "light lavender background"
+        ],
+        "embedded_copy_status": "Visual reference only; code, APIs and claims in the banner require separate verification."
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "2da1304b1af27844f853aca004954bb7277b9c9713392ef76952db404b3e0dc9",
+      "bytes": 2228604,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "mark-compact",
+      "path": "assets/brand/mark-compact.svg",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Compact color mark for small UI applications",
+      "provenance": {
+        "source": "derived:assets/brand/mark.png",
+        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
+        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
+        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
+      },
+      "rights": "New repository-authored geometry; no separate artwork license is declared.",
+      "sha256": "8661e34fc7c57ddd2f4c35a6433855e07c3d98efb5bf174d69e17c0ede99af55",
+      "bytes": 625,
+      "format": "svg",
+      "embedded_raster": false
+    },
+    {
+      "id": "mark-compact-ink",
+      "path": "assets/brand/mark-compact-ink.svg",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Compact monochrome mark for light surfaces",
+      "provenance": {
+        "source": "derived:assets/brand/mark.png",
+        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
+        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
+        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
+      },
+      "rights": "New repository-authored geometry; no separate artwork license is declared.",
+      "sha256": "e448cc1bdcb10a84601cb5d65c6bee7ac61d9cdefca2320695871c295d7a7137",
+      "bytes": 360,
+      "format": "svg",
+      "embedded_raster": false
+    },
+    {
+      "id": "mark-compact-white",
+      "path": "assets/brand/mark-compact-white.svg",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Compact monochrome mark for navy surfaces",
+      "provenance": {
+        "source": "derived:assets/brand/mark.png",
+        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
+        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
+        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
+      },
+      "rights": "New repository-authored geometry; no separate artwork license is declared.",
+      "sha256": "c0c86a8dbfa21ff774dbfb14dc7fb2b6c241d355d1b977066e87155adb7a722c",
+      "bytes": 362,
+      "format": "svg",
+      "embedded_raster": false
+    },
+    {
+      "id": "dash-editorial-hoodie",
+      "path": "assets/mascot/dash-editorial-hoodie.png",
+      "category": "mascot",
+      "status": "package-variant",
+      "family": "editorial",
+      "role": "Secondary editorial identity master",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-editorial-hoodie",
+        "source_sha256": "6c8eae7c1987ce8145ef0d6d3a861ec6aadd16d64bec5e2f61f67346425d2e58",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "reference-package-dev-tools"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+      "bytes": 1244120,
+      "format": "png",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-editorial-reading",
+      "path": "assets/mascot/dash-editorial-reading.png",
+      "category": "mascot",
+      "status": "package-variant",
+      "family": "editorial",
+      "role": "Same-collection pose reference",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-editorial-reading",
+        "source_sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "dash-editorial-hoodie"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "e0389e36c14d7d4176a82db0e08461ec364c4d45c00d31247947970d8d218551",
+      "bytes": 1313121,
+      "format": "png",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-editorial-guide",
+      "path": "assets/mascot/dash-editorial-guide.png",
+      "category": "mascot",
+      "status": "package-variant",
+      "family": "editorial",
+      "role": "Same-collection pose reference",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-editorial-guide",
+        "source_sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "dash-editorial-hoodie"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "30797ab924e979662ce01e47cd101a429b50c8dd854d1f118575f0fcf066401c",
+      "bytes": 1225215,
+      "format": "png",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-editorial-build",
+      "path": "assets/mascot/dash-editorial-build.png",
+      "category": "mascot",
+      "status": "package-variant",
+      "family": "editorial",
+      "role": "Same-collection pose reference",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-editorial-build",
+        "source_sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "dash-editorial-hoodie"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "c6bec169f8a014ba3952f65efc254d77c2895ab552726a7e5cb0052a3ca17891",
+      "bytes": 1245674,
+      "format": "png",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-developer-welcome",
+      "path": "assets/mascot/dash-developer-welcome.png",
+      "category": "mascot",
+      "status": "canonical",
+      "family": "developer",
+      "role": "Primary developer identity master",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-welcome",
+        "source_sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "reference-package-event-dispatcher",
+          "reference-package-fork",
+          "reference-package-dev-tools"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+      "bytes": 2010542,
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-developer-reading",
+      "path": "assets/mascot/dash-developer-reading.png",
+      "category": "mascot",
+      "status": "canonical",
+      "family": "developer",
+      "role": "Same-collection pose reference",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-reading",
+        "source_sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "reference-package-event-dispatcher",
+          "reference-package-fork",
+          "reference-package-dev-tools"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "bb87dc5d6a8bbcde4510ca5f99e19a6a216a577b9c83aac2c5947454e2b1e982",
+      "bytes": 2214296,
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-developer-guide",
+      "path": "assets/mascot/dash-developer-guide.png",
+      "category": "mascot",
+      "status": "canonical",
+      "family": "developer",
+      "role": "Same-collection pose reference",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-guide",
+        "source_sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "reference-package-event-dispatcher",
+          "reference-package-fork",
+          "reference-package-dev-tools"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "84f32b5236d9905f609f379abc15d8ccf1253503e402de658c8005d3923e6e93",
+      "bytes": 2164660,
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-developer-build",
+      "path": "assets/mascot/dash-developer-build.png",
+      "category": "mascot",
+      "status": "canonical",
+      "family": "developer",
+      "role": "Same-collection pose reference",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-build",
+        "source_sha256": "430d20cf74eb0c800b8b5f6d709dfeb18fffd44da40a2af99f8c3018e968dceb",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "reference-package-event-dispatcher",
+          "reference-package-fork",
+          "reference-package-dev-tools"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303",
+      "bytes": 2128379,
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "documentation-style",
+      "path": "assets/styles/documentation.css",
+      "category": "styles",
+      "status": "canonical",
+      "role": "Reusable browser stylesheet authored for this repository",
+      "provenance": {
+        "source": "repository-authored:assets/styles/documentation.css",
+        "source_sha256": "8d7db55741cda9b46ffc10b9d3ccbf078cfb99a64e68ccea82628ac8d66369db",
+        "authoring_date": "2026-10-03",
+        "design_source": "DESIGN.md"
+      },
+      "rights": "New repository-authored stylesheet; no third-party code or font is bundled.",
+      "sha256": "14961da89d16ad7851e48995a2a9a8028c5adc8dc12556fac8cdaa315365761c",
+      "bytes": 18029,
+      "format": "css"
+    },
+    {
+      "id": "brand-style",
+      "path": "assets/styles/brand.css",
+      "category": "styles",
+      "status": "canonical",
+      "role": "Reusable browser stylesheet authored for this repository",
+      "provenance": {
+        "source": "repository-authored:assets/styles/brand.css",
+        "source_sha256": "26d256b652554477ed2c2e47f9299a78ec6e60d4c5cb7ffc5e90339f90ffce0e",
+        "authoring_date": "2026-10-03",
+        "design_source": "DESIGN.md"
+      },
+      "rights": "New repository-authored stylesheet; no third-party code or font is bundled.",
+      "sha256": "26d256b652554477ed2c2e47f9299a78ec6e60d4c5cb7ffc5e90339f90ffce0e",
+      "bytes": 8969,
+      "format": "css"
     }
   ]
 }

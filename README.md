@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/brand/wordmark-with-fox-light.png" alt="PHP Fast Forward" width="640">
+  <img src="./assets/brand/wordmark-light.png" alt="PHP Fast Forward" width="640">
 </p>
 
 # PHP Fast Forward identity and organization profile
@@ -13,22 +13,26 @@ Framework code and tooling belong in their own
 
 | Source | Responsibility |
 | --- | --- |
-| [design.md](design.md) | Visual canon, UI tokens, logo applications, mascot anatomy, and pose/use matrix. |
-| [style.md](style.md) | Public voice, language, terminology, and evidence in product claims. |
-| [soul.md](soul.md) | Character, values, and the Fast Forward fox's relationship with people. |
+| [DESIGN.md](DESIGN.md) | Visual canon, UI tokens, logo applications, mascot anatomy, and pose/use matrix. |
+| [STYLE.md](STYLE.md) | Public voice, language, terminology, and evidence in product claims. |
+| [SOUL.md](SOUL.md) | Character, values, and the Fast Forward fox's relationship with people. |
 | [Asset library](assets/README.md) | Reusable exports, metadata, provenance, and consumption rules. |
 | [Asset manifest](assets/manifest.json) | Stable asset IDs, hashes, dimensions, and classifications. |
 | [Visual specimen](docs/brand/index.html) | Browsable mascot matrix, light/dark previews, and reference families. |
-| [References](references/README.md) | Website concepts, historical package art, icons, and divergent explorations. |
+| [Documentation pattern](docs/brand/documentation.html) | Executable reading/navigation/code style and reusable CSS. |
+| [Logo compositions](docs/brand/logo-compositions.html) | Institutional, developer, editorial, and avatar applications. |
+| [Dash artwork skill](skills/dash-art/SKILL.md) | Generate consistent repository illustrations using verified masters and recorded prompts. |
+| [References](references/README.md) | Website concepts, package art, and icon references. |
 | [Design assessment](docs/brand/assessment.md) | Audit findings, decisions, and next artwork/website work. |
 | [Mascot production guide](docs/brand/mascot-production.md) | Reference stack, planned pose matrix, and reusable illustration briefs. |
 
 <p align="center">
-  <img src="./assets/mascot/fox-reading-wave.png" alt="The orange Fast Forward fox reading an open book and waving" width="260">
+  <img src="./assets/mascot/dash-developer-welcome.png" alt="Dash, the Fast Forward fox, welcoming the reader in a purple hoodie" width="260">
 </p>
 
-The neutral fox is the shared character reference. Purple hoodies and package
-emblems are established package costumes. References have explicit statuses so
+Dash developer is the primary character reference; the new editorial collection
+is a secondary choice. Both wear the shared purple hoodie; package emblems are
+composed separately when needed. References have explicit statuses so
 an old concept or divergent illustration cannot silently redefine the mascot.
 
 Open `docs/brand/index.html` in a browser, or serve the repository with
@@ -62,9 +66,20 @@ explicit in the catalog; no inferred license is assigned to supplied artwork.
 ```sh
 python3 scripts/validate-brand.py
 python3 -m unittest discover -s tests -p 'test_*.py'
-npx -y @google/design.md@0.4.0 lint design.md
+npx -y @google/design.md@0.4.0 lint DESIGN.md
 ```
 
 The [asset guide](assets/README.md#token-exports) describes reproducible token
 exports. The brand workflow verifies delivered files and validator failure
 modes. Visual likeness and complete accessibility still require review.
+
+Dash is the Fast Forward fox. The developer collection is the primary reference;
+the newly authored cute editorial collection supports community and softer
+institutional moments. Both have welcome, reading, guiding, and composing poses.
+The original cute source-pack exports are retained in the ignored local backup;
+their historical profile URLs remain available. See the
+[production guide](docs/brand/mascot-production.md) and
+[generation receipts](docs/brand/dash-generation.json) for exact references.
+
+The versioned `dash-art` package is source for reuse, not a host installation.
+Set `DASH_BRAND_ROOT` to this checkout when using it from another repository.

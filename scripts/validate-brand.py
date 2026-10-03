@@ -27,6 +27,9 @@ IMAGE_FORMATS = {
 ASSET_FORMATS = {**IMAGE_FORMATS, ".css": "css", ".json": "json"}
 SHA256 = re.compile(r"[0-9a-fA-F]{64}\Z")
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+# A delivery limit, checked before inflation; decoding uses 64 KiB output blocks.
+MAX_PNG_DECOMPRESSED_BYTES = 128 * 1024 * 1024
+PNG_DECODE_BLOCK_BYTES = 64 * 1024
 LEGACY_SVG_DOCTYPE = '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'
 RASTER_MIMES = {
     "image/png", "image/jpeg", "image/jpg", "image/gif", "image/webp",
@@ -61,6 +64,73 @@ def _safe_path(root: Path, value: object) -> tuple[Path | None, str | None]:
     return current, None
 
 
+def _png_scanlines(chunks: list[bytes], width: int, height: int, depth: int, color: int, interlace: int) -> None:
+    """Check the zlib stream and filtered row layout without retaining pixels.
+
+    PNG image layout/Adam7: https://www.w3.org/TR/png-3/#8Interlace
+    Filters: https://www.w3.org/TR/png-3/#9Filters
+    This checks scanline structure; it does not reconstruct indexed pixels.
+    """
+    bits_per_pixel = {0: 1, 2: 3, 3: 1, 4: 2, 6: 4}[color] * depth
+    passes = ((0, 0, 1, 1),) if not interlace else (
+        (0, 0, 8, 8), (4, 0, 8, 8), (0, 4, 4, 8), (2, 0, 4, 4),
+        (0, 2, 2, 4), (1, 0, 2, 2), (0, 1, 1, 2),
+    )
+    rows = []
+    for x_start, y_start, x_step, y_step in passes:
+        pass_width = max(0, (width - x_start + x_step - 1) // x_step)
+        pass_height = max(0, (height - y_start + y_step - 1) // y_step)
+        if pass_width and pass_height:
+            rows.append(((pass_width * bits_per_pixel + 7) // 8, pass_height))
+    expected = sum((row_bytes + 1) * count for row_bytes, count in rows)
+    if expected > MAX_PNG_DECOMPRESSED_BYTES:
+        raise ValueError("PNG image data exceeds the 128 MiB decoded-size limit")
+    decoder = zlib.decompressobj()
+    produced = 0
+    pass_index = 0
+    rows_left = rows[0][1]
+    row_remaining = 0
+    try:
+        for chunk in chunks:
+            for start in range(0, len(chunk), PNG_DECODE_BLOCK_BYTES):
+                pending = chunk[start:start + PNG_DECODE_BLOCK_BYTES]
+                while pending and not decoder.eof:
+                    # Never pass zero: zlib interprets max_length=0 as unlimited.
+                    output = decoder.decompress(pending, min(PNG_DECODE_BLOCK_BYTES, expected - produced + 1))
+                    pending = decoder.unconsumed_tail
+                    produced += len(output)
+                    if produced > expected:
+                        raise ValueError("PNG image data has excess decompressed scanline bytes")
+                    offset = 0
+                    while offset < len(output):
+                        if row_remaining == 0:
+                            if output[offset] > 4:
+                                raise ValueError("PNG image data contains an invalid scanline filter")
+                            offset += 1
+                            row_remaining = rows[pass_index][0]
+                        consumed = min(row_remaining, len(output) - offset)
+                        row_remaining -= consumed
+                        offset += consumed
+                        if row_remaining == 0:
+                            rows_left -= 1
+                            if rows_left == 0:
+                                pass_index += 1
+                                if pass_index < len(rows):
+                                    rows_left = rows[pass_index][1]
+                if decoder.eof:
+                    # PNG decoders ignore unused bytes after the zlib stream.
+                    # CRCs and the asset hash still cover all delivered bytes.
+                    break
+            if decoder.eof:
+                break
+    except zlib.error as error:
+        raise ValueError("PNG image data contains an invalid zlib stream") from error
+    if not decoder.eof:
+        raise ValueError("PNG image data contains an incomplete zlib stream")
+    if produced != expected or pass_index != len(rows) or row_remaining:
+        raise ValueError("PNG image data has an incorrect decompressed scanline size")
+
+
 def _png_metadata(data: bytes) -> dict[str, object]:
     if not data.startswith(PNG_SIGNATURE):
         raise ValueError("invalid PNG signature")
@@ -68,6 +138,8 @@ def _png_metadata(data: bytes) -> dict[str, object]:
     header = None
     transparency = False
     seen_image_data = False
+    image_data_closed = False
+    image_chunks = []
     seen_end = False
     while position < len(data):
         if len(data) - position < 12:
@@ -90,21 +162,27 @@ def _png_metadata(data: bytes) -> dict[str, object]:
         elif kind == b"tRNS":
             transparency = True
         elif kind == b"IDAT":
+            if image_data_closed:
+                raise ValueError("PNG image data IDAT chunks must be consecutive")
             seen_image_data = True
+            image_chunks.append(payload)
         elif kind == b"IEND":
             if length != 0 or end != len(data):
                 raise ValueError("invalid PNG IEND or trailing data")
             seen_end = True
             break
+        if seen_image_data and kind != b"IDAT":
+            image_data_closed = True
         position = end
     if header is None or not seen_image_data or not seen_end:
         raise ValueError("PNG is missing IHDR, IDAT or IEND")
     width, height, depth, color, compression, filtering, interlace = header
     depths = {0: {1, 2, 4, 8, 16}, 2: {8, 16}, 3: {1, 2, 4, 8}, 4: {8, 16}, 6: {8, 16}}
-    if not width or not height or depth not in depths.get(color, set()):
+    if not 0 < width < 2 ** 31 or not 0 < height < 2 ** 31 or depth not in depths.get(color, set()):
         raise ValueError("invalid PNG dimensions, bit depth or color type")
     if compression != 0 or filtering != 0 or interlace not in {0, 1}:
         raise ValueError("unsupported PNG header fields")
+    _png_scanlines(image_chunks, width, height, depth, color, interlace)
     modes = {0: "1" if depth == 1 else "I" if depth == 16 else "L", 2: "RGB", 3: "P", 4: "LA", 6: "RGBA"}
     return {"width": width, "height": height, "mode": modes[color], "has_alpha": color in {4, 6} or transparency}
 
@@ -170,6 +248,8 @@ def _check_css(value: str) -> None:
     if "\\" in value:
         raise ValueError("SVG CSS escapes are not permitted")
     plain = re.sub(r"/\*.*?\*/", "", value, flags=re.DOTALL)
+    if re.search(r"(?:-webkit-)?image-set\s*\(", plain, flags=re.IGNORECASE):
+        raise ValueError("SVG CSS image-set is not permitted")
     if re.search(r"@\s*(?:import|font-face)\b", plain, flags=re.IGNORECASE):
         raise ValueError("SVG must not load external styles or fonts")
     for reference in re.findall(r"url\s*\((.*?)\)", plain, flags=re.IGNORECASE | re.DOTALL):
@@ -220,7 +300,7 @@ def _svg_metadata(data: bytes, status: object) -> dict[str, object]:
                     raise ValueError("SVG references must use local fragments")
             if attribute == "base":
                 raise ValueError("SVG must not set an external base URI")
-            if attribute == "style" or re.search(r"url\s*\(", value, flags=re.IGNORECASE):
+            if attribute == "style" or re.search(r"(?:url|image-set)\s*\(", value, flags=re.IGNORECASE):
                 _check_css(value)
         if tag == "image":
             if not image_sources:
@@ -247,6 +327,8 @@ def _css_sidecar(data: bytes, root: Path, relative: str) -> None:
     if "\\" in css:
         raise ValueError("CSS sidecar escapes are not permitted")
     plain = re.sub(r"/\*.*?\*/", "", css, flags=re.DOTALL)
+    if re.search(r"(?:-webkit-)?image-set\s*\(", plain, flags=re.IGNORECASE):
+        raise ValueError("CSS sidecar image-set is not permitted")
     if re.search(r"@\s*(?:import|font-face)\b", plain, flags=re.IGNORECASE):
         raise ValueError("CSS sidecars must not load external styles or fonts")
     for reference in re.findall(r"url\s*\((.*?)\)", plain, flags=re.IGNORECASE | re.DOTALL):
@@ -346,6 +428,9 @@ def validate(root: Path) -> dict[str, object]:
         paths.add(relative)
         if not isinstance(asset.get("category"), str) or not asset["category"].strip():
             errors.append(f"{label}: category must be a nonempty string")
+        for field in ("role", "rights"):
+            if not isinstance(asset.get(field), str) or not asset[field].strip():
+                errors.append(f"{label}: {field} must be a nonempty string")
         if not isinstance(asset.get("status"), str) or asset["status"] not in STATUSES:
             errors.append(f"{label}: invalid status")
         provenance = asset.get("provenance")
@@ -366,6 +451,16 @@ def validate(root: Path) -> dict[str, object]:
             normalized_format = "jpeg"
         if expected_format is None or normalized_format != expected_format:
             errors.append(f"{label}: format must match a supported asset extension")
+        if expected_format in set(IMAGE_FORMATS.values()) - {"svg"}:
+            for field in ("width", "height"):
+                if not _integer(asset.get(field)) or asset[field] <= 0:
+                    errors.append(f"{label}: {field} must be a positive integer")
+            if not isinstance(asset.get("mode"), str) or not asset["mode"].strip():
+                errors.append(f"{label}: mode must be a nonempty string")
+            if not isinstance(asset.get("has_alpha"), bool):
+                errors.append(f"{label}: has_alpha must be a boolean")
+        if expected_format == "svg" and not isinstance(asset.get("embedded_raster"), bool):
+            errors.append(f"{label}: embedded_raster must be a boolean")
         if not path.is_file():
             errors.append(f"{label}: file is missing or is not a regular file")
             continue

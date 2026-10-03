@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="64" viewBox="0 0 96 64" role="img" aria-labelledby="title">
+  <title id="title">PHP Fast Forward compact mark</title>
+  <defs>
+    <linearGradient id="forward" x1="0" y1="0" x2="96" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6D28D9"/>
+      <stop offset="0.55" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#forward)">
+    <path d="M2 4H18L46 32L18 60H2L30 32Z"/>
+    <path d="M38 12H52L72 32L52 52H38L58 32Z"/>
+    <path d="M68 20H80L92 32L80 44H68L80 32Z"/>
+  </g>
+</svg>

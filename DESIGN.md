@@ -21,28 +21,32 @@ typography:
     fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
     fontSize: 3rem
     fontWeight: 750
-    lineHeight: 1.1
+    lineHeight: "1.1"
     letterSpacing: "-0.03em"
   h2:
     fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
     fontSize: 2rem
     fontWeight: 700
-    lineHeight: 1.2
+    lineHeight: "1.2"
+    letterSpacing: 0px
   body-md:
     fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
     fontSize: 1rem
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: "1.6"
+    letterSpacing: 0px
   label:
     fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
     fontSize: 0.875rem
     fontWeight: 600
-    lineHeight: 1.4
+    lineHeight: "1.4"
+    letterSpacing: 0px
   code:
     fontFamily: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
     fontSize: 0.875rem
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: "1.6"
+    letterSpacing: 0px
 rounded:
   sm: 6px
   md: 12px
@@ -112,16 +116,17 @@ components:
 
 This is the normative visual system for PHP Fast Forward. The values above are
 UI design decisions based on the supplied artwork, not claims that every raster
-pixel matches those colors. [soul.md](soul.md) defines the character's purpose;
-[style.md](style.md) defines the voice. The [asset catalog](assets/README.md)
+pixel matches those colors. [SOUL.md](SOUL.md) defines the character's purpose;
+[STYLE.md](STYLE.md) defines the voice. The [asset catalog](assets/README.md)
 records the actual reusable files and their provenance.
 
 The identity has three distinct parts: forward chevrons identify the framework,
 the orange fox helps people learn and participate, and dark speed trails express
 momentum in editorial artwork. Keep everyday documentation calm and readable.
 
-The [brand specimen](docs/brand/index.html) presents the mascot matrix, palette,
-and reference families. It is a local review artifact, not a deployed website.
+The [brand specimen](docs/brand/index.html) presents Dash's pose matrix, palette,
+and reference families. The [documentation pattern](docs/brand/documentation.md)
+and [logo compositions](docs/brand/logo-compositions.md) define reusable applications.
 
 ## Colors
 
@@ -177,8 +182,8 @@ features. Verify actual package documentation before implementing a website.
 
 Use thin borders and restrained shadows to group content. Reserve glow and
 light trails for hero or campaign artwork. Place text on an opaque panel when
-artwork would reduce contrast. Glossy package illustrations can remain in
-campaign banners; avoid combining them with flat character drawings in one scene.
+artwork would reduce contrast. Package illustrations use the primary developer family. Keep the secondary
+editorial family separate within a composition.
 
 ## Shapes
 
@@ -186,44 +191,62 @@ Use gently rounded rectangles for cards and code panels. Chevrons travel to the
 right. Keep illustrations proportional, preserve transparent padding, and avoid
 stretching, mirroring, or clipping the fox's ears and tail.
 
-The fox has large triangular ears with cream inner fur, a short rounded muzzle,
-cream cheeks/chest/tail tip, a small dark nose, warm amber/brown eyes, an orange
-forehead tuft, dark paws, and a full sweeping tail. The primary neutral reference
-is [fox-welcome.png](assets/mascot/fox-welcome.png). Its anatomy and face govern
-new neutral poses; the reading references corroborate the same character family.
-Use the source image to judge proportions rather than inventing a turnaround
-or hidden anatomy from one view.
+Dash has large triangular ears with pink/cream inner fur and brown rims, a
+cream muzzle and cheeks, a small dark nose, warm amber/brown eyes, an orange
+forehead tuft, dark paws, and exactly one full cream-tipped tail. The shared
+costume is a violet hoodie with two cream drawstrings and a plain chest.
+
+The primary reference is [dash-developer-welcome.png](assets/mascot/dash-developer-welcome.png).
+Use its upright proportions, longer muzzle, face, dimensional fur, and cloth
+rendering for new package and default institutional illustrations. The reading,
+guide, and build poses corroborate this master. The secondary
+[dash-editorial-hoodie.png](assets/mascot/dash-editorial-hoodie.png) anchors the
+softer editorial collection: rounder face, compact seated proportions, larger
+eyes, and painted brown contours. Choose that collection deliberately for
+welcome, community, or a softer institutional context. Do not blend the models.
+
+These are authored reference poses, not an orthographic turnaround. New side/back
+views remain new derivatives; none can be inferred from a banner alone.
 
 ## Components
 
-**Logo.** Use [wordmark-light.png](assets/brand/wordmark-light.png) on white or
-light neutral surfaces. Its dark “PHP” text disappears on navy. On dark surfaces,
-use [mark.png](assets/brand/mark.png) plus live white “PHP Fast Forward” text, or
-a cataloged self-contained dark banner. A true light-lettered vector lockup is
-future work. Do not recolor raster exports with CSS filters.
+**Logo.** The three forward chevrons and the name identify PHP Fast Forward.
+Use [wordmark-light.png](assets/brand/wordmark-light.png) on light surfaces;
+its dark PHP lettering is unsuitable on navy. Pair the mark with live readable
+text on dark surfaces. New [compact color](assets/brand/mark-compact.svg),
+[ink](assets/brand/mark-compact-ink.svg), and [white](assets/brand/mark-compact-white.svg)
+SVG variants contain native geometry and omit speed trails for small UI use.
+They are new compact applications, not traces of the raster lettering.
 
-Reserve clear space of at least 25% of the mark height around a logo. Recommended
-initial display minima: 48px high for the mark, 240px wide for a full lockup,
-96px for a square avatar, and 160px high for a detailed standalone fox. These
-are conservative starting rules, not claims of optical validation at every size.
-Below them use text or a simple UI icon. Do not use the detailed mascot as a favicon.
+Reserve clear space of at least 25% of mark height. Use the compact symbol at
+24px high or larger; the detailed raster mark starts at 48px. Start full lockups
+at 240px wide and standalone Dash at 160px high. Below those sizes use the compact
+symbol or text. These are conservative initial minima; inspect the actual
+consumer size. Do not use detailed fox artwork as a favicon.
 
-**Mascot matrix.** The anatomy is stable; pose, expression, and optional package
-costume express context. Established package artwork uses a purple hoodie and
-a white package emblem. Keep it a package costume rather than making it a
-requirement for the neutral framework character. Headphones, new eye colors,
-and new species/body shapes are not established neutral canon.
+**Mascot lockups.** Compose Dash beside the symbol and live name while preserving
+clear space and hierarchy. Keep the fox's head, ears and tail separate from the
+chevron geometry. The developer lockup is the default; editorial is an optional
+institutional/community application. The [logo board](docs/brand/logo-compositions.html)
+and [brand CSS](assets/styles/brand.css) supply executable compositions. They do
+not create a vector fox or resolve the original lettering/font master.
 
-| Asset family | Status | Purpose | Consistency rule |
+**Mascot matrix.** Keep identity stable within the chosen collection. Context
+changes through pose, expression, props, and an intentional package emblem.
+Shared masters have no chest emblem; compose reviewed symbols separately.
+No new eye colors, extra tails, headphones, or silent proportion changes.
+
+| Collection | Master | Role | Supplied poses |
 | --- | --- | --- | --- |
-| Welcome + heart | Canonical neutral | Onboarding, thanks, community footer | Reference face, cream markings, brown eyes, no clothing. |
-| Reading + wave | Canonical neutral | Guides and first steps | Preserve the welcome fox's face and silhouette. |
-| Reading + sparkles | Canonical neutral | Concepts and learning | Sparkles/question marks are removable context, not anatomy. |
-| Fox + forward chevrons | Canonical lockup | Framework identity and hero | Preserve mark direction, hierarchy, and clear space. |
-| Framework package banner | Historical public reference | Existing ecosystem identity | Older flat style; composition and copy are not normative. |
-| Dev Tools / Enum banners | Package variants | Tooling and package campaigns | Hoodie/emblem may vary; glossy rendering is its own family. |
-| Coffee + books fox | Exploratory | Comparison only | Flatter chibi proportions diverge from the primary reference. |
-| Technical fox with headphones | Exploratory | Comparison only | Costume and face diverge; not a new reference master. |
+| Developer — primary | `dash-developer-welcome` | Package, documentation, default institutional identity | Welcome, reading, guiding, composing |
+| Editorial — secondary | `dash-editorial-hoodie` | Welcome, community, softer institutional moments | Welcome, reading, guiding, composing |
+| Package source gallery | 14 locally/publicly sourced banners | Provenance and costume context | Banner poses, not interchangeable character masters |
+| Historical profile | Existing profile URLs | Compatibility only | Older face and lockup interpretations |
+
+**Documentation.** Use the [documentation pattern](docs/brand/documentation.md)
+for navigation, prose, code, callouts, package cards, and responsive reading.
+The [standalone stylesheet](assets/styles/documentation.css) adapts the token
+export to browser CSS. Generated Tailwind `@theme` needs consumer processing.
 
 **Controls.** Primary buttons have one clear action. Secondary actions use a
 solid surface and visible boundary. Focus uses a 2px outline with a 2px offset:

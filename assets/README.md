@@ -1,7 +1,7 @@
 # PHP Fast Forward asset library
 
-Start with [design.md](../design.md), [soul.md](../soul.md), and
-[style.md](../style.md). The [visual specimen](../docs/brand/index.html) shows the
+Start with [DESIGN.md](../DESIGN.md), [SOUL.md](../SOUL.md), and
+[STYLE.md](../STYLE.md). The [visual specimen](../docs/brand/index.html) shows the
 mascot matrix and the families side by side. The
 [manifest](manifest.json) is the inventory of delivered bytes, provenance,
 dimensions, formats, and classification.
@@ -17,39 +17,40 @@ not vector masters. New consumers should use the cataloged PNG exports.
 It does not mean an author has granted a new license, a complete turnaround
 exists, or the art is a native vector drawing. The source pack records only that
 the artwork was created in a conversation. Author, generator/version, font,
-and asset usage rights were not recorded. Package references have verified
-public commit/blob provenance; public availability is not a redistribution license.
+and asset usage rights were not recorded. Package references distinguish verified public commit/blob provenance from
+local tracked/untracked sources; public availability is not a redistribution license.
 Do not infer artwork licensing from Composer metadata or a mockup's footer.
 License/authoring gaps are recorded in the [assessment](../docs/brand/assessment.md).
 
 ## Reusable files
 
-| File | Role | Surface |
+| File / collection | Role | Surface |
 | --- | --- | --- |
-| [brand/mark.png](brand/mark.png) | Three forward chevrons | Light or navy; keep clear space. |
-| [brand/mark-with-fox.png](brand/mark-with-fox.png) | Framework symbol with fox | Light or navy, at a readable size. |
-| [brand/wordmark-light.png](brand/wordmark-light.png) | Text lockup without fox | Light only; dark PHP lettering. |
-| [brand/wordmark-with-fox-light.png](brand/wordmark-with-fox-light.png) | Text lockup with fox | Light only. |
-| [brand/avatar-navy.png](brand/avatar-navy.png) | Square avatar | Self-contained navy background. |
-| [mascot/fox-welcome.png](mascot/fox-welcome.png) | Primary neutral character reference | Welcome, appreciation, community. |
-| [mascot/fox-reading-wave.png](mascot/fox-reading-wave.png) | Reading + wave | First steps and onboarding. |
-| [mascot/fox-reading-sparkles.png](mascot/fox-reading-sparkles.png) | Reading + questions | Documentation and concepts. |
-| [backgrounds/hero-trails.png](backgrounds/hero-trails.png) | Wide dark artwork | Hero backdrop; text needs a clear panel. |
-| [backgrounds/footer-trails.png](backgrounds/footer-trails.png) | Dark footer artwork | Community section background. |
-| [backgrounds/fox-forward.png](backgrounds/fox-forward.png) | Fox + mark composition | Editorial hero; retain its aspect ratio. |
+| [brand/mark.png](brand/mark.png) | Supplied three-chevron mark with speed trails | Light or navy; detailed large application. |
+| [brand/wordmark-light.png](brand/wordmark-light.png) | Supplied lettering without fox | Light only; dark PHP lettering. |
+| [brand/mark-compact.svg](brand/mark-compact.svg) | New native vector compact symbol | Small UI, light/navy, paired with live name. |
+| [brand/mark-compact-ink.svg](brand/mark-compact-ink.svg) / [white](brand/mark-compact-white.svg) | Monochrome compact applications | Ink on light; white on navy. |
+| [mascot/dash-developer-welcome.png](mascot/dash-developer-welcome.png) | **Primary Dash master**, mature purple-hoodie family | Default package, documentation, institutional. |
+| [Developer reading](mascot/dash-developer-reading.png), [guiding](mascot/dash-developer-guide.png), [composing](mascot/dash-developer-build.png) | Derivatives of the primary developer master | Choose a pose for the surrounding message. |
+| [mascot/dash-editorial-hoodie.png](mascot/dash-editorial-hoodie.png) | **Secondary editorial master**, newly created cute family | Welcome, community, softer institutional moment. |
+| [Editorial reading](mascot/dash-editorial-reading.png), [guiding](mascot/dash-editorial-guide.png), [composing](mascot/dash-editorial-build.png) | Derivatives of the editorial master | Preserve that master's face and painted finish. |
+| [styles/documentation.css](styles/documentation.css) | Standalone documentation pattern and token adapter | Light/navy reading, prose, navigation, code. |
+| [styles/brand.css](styles/brand.css) | Reusable logo and mascot compositions | See the [logo board](../docs/brand/logo-compositions.html). |
+| [backgrounds/hero-trails.png](backgrounds/hero-trails.png) / [footer](backgrounds/footer-trails.png) | Supplied speed-trail surfaces | Decorative editorial backgrounds. |
 
-Standalone characters and transparent lockups use real alpha. No recropping,
-upscaling, or recoloring was performed during import. Their supplied padding
-remains part of the export. Inspect the specimen on both light and dark surfaces.
+Use one collection per composition. Developer is the default; editorial is an
+intentional secondary choice. Original cute source-pack drawings and lockups
+were archived locally under ignored `backup/dash/legacy-kit/`, with matching
+hashes verified before removing them from the active kit. Historical
+`profile/assets/` URLs remain cataloged as legacy.
 
 ## Status and provenance
 
 | Status | Meaning |
 | --- | --- |
-| `canonical` | Selected neutral assets for new framework work. |
-| `package-variant` | Existing public package artwork; clothing, emblem, or rendering may differ. |
+| `canonical` | Selected current identity, primary Dash references, and reusable styles/marks. |
+| `package-variant` | Secondary editorial references and local/public package variations, with explicit provenance. |
 | `reference` | Composition/icon/layout reference; no product claims are inherited. |
-| `exploratory` | Divergent appearance; compare it, do not use it to redefine the fox. |
 | `legacy` | Historical profile delivery path retained for compatibility. |
 
 Each manifest entry has a stable ID, file path, role, SHA-256, byte length,
@@ -80,27 +81,41 @@ copyright, alt-text quality, or complete accessibility. Those need review.
 
 ## Token exports
 
-[design.md](../design.md) is normative. Generated files are
+[DESIGN.md](../DESIGN.md) is normative. Generated files are
 [tokens/tokens.json](tokens/tokens.json) (DTCG),
 [tokens/tailwind.theme.json](tokens/tailwind.theme.json) (Tailwind v3), and
 [tokens/theme.css](tokens/theme.css) (Tailwind v4).
 
 The export tool was verified at version `0.4.0`. The portable helper runs lint,
-exports all three formats, and records source/output hashes in `exports.json`:
+exports all three formats, applies the versioned typography adapter, and records
+source/output/adapter hashes in `exports.json`:
 
 ```sh
 node scripts/export-design.mjs
 node scripts/export-design.mjs --check
 ```
 
+To prepare a token change while the browser adapter still has old values, use
+`node scripts/export-design.mjs --tokens-only`, update the token declarations in
+`assets/styles/documentation.css` and its manifest digest, then run `--check` and
+the asset validator. This preparation mode is not the CI validation command.
+
 CI uses `--check` to regenerate and compare the actual outputs with the committed
-exports. The equivalent pinned CLI commands are:
+exports. Use the helper for committed outputs: direct CLI exports need the
+compatibility adapter in `scripts/design-exports.mjs`.
+
+CLI `0.4.0` drops bare numeric line heights, so the normative YAML quotes unitless
+ratios. All styles declare letter spacing explicitly. The adapter separates font
+fallbacks, converts relative `em` tracking to a supported DTCG dimension, and
+adds the associated typography properties used by Tailwind v4 text utilities.
+It rejects incomplete typography instead of publishing silently missing values.
+See the [DTCG typography contract](https://www.designtokens.org/tr/2025.10/format/#typography)
+and [Tailwind text metadata](https://tailwindcss.com/docs/font-size#customizing-your-theme).
+
+For a standalone lint check:
 
 ```sh
-npx -y @google/design.md@0.4.0 lint design.md
-npx -y @google/design.md@0.4.0 export --format dtcg design.md > assets/tokens/tokens.json
-npx -y @google/design.md@0.4.0 export --format json-tailwind design.md > assets/tokens/tailwind.theme.json
-npx -y @google/design.md@0.4.0 export --format css-tailwind design.md > assets/tokens/theme.css
+npx -y @google/design.md@0.4.0 lint DESIGN.md
 ```
 
 For RTK-enabled hosts, run these commands through RTK per the local bootstrap.
@@ -117,3 +132,16 @@ Preserve asset provenance and any applicable notices with the copy.
 Serve PNG as `image/png` and SVG as `image/svg+xml`. Give meaningful artwork
 alt text. Decorative artwork has empty alt text. Use the mark plus live white
 text for navy layouts until a dark wordmark master is produced.
+
+## Generate consistent Dash artwork
+
+Use the versioned [dash-art skill](../skills/dash-art/SKILL.md), the
+[production guide](../docs/brand/mascot-production.md), and actual master images.
+The [generation receipts](../docs/brand/dash-generation.json) preserve exact
+prompts, source hashes, edits, output identity, and the tool information exposed
+during production. The built-in image generator was used; no model/version was
+invented when the tool did not expose one. A file-integrity check does not prove
+likeness or clear rights.
+
+The skill is source in this repository; this change installs nothing in a host's
+skill collection. A consumer can provide this checkout as `DASH_BRAND_ROOT`.

@@ -12,9 +12,9 @@ Related issue:
 ## Brand and asset evidence (when relevant)
 
 <!-- Remove this section when the PR has no brand or asset changes. In the profile/design repository, consult:
-https://github.com/php-fast-forward/.github/blob/main/design.md
-https://github.com/php-fast-forward/.github/blob/main/style.md
-https://github.com/php-fast-forward/.github/blob/main/soul.md
+https://github.com/php-fast-forward/.github/blob/main/DESIGN.md
+https://github.com/php-fast-forward/.github/blob/main/STYLE.md
+https://github.com/php-fast-forward/.github/blob/main/SOUL.md
 https://github.com/php-fast-forward/.github/blob/main/assets/README.md
 Include public-safe previews at the intended size/surface, explain contract changes, and record sources, authors or methods, transformations, and permission/license status. Distinguish reusable exports from references/concepts and mark unknown facts. Update the design repository's assets/manifest.json and catalog when appropriate. -->
 

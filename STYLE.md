@@ -1,6 +1,6 @@
 # PHP Fast Forward style
 
-Write so a developer can understand the purpose, choose a useful next step, and verify the result. The voice is clear, welcoming, practical, and quietly confident. It reflects the character described in [soul.md](soul.md) and the presentation rules in [design.md](design.md).
+Write so a developer can understand the purpose, choose a useful next step, and verify the result. The voice is clear, welcoming, practical, and quietly confident. It reflects the character described in [SOUL.md](SOUL.md) and the presentation rules in [DESIGN.md](DESIGN.md).
 
 ## Language
 
@@ -15,7 +15,7 @@ Keep code identifiers, namespaces, commands, package names, flags, and output ex
 | PHP Fast Forward | Full framework and public ecosystem name. Use on first mention and when identifying the product. |
 | Fast Forward | Short form when the context already identifies PHP Fast Forward. |
 | `fast-forward/*` | Composer package namespace. Use exact package names when documenting installation or dependencies. |
-| Fast Forward fox | Descriptive mascot label. Do not assign a proper name without updating the character definition. |
+| Dash | Mascot name. On first mention, use “Dash, the Fast Forward fox”; in PT-BR, “Dash, a raposa do Fast Forward”. Use Dash afterward. |
 | Component / package | A specific reusable unit. Name the actual unit and explain its responsibility. |
 | Framework | The shared application-building approach and ecosystem; avoid implying that every package requires the whole ecosystem. |
 | PSR-first | A design principle. Name the relevant PSR and the implemented boundary when making a technical claim. |

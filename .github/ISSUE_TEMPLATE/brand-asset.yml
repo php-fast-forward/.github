@@ -7,7 +7,7 @@ body:
       value: |
         Submit brand and asset requests in [php-fast-forward/.github](https://github.com/php-fast-forward/.github/issues).
         This organization template may also appear in package repositories; package bugs and code changes belong in their affected repository.
-        Review [design.md](https://github.com/php-fast-forward/.github/blob/main/design.md), [style.md](https://github.com/php-fast-forward/.github/blob/main/style.md), [soul.md](https://github.com/php-fast-forward/.github/blob/main/soul.md), and [the asset catalog](https://github.com/php-fast-forward/.github/blob/main/assets/README.md).
+        Review [DESIGN.md](https://github.com/php-fast-forward/.github/blob/main/DESIGN.md), [STYLE.md](https://github.com/php-fast-forward/.github/blob/main/STYLE.md), [SOUL.md](https://github.com/php-fast-forward/.github/blob/main/SOUL.md), and [the asset catalog](https://github.com/php-fast-forward/.github/blob/main/assets/README.md).
         Keep references and uploads suitable for public reading. Use the affected repository's security policy for vulnerabilities.
   - type: textarea
     id: purpose

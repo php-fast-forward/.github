@@ -4,23 +4,35 @@ on:
   pull_request:
     paths:
       - 'assets/**'
-      - 'design.md'
+      - 'DESIGN.md'
+      - 'SOUL.md'
+      - 'STYLE.md'
+      - 'docs/brand/**'
+      - 'skills/dash-art/**'
       - 'references/**'
       - 'profile/assets/**'
       - 'scripts/validate-brand.py'
       - 'scripts/export-design.mjs'
+      - 'scripts/design-exports.mjs'
       - 'tests/test_brand_assets.py'
+      - 'tests/design-exports.test.mjs'
       - '.github/workflows/brand-assets.yml'
   push:
     branches: [main]
     paths:
       - 'assets/**'
-      - 'design.md'
+      - 'DESIGN.md'
+      - 'SOUL.md'
+      - 'STYLE.md'
+      - 'docs/brand/**'
+      - 'skills/dash-art/**'
       - 'references/**'
       - 'profile/assets/**'
       - 'scripts/validate-brand.py'
       - 'scripts/export-design.mjs'
+      - 'scripts/design-exports.mjs'
       - 'tests/test_brand_assets.py'
+      - 'tests/design-exports.test.mjs'
       - '.github/workflows/brand-assets.yml'
 
 permissions:
@@ -38,3 +50,5 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_*.py'
       - name: Lint design and verify reproducible token exports
         run: node scripts/export-design.mjs --check
+      - name: Verify typography interoperability regressions
+        run: node --test tests/design-exports.test.mjs
