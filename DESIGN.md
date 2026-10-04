@@ -120,8 +120,9 @@ pixel matches those colors. [SOUL.md](SOUL.md) defines the character's purpose;
 [STYLE.md](STYLE.md) defines the voice. The [asset catalog](assets/README.md)
 records the actual reusable files and their provenance.
 
-The identity has three distinct parts: forward chevrons identify the framework,
-the orange fox helps people learn and participate, and dark speed trails express
+The selected framework signature is direction F: a simplified fox symbol beside
+“PHP FastForward”, with the symbol and “Fast” in orange. Dash's complete character
+illustrations help people learn and participate; dark speed trails can express
 momentum in editorial artwork. Keep everyday documentation calm and readable.
 
 The [brand specimen](docs/brand/index.html) presents Dash's pose matrix, palette,
@@ -133,7 +134,8 @@ and [logo compositions](docs/brand/logo-compositions.md) define reusable applica
 | Role | Token | Application |
 | --- | --- | --- |
 | Interactive emphasis | `primary` / `primary-hover` | Buttons and selected navigation on light surfaces. |
-| Forward gradient | `primary` → `blue` → `cyan` | Chevrons and decorative accents; retain the supplied logo artwork. |
+| Optional decorative gradient | `primary` → `blue` → `cyan` | Editorial accents; a gradient is not required by the selected logo. |
+| Logo orange | `#FF641B` in `assets/brand/logo-source.json` | Fox symbol and “Fast” in the color signatures; separate from UI and fur tokens. |
 | Dark stage | `navy` | Hero, code panels, and illustration backgrounds. |
 | Reading surfaces | `neutral`, `white` | Documentation and cards. |
 | Text | `ink`, `muted` | Headings/body and supporting copy on light surfaces. |
@@ -141,7 +143,7 @@ and [logo compositions](docs/brand/logo-compositions.md) define reusable applica
 | Character shorthand | `fox-orange`, `fox-cream`, `fox-outline` | Swatches for orange fur, cream markings, and warm brown contour. |
 
 Use solid violet with white text for the primary action. Cyan and orange accents
-take dark text. A gradient logo is artwork; it is not a reliable text background.
+take dark text. Decorative gradients are not reliable text backgrounds.
 Use a visible outline or filled boundary where control recognition needs it.
 
 Text pairs must meet 4.5:1 for normal text and 3:1 for large text; UI boundaries
@@ -153,9 +155,11 @@ Token lint covers declared component text pairs, not complete-page accessibility
 ## Typography
 
 Use the system sans-serif stack for interfaces and the system monospace stack
-for code. This keeps the initial system usable without downloadable font assets
-or an unrecorded font license. Raster wordmark lettering belongs to the logo;
-do not substitute it as an interface font or claim a known typeface for it.
+for code. The selected logo lettering uses Exo 2 Italic, version 2.010, at weight
+900. Its glyphs are outlined in the SVGs, so rendering the logo requires no font
+installation or browser font request. This lettering does not change the UI
+font stacks. The official unmodified variable font, SIL OFL 1.1 notice, pinned
+source commit, and byte hashes live in [brand/source](assets/brand/source/font-source.json).
 
 Use one H1 per page, sentence case, and a readable body line height of 1.6.
 Scale the display heading down to 2rem on small screens. Keep installation
@@ -187,8 +191,8 @@ editorial family separate within a composition.
 
 ## Shapes
 
-Use gently rounded rectangles for cards and code panels. Chevrons travel to the
-right. Keep illustrations proportional, preserve transparent padding, and avoid
+Use gently rounded rectangles for cards and code panels. Keep the selected fox
+symbol's native silhouette. Keep illustrations proportional, preserve transparent padding, and avoid
 stretching, mirroring, or clipping the fox's ears and tail.
 
 Dash has large triangular ears with pink/cream inner fur and brown rims, a
@@ -210,26 +214,33 @@ views remain new derivatives; none can be inferred from a banner alone.
 
 ## Components
 
-**Logo.** The three forward chevrons and the name identify PHP Fast Forward.
-Use [wordmark-light.png](assets/brand/wordmark-light.png) on light surfaces;
-its dark PHP lettering is unsuitable on navy. Pair the mark with live readable
-text on dark surfaces. New [compact color](assets/brand/mark-compact.svg),
-[ink](assets/brand/mark-compact-ink.svg), and [white](assets/brand/mark-compact-white.svg)
-SVG variants contain native geometry and omit speed trails for small UI use.
-They are new compact applications, not traces of the raster lettering.
+**Logo.** Direction F is the selected fox signature, with “Fast” in orange.
+The eight exports contain native vector geometry and outlined lettering.
 
-Reserve clear space of at least 25% of mark height. Use the compact symbol at
-24px high or larger; the detailed raster mark starts at 48px. Start full lockups
-at 240px wide and standalone Dash at 160px high. Below those sizes use the compact
-symbol or text. These are conservative initial minima; inspect the actual
-consumer size. Do not use detailed fox artwork as a favicon.
+| Application | Full signature | Standalone mark |
+| --- | --- | --- |
+| Light surfaces, color | [fast-forward-logo.svg](assets/brand/fast-forward-logo.svg) | [fast-forward-mark.svg](assets/brand/fast-forward-mark.svg) |
+| Dark surfaces, color | [fast-forward-logo-dark.svg](assets/brand/fast-forward-logo-dark.svg) | [fast-forward-mark-dark.svg](assets/brand/fast-forward-mark-dark.svg) |
+| Light surfaces, monochrome | [fast-forward-logo-ink.svg](assets/brand/fast-forward-logo-ink.svg) | [fast-forward-mark-ink.svg](assets/brand/fast-forward-mark-ink.svg) |
+| Dark surfaces, monochrome | [fast-forward-logo-white.svg](assets/brand/fast-forward-logo-white.svg) | [fast-forward-mark-white.svg](assets/brand/fast-forward-mark-white.svg) |
 
-**Mascot lockups.** Compose Dash beside the symbol and live name while preserving
-clear space and hierarchy. Keep the fox's head, ears and tail separate from the
-chevron geometry. The developer lockup is the default; editorial is an optional
+Edit [logo-source.json](assets/brand/logo-source.json), then rebuild with
+[build-brand-logos.py](scripts/build-brand-logos.py); do not redraw individual
+exports independently. The monochrome variants use the same selected geometry.
+Retired logos remain only in the ignored archive and its provenance records.
+
+Reserve clear space of at least 25% of mark height. Start the native symbol at
+32px high, full signatures at 200px wide, and standalone Dash at 160px high.
+These are initial application minima; inspect the actual consumer size and
+review smaller icon use separately. Do not use detailed full-body Dash artwork
+as a favicon.
+
+**Mascot lockups.** Compose Dash beside the selected signature while preserving
+clear space and hierarchy. Keep full-body artwork separate from the vector
+symbol. The developer collection is the default; editorial is an optional
 institutional/community application. The [logo board](docs/brand/logo-compositions.html)
-and [brand CSS](assets/styles/brand.css) supply executable compositions. They do
-not create a vector fox or resolve the original lettering/font master.
+and [brand CSS](assets/styles/brand.css) supply applications. The simplified fox
+symbol does not replace the character masters or establish hidden anatomy.
 
 **Mascot matrix.** Keep identity stable within the chosen collection. Context
 changes through pose, expression, props, and an intentional package emblem.
@@ -240,8 +251,8 @@ No new eye colors, extra tails, headphones, or silent proportion changes.
 | --- | --- | --- | --- |
 | Developer — primary | `dash-developer-welcome` | Package, documentation, default institutional identity | Welcome, reading, guiding, composing |
 | Editorial — secondary | `dash-editorial-hoodie` | Welcome, community, softer institutional moments | Welcome, reading, guiding, composing |
-| Package source gallery | 14 locally/publicly sourced banners | Provenance and costume context | Banner poses, not interchangeable character masters |
-| Historical profile | Existing profile URLs | Compatibility only | Older face and lockup interpretations |
+| Historical package sources | Cataloged local/public banners | Provenance and costume context | Banner poses, not interchangeable character masters or logo masters |
+| Archived sources | Manifest `archived_sources` | Provenance only | Retired face and logo interpretations |
 
 **Documentation.** Use the [documentation pattern](docs/brand/documentation.md)
 for navigation, prose, code, callouts, package cards, and responsive reading.
@@ -269,7 +280,7 @@ should be brief, optional, and avoid loops behind reading content. Honor
 - Keep technical content selectable and understandable without illustration.
 - Provide alt text for meaningful images and empty alt text for decoration.
 - Use the exact existing lockups; avoid stretching, mirroring, arbitrary colors,
-  replacing the fox face, or changing the chevron count/direction.
+  replacing the fox face, or changing the selected symbol's silhouette.
 - Avoid performance superlatives, unverified metrics, fictional product APIs,
   and inherited license claims from mockups.
 - Record a new derivative and its source hash; never silently overwrite a
@@ -281,5 +292,7 @@ This file follows the [DESIGN.md specification](https://github.com/google-labs-c
 It is the token source; generated exports live in `assets/tokens/`.
 The CLI version is pinned in the [asset guide](assets/README.md). Re-export all
 three files together after changing tokens, then validate the asset manifest.
-Brand artwork and UI tokens have different jobs: exports do not reconstruct
-the raster logo, license it, or turn it into a vector master.
+Brand artwork and UI tokens have different jobs. The token exports do not
+generate the logo SVGs; those come from the separate vector master and generator.
+Font licensing is recorded with its source and does not assign a blanket license
+to other supplied illustrations.

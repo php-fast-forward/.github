@@ -1,0 +1,87 @@
+name: Brand Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/**'
+      - 'docs/brand/**'
+      - 'profile/**'
+      - '*.md'
+      - 'scripts/build-brand-pages.py'
+      - 'scripts/test-brand-pages.py'
+      - 'scripts/build-brand-logos.py'
+      - 'scripts/validate-brand.py'
+      - 'scripts/export-design.mjs'
+      - 'scripts/design-exports.mjs'
+      - '.gitattributes'
+      - '.github/workflows/brand-pages.yml'
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'docs/brand/**'
+      - 'profile/**'
+      - '*.md'
+      - 'scripts/build-brand-pages.py'
+      - 'scripts/test-brand-pages.py'
+      - 'scripts/build-brand-logos.py'
+      - 'scripts/validate-brand.py'
+      - 'scripts/export-design.mjs'
+      - 'scripts/design-exports.mjs'
+      - '.gitattributes'
+      - '.github/workflows/brand-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brand-pages-${{ github.event_name == 'pull_request' && github.ref || 'deployment' }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, matches brand-assets.yml
+      - name: Verify brand inventory
+        run: python3 scripts/validate-brand.py
+      - name: Verify native logo exports
+        run: python3 scripts/build-brand-logos.py --check
+      - name: Verify design tokens and browser adapter
+        run: node scripts/export-design.mjs --check
+      - name: Verify Pages publication boundaries
+        run: python3 scripts/test-brand-pages.py
+      - name: Build public brand library
+        env:
+          SOURCE_REF: ${{ github.sha }}
+        run: python3 scripts/build-brand-pages.py --output-dir _site --source-ref "$SOURCE_REF"
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+          retention-days: 1
+          include-hidden-files: true # The staging script creates only .nojekyll.
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Read Pages configuration
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+        with:
+          enablement: false
+      - name: Deploy brand library
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

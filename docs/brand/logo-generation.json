@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-03",
+  "brand": "PHP Fast Forward",
+  "records": [
+    {
+      "id": "fast-forward-logo-concepts",
+      "status": "direction-selected",
+      "destination": "assets/brand/fast-forward-logo-concepts.png",
+      "date": "2026-10-03",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Act as a thoughtful identity designer creating a first-round concept sheet for PHP Fast Forward, a PHP framework and ecosystem of small composable libraries. Its enduring ideas are interoperability through shared interfaces, explicit composition, portable boundaries, proven foundations and less ceremony. It helps a developer understand how useful pieces fit together and find the next useful step. The name carries forward movement, but the identity must not imply an unproven benchmark or performance promise. The audience is independent developers and engineering teams; the tone is confident, approachable and technically literate.\n\nCreate THREE DISTINCT NEW LOGO DIRECTIONS, presented as a clean professional landscape identity-study board with three equally sized columns on a pure off-white background. Each column has a large horizontal logo at the top, a standalone symbol at the center, and a smaller one-color black rendition at the bottom. Lots of whitespace and precise optical spacing. Number the columns E, F and G with small restrained labels; no other explanatory paragraphs.\n\nFor inspiration, image 1 is the historical lettering: it has a distinctive heavy slightly oblique technical personality. You may reinterpret that personality in fresh legible lettering, but do NOT preserve its rainbow gradient or copy its existing mark. Image 2 is Dash, the current fox companion; it informs the orange/cream fox identity for an optional simplified flat symbol only. Do NOT put a full rendered 3D mascot into these logos.\n\nExplore genuinely different visual ideas, not just different colors:\nE: an abstract composable forward symbol from a small number of interlocking geometric pieces; disciplined solid violet/ink palette; a distinctive bold technical wordmark.\nF: a memorable professional fox-inspired emblem that subtly incorporates a forward gesture, with orange, cream and deep ink; intelligent clean reduction, avoiding a generic cute cartoon head. Pair it with a coherent distinctive wordmark.\nG: an energetic yet calm typographic or FF monogram direction, using negative space and purposeful motion; keep the mark readable at small sizes and independent of the mascot, with a solid ink/violet palette.\n\nThe exact brand name in every horizontal logo is \"PHP Fast Forward\". PHP may be smaller but must stay readable. Give the wordmark character through proportion, custom-cut details and restrained obliqueness rather than extra decoration. All three directions must remain credible in solid black. Flat graphic shapes, strong silhouettes, no gradients, no 3D effects, no shadows, no mockup merchandise, no badges, no watermarks, no extra slogans. Deliver one high-resolution opaque PNG concept board. These are creative bitmap studies for review, not final vector masters.",
+      "sources": [
+        {
+          "path": "assets/brand/wordmark-light.png",
+          "sha256": "687896b5ff7aa712e5e5d4a60fe11cdf120e24e7fb78a614d5a4c2e7a504f36f",
+          "role": "Historical lettering personality; font name unrecorded",
+          "included_in_public_kit": false,
+          "availability": "local-backup-not-distributed",
+          "archived_source_id": "brand-wordmark-light"
+        },
+        {
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+          "role": "Current Dash orange/cream context for optional simplified emblem",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "c5586c01fa8d3abe9986d17d3e9a1125ccefd0802f737c90e1c5b4dc9d44be56",
+        "bytes": 1046074,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "has_alpha": false,
+        "generator_artifact": "exec-13e55a13-2ebc-46d2-964c-2adc160e1280.png",
+        "transparent_background": false,
+        "availability": "local-backup-not-distributed",
+        "archived_source_id": "fast-forward-logo-concepts",
+        "included_in_public_kit": false
+      },
+      "review": {
+        "status": "direction-selected",
+        "date": "2026-10-03",
+        "selection": "Direction F selected by the maintainer; this bitmap board is historical concept evidence, not a distributed native master.",
+        "transparency": "Pillow loaded the original PNG; opaque background is intentional; no pixels were modified.",
+        "opacity_inspection": {
+          "alpha_channel": false,
+          "background": "Intentional opaque scene/background, stored as RGB."
+        },
+        "lettering": "Generated raster lettering; font is not identified. Reconstruct and review exact typography before a final logo master.",
+        "geometry": "Review directions separately; create native vector geometry only after selection. This board does not redefine canonical Dash.",
+        "visual_inspection": {
+          "date": "2026-10-03",
+          "reviewer": "coordinating repository agent",
+          "evidence": "Coordinating repository agent inspected the native generated board and confirmed browser rendering at its 1774:887 aspect ratio without broken images. Logo review page at 390px had no horizontal overflow and exactly one aria-current navigation item.",
+          "selection": "Awaiting maintainer review; no direction or scene has been approved as canonical."
+        }
+      },
+      "directions": [
+        "E",
+        "F",
+        "G"
+      ],
+      "asset_type": "opaque-bitmap-logo-concept-board",
+      "publication": "local-not-published",
+      "availability": "local-backup-not-distributed",
+      "archived_source_id": "fast-forward-logo-concepts",
+      "included_in_public_kit": false,
+      "selection": {
+        "direction": "F",
+        "status": "direction-selected",
+        "date": "2026-10-03",
+        "evidence": "Maintainer selected the fox direction with Fast in orange and its monochromatic rendition.",
+        "publication": "local-not-published"
+      }
+    }
+  ]
+}

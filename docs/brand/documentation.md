@@ -2,9 +2,9 @@
 
 The [executable reference](documentation.html) defines the documentation surface:
 a navy navigation rail, a calm reading column, selectable code panels, and a
-secondary table of contents. Its inspiration is the supplied
-[documentation concept](../../references/website/documentation.png); content,
-requirements, and APIs in that image are not product specifications.
+secondary table of contents. It evolves the historical documentation concept
+using the current fox signature and selected Dash artwork. Archived concept
+content, requirements, and APIs are not product specifications.
 
 The design repository owns this pattern, [documentation.css](../../assets/styles/documentation.css),
 the [visual tokens](../../DESIGN.md), and cataloged artwork. Package repositories
@@ -122,7 +122,7 @@ this reference does not execute the PHP application or install its dependencies.
 Recheck the consumer's target release before publishing the examples there.
 
 The stylesheet and inline enhancement were authored for this repository. The
-reference uses local `mark-compact.svg` and `dash-developer-reading.png`; Dash is
+reference uses local `fast-forward-logo-dark.svg` and `dash-developer-reading.png`; Dash is
 the Fast Forward fox. Artwork status and reuse rights remain governed by the
 [asset catalog](../../assets/README.md). Root asset validation and final browser
 review belong to the integrated delivery, including its links and manifest.

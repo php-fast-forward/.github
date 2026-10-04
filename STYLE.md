@@ -6,6 +6,8 @@ Write so a developer can understand the purpose, choose a useful next step, and 
 
 Public repository documentation, asset descriptions, and reusable product copy use English. In conversation, follow the person's language; use natural Brazilian Portuguese when they write in PT-BR.
 
+The organization profile has an English default at [profile/README.md](profile/README.md), with explicitly supported [Brazilian Portuguese](profile/README.pt-BR.md) and [Spanish](profile/README.es.md) translations. Keep the language links at the top of all three versions, marking the current language. Update their structure, package claims, roadmap status, code, destinations, and image references together; translate the prose and alternative text while preserving identifiers and examples.
+
 Keep code identifiers, namespaces, commands, package names, flags, and output exactly as they appear in the software. Translate the explanation around them. Avoid translating an identifier to make prose sound smoother.
 
 ## Names and terminology
@@ -15,13 +17,19 @@ Keep code identifiers, namespaces, commands, package names, flags, and output ex
 | PHP Fast Forward | Full framework and public ecosystem name. Use on first mention and when identifying the product. |
 | Fast Forward | Short form when the context already identifies PHP Fast Forward. |
 | `fast-forward/*` | Composer package namespace. Use exact package names when documenting installation or dependencies. |
-| Dash | Mascot name. On first mention, use “Dash, the Fast Forward fox”; in PT-BR, “Dash, a raposa do Fast Forward”. Use Dash afterward. |
+| Dash | Mascot name. On first mention, use “Dash, the Fast Forward fox”; in PT-BR, “Dash, a raposa do Fast Forward”; in Spanish, “Dash, el zorro de Fast Forward”. Use Dash afterward. |
 | Component / package | A specific reusable unit. Name the actual unit and explain its responsibility. |
 | Framework | The shared application-building approach and ecosystem; avoid implying that every package requires the whole ecosystem. |
 | PSR-first | A design principle. Name the relevant PSR and the implemented boundary when making a technical claim. |
 | Agent-assisted workflow | Work a person can inspect, reproduce, and review with agent support. Describe the actual steps and outputs. |
 
 Use **PHP**, **Composer**, and **PSR** with their established capitalization. Use the exact spelling of upstream projects and credit them where relevant.
+
+## Visual identity in copy
+
+Use the selected F signature or its standalone fox symbol from the [logo kit](assets/README.md#logo-masters). Its outlined Exo 2 lettering and orange “Fast” are graphic treatments; write **PHP Fast Forward** with spaces in prose and preserve exact package identifiers in code. The licensed logo font does not replace the system interface and code fonts.
+
+Describe a local proposal, a selected direction, a prepared export, and a published asset according to its actual state. A concept-generation receipt preserves the decision's source; later selection does not rewrite that historical receipt as publication evidence. New Dash scenes awaiting review remain proposals until their review status changes.
 
 ## Voice
 

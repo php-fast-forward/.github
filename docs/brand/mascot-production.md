@@ -35,6 +35,41 @@ These eight images are selected reference poses with real alpha. They are not a
 front/side/back orthographic model sheet. New hidden anatomy remains authored
 interpretation requiring visual review.
 
+## Local pose proposals
+
+The new developer scenes are local drafts with review status `awaiting-review`
+and publication status `local-not-published`. They remain exploratory candidates until a
+deliberate selection. The eight selected poses above still define the current
+reference matrix; a generated scene does not replace its identity master.
+
+| Proposal | Intended context | Local PNG |
+| --- | --- | --- |
+| Coding | Programming, tutorials, and practical repository examples | [Coding scene](../../assets/mascot/dash-developer-coding.png) |
+| Debugging | Troubleshooting, diagnosis, and finding a useful next step | [Debugging scene](../../assets/mascot/dash-developer-debugging.png) |
+| Explaining | Teaching a concept or showing component composition | [Explaining scene](../../assets/mascot/dash-developer-explaining.png) |
+| Workstation | Repository features and developer studio scenes with a robust equipment setup | [Workstation scene](../../assets/mascot/dash-developer-workstation.png) |
+
+Compare these four scenes with the selected developer master in the
+[new-pose review section](index.html#new-poses). Check likeness, eyes, limbs,
+single-tail anatomy, complete edges, props, and actual transparency on light
+and navy. Add exact commands, code, labels, and reviewed emblems through
+separate composition; the illustration does not establish an API contract.
+
+Coding, debugging, and explaining are transparent cutouts. The workstation is
+an intentionally opaque navy studio scene with multiple displays, a tablet,
+audio equipment, lighting, and developer peripherals. Its second input was a
+user-supplied desk photo used only for equipment density and arrangement. The
+personal photo remains outside the repository; its receipt records a logical
+local-only reference and hash rather than a personal filesystem path. Screen
+graphics are generated illustration, not executable code or software evidence.
+
+The [developer portrait study](../../assets/mascot/dash-developer-portrait-study.png)
+is an **additional draft for logo applications only**. Review it on the
+[logo composition board](logo-compositions.html); it is not a standalone pose
+master or a replacement for the selected developer welcome reference.
+Existing selected poses and logo assets remain until final selection and an
+explicit catalog update. This local review round publishes no asset or site.
+
 ## Brief and production
 
 Specify audience, purpose, collection, package, pose, minimal props, background,

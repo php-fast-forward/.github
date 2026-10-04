@@ -4,12 +4,16 @@ import { isDeepStrictEqual } from 'node:util';
 
 export function verifyBrowserAdapter(theme, adapter) {
   const declarations = text => [...text.matchAll(/(--[\w-]+)\s*:\s*([^;]+);/g)];
+  const exportedNamespace = /^--(?:color|font|text|leading|tracking|spacing|radius)-/;
   const normalize = (name, value) => /^--font-(?!weight-)/.test(name)
     ? fontFamilies(value.trim()) : value.replace(/\s+/g, ' ').trim();
   const expected = new Map(declarations(theme).map(([, name, value]) => [name, normalize(name, value)]));
   const actual = new Map();
   for (const [, name, value] of declarations(adapter)) {
-    if (!expected.has(name)) continue;
+    if (!expected.has(name)) {
+      if (exportedNamespace.test(name)) throw new Error(`Browser token adapter has obsolete token ${name}; update documentation.css from the generated theme`);
+      continue;
+    }
     if (actual.has(name)) throw new Error(`Browser token adapter duplicates ${name}`);
     actual.set(name, normalize(name, value));
   }

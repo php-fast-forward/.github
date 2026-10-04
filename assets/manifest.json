@@ -42,98 +42,6 @@
       "has_alpha": false
     },
     {
-      "id": "brand-mark",
-      "path": "assets/brand/mark.png",
-      "category": "brand",
-      "status": "canonical",
-      "role": "Framework mark",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_mark_arrows_transparent_cropped.png",
-        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
-      "bytes": 236386,
-      "format": "png",
-      "width": 1072,
-      "height": 543,
-      "mode": "RGBA",
-      "has_alpha": true
-    },
-    {
-      "id": "brand-wordmark-light",
-      "path": "assets/brand/wordmark-light.png",
-      "category": "brand",
-      "status": "canonical",
-      "role": "Wordmark for light surfaces",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_horizontal_text_transparent_cropped.png",
-        "source_sha256": "687896b5ff7aa712e5e5d4a60fe11cdf120e24e7fb78a614d5a4c2e7a504f36f"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "687896b5ff7aa712e5e5d4a60fe11cdf120e24e7fb78a614d5a4c2e7a504f36f",
-      "bytes": 190937,
-      "format": "png",
-      "width": 1581,
-      "height": 281,
-      "mode": "RGBA",
-      "has_alpha": true
-    },
-    {
-      "id": "legacy-brand-hero-banner",
-      "path": "profile/assets/brand-hero-banner.png",
-      "category": "profile",
-      "status": "legacy",
-      "role": "Historical profile URL retained for compatibility",
-      "provenance": {
-        "source": "repository:profile/assets/brand-hero-banner.png",
-        "source_sha256": "f1fd2ee997e74eead4631fb1ce0504c4294c1091502f3de0520f7b49f4ac6be9",
-        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "f1fd2ee997e74eead4631fb1ce0504c4294c1091502f3de0520f7b49f4ac6be9",
-      "bytes": 1358622,
-      "format": "png",
-      "width": 1672,
-      "height": 941,
-      "mode": "RGB",
-      "has_alpha": false
-    },
-    {
-      "id": "legacy-brand-wordmark-banner",
-      "path": "profile/assets/brand-wordmark-banner.svg",
-      "category": "profile",
-      "status": "legacy",
-      "role": "Historical profile URL retained for compatibility",
-      "provenance": {
-        "source": "repository:profile/assets/brand-wordmark-banner.svg",
-        "source_sha256": "49bf76546be53867274929ca7d329f4a890c5b532e187a9e45d3b6fb2b93f186",
-        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "49bf76546be53867274929ca7d329f4a890c5b532e187a9e45d3b6fb2b93f186",
-      "bytes": 207020,
-      "format": "svg",
-      "embedded_raster": true
-    },
-    {
-      "id": "legacy-docs-installation-mockup",
-      "path": "profile/assets/docs-installation-mockup.svg",
-      "category": "profile",
-      "status": "legacy",
-      "role": "Historical profile URL retained for compatibility",
-      "provenance": {
-        "source": "repository:profile/assets/docs-installation-mockup.svg",
-        "source_sha256": "018d99e02bf067138a263cbf477c0ed7aca15d46ac6d2a5cf0a2e7bc5d917f25",
-        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "018d99e02bf067138a263cbf477c0ed7aca15d46ac6d2a5cf0a2e7bc5d917f25",
-      "bytes": 13096,
-      "format": "svg",
-      "embedded_raster": false
-    },
-    {
       "id": "legacy-mascot-wave-heart",
       "path": "profile/assets/mascot-wave-heart.svg",
       "category": "profile",
@@ -147,23 +55,6 @@
       "rights": "Not recorded in supplied source; no new asset license is asserted.",
       "sha256": "66a5a0d85dde0543b9844474932cc10cc9ff59220f6e33af98aff1960df8aa2a",
       "bytes": 1212543,
-      "format": "svg",
-      "embedded_raster": true
-    },
-    {
-      "id": "legacy-mascot-wordmark-horizontal",
-      "path": "profile/assets/mascot-wordmark-horizontal.svg",
-      "category": "profile",
-      "status": "legacy",
-      "role": "Historical profile URL retained for compatibility",
-      "provenance": {
-        "source": "repository:profile/assets/mascot-wordmark-horizontal.svg",
-        "source_sha256": "c370e39e574c0bdbdb18d776fb593598112bfe986794957e13464cbca855368c",
-        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "c370e39e574c0bdbdb18d776fb593598112bfe986794957e13464cbca855368c",
-      "bytes": 328423,
       "format": "svg",
       "embedded_raster": true
     },
@@ -224,35 +115,6 @@
       "mode": "RGB",
       "has_alpha": false,
       "family": "developer"
-    },
-    {
-      "id": "reference-package-framework",
-      "path": "references/ecosystem/framework.png",
-      "category": "ecosystem",
-      "status": "reference",
-      "role": "Existing public package artwork",
-      "provenance": {
-        "source": "https://github.com/php-fast-forward/framework/blob/dac7ef8e4cfd8d39f36d526a6a4345958bcc83eb/docs/_static/mascot.png",
-        "source_sha256": "7e19237f0dca9e6534381203fc5dc69685e986551d7a107e51a6136e1e986f8f",
-        "repository": "php-fast-forward/framework",
-        "source_commit": "dac7ef8e4cfd8d39f36d526a6a4345958bcc83eb",
-        "git_blob_sha": "35304abcd8b3420838c42a22a49c84185c646411",
-        "public_default_branch_verified_on": "2026-10-03",
-        "visual_notes": [
-          "Legacy ecosystem banner: unclothed orange fox, white muzzle/chest/tail tip, amber eyes, dark brown contours.",
-          "Navy background with violet-blue-cyan connection trails, chevron wordmark, outlined ecosystem cards.",
-          "Confirms neutral fox continuity with the organization profile and backup identity; embedded product copy remains a historical reference."
-        ]
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "7e19237f0dca9e6534381203fc5dc69685e986551d7a107e51a6136e1e986f8f",
-      "bytes": 1473461,
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "mode": "RGB",
-      "has_alpha": false,
-      "family": "historical-editorial"
     },
     {
       "id": "reference-icon-collection-reference-transparent-cropped-png",
@@ -354,44 +216,6 @@
       "bytes": 11137,
       "format": "svg",
       "embedded_raster": false
-    },
-    {
-      "id": "reference-documentation",
-      "path": "references/website/documentation.png",
-      "category": "website",
-      "status": "reference",
-      "role": "Future docs layout; embedded API and claims unverified",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/04_mockups/documentation_layout_preview.png",
-        "source_sha256": "63f5c124e68f74ec322c4685e9373958542fcd293dbcc95b9339501733400836"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "63f5c124e68f74ec322c4685e9373958542fcd293dbcc95b9339501733400836",
-      "bytes": 893420,
-      "format": "png",
-      "width": 1448,
-      "height": 1086,
-      "mode": "RGB",
-      "has_alpha": false
-    },
-    {
-      "id": "reference-landing",
-      "path": "references/website/landing-page.png",
-      "category": "website",
-      "status": "reference",
-      "role": "Future landing composition; embedded claims unverified",
-      "provenance": {
-        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/04_mockups/landing_page_design_full.png",
-        "source_sha256": "389025c965bb179f826180f29219c53bfaa537796a6bee0419428818a8da70bf"
-      },
-      "rights": "Not recorded in supplied source; no new asset license is asserted.",
-      "sha256": "389025c965bb179f826180f29219c53bfaa537796a6bee0419428818a8da70bf",
-      "bytes": 1132261,
-      "format": "png",
-      "width": 935,
-      "height": 1683,
-      "mode": "RGB",
-      "has_alpha": false
     },
     {
       "id": "reference-package-agents",
@@ -834,60 +658,6 @@
       "has_alpha": false
     },
     {
-      "id": "mark-compact",
-      "path": "assets/brand/mark-compact.svg",
-      "category": "brand",
-      "status": "canonical",
-      "role": "Compact color mark for small UI applications",
-      "provenance": {
-        "source": "derived:assets/brand/mark.png",
-        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
-        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
-        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
-      },
-      "rights": "New repository-authored geometry; no separate artwork license is declared.",
-      "sha256": "8661e34fc7c57ddd2f4c35a6433855e07c3d98efb5bf174d69e17c0ede99af55",
-      "bytes": 625,
-      "format": "svg",
-      "embedded_raster": false
-    },
-    {
-      "id": "mark-compact-ink",
-      "path": "assets/brand/mark-compact-ink.svg",
-      "category": "brand",
-      "status": "canonical",
-      "role": "Compact monochrome mark for light surfaces",
-      "provenance": {
-        "source": "derived:assets/brand/mark.png",
-        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
-        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
-        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
-      },
-      "rights": "New repository-authored geometry; no separate artwork license is declared.",
-      "sha256": "e448cc1bdcb10a84601cb5d65c6bee7ac61d9cdefca2320695871c295d7a7137",
-      "bytes": 360,
-      "format": "svg",
-      "embedded_raster": false
-    },
-    {
-      "id": "mark-compact-white",
-      "path": "assets/brand/mark-compact-white.svg",
-      "category": "brand",
-      "status": "canonical",
-      "role": "Compact monochrome mark for navy surfaces",
-      "provenance": {
-        "source": "derived:assets/brand/mark.png",
-        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
-        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
-        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
-      },
-      "rights": "New repository-authored geometry; no separate artwork license is declared.",
-      "sha256": "c0c86a8dbfa21ff774dbfb14dc7fb2b6c241d355d1b977066e87155adb7a722c",
-      "bytes": 362,
-      "format": "svg",
-      "embedded_raster": false
-    },
-    {
       "id": "dash-editorial-hoodie",
       "path": "assets/mascot/dash-editorial-hoodie.png",
       "category": "mascot",
@@ -1095,13 +865,22 @@
       "role": "Reusable browser stylesheet authored for this repository",
       "provenance": {
         "source": "repository-authored:assets/styles/documentation.css",
-        "source_sha256": "8d7db55741cda9b46ffc10b9d3ccbf078cfb99a64e68ccea82628ac8d66369db",
+        "source_sha256": "96218cd24b0817e0a39ff66d6479d2359a0fca7b1140f9dea808126becb48359",
         "authoring_date": "2026-10-03",
-        "design_source": "DESIGN.md"
+        "design_source": "DESIGN.md",
+        "transformation": "Stylesheet maintained directly in this repository; source_sha256 and the delivered SHA-256 both identify the current file bytes.",
+        "source_history": [
+          {
+            "source": "repository-authored:assets/styles/documentation.css",
+            "source_sha256": "8d7db55741cda9b46ffc10b9d3ccbf078cfb99a64e68ccea82628ac8d66369db",
+            "availability": "historical-metadata-only",
+            "note": "Previously recorded authoring digest; no match to the current file bytes is asserted."
+          }
+        ]
       },
       "rights": "New repository-authored stylesheet; no third-party code or font is bundled.",
-      "sha256": "14961da89d16ad7851e48995a2a9a8028c5adc8dc12556fac8cdaa315365761c",
-      "bytes": 18029,
+      "sha256": "96218cd24b0817e0a39ff66d6479d2359a0fca7b1140f9dea808126becb48359",
+      "bytes": 18179,
       "format": "css"
     },
     {
@@ -1112,14 +891,981 @@
       "role": "Reusable browser stylesheet authored for this repository",
       "provenance": {
         "source": "repository-authored:assets/styles/brand.css",
-        "source_sha256": "26d256b652554477ed2c2e47f9299a78ec6e60d4c5cb7ffc5e90339f90ffce0e",
+        "source_sha256": "8ae86dc52b017bfae63c384a74ad47997fc8f0d139d62b128556a15965af1594",
         "authoring_date": "2026-10-03",
-        "design_source": "DESIGN.md"
+        "design_source": "DESIGN.md",
+        "transformation": "Stylesheet maintained directly in this repository; source_sha256 and the delivered SHA-256 both identify the current file bytes.",
+        "source_history": [
+          {
+            "source": "repository-authored:assets/styles/brand.css",
+            "source_sha256": "26d256b652554477ed2c2e47f9299a78ec6e60d4c5cb7ffc5e90339f90ffce0e",
+            "availability": "historical-metadata-only",
+            "note": "Previously recorded authoring digest; no match to the current file bytes is asserted."
+          }
+        ]
       },
       "rights": "New repository-authored stylesheet; no third-party code or font is bundled.",
-      "sha256": "26d256b652554477ed2c2e47f9299a78ec6e60d4c5cb7ffc5e90339f90ffce0e",
-      "bytes": 8969,
+      "sha256": "8ae86dc52b017bfae63c384a74ad47997fc8f0d139d62b128556a15965af1594",
+      "bytes": 10290,
       "format": "css"
+    },
+    {
+      "id": "dash-developer-coding",
+      "path": "assets/mascot/dash-developer-coding.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "family": "developer",
+      "role": "Programming at a laptop; local proposal awaiting maintainer review",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-coding",
+        "source_sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "dash-developer-welcome"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "0df1f8a5c5db602ea649ad716ffe9f5396de849314e8190c74b99248b13c0fba",
+      "bytes": 1989218,
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-developer-debugging",
+      "path": "assets/mascot/dash-developer-debugging.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "family": "developer",
+      "role": "Investigating components; local proposal awaiting maintainer review",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-debugging",
+        "source_sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "dash-developer-welcome"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "829bb9cc0e9596d0c61d51f5709fa3f0ad6a6558c2fc853c83870a230f00f8c5",
+      "bytes": 2127143,
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-developer-explaining",
+      "path": "assets/mascot/dash-developer-explaining.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "family": "developer",
+      "role": "Explaining composition; local proposal awaiting maintainer review",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-explaining",
+        "source_sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "dash-developer-welcome"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "b5a2bb951b87d61002fab5a6b3463ce3a7413f63e234e294041f5feb7ab79df2",
+      "bytes": 1845598,
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "dash-developer-portrait-study",
+      "path": "assets/mascot/dash-developer-portrait-study.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "family": "developer",
+      "role": "Waist-up portrait for local logo proposals; local proposal awaiting maintainer review",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-portrait-study",
+        "source_sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "dash-developer-welcome"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "9b4adf163832ba51d2dddc2b043627b3b70cf84b1b98063770f6537dc549e460",
+      "bytes": 1392780,
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "navigation-style",
+      "path": "assets/styles/navigation.css",
+      "category": "styles",
+      "status": "reference",
+      "role": "Shared navigation stylesheet for local brand review previews",
+      "provenance": {
+        "source": "repository-authored:assets/styles/navigation.css",
+        "source_sha256": "f626036b9ca345f316c52deb5c67707329972272d856e47f2934705ec5849ddb",
+        "authoring_date": "2026-10-03",
+        "design_source": "DESIGN.md",
+        "transformation": "Stylesheet maintained directly in this repository; source_sha256 and the delivered SHA-256 both identify the current file bytes.",
+        "source_history": [
+          {
+            "source": "repository-authored:assets/styles/navigation.css",
+            "source_sha256": "ecfb115817f07be26f18cf20e2063b52c711e50861d5aa557d9561754d93f292",
+            "availability": "historical-metadata-only",
+            "note": "Previously recorded authoring digest; no match to the current file bytes is asserted."
+          }
+        ]
+      },
+      "rights": "New repository-authored stylesheet; no third-party code or font is bundled.",
+      "sha256": "f626036b9ca345f316c52deb5c67707329972272d856e47f2934705ec5849ddb",
+      "bytes": 3295,
+      "format": "css"
+    },
+    {
+      "id": "dash-developer-workstation",
+      "path": "assets/mascot/dash-developer-workstation.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "role": "Developer workstation scene with intentional opaque navy background; local proposal awaiting maintainer review",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-generation.json#dash-developer-workstation",
+        "source_sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+        "generation_receipt": "docs/brand/dash-generation.json",
+        "source_ids": [
+          "dash-developer-welcome"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "791cca47c009a14a9d8564d3aa554eba79d3262dbaf4652c978a33ff89cfef45",
+      "bytes": 2180315,
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "has_alpha": false,
+      "family": "developer"
+    },
+    {
+      "id": "fast-forward-logo",
+      "path": "assets/brand/fast-forward-logo.svg",
+      "sha256": "34ab2dcfb9667928ccccb02a13e4955af21154a5739822a9433a3e188f33f1b2",
+      "bytes": 7862,
+      "format": "svg",
+      "category": "brand",
+      "status": "canonical",
+      "direction": "F",
+      "logo_form": "signature",
+      "logo_variant": "color",
+      "publication": "local-not-published",
+      "review_status": "direction-selected",
+      "role": "PHP Fast Forward outlined signature — color variant",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "authoring": "Native path geometry authored in this repository; Exo 2 Italic weight 900 lettering outlined from the pinned font source.",
+        "transformation": "Production reconstruction of selected direction F; shared geometry and lettering across surface and monochrome variants. This symbol does not replace the Dash character master."
+      },
+      "rights": "Repository-authored native symbol geometry; outlined lettering from Exo 2 under OFL-1.1. See assets/brand/source/font-source.json and source/OFL-Exo2.txt; no separate artwork license is declared.",
+      "embedded_raster": false,
+      "view_box": [
+        0.0,
+        0.0,
+        1006.0,
+        320.0
+      ]
+    },
+    {
+      "id": "fast-forward-logo-dark",
+      "path": "assets/brand/fast-forward-logo-dark.svg",
+      "sha256": "c38c5e4f851b47e3435e8200f16515fdca79c9a9caf1e51e963d1720ea8c89c5",
+      "bytes": 7862,
+      "format": "svg",
+      "category": "brand",
+      "status": "canonical",
+      "direction": "F",
+      "logo_form": "signature",
+      "logo_variant": "dark",
+      "publication": "local-not-published",
+      "review_status": "direction-selected",
+      "role": "PHP Fast Forward outlined signature — dark variant",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "authoring": "Native path geometry authored in this repository; Exo 2 Italic weight 900 lettering outlined from the pinned font source.",
+        "transformation": "Production reconstruction of selected direction F; shared geometry and lettering across surface and monochrome variants. This symbol does not replace the Dash character master."
+      },
+      "rights": "Repository-authored native symbol geometry; outlined lettering from Exo 2 under OFL-1.1. See assets/brand/source/font-source.json and source/OFL-Exo2.txt; no separate artwork license is declared.",
+      "embedded_raster": false,
+      "view_box": [
+        0.0,
+        0.0,
+        1006.0,
+        320.0
+      ]
+    },
+    {
+      "id": "fast-forward-logo-ink",
+      "path": "assets/brand/fast-forward-logo-ink.svg",
+      "sha256": "9ae409609f77208f06ede108b20d4c1e2a0f50411dd064cfb093c0bd74526dcd",
+      "bytes": 8079,
+      "format": "svg",
+      "category": "brand",
+      "status": "canonical",
+      "direction": "F",
+      "logo_form": "signature",
+      "logo_variant": "ink",
+      "publication": "local-not-published",
+      "review_status": "direction-selected",
+      "role": "PHP Fast Forward outlined signature — ink variant",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "authoring": "Native path geometry authored in this repository; Exo 2 Italic weight 900 lettering outlined from the pinned font source.",
+        "transformation": "Production reconstruction of selected direction F; shared geometry and lettering across surface and monochrome variants. This symbol does not replace the Dash character master."
+      },
+      "rights": "Repository-authored native symbol geometry; outlined lettering from Exo 2 under OFL-1.1. See assets/brand/source/font-source.json and source/OFL-Exo2.txt; no separate artwork license is declared.",
+      "embedded_raster": false,
+      "view_box": [
+        0.0,
+        0.0,
+        1006.0,
+        320.0
+      ]
+    },
+    {
+      "id": "fast-forward-logo-white",
+      "path": "assets/brand/fast-forward-logo-white.svg",
+      "sha256": "0961ffc2b95a27407623f2afb7fb88d6728c8c9c99e769646844cc424851c68b",
+      "bytes": 8079,
+      "format": "svg",
+      "category": "brand",
+      "status": "canonical",
+      "direction": "F",
+      "logo_form": "signature",
+      "logo_variant": "white",
+      "publication": "local-not-published",
+      "review_status": "direction-selected",
+      "role": "PHP Fast Forward outlined signature — white variant",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "authoring": "Native path geometry authored in this repository; Exo 2 Italic weight 900 lettering outlined from the pinned font source.",
+        "transformation": "Production reconstruction of selected direction F; shared geometry and lettering across surface and monochrome variants. This symbol does not replace the Dash character master."
+      },
+      "rights": "Repository-authored native symbol geometry; outlined lettering from Exo 2 under OFL-1.1. See assets/brand/source/font-source.json and source/OFL-Exo2.txt; no separate artwork license is declared.",
+      "embedded_raster": false,
+      "view_box": [
+        0.0,
+        0.0,
+        1006.0,
+        320.0
+      ]
+    },
+    {
+      "id": "fast-forward-mark",
+      "path": "assets/brand/fast-forward-mark.svg",
+      "sha256": "1b8ee1ab9de7905745fb0f4ef7892b3a2595ac787981c755a11e518d9aaa9842",
+      "bytes": 1293,
+      "format": "svg",
+      "category": "brand",
+      "status": "canonical",
+      "direction": "F",
+      "logo_form": "mark",
+      "logo_variant": "color",
+      "publication": "local-not-published",
+      "review_status": "direction-selected",
+      "role": "Dash fox brand symbol — color variant",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "authoring": "Native path geometry authored in this repository; Exo 2 Italic weight 900 lettering outlined from the pinned font source.",
+        "transformation": "Production reconstruction of selected direction F; shared geometry and lettering across surface and monochrome variants. This symbol does not replace the Dash character master."
+      },
+      "rights": "Repository-authored native symbol geometry; outlined lettering from Exo 2 under OFL-1.1. See assets/brand/source/font-source.json and source/OFL-Exo2.txt; no separate artwork license is declared.",
+      "embedded_raster": false,
+      "view_box": [
+        0.0,
+        0.0,
+        320.0,
+        320.0
+      ]
+    },
+    {
+      "id": "fast-forward-mark-dark",
+      "path": "assets/brand/fast-forward-mark-dark.svg",
+      "sha256": "74b99b524be45eb42a28884580de66b4eb03f449b1bf7347758101e1e3634013",
+      "bytes": 1293,
+      "format": "svg",
+      "category": "brand",
+      "status": "canonical",
+      "direction": "F",
+      "logo_form": "mark",
+      "logo_variant": "dark",
+      "publication": "local-not-published",
+      "review_status": "direction-selected",
+      "role": "Dash fox brand symbol — dark variant",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "authoring": "Native path geometry authored in this repository; Exo 2 Italic weight 900 lettering outlined from the pinned font source.",
+        "transformation": "Production reconstruction of selected direction F; shared geometry and lettering across surface and monochrome variants. This symbol does not replace the Dash character master."
+      },
+      "rights": "Repository-authored native symbol geometry; outlined lettering from Exo 2 under OFL-1.1. See assets/brand/source/font-source.json and source/OFL-Exo2.txt; no separate artwork license is declared.",
+      "embedded_raster": false,
+      "view_box": [
+        0.0,
+        0.0,
+        320.0,
+        320.0
+      ]
+    },
+    {
+      "id": "fast-forward-mark-ink",
+      "path": "assets/brand/fast-forward-mark-ink.svg",
+      "sha256": "e0dbca0dcf8d69c85c436372c9bb1fd94043430b7eaa4b333f91875a3d0a7718",
+      "bytes": 1510,
+      "format": "svg",
+      "category": "brand",
+      "status": "canonical",
+      "direction": "F",
+      "logo_form": "mark",
+      "logo_variant": "ink",
+      "publication": "local-not-published",
+      "review_status": "direction-selected",
+      "role": "Dash fox brand symbol — ink variant",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "authoring": "Native path geometry authored in this repository; Exo 2 Italic weight 900 lettering outlined from the pinned font source.",
+        "transformation": "Production reconstruction of selected direction F; shared geometry and lettering across surface and monochrome variants. This symbol does not replace the Dash character master."
+      },
+      "rights": "Repository-authored native symbol geometry; outlined lettering from Exo 2 under OFL-1.1. See assets/brand/source/font-source.json and source/OFL-Exo2.txt; no separate artwork license is declared.",
+      "embedded_raster": false,
+      "view_box": [
+        0.0,
+        0.0,
+        320.0,
+        320.0
+      ]
+    },
+    {
+      "id": "fast-forward-mark-white",
+      "path": "assets/brand/fast-forward-mark-white.svg",
+      "sha256": "b72a25fec0cfe1da00fc1e472cd6800fd0074df77ee3a390d7fe30304a11be50",
+      "bytes": 1510,
+      "format": "svg",
+      "category": "brand",
+      "status": "canonical",
+      "direction": "F",
+      "logo_form": "mark",
+      "logo_variant": "white",
+      "publication": "local-not-published",
+      "review_status": "direction-selected",
+      "role": "Dash fox brand symbol — white variant",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "authoring": "Native path geometry authored in this repository; Exo 2 Italic weight 900 lettering outlined from the pinned font source.",
+        "transformation": "Production reconstruction of selected direction F; shared geometry and lettering across surface and monochrome variants. This symbol does not replace the Dash character master."
+      },
+      "rights": "Repository-authored native symbol geometry; outlined lettering from Exo 2 under OFL-1.1. See assets/brand/source/font-source.json and source/OFL-Exo2.txt; no separate artwork license is declared.",
+      "embedded_raster": false,
+      "view_box": [
+        0.0,
+        0.0,
+        320.0,
+        320.0
+      ]
+    },
+    {
+      "id": "fast-forward-logo-source",
+      "path": "assets/brand/logo-source.json",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Editable production source for direction F geometry, outlined lettering, layouts and all eight native SVG variants",
+      "provenance": {
+        "source": "derived:fast-forward-logo-concepts",
+        "source_sha256": "c5586c01fa8d3abe9986d17d3e9a1125ccefd0802f737c90e1c5b4dc9d44be56",
+        "source_ids": [
+          "fast-forward-logo-concepts"
+        ],
+        "authoring": "Repository-authored native geometry and deterministic layouts; glyph paths outlined from the separately pinned OFL font source."
+      },
+      "rights": "Repository-authored source geometry; Exo 2 outlined glyphs derive from OFL-1.1 font bytes. See source/font-source.json and source/OFL-Exo2.txt.",
+      "sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+      "bytes": 10546,
+      "format": "json"
+    },
+    {
+      "id": "font-exo2-italic-source",
+      "path": "assets/brand/source/font-source.json",
+      "category": "typography",
+      "status": "reference",
+      "role": "Pinned upstream Exo 2 Italic font provenance, original bytes, OFL license and lettering-instance receipt",
+      "provenance": {
+        "source": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/exo2/Exo2-Italic%5Bwght%5D.ttf",
+        "source_sha256": "bad568cea9ed23d6ae4aea41ad3f7747752952aabdd85d7f01474af392a21b32",
+        "authoring": "Metadata for the original pinned Google Fonts file and its OFL license; no font bytes modified."
+      },
+      "rights": "Exo 2 original font distributed under OFL-1.1, recorded in assets/brand/source/OFL-Exo2.txt; copyright and full conditions retained there.",
+      "sha256": "0f3cf752ecd482979a583cb0afd63ba6a747d0b6c96e0150d33be101c55fde9b",
+      "bytes": 1477,
+      "format": "json"
+    },
+    {
+      "id": "profile-brand-hero-banner",
+      "path": "profile/assets/brand-hero-banner.png",
+      "category": "profile",
+      "status": "canonical",
+      "role": "Current GitHub profile cover rendered with the direction F dark signature and primary developer Dash master",
+      "publication": "local-not-published",
+      "export_date": "2026-10-04",
+      "provenance": {
+        "source": "rendered:docs/brand/profile-banner.html",
+        "source_sha256": "09c2308beeb3514e5f0c235df994ee3b31cb7591794ae1a4271af4362211e370",
+        "source_ids": [
+          "fast-forward-logo-dark",
+          "dash-developer-welcome",
+          "font-exo2-italic-source"
+        ],
+        "authoring": "Repository HTML rendered in Chromium through Cua; native CDP Page.captureScreenshot with format=png. No input or captured pixels edited.",
+        "transformation": "PNG export of the final HTML viewport; replaces the retired institutional identity while retaining its historical records separately.",
+        "rendering": {
+          "tool": "Cua browser",
+          "engine": "Chromium",
+          "capture": "CDP Page.captureScreenshot",
+          "format": "png",
+          "date": "2026-10-04",
+          "viewport": {
+            "width": 1280,
+            "height": 640
+          },
+          "source_html": {
+            "path": "docs/brand/profile-banner.html",
+            "sha256": "09c2308beeb3514e5f0c235df994ee3b31cb7591794ae1a4271af4362211e370"
+          },
+          "source_stylesheets": [],
+          "source_artwork": [
+            {
+              "id": "fast-forward-logo-dark",
+              "path": "assets/brand/fast-forward-logo-dark.svg",
+              "sha256": "c38c5e4f851b47e3435e8200f16515fdca79c9a9caf1e51e963d1720ea8c89c5"
+            },
+            {
+              "id": "dash-developer-welcome",
+              "path": "assets/mascot/dash-developer-welcome.png",
+              "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+            }
+          ],
+          "outlined_lettering_source": {
+            "id": "font-exo2-italic-source",
+            "path": "assets/brand/source/font-source.json",
+            "sha256": "0f3cf752ecd482979a583cb0afd63ba6a747d0b6c96e0150d33be101c55fde9b",
+            "font_sha256": "bad568cea9ed23d6ae4aea41ad3f7747752952aabdd85d7f01474af392a21b32",
+            "runtime_font_load": false
+          },
+          "personal_photo_used": false
+        }
+      },
+      "rights": "Repository-authored composition using the recorded direction F symbol, OFL-1.1 outlined Exo 2 lettering and the recorded Dash artwork. No separate artwork license is declared; source rights and attribution remain in their respective records.",
+      "sha256": "0d1281906811ba583a84f78ce867efc1bec724d056db6e40520e1e830582396c",
+      "bytes": 332043,
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "id": "profile-docs-installation",
+      "path": "profile/assets/docs-installation.png",
+      "category": "profile",
+      "status": "canonical",
+      "role": "Current documentation reference-page export rendered with the direction F dark signature and developer Dash reading pose",
+      "publication": "local-not-published",
+      "export_date": "2026-10-04",
+      "provenance": {
+        "source": "rendered:docs/brand/documentation.html",
+        "source_sha256": "f4ac38cddcf2e6a9329dd8ac61e7d709de509ceb7742f066aa7cda68e5cbbf2b",
+        "source_ids": [
+          "fast-forward-logo-dark",
+          "dash-developer-reading",
+          "font-exo2-italic-source",
+          "documentation-style",
+          "navigation-style"
+        ],
+        "authoring": "Repository HTML rendered in Chromium through Cua; native CDP Page.captureScreenshot with format=png. No input or captured pixels edited.",
+        "transformation": "PNG export of the final HTML viewport; replaces the retired institutional identity while retaining its historical records separately.",
+        "rendering": {
+          "tool": "Cua browser",
+          "engine": "Chromium",
+          "capture": "CDP Page.captureScreenshot",
+          "format": "png",
+          "date": "2026-10-04",
+          "viewport": {
+            "width": 1280,
+            "height": 960
+          },
+          "source_html": {
+            "path": "docs/brand/documentation.html",
+            "sha256": "f4ac38cddcf2e6a9329dd8ac61e7d709de509ceb7742f066aa7cda68e5cbbf2b"
+          },
+          "source_stylesheets": [
+            {
+              "id": "documentation-style",
+              "path": "assets/styles/documentation.css",
+              "sha256": "96218cd24b0817e0a39ff66d6479d2359a0fca7b1140f9dea808126becb48359"
+            },
+            {
+              "id": "navigation-style",
+              "path": "assets/styles/navigation.css",
+              "sha256": "f626036b9ca345f316c52deb5c67707329972272d856e47f2934705ec5849ddb"
+            }
+          ],
+          "source_artwork": [
+            {
+              "id": "fast-forward-logo-dark",
+              "path": "assets/brand/fast-forward-logo-dark.svg",
+              "sha256": "c38c5e4f851b47e3435e8200f16515fdca79c9a9caf1e51e963d1720ea8c89c5"
+            },
+            {
+              "id": "dash-developer-reading",
+              "path": "assets/mascot/dash-developer-reading.png",
+              "sha256": "bb87dc5d6a8bbcde4510ca5f99e19a6a216a577b9c83aac2c5947454e2b1e982"
+            }
+          ],
+          "outlined_lettering_source": {
+            "id": "font-exo2-italic-source",
+            "path": "assets/brand/source/font-source.json",
+            "sha256": "0f3cf752ecd482979a583cb0afd63ba6a747d0b6c96e0150d33be101c55fde9b",
+            "font_sha256": "bad568cea9ed23d6ae4aea41ad3f7747752952aabdd85d7f01474af392a21b32",
+            "runtime_font_load": false
+          },
+          "personal_photo_used": false
+        }
+      },
+      "rights": "Repository-authored composition using the recorded direction F symbol, OFL-1.1 outlined Exo 2 lettering and the recorded Dash artwork. No separate artwork license is declared; source rights and attribution remain in their respective records.",
+      "sha256": "f7a5c123639b1f33ebf29439c8bacea44a76efbcbaf1a92cc1b6fa8a3950fcaa",
+      "bytes": 290675,
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "mode": "RGB",
+      "has_alpha": false
+    }
+  ],
+  "archived_sources": [
+    {
+      "id": "legacy-brand-hero-banner",
+      "path": "profile/assets/brand-hero-banner.png",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/brand-hero-banner.png",
+        "source_sha256": "f1fd2ee997e74eead4631fb1ce0504c4294c1091502f3de0520f7b49f4ac6be9",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "f1fd2ee997e74eead4631fb1ce0504c4294c1091502f3de0520f7b49f4ac6be9",
+      "bytes": 1358622,
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "has_alpha": false,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/profile/assets/brand-hero-banner.png",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "brand-mark",
+      "path": "assets/brand/mark.png",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Framework mark",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_mark_arrows_transparent_cropped.png",
+        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
+      "bytes": 236386,
+      "format": "png",
+      "width": 1072,
+      "height": 543,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/assets/brand/mark.png",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "brand-wordmark-light",
+      "path": "assets/brand/wordmark-light.png",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Wordmark for light surfaces",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_horizontal_text_transparent_cropped.png",
+        "source_sha256": "687896b5ff7aa712e5e5d4a60fe11cdf120e24e7fb78a614d5a4c2e7a504f36f"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "687896b5ff7aa712e5e5d4a60fe11cdf120e24e7fb78a614d5a4c2e7a504f36f",
+      "bytes": 190937,
+      "format": "png",
+      "width": 1581,
+      "height": 281,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/assets/brand/wordmark-light.png",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "mark-compact",
+      "path": "assets/brand/mark-compact.svg",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Compact color mark for small UI applications",
+      "provenance": {
+        "source": "derived:assets/brand/mark.png",
+        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
+        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
+        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
+      },
+      "rights": "New repository-authored geometry; no separate artwork license is declared.",
+      "sha256": "8661e34fc7c57ddd2f4c35a6433855e07c3d98efb5bf174d69e17c0ede99af55",
+      "bytes": 625,
+      "format": "svg",
+      "embedded_raster": false,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/assets/brand/mark-compact.svg",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "mark-compact-ink",
+      "path": "assets/brand/mark-compact-ink.svg",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Compact monochrome mark for light surfaces",
+      "provenance": {
+        "source": "derived:assets/brand/mark.png",
+        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
+        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
+        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
+      },
+      "rights": "New repository-authored geometry; no separate artwork license is declared.",
+      "sha256": "e448cc1bdcb10a84601cb5d65c6bee7ac61d9cdefca2320695871c295d7a7137",
+      "bytes": 360,
+      "format": "svg",
+      "embedded_raster": false,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/assets/brand/mark-compact-ink.svg",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "mark-compact-white",
+      "path": "assets/brand/mark-compact-white.svg",
+      "category": "brand",
+      "status": "canonical",
+      "role": "Compact monochrome mark for navy surfaces",
+      "provenance": {
+        "source": "derived:assets/brand/mark.png",
+        "source_sha256": "e03c302ef9836b44f06bad1f4ad59dac7f3d1c559a098a83e5a3c572acaa34bf",
+        "authoring": "New native SVG geometry authored in this repository on 2026-10-03.",
+        "transformation": "Simplify the three forward chevrons; omit speed trails; use design tokens. Not a trace or a replacement of the supplied raster wordmark."
+      },
+      "rights": "New repository-authored geometry; no separate artwork license is declared.",
+      "sha256": "c0c86a8dbfa21ff774dbfb14dc7fb2b6c241d355d1b977066e87155adb7a722c",
+      "bytes": 362,
+      "format": "svg",
+      "embedded_raster": false,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/assets/brand/mark-compact-white.svg",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "fast-forward-logo-concepts",
+      "path": "assets/brand/fast-forward-logo-concepts.png",
+      "category": "brand",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "role": "Bitmap logo directions E/F/G for local review; generated lettering and geometry require reconstruction",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/logo-generation.json#fast-forward-logo-concepts",
+        "source_sha256": "687896b5ff7aa712e5e5d4a60fe11cdf120e24e7fb78a614d5a4c2e7a504f36f",
+        "generation_receipt": "docs/brand/logo-generation.json",
+        "source_ids": [
+          "brand-wordmark-light",
+          "dash-developer-welcome"
+        ]
+      },
+      "rights": "Generated during authorized repository identity work; source artwork rights remain unrecorded, no separate asset license is asserted.",
+      "sha256": "c5586c01fa8d3abe9986d17d3e9a1125ccefd0802f737c90e1c5b4dc9d44be56",
+      "bytes": 1046074,
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "has_alpha": false,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/assets/brand/fast-forward-logo-concepts.png",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      },
+      "selection": {
+        "direction": "F",
+        "status": "direction-selected",
+        "date": "2026-10-03",
+        "evidence": "Maintainer selected the fox direction with Fast in orange and its monochromatic rendition."
+      }
+    },
+    {
+      "id": "legacy-brand-wordmark-banner",
+      "path": "profile/assets/brand-wordmark-banner.svg",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/brand-wordmark-banner.svg",
+        "source_sha256": "49bf76546be53867274929ca7d329f4a890c5b532e187a9e45d3b6fb2b93f186",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "49bf76546be53867274929ca7d329f4a890c5b532e187a9e45d3b6fb2b93f186",
+      "bytes": 207020,
+      "format": "svg",
+      "embedded_raster": true,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/profile/assets/brand-wordmark-banner.svg",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "legacy-mascot-wordmark-horizontal",
+      "path": "profile/assets/mascot-wordmark-horizontal.svg",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/mascot-wordmark-horizontal.svg",
+        "source_sha256": "c370e39e574c0bdbdb18d776fb593598112bfe986794957e13464cbca855368c",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "c370e39e574c0bdbdb18d776fb593598112bfe986794957e13464cbca855368c",
+      "bytes": 328423,
+      "format": "svg",
+      "embedded_raster": true,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/profile/assets/mascot-wordmark-horizontal.svg",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "legacy-docs-installation-mockup",
+      "path": "profile/assets/docs-installation-mockup.svg",
+      "category": "profile",
+      "status": "legacy",
+      "role": "Historical profile URL retained for compatibility",
+      "provenance": {
+        "source": "repository:profile/assets/docs-installation-mockup.svg",
+        "source_sha256": "018d99e02bf067138a263cbf477c0ed7aca15d46ac6d2a5cf0a2e7bc5d917f25",
+        "source_commit": "ea130ec1af8c01e4b13d7767f7dc51ec216e3087"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "018d99e02bf067138a263cbf477c0ed7aca15d46ac6d2a5cf0a2e7bc5d917f25",
+      "bytes": 13096,
+      "format": "svg",
+      "embedded_raster": false,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/profile/assets/docs-installation-mockup.svg",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "reference-landing",
+      "path": "references/website/landing-page.png",
+      "category": "website",
+      "status": "reference",
+      "role": "Future landing composition; embedded claims unverified",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/04_mockups/landing_page_design_full.png",
+        "source_sha256": "389025c965bb179f826180f29219c53bfaa537796a6bee0419428818a8da70bf"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "389025c965bb179f826180f29219c53bfaa537796a6bee0419428818a8da70bf",
+      "bytes": 1132261,
+      "format": "png",
+      "width": 935,
+      "height": 1683,
+      "mode": "RGB",
+      "has_alpha": false,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/references/website/landing-page.png",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "reference-documentation",
+      "path": "references/website/documentation.png",
+      "category": "website",
+      "status": "reference",
+      "role": "Future docs layout; embedded API and claims unverified",
+      "provenance": {
+        "source": "supplied-backup:php_fast_forward_clean_assets_transparent/04_mockups/documentation_layout_preview.png",
+        "source_sha256": "63f5c124e68f74ec322c4685e9373958542fcd293dbcc95b9339501733400836"
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "63f5c124e68f74ec322c4685e9373958542fcd293dbcc95b9339501733400836",
+      "bytes": 893420,
+      "format": "png",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "has_alpha": false,
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/references/website/documentation.png",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
+    },
+    {
+      "id": "reference-package-framework",
+      "path": "references/ecosystem/framework.png",
+      "category": "ecosystem",
+      "status": "reference",
+      "role": "Existing public package artwork",
+      "provenance": {
+        "source": "https://github.com/php-fast-forward/framework/blob/dac7ef8e4cfd8d39f36d526a6a4345958bcc83eb/docs/_static/mascot.png",
+        "source_sha256": "7e19237f0dca9e6534381203fc5dc69685e986551d7a107e51a6136e1e986f8f",
+        "repository": "php-fast-forward/framework",
+        "source_commit": "dac7ef8e4cfd8d39f36d526a6a4345958bcc83eb",
+        "git_blob_sha": "35304abcd8b3420838c42a22a49c84185c646411",
+        "public_default_branch_verified_on": "2026-10-03",
+        "visual_notes": [
+          "Legacy ecosystem banner: unclothed orange fox, white muzzle/chest/tail tip, amber eyes, dark brown contours.",
+          "Navy background with violet-blue-cyan connection trails, chevron wordmark, outlined ecosystem cards.",
+          "Confirms neutral fox continuity with the organization profile and backup identity; embedded product copy remains a historical reference."
+        ]
+      },
+      "rights": "Not recorded in supplied source; no new asset license is asserted.",
+      "sha256": "7e19237f0dca9e6534381203fc5dc69685e986551d7a107e51a6136e1e986f8f",
+      "bytes": 1473461,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false,
+      "family": "historical-editorial",
+      "availability": "local-backup-not-distributed",
+      "included_in_public_kit": false,
+      "archive_path": "backup/brand/retired-2026-10-03/references/ecosystem/framework.png",
+      "retirement": {
+        "date": "2026-10-03",
+        "status": "retired",
+        "reason": "Replaced by the selected native direction F fox identity; original bytes and provenance retained in the local ignored backup."
+      }
     }
   ]
 }

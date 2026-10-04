@@ -2,3 +2,6 @@ backup/
 .DS_Store
 ._*
 __pycache__/
+
+# Generated GitHub Pages staging output
+_site/

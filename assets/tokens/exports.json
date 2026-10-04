@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "source": "DESIGN.md",
-  "source_sha256": "3ce37c01bab64aacb8f61a35e419672c62e3b89ffbbfd56e9a3232bfef44f763",
+  "source_sha256": "3a0cbcf3b45dbbf74a10e65a2d56ec5abdc53481f84381c85e95bb1171ca1d7d",
   "generator": "@google/design.md@0.4.0",
   "normalization": "scripts/design-exports.mjs",
-  "normalization_sha256": "da0890be9271630def471f51f18d8bc7e4041c352e99e80e1dfd2bb0a3ab128a",
+  "normalization_sha256": "c0d3afb1418216ec471ae42abd8b60578c600481135a65fcac8d337ccec710b7",
   "outputs": [
     {
       "path": "tokens.json",

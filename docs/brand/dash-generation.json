@@ -346,6 +346,377 @@
         "transparency": "Actual alpha pixels inspected; final light/navy surface review recorded in delivery.",
         "selection": "Maintainer selected developer as primary; newly authored editorial collection as secondary."
       }
+    },
+    {
+      "id": "dash-developer-coding",
+      "collection": "developer",
+      "status": "local-not-published",
+      "destination": "assets/mascot/dash-developer-coding.png",
+      "date": "2026-10-03",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Create ONE new pose of Dash, PHP Fast Forward's established mature developer fox, using the supplied image as the strict identity reference. Preserve this exact character: upright mature proportions, warm dimensional polished illustration, orange fur, cream cheek/muzzle/chest/tail tip, amber-brown eyes, small dark nose, forehead tuft, large triangular ears with dark tips, dark paws, one full fluffy tail. Preserve the same purple pullover hoodie, plain chest, cream drawstrings, kangaroo pocket; no logo or emblem. New scene: Dash is seated comfortably, programming on an open plain charcoal laptop on a small quiet desk, three-quarter view, two anatomically clear paws naturally positioned on the keyboard/trackpad, attentive friendly expression, face/ears and tail visible. Laptop screen is turned mostly toward Dash; any visible screen content is simple abstract colored line shapes, NO readable code, letters, words, numbers, brand marks, or software UI. Preserve the mature style and likeness; do not make the head bigger, eyes rounder, or turn it into a younger chibi character. A useful stand-alone repository illustration with breathing room around the complete silhouette. TRUE TRANSPARENT BACKGROUND, with no glow, floor, room, scenery, vignette, halo, or colored background. Keep only Dash, laptop, restrained desk and simple seat. Clean fully transparent surrounding pixels; professional crisp edges, consistent material rendering. No title, watermark, labels, additional characters, or extra limbs.",
+      "sources": [
+        {
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+          "role": "Primary developer identity master",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "0df1f8a5c5db602ea649ad716ffe9f5396de849314e8190c74b99248b13c0fba",
+        "bytes": 1989218,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "generator_artifact": "exec-fe2e2c32-4229-4655-af3e-1c1a8a38d4bb.png"
+      },
+      "review": {
+        "status": "awaiting-review",
+        "date": "2026-10-03",
+        "selection": "Local proposal; no canonical selection or publication requested.",
+        "likeness": "Awaiting maintainer review against the developer master.",
+        "anatomy": "Awaiting visual review; not an orthographic turnaround.",
+        "transparency": "PNG loaded with Pillow; native RGBA alpha inspected without changing pixels. The generated output remains exactly as delivered, including any partially opaque pixels or edge contact.",
+        "alpha_inspection": {
+          "alpha_extrema": [
+            0,
+            254
+          ],
+          "transparent_pixels": 805352,
+          "opaque_pixels": 0,
+          "partial_alpha_pixels": 767512,
+          "nontransparent_bbox": [
+            0,
+            51,
+            1024,
+            1504
+          ],
+          "corners_alpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "edge_inspection": {
+            "top": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            },
+            "bottom": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            },
+            "left": {
+              "max_alpha": 1,
+              "pixels_above_alpha_16": 0
+            },
+            "right": {
+              "max_alpha": 1,
+              "pixels_above_alpha_16": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "dash-developer-debugging",
+      "collection": "developer",
+      "status": "local-not-published",
+      "destination": "assets/mascot/dash-developer-debugging.png",
+      "date": "2026-10-03",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Create ONE useful new stand-alone Dash pose for a repository reference library. Use the provided mature developer Dash image as the strict character/style reference. Same polished dimensional illustrated orange fox, same mature body/head proportions and longer muzzle, amber-brown eyes, cream cheek/muzzle/chest/tail tip, forehead tuft, dark-tipped triangular ears, dark paws, ONE fluffy tail. Same plain purple pullover hoodie with two cream drawstrings and kangaroo pocket. No redesign, no chibi proportions, no rounder younger face, no added chest emblem. Preserve the exact identity across scenes. TRUE TRANSPARENT BACKGROUND: all empty area fully alpha-zero, no halo, scenery, floor, glow, vignette, background paint, words, numbers, code, brand symbols, watermark, or other characters. The complete silhouette and all props fit comfortably with breathing room. Crisp professional edges and consistent material rendering. New situation: Dash investigates a small abstract component cluster on a plain low charcoal workbench using a simple magnifying glass held naturally in one paw; the other paw rests beside the cluster. Three solid modest geometric violet/blue/cyan blocks sit on the workbench. Dash looks carefully through the glass with a curious calm expression; eyes and face remain recognizable and unobscured. Three-quarter upright stance, full ears and tail visible. The lens is clear with restrained reflections, no huge eye distortion. This symbolizes debugging without depicting any software API or generating a bug insect. Avoid exaggerated detective costume; keep the original developer hoodie.",
+      "sources": [
+        {
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+          "role": "Primary developer identity master",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "829bb9cc0e9596d0c61d51f5709fa3f0ad6a6558c2fc853c83870a230f00f8c5",
+        "bytes": 2127143,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "generator_artifact": "exec-e61e4860-efbf-49a8-8e15-73a02843edbf.png"
+      },
+      "review": {
+        "status": "awaiting-review",
+        "date": "2026-10-03",
+        "selection": "Local proposal; no canonical selection or publication requested.",
+        "likeness": "Awaiting maintainer review against the developer master.",
+        "anatomy": "Awaiting visual review; not an orthographic turnaround.",
+        "transparency": "PNG loaded with Pillow; native RGBA alpha inspected without changing pixels. The generated output remains exactly as delivered, including any partially opaque pixels or edge contact.",
+        "alpha_inspection": {
+          "alpha_extrema": [
+            0,
+            254
+          ],
+          "transparent_pixels": 709001,
+          "opaque_pixels": 0,
+          "partial_alpha_pixels": 863863,
+          "nontransparent_bbox": [
+            23,
+            1,
+            1024,
+            1536
+          ],
+          "corners_alpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "edge_inspection": {
+            "top": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            },
+            "bottom": {
+              "max_alpha": 1,
+              "pixels_above_alpha_16": 0
+            },
+            "left": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            },
+            "right": {
+              "max_alpha": 1,
+              "pixels_above_alpha_16": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "dash-developer-explaining",
+      "collection": "developer",
+      "status": "local-not-published",
+      "destination": "assets/mascot/dash-developer-explaining.png",
+      "date": "2026-10-03",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Create ONE useful new stand-alone Dash pose for a repository reference library. Use the provided mature developer Dash image as the strict character/style reference. Same polished dimensional illustrated orange fox, same mature body/head proportions and longer muzzle, amber-brown eyes, cream cheek/muzzle/chest/tail tip, forehead tuft, dark-tipped triangular ears, dark paws, ONE fluffy tail. Same plain purple pullover hoodie with two cream drawstrings and kangaroo pocket. No redesign, no chibi proportions, no rounder younger face, no added chest emblem. Preserve the exact identity across scenes. TRUE TRANSPARENT BACKGROUND: all empty area fully alpha-zero, no halo, scenery, floor, glow, vignette, background paint, words, numbers, code, brand symbols, watermark, or other characters. The complete silhouette and all props fit comfortably with breathing room. Crisp professional edges and consistent material rendering. New situation: Dash presents a small whiteboard on a minimal charcoal easel. Dash stands beside it in a three-quarter full-body stance, smiling calmly, one open paw indicating the diagram and the other resting naturally near the hoodie pocket. The board contains only FOUR simple solid rounded rectangular components in violet, blue, cyan, and orange, connected with a few plain thin grey lines; no letters, text, numbers, labels, software icons, symbols, or handwritten code. Keep the board subordinate to the fox and make Dash's face/ears and single full cream-tipped tail completely readable. It represents explaining component composition without asserting a real API. Keep both paws anatomically coherent; no extra hands or fingers.",
+      "sources": [
+        {
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+          "role": "Primary developer identity master",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "b5a2bb951b87d61002fab5a6b3463ce3a7413f63e234e294041f5feb7ab79df2",
+        "bytes": 1845598,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "generator_artifact": "exec-1c104031-22c6-444c-826c-ee539548f42b.png"
+      },
+      "review": {
+        "status": "awaiting-review",
+        "date": "2026-10-03",
+        "selection": "Local proposal; no canonical selection or publication requested.",
+        "likeness": "Awaiting maintainer review against the developer master.",
+        "anatomy": "Awaiting visual review; not an orthographic turnaround.",
+        "transparency": "PNG loaded with Pillow; native RGBA alpha inspected without changing pixels. The generated output remains exactly as delivered, including any partially opaque pixels or edge contact.",
+        "alpha_inspection": {
+          "alpha_extrema": [
+            0,
+            254
+          ],
+          "transparent_pixels": 827362,
+          "opaque_pixels": 0,
+          "partial_alpha_pixels": 745502,
+          "nontransparent_bbox": [
+            0,
+            59,
+            1009,
+            1512
+          ],
+          "corners_alpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "edge_inspection": {
+            "top": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            },
+            "bottom": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            },
+            "left": {
+              "max_alpha": 4,
+              "pixels_above_alpha_16": 0
+            },
+            "right": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "dash-developer-portrait-study",
+      "collection": "developer",
+      "status": "local-not-published",
+      "destination": "assets/mascot/dash-developer-portrait-study.png",
+      "date": "2026-10-03",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Create a new logo-composition portrait of the SAME mature developer Dash shown in the supplied reference. Reference is strict identity and rendering guidance. Square composition: an isolated WAIST-UP portrait, facing three-quarter slightly toward camera, calm confident friendly closed-mouth smile, both ears fully visible and hoodie shoulders/chest/forearms fully included. One relaxed paw lightly touches the hoodie's pocket edge; the other rests naturally. Keep orange fur, cream muzzle/cheeks and chest, amber-brown eyes, small dark nose, original forehead tuft, dark-tipped triangular ears, mature face proportions and longer muzzle, refined dimensional fur rendering. Same purple pullover hoodie with two cream drawstrings, plain chest and kangaroo pocket. Preserve mature character and exact likeness, not a chibi fox, not oversized round eyes, not a new species or redesigned head. This is a portrait to be placed within a logo layout later, so DO NOT generate chevrons, lettering, logo graphics, circular frames, badges, text, numbers, symbols, background or scenery. The bottom crop is deliberate at waist level, with clean natural torso edge; nothing cropped at sides or ears. TRUE TRANSPARENT BACKGROUND and alpha-zero empty space; no halo, glow, vignette, floor or colored background. Clean professional cutout edges. NO wordmark, title, emblem, brand markings, other characters or extra limbs.",
+      "sources": [
+        {
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+          "role": "Primary developer identity master",
+          "included_in_public_kit": true
+        }
+      ],
+      "output": {
+        "sha256": "9b4adf163832ba51d2dddc2b043627b3b70cf84b1b98063770f6537dc549e460",
+        "bytes": 1392780,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "generator_artifact": "exec-8aa12768-68ea-474c-b733-82efebbe187f.png"
+      },
+      "review": {
+        "status": "awaiting-review",
+        "date": "2026-10-03",
+        "selection": "Local proposal; no canonical selection or publication requested.",
+        "likeness": "Awaiting maintainer review against the developer master.",
+        "anatomy": "Awaiting visual review; not an orthographic turnaround.",
+        "transparency": "PNG loaded with Pillow; native RGBA alpha inspected without changing pixels. The generated output remains exactly as delivered, including any partially opaque pixels or edge contact.",
+        "alpha_inspection": {
+          "alpha_extrema": [
+            0,
+            255
+          ],
+          "transparent_pixels": 858311,
+          "opaque_pixels": 533,
+          "partial_alpha_pixels": 713672,
+          "nontransparent_bbox": [
+            0,
+            1,
+            1234,
+            1254
+          ],
+          "corners_alpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "edge_inspection": {
+            "top": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            },
+            "bottom": {
+              "max_alpha": 4,
+              "pixels_above_alpha_16": 0
+            },
+            "left": {
+              "max_alpha": 1,
+              "pixels_above_alpha_16": 0
+            },
+            "right": {
+              "max_alpha": 0,
+              "pixels_above_alpha_16": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "dash-developer-workstation",
+      "status": "local-not-published",
+      "destination": "assets/mascot/dash-developer-workstation.png",
+      "date": "2026-10-03",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": "not exposed by the tool",
+        "version": "not exposed by the tool"
+      },
+      "prompt": "Create a new premium illustrated scene starring Dash, the mature developer mascot of PHP Fast Forward. Reference image 1 is the sole identity and anatomy authority: keep exactly that orange fox's mature face, amber/brown eyes, cream muzzle and cheek markings, triangular ears with dark tips, forehead tuft, small dark nose, dark paws, single broad orange tail with a cream tip, and plain purple hoodie with cream drawstrings. Keep the same polished dimensional furry 3D illustration finish, calm confidence and friendly curiosity. Do not use chibi proportions or a different fox design.\n\nReference image 2 is the user's workstation photo. Use it ONLY as inspiration for a robust, equipment-rich desk: not as a room or person to reproduce, and not as a screen-content reference. Create a clean organized enthusiast developer studio. Dash is seated in a comfortable dark ergonomic chair at a wide wooden desk with a large dark desk mat, actively programming, one paw on a white/navy mechanical keyboard and the other on a mouse. Show Dash's face clearly in a three-quarter front-side view, with a thoughtful small smile and a believable comfortable working posture. Show his complete seated body, both feet and his single complete tail curling naturally beside the chair. Hands and limbs must be anatomically consistent with the identity reference.\n\nInclude an ultrawide monitor and a second regular widescreen monitor on articulated arms, with a small third portrait display, a tablet on a stand, a small phone dock, a compact macro keypad, two compact desktop computers, a webcam, a rectangular LED key light above the monitors, a broadcast microphone on a boom arm with restrained purple lighting, headphones on a stand, a spatial/VR headset on a shelf at the desk's side, one game controller, a closed notebook and a simple dark mug. Equipment should feel purposeful and well arranged, with cable management and breathing room; avoid a cluttered pile. Use generic unbranded hardware. Screens show ONLY abstract geometric code-like lines and panels with no readable letters, numbers or copied interfaces.\n\nCompose a wide landscape illustration, suitable for a repository hero or documentation feature image, with all important equipment and Dash comfortably inside the canvas and generous margins. Use a quiet deep navy studio background, soft violet/cyan ambient light, warm highlights on the orange fur and desk, and professional restrained lighting. Dash remains the visual focus despite the impressive setup. Deliver a high resolution PNG with this intentional opaque scene background. No text, letters, generated code, logos, badges, wordmarks, watermarks, copied private UI, medicines, personal labels, extra limbs or tails.",
+      "sources": [
+        {
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+          "role": "Primary developer identity master",
+          "included_in_public_kit": true
+        },
+        {
+          "path": "user-supplied:local-only-workstation-photo",
+          "kind": "user-supplied-local-photo",
+          "sha256": "4da84627c108dbdf21b84d1f0031a6167b51951f3930b3518dc026fcf2794b14",
+          "role": "Equipment density and arrangement only; personal photograph remains outside the repository.",
+          "description": "Equipment density and arrangement only; personal photo remains outside the repository.",
+          "included_in_public_kit": false,
+          "publish_source": false
+        }
+      ],
+      "output": {
+        "sha256": "791cca47c009a14a9d8564d3aa554eba79d3262dbaf4652c978a33ff89cfef45",
+        "bytes": 2180315,
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "has_alpha": false,
+        "generator_artifact": "exec-e6fb5c11-ecb9-4075-85fe-5ecd63b0b372.png",
+        "transparent_background": false
+      },
+      "review": {
+        "status": "awaiting-review",
+        "date": "2026-10-03",
+        "selection": "Local proposal; canonical identity remains unchanged.",
+        "transparency": "Pillow loaded the original PNG; opaque background is intentional; no pixels were modified.",
+        "opacity_inspection": {
+          "alpha_channel": false,
+          "background": "Intentional opaque scene/background, stored as RGB."
+        },
+        "likeness": "Awaiting maintainer review against the developer master.",
+        "anatomy": "Awaiting visual review of scene, body, paws and single tail.",
+        "visual_inspection": {
+          "date": "2026-10-03",
+          "reviewer": "coordinating repository agent",
+          "evidence": "Coordinating repository agent inspected the native generated workstation output. Intentional opaque navy scene remains awaiting maintainer review.",
+          "selection": "Awaiting maintainer review; no direction or scene has been approved as canonical."
+        }
+      },
+      "collection": "developer"
     }
   ]
 }

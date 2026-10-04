@@ -11,7 +11,14 @@ The maintainer selected **Dash** as the character name, the mature developer
 collection as the primary identity, and the newly created cute editorial
 collection as a secondary option. Both now have a selected welcome master and
 reading, guiding, and composing derivatives. Each collection keeps its own face,
-proportions, and finish. Existing public profile URLs remain historical.
+proportions, and finish. Earlier profile imagery remains documented in the archive.
+
+The maintainer subsequently selected logo direction **F**: a fox signature with
+“Fast” in orange `#FF641B`, plus monochrome of the same drawing. The final local
+kit has eight native SVG exports and an editable source/generator. Exo 2 Italic,
+version 2.010, weight 900 provides the outlined lettering; the official font and
+OFL 1.1 notice are pinned with source hashes. Interface typography remains on the
+system-font tokens. This selection does not imply external publication.
 
 The expanded audit inspected 19 local image paths / 16 distinct contents and
 public default-branch trees. Fourteen package sources were curated: three match
@@ -26,12 +33,16 @@ an untracked file exists in that commit. The manifest records this distinction.
 | Newly authored editorial | Rounder face, larger eyes, compact proportions, painted brown contours, purple hoodie | Secondary welcome/community/softer institutional collection. |
 | Package banners | Thirteen hoodie compositions and one older flat framework banner | Costume/context evidence, not interchangeable character masters or API facts. |
 | Older cute source-pack exports | Different face and mixed lockup interpretations | Seven promoted exports archived in local ignored backup, hashes verified before removal. |
-| Compact chevrons | New native SVG geometry, color/ink/white applications | UI symbol alongside the supplied raster mark; original lettering master remains future work. |
+| Selected F signature | Native fox geometry and Exo 2 outlined lettering; light/dark/color/monochrome applications | Current logo system. Master is `assets/brand/logo-source.json`; eight exports come from `scripts/build-brand-logos.py`. |
+| Retired logos and compact chevrons | Earlier identity interpretations and unrecorded legacy lettering | Removed from the visible kit; provenance remains in ignored backup and `archived_sources`. |
 
 Cleaned PNGs have true alpha; their supplied bytes and padding were preserved.
-Dark “PHP” lettering in the transparent wordmark disappears on navy, so that
-wordmark is restricted to light surfaces. Navy layouts use the mark plus live
-white text until a dedicated master exists.
+The new dark-surface SVG signature has light lettering, and ink/white monochrome
+exports cover single-color applications. Thirteen remaining package source
+illustrations provide historical provenance and costume context; they are not
+logo masters or the visible brand gallery. Two retain verified public pins
+(`dev-tools`, `enum`); eleven have explicit local provenance. The older framework
+banner's public pin remains in the archive metadata.
 
 The archived icon sprite is vector geometry, but third-party marks have no
 recorded rights or attribution. Its CSS named a nonexistent image; that URL
@@ -45,8 +56,9 @@ DESIGN.md, STYLE.md, and SOUL.md define one identity contract. The manifest iden
 reusable exports, references, package costumes, and legacy URLs.
 The visual specimen shows eight reference poses and light/navy contexts.
 The documentation pattern supplies reusable CSS and an executable reading layout;
-the logo board demonstrates composed institutional, developer and editorial
-applications. A portable dash-art skill routes production to the current masters. Token exports
+the logo board presents the selected F signature and its applications. The vector
+source and standard-library generator reproduce the eight SVGs without a runtime
+font dependency. A portable dash-art skill routes production to the current masters. Token exports
 let future interfaces consume the same values. Portable validation checks
 delivered bytes, metadata, coverage, and SVG safety.
 
@@ -54,22 +66,24 @@ Community defaults cover contribution, support, conduct, security, accessibility
 and issue/review preparation, with repository overrides. Private vulnerability
 reporting was observed disabled here; the policy explains how to request a
 private route without publishing vulnerability details. No contact or SLA was
-invented. Finder metadata was removed and ignored. Existing profile paths and
-the unrelated local social preview were preserved. The shared-workflow issue
+invented. Finder metadata was removed and ignored. Profile surfaces use the
+current logo and approved Dash references; the unrelated local social preview
+was preserved. The shared-workflow issue
 and PR remain outside this change.
 
 ## Next artwork work
 
-1. Produce editable vector masters for chevrons and wordmarks, including light
-   lettering for dark surfaces and an optically tested favicon. Record authoring
-   and rights evidence before replacing public URLs.
+1. Inspect the selected fox mark at actual small consumer sizes before delivering
+   a favicon or launcher icon. The native master is complete; optical small-size
+   applications still need their own review.
 2. Produce deliberate developer and editorial model/expression sheets: front,
    profile, back and additional expressions. The delivered pose references do
    not prove hidden anatomy; new views need review as derivatives.
 3. Normalize future package illustrations around the developer master, warm eyes,
    markings, and costume rules. Update packages through their own PRs rather
    than silently rewriting released artwork across repositories.
-4. Resolve authorship, generator/source details, font provenance, and reuse terms.
+4. Resolve remaining historical artwork authorship, generator/source details,
+   and reuse terms. The selected lettering's font provenance and license are recorded.
    Replace third-party icon approximations with documented upstream assets if
    they are needed for a production interface.
 
@@ -81,8 +95,9 @@ are defined. Start with readable installation, a package grid, and actual
 repository links. Check keyboard navigation, mobile layout, contrast, selectable
 code, and reduced motion in the implemented page.
 
-The specimen is a local design artifact. This foundation deploys no framework
-website, replaces no package artwork, and changes no organization settings.
+The specimen is a local design artifact. The [Pages setup guide](pages.md)
+documents the publication workflow and prerequisites. Local preparation does
+not prove a deployed website, replace package artwork, or change organization settings.
 
 ## Production package responsibility
 

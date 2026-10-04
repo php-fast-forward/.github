@@ -12,10 +12,13 @@ on:
       - 'references/**'
       - 'profile/assets/**'
       - 'scripts/validate-brand.py'
+      - 'scripts/build-brand-logos.py'
       - 'scripts/export-design.mjs'
       - 'scripts/design-exports.mjs'
       - 'tests/test_brand_assets.py'
+      - 'tests/test_brand_logos.py'
       - 'tests/design-exports.test.mjs'
+      - '.gitattributes'
       - '.github/workflows/brand-assets.yml'
   push:
     branches: [main]
@@ -29,10 +32,13 @@ on:
       - 'references/**'
       - 'profile/assets/**'
       - 'scripts/validate-brand.py'
+      - 'scripts/build-brand-logos.py'
       - 'scripts/export-design.mjs'
       - 'scripts/design-exports.mjs'
       - 'tests/test_brand_assets.py'
+      - 'tests/test_brand_logos.py'
       - 'tests/design-exports.test.mjs'
+      - '.gitattributes'
       - '.github/workflows/brand-assets.yml'
 
 permissions:
@@ -46,6 +52,8 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Verify delivered assets
         run: python3 scripts/validate-brand.py
+      - name: Verify native logo and lettering exports
+        run: python3 scripts/build-brand-logos.py --check
       - name: Verify corruption and safety failure modes
         run: python3 -m unittest discover -s tests -p 'test_*.py'
       - name: Lint design and verify reproducible token exports

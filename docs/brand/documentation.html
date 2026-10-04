@@ -6,21 +6,29 @@
   <meta name="description" content="The PHP Fast Forward documentation pattern: a reusable navigation, reading, code, and component reference.">
   <title>Installation · PHP Fast Forward documentation pattern</title>
   <link rel="stylesheet" href="../../assets/styles/documentation.css">
+  <link rel="stylesheet" href="../../assets/styles/navigation.css">
 </head>
 <body class="ff-docs" data-reading-theme="light">
   <a class="ff-docs-skip" href="#main">Skip to content</a>
-  <div class="ff-docs-topbar">
-    <p class="ff-docs-topbar-label"><a href="index.html">Brand library</a> / Documentation pattern</p>
-    <button class="ff-docs-theme" type="button" aria-pressed="false" hidden>Navy reading surface</button>
-  </div>
+  <header class="ff-kit-header">
+    <div class="ff-kit-header-inner">
+      <a class="ff-kit-brand" href="index.html"><img class="ff-kit-logo" src="../../assets/brand/fast-forward-logo-dark.svg" alt="PHP Fast Forward" width="224" height="72"></a>
+      <nav class="ff-kit-nav" aria-label="Brand library">
+        <a class="ff-kit-link" href="index.html">Brand library</a>
+        <a class="ff-kit-link" href="index.html#matrix">Dash matrix</a>
+        <a class="ff-kit-link" href="index.html#system">Visual system</a>
+        <a class="ff-kit-link" href="logo-compositions.html">Logo compositions</a>
+        <a class="ff-kit-link" href="documentation.html" aria-current="page">Documentation</a>
+        <a class="ff-kit-link" href="../../assets/README.md">Asset guide</a>
+      </nav>
+      <div class="ff-kit-actions"><button class="ff-docs-theme ff-kit-button" type="button" aria-pressed="false" hidden>Navy reading surface</button></div>
+    </div>
+  </header>
 
   <div class="ff-docs-shell">
-    <header class="ff-docs-rail">
+    <aside class="ff-docs-rail" aria-label="Documentation navigation">
       <div class="ff-docs-rail-inner">
-        <a class="ff-docs-brand" href="../../README.md">
-          <img src="../../assets/brand/mark-compact.svg" alt="" width="96" height="48">
-          <span><small>PHP</small>Fast Forward</span>
-        </a>
+        <a class="ff-docs-brand ff-docs-brand--signature" href="../../README.md"><img src="../../assets/brand/fast-forward-logo-dark.svg" alt="PHP Fast Forward" width="200" height="64"></a>
         <details class="ff-docs-navigation" open>
           <summary>Browse documentation</summary>
           <nav aria-label="Documentation">
@@ -44,7 +52,7 @@
           <p class="ff-docs-rail-note">Shared interfaces.<br>Small, useful steps.<br>A clear way forward.</p>
         </details>
       </div>
-    </header>
+    </aside>
 
     <main class="ff-docs-content" id="main" tabindex="-1">
       <nav class="ff-docs-breadcrumb" aria-label="Breadcrumb">

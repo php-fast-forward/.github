@@ -50,7 +50,9 @@ Dash has orange fur, warm amber/brown eyes, a dark nose and paws, cream cheeks a
 
 The **developer collection is the primary identity**: a more upright body, longer muzzle, and polished dimensional fur and cloth. Use it for package illustrations, documentation, and default institutional applications. The **editorial collection is secondary**: a rounder face, larger eyes, compact seated proportions, and painted brown contours. Use it for welcoming, community, or an intentionally softer institutional moment. Each collection has its own reference master; do not mix their faces, body proportions, or rendering in one illustration.
 
-The newly authored reference poses are welcome, reading, guiding, and composing. Older cute source-pack drawings are archived in the ignored local backup. Historical profile image URLs remain available for compatibility, but they are not the reference for new Dash artwork.
+The newly authored reference poses are welcome, reading, guiding, and composing. Older cute source-pack drawings and retired logos are archived in the ignored local backup with provenance records; they are not the reference for new Dash artwork.
+
+The framework's selected F signature uses a simplified fox symbol and orange “Fast”, with a monochrome counterpart of the same drawing. This vector symbol identifies the product; the full Dash illustrations provide companionship. The symbol does not redefine the character's proportions or imply new views of its anatomy. Exo 2 lettering gives the signature its personality while interface typography remains focused on readable documentation.
 
 Preserve the recognizable silhouette, facial character, and relationship between the orange, brown, and cream areas. Pose changes must keep the fox recognizable. New names, anatomy, permanent costumes, or major stylistic changes require a deliberate update to the character definition and references.
 

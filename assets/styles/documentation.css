@@ -329,3 +329,6 @@
     .ff-docs .ff-docs-article { max-width: none; }
   }
 }
+
+.ff-docs-brand.ff-docs-brand--signature img { width:100%; max-width:200px; height:auto; }
+.ff-docs-brand.ff-docs-brand--signature { display:block; }

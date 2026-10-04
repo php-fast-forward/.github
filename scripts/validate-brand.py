@@ -25,33 +25,43 @@ IMAGE_FORMATS = {
     ".bmp": "bmp", ".tif": "tiff", ".tiff": "tiff",
 }
 ASSET_FORMATS = {**IMAGE_FORMATS, ".css": "css", ".json": "json"}
+# Keep all known image extensions in coverage and archived metadata. Active
+# files must additionally have an implemented validator, rather than succeeding
+# merely because their hash and claimed metadata match.
+VALIDATED_FORMATS = {"png", "svg", "css", "json"}
 SHA256 = re.compile(r"[0-9a-fA-F]{64}\Z")
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 # A delivery limit, checked before inflation; decoding uses 64 KiB output blocks.
 MAX_PNG_DECOMPRESSED_BYTES = 128 * 1024 * 1024
 PNG_DECODE_BLOCK_BYTES = 64 * 1024
 LEGACY_SVG_DOCTYPE = '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'
-RASTER_MIMES = {
-    "image/png", "image/jpeg", "image/jpg", "image/gif", "image/webp",
-    "image/bmp", "image/tiff", "image/x-icon", "image/vnd.microsoft.icon",
-}
+RASTER_MIMES = {"image/png"}
 
 
 def _integer(value: object) -> bool:
     return isinstance(value, int) and not isinstance(value, bool)
 
 
-def _safe_path(root: Path, value: object) -> tuple[Path | None, str | None]:
-    """Reject aliases and symlinks before reading any manifest-controlled file."""
+def _relative_path_error(value: object) -> str | None:
+    """Validate a historical or delivered path without touching the filesystem."""
     if not isinstance(value, str) or not value or "\\" in value:
-        return None, "path must be a nonempty repository-relative POSIX path"
+        return "path must be a nonempty repository-relative POSIX path"
     if any(ord(character) < 32 for character in value):
-        return None, "path contains a control character"
+        return "path contains a control character"
     relative = PurePosixPath(value)
     if relative.is_absolute() or any(part in {"", ".", ".."} for part in value.split("/")):
-        return None, "path must not be absolute or contain empty, . or .. components"
+        return "path must not be absolute or contain empty, . or .. components"
     if ":" in relative.parts[0]:
-        return None, "path must not use an absolute drive or URL prefix"
+        return "path must not use an absolute drive or URL prefix"
+    return None
+
+
+def _safe_path(root: Path, value: object) -> tuple[Path | None, str | None]:
+    """Reject aliases and symlinks before reading any manifest-controlled file."""
+    path_error = _relative_path_error(value)
+    if path_error:
+        return None, path_error
+    relative = PurePosixPath(value)
     current = root
     for part in relative.parts:
         current /= part
@@ -64,13 +74,53 @@ def _safe_path(root: Path, value: object) -> tuple[Path | None, str | None]:
     return current, None
 
 
-def _png_scanlines(chunks: list[bytes], width: int, height: int, depth: int, color: int, interlace: int) -> None:
-    """Check the zlib stream and filtered row layout without retaining pixels.
+def _png_palette_row(row: bytearray, previous: bytearray, method: int, depth: int, width: int, invalid_indices: bytes) -> bytearray:
+    """Reconstruct one indexed row and reject values outside its actual PLTE.
+
+    Only a current and previous row are retained, and only for palettes smaller
+    than the bit-depth range. Packed padding bits are not interpreted as pixels.
+    """
+    if method:
+        for index in range(len(row)):
+            left = row[index - 1] if index else 0
+            above = previous[index] if previous else 0
+            upper_left = previous[index - 1] if previous and index else 0
+            if method == 1:
+                predictor = left
+            elif method == 2:
+                predictor = above
+            elif method == 3:
+                predictor = (left + above) // 2
+            else:
+                estimate = left + above - upper_left
+                distances = (abs(estimate - left), abs(estimate - above), abs(estimate - upper_left))
+                predictor = (left, above, upper_left)[distances.index(min(distances))]
+            row[index] = (row[index] + predictor) & 0xFF
+    pixels_per_byte = 8 // depth
+    complete_bytes, remaining_pixels = divmod(width, pixels_per_byte)
+    for start in range(0, complete_bytes, PNG_DECODE_BLOCK_BYTES):
+        block = row[start:min(start + PNG_DECODE_BLOCK_BYTES, complete_bytes)]
+        if 1 in block.translate(invalid_indices):
+            raise ValueError("PNG image data references a missing palette entry")
+    if remaining_pixels:
+        # A full-byte lookup would incorrectly reject arbitrary padding bits.
+        last = row[complete_bytes]
+        for pixel in range(remaining_pixels):
+            sample = (last >> (8 - depth * (pixel + 1))) & ((1 << depth) - 1)
+            if invalid_indices[sample << (8 - depth)]:
+                raise ValueError("PNG image data references a missing palette entry")
+    return row
+
+
+def _png_scanlines(chunks: list[bytes], width: int, height: int, depth: int, color: int, interlace: int, palette_entries: int | None = None) -> None:
+    """Check the zlib stream, filtered rows and indexed-color palette bounds.
 
     PNG image layout/Adam7: https://www.w3.org/TR/png-3/#8Interlace
     Filters: https://www.w3.org/TR/png-3/#9Filters
-    This checks scanline structure; it does not reconstruct indexed pixels.
+    Palette bounds: https://www.w3.org/TR/png-3/#11PLTE
     """
+    if color == 3 and palette_entries is None:
+        raise ValueError("indexed PNG requires PLTE before IDAT")
     bits_per_pixel = {0: 1, 2: 3, 3: 1, 4: 2, 6: 4}[color] * depth
     passes = ((0, 0, 1, 1),) if not interlace else (
         (0, 0, 8, 8), (4, 0, 8, 8), (0, 4, 4, 8), (2, 0, 4, 4),
@@ -81,8 +131,8 @@ def _png_scanlines(chunks: list[bytes], width: int, height: int, depth: int, col
         pass_width = max(0, (width - x_start + x_step - 1) // x_step)
         pass_height = max(0, (height - y_start + y_step - 1) // y_step)
         if pass_width and pass_height:
-            rows.append(((pass_width * bits_per_pixel + 7) // 8, pass_height))
-    expected = sum((row_bytes + 1) * count for row_bytes, count in rows)
+            rows.append(((pass_width * bits_per_pixel + 7) // 8, pass_height, pass_width))
+    expected = sum((row_bytes + 1) * count for row_bytes, count, _ in rows)
     if expected > MAX_PNG_DECOMPRESSED_BYTES:
         raise ValueError("PNG image data exceeds the 128 MiB decoded-size limit")
     decoder = zlib.decompressobj()
@@ -90,6 +140,14 @@ def _png_scanlines(chunks: list[bytes], width: int, height: int, depth: int, col
     pass_index = 0
     rows_left = rows[0][1]
     row_remaining = 0
+    check_palette = color == 3 and palette_entries < (1 << depth)
+    invalid_indices = bytes(
+        any(((value >> shift) & ((1 << depth) - 1)) >= palette_entries for shift in range(8 - depth, -1, -depth))
+        for value in range(256)
+    ) if check_palette else b""
+    row = bytearray()
+    previous = bytearray()
+    filter_type = 0
     try:
         for chunk in chunks:
             for start in range(0, len(chunk), PNG_DECODE_BLOCK_BYTES):
@@ -106,17 +164,25 @@ def _png_scanlines(chunks: list[bytes], width: int, height: int, depth: int, col
                         if row_remaining == 0:
                             if output[offset] > 4:
                                 raise ValueError("PNG image data contains an invalid scanline filter")
+                            filter_type = output[offset]
                             offset += 1
                             row_remaining = rows[pass_index][0]
+                            if check_palette:
+                                row = bytearray()
                         consumed = min(row_remaining, len(output) - offset)
+                        if check_palette:
+                            row.extend(output[offset:offset + consumed])
                         row_remaining -= consumed
                         offset += consumed
                         if row_remaining == 0:
+                            if check_palette:
+                                previous = _png_palette_row(row, previous, filter_type, depth, rows[pass_index][2], invalid_indices)
                             rows_left -= 1
                             if rows_left == 0:
                                 pass_index += 1
                                 if pass_index < len(rows):
                                     rows_left = rows[pass_index][1]
+                                    previous = bytearray()
                 if decoder.eof:
                     # PNG decoders ignore unused bytes after the zlib stream.
                     # CRCs and the asset hash still cover all delivered bytes.
@@ -136,6 +202,7 @@ def _png_metadata(data: bytes) -> dict[str, object]:
         raise ValueError("invalid PNG signature")
     position = len(PNG_SIGNATURE)
     header = None
+    palette_entries = None
     transparency = False
     seen_image_data = False
     image_data_closed = False
@@ -146,6 +213,8 @@ def _png_metadata(data: bytes) -> dict[str, object]:
             raise ValueError("truncated PNG chunk")
         length = struct.unpack_from(">I", data, position)[0]
         kind = data[position + 4:position + 8]
+        if not re.fullmatch(rb"[A-Za-z]{4}", kind) or kind[2] & 0x20:
+            raise ValueError("invalid PNG chunk type")
         end = position + 12 + length
         if end > len(data):
             raise ValueError("truncated PNG chunk payload")
@@ -155,13 +224,33 @@ def _png_metadata(data: bytes) -> dict[str, object]:
             raise ValueError("invalid PNG chunk checksum")
         if header is None and kind != b"IHDR":
             raise ValueError("PNG must begin with IHDR")
+        if not kind[0] & 0x20 and kind not in {b"IHDR", b"PLTE", b"IDAT", b"IEND"}:
+            raise ValueError("PNG contains an unsupported critical chunk")
         if kind == b"IHDR":
             if header is not None or length != 13:
                 raise ValueError("invalid PNG IHDR")
             header = struct.unpack(">IIBBBBB", payload)
+        elif kind == b"PLTE":
+            color, depth = header[3], header[2]
+            if palette_entries is not None or seen_image_data or transparency:
+                raise ValueError("PNG PLTE must appear once before tRNS and IDAT")
+            if color in {0, 4} or not 0 < length <= 768 or length % 3:
+                raise ValueError("invalid PNG PLTE palette")
+            palette_entries = length // 3
+            if color == 3 and palette_entries > (1 << depth):
+                raise ValueError("PNG PLTE exceeds the indexed bit-depth range")
         elif kind == b"tRNS":
+            color = header[3]
+            if transparency or seen_image_data:
+                raise ValueError("PNG tRNS must appear once before IDAT")
+            if color == 3 and (palette_entries is None or length > palette_entries):
+                raise ValueError("invalid PNG tRNS palette transparency")
+            if (color in {0, 2} and length != {0: 2, 2: 6}[color]) or color not in {0, 2, 3}:
+                raise ValueError("invalid PNG tRNS for the color type")
             transparency = True
         elif kind == b"IDAT":
+            if header[3] == 3 and palette_entries is None:
+                raise ValueError("indexed PNG requires PLTE before IDAT")
             if image_data_closed:
                 raise ValueError("PNG image data IDAT chunks must be consecutive")
             seen_image_data = True
@@ -182,61 +271,9 @@ def _png_metadata(data: bytes) -> dict[str, object]:
         raise ValueError("invalid PNG dimensions, bit depth or color type")
     if compression != 0 or filtering != 0 or interlace not in {0, 1}:
         raise ValueError("unsupported PNG header fields")
-    _png_scanlines(image_chunks, width, height, depth, color, interlace)
+    _png_scanlines(image_chunks, width, height, depth, color, interlace, palette_entries)
     modes = {0: "1" if depth == 1 else "I" if depth == 16 else "L", 2: "RGB", 3: "P", 4: "LA", 6: "RGBA"}
     return {"width": width, "height": height, "mode": modes[color], "has_alpha": color in {4, 6} or transparency}
-
-
-def _jpeg_metadata(data: bytes) -> dict[str, object]:
-    if not data.startswith(b"\xff\xd8"):
-        raise ValueError("invalid JPEG signature")
-    position = 2
-    scanning = False
-    metadata = None
-    while position < len(data):
-        if scanning:
-            marker_start = data.find(b"\xff", position)
-            if marker_start < 0:
-                break
-            position = marker_start
-        elif data[position] != 0xFF:
-            raise ValueError("invalid JPEG marker")
-        while position < len(data) and data[position] == 0xFF:
-            position += 1
-        if position >= len(data):
-            break
-        marker = data[position]
-        position += 1
-        if marker == 0 and scanning:
-            continue
-        if 0xD0 <= marker <= 0xD7 and scanning:
-            continue
-        if marker == 0xD9:
-            if metadata is None:
-                raise ValueError("JPEG is missing its frame header")
-            return metadata
-        if marker in {0, 0xD8} or 0xD0 <= marker <= 0xD7:
-            raise ValueError("unexpected JPEG marker")
-        if marker == 0x01:
-            continue
-        scanning = False
-        if len(data) - position < 2:
-            raise ValueError("truncated JPEG segment")
-        length = struct.unpack_from(">H", data, position)[0]
-        end = position + length
-        if length < 2 or end > len(data):
-            raise ValueError("invalid JPEG segment length")
-        if marker in {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}:
-            if length < 8:
-                raise ValueError("truncated JPEG frame header")
-            height, width, components = struct.unpack_from(">HHB", data, position + 3)
-            if not width or not height or components not in {1, 3, 4} or length != 8 + 3 * components:
-                raise ValueError("invalid JPEG dimensions or frame components")
-            metadata = {"width": width, "height": height, "mode": {1: "L", 3: "RGB", 4: "CMYK"}[components], "has_alpha": False}
-        position = end
-        if marker == 0xDA:
-            scanning = True
-    raise ValueError("JPEG is missing its end marker")
 
 
 def _local_name(name: str) -> str:
@@ -307,14 +344,20 @@ def _svg_metadata(data: bytes, status: object) -> dict[str, object]:
                 raise ValueError("SVG image is missing its embedded raster source")
             for source in image_sources:
                 match = re.fullmatch(r"data:([^;,]+);base64,([\s\S]+)", source, flags=re.IGNORECASE)
-                if not match or match.group(1).lower() not in RASTER_MIMES:
+                if not match:
                     raise ValueError("SVG images must use embedded base64 raster data")
+                if match.group(1).lower() not in RASTER_MIMES:
+                    raise ValueError("SVG embedded raster format has no decoder; only image/png is supported")
                 try:
                     payload = base64.b64decode("".join(match.group(2).split()), validate=True)
                 except (ValueError, binascii.Error) as error:
                     raise ValueError("SVG contains invalid base64 raster data") from error
                 if not payload:
                     raise ValueError("SVG contains empty embedded raster data")
+                try:
+                    _png_metadata(payload)
+                except ValueError as error:
+                    raise ValueError(f"SVG embedded PNG is invalid: {error}") from error
             embedded = True
     return {"embedded_raster": embedded}
 
@@ -385,6 +428,81 @@ def _managed_images(root: Path, errors: list[str]) -> set[str]:
                 if path.suffix.lower() in IMAGE_FORMATS:
                     images.add(path.relative_to(root).as_posix())
     return images
+
+
+def _archived_source_errors(sources: object, ids: set[str], errors: list[str]) -> None:
+    """Check historical metadata only; a local backup is never required or read.
+
+    Historical paths may coincide with a replacement's active delivery path.
+    They are not added to managed-image coverage or the checked-file count.
+    """
+    if not isinstance(sources, list):
+        errors.append("assets/manifest.json: archived_sources must be a list")
+        return
+    for index, source in enumerate(sources):
+        label = f"archived_sources[{index}]"
+        if not isinstance(source, dict):
+            errors.append(f"{label}: archived source must be an object")
+            continue
+        identifier = source.get("id")
+        if not isinstance(identifier, str) or not identifier.strip():
+            errors.append(f"{label}: id must be a nonempty string")
+        elif identifier in ids:
+            errors.append(f"{label}: duplicate id {identifier!r}")
+        else:
+            ids.add(identifier)
+        if source.get("availability") != "local-backup-not-distributed":
+            errors.append(f"{label}: availability must be local-backup-not-distributed")
+        relative = source.get("path")
+        path_error = _relative_path_error(relative)
+        if path_error:
+            errors.append(f"{label}: {path_error}")
+        else:
+            expected_format = ASSET_FORMATS.get(PurePosixPath(relative).suffix.lower())
+            declared_format = source.get("format")
+            normalized_format = declared_format.lower() if isinstance(declared_format, str) else None
+            if normalized_format == "jpg":
+                normalized_format = "jpeg"
+            if expected_format is None or normalized_format != expected_format:
+                errors.append(f"{label}: format must match a supported asset extension")
+        if "archive_path" in source:
+            archive_error = _relative_path_error(source["archive_path"])
+            if archive_error:
+                errors.append(f"{label}: archive_path {archive_error}")
+        digest = source.get("sha256")
+        if not isinstance(digest, str) or not SHA256.fullmatch(digest):
+            errors.append(f"{label}: sha256 must be a SHA-256 digest")
+        size = source.get("bytes")
+        if not _integer(size) or size < 0:
+            errors.append(f"{label}: bytes must be a nonnegative integer")
+        provenance = source.get("provenance")
+        if not isinstance(provenance, dict) or not isinstance(provenance.get("source"), str) or not provenance["source"].strip():
+            errors.append(f"{label}: provenance.source must be a nonempty string")
+        if not isinstance(provenance, dict) or not isinstance(provenance.get("source_sha256"), str) or not SHA256.fullmatch(provenance["source_sha256"]):
+            errors.append(f"{label}: provenance.source_sha256 must be a SHA-256 digest")
+
+
+def _source_id_errors(collections: dict[str, object], ids: set[str], errors: list[str]) -> None:
+    """Resolve source IDs against delivered assets and historical metadata."""
+    for collection, records in collections.items():
+        if not isinstance(records, list):
+            continue
+        for index, record in enumerate(records):
+            if not isinstance(record, dict) or not isinstance(record.get("provenance"), dict):
+                continue
+            provenance = record["provenance"]
+            if "source_ids" not in provenance:
+                continue
+            source_ids = provenance["source_ids"]
+            label = f"{collection}[{index}]"
+            if not isinstance(source_ids, list):
+                errors.append(f"{label}: provenance.source_ids must be a list")
+                continue
+            for identifier in source_ids:
+                if not isinstance(identifier, str) or not identifier.strip():
+                    errors.append(f"{label}: source id must be a nonempty string")
+                elif identifier not in ids:
+                    errors.append(f"{label}: unknown source id {identifier!r}")
 
 
 def validate(root: Path) -> dict[str, object]:
@@ -472,11 +590,21 @@ def validate(root: Path) -> dict[str, object]:
         checked += 1
         if size != len(data):
             errors.append(f"{label}: byte count mismatch (manifest={size}, actual={len(data)})")
-        if not isinstance(digest, str) or digest.lower() != hashlib.sha256(data).hexdigest():
+        actual_digest = hashlib.sha256(data).hexdigest()
+        if not isinstance(digest, str) or digest.lower() != actual_digest:
             errors.append(f"{label}: SHA-256 mismatch")
+        if isinstance(provenance, dict) and provenance.get("source") == f"repository-authored:{relative}":
+            # This URI names the current delivered file. Historical revisions
+            # need an explicit revision source, not a commit claimed alongside
+            # an unqualified pointer to the current file.
+            source_digest = provenance.get("source_sha256")
+            if not isinstance(source_digest, str) or source_digest.lower() != actual_digest:
+                errors.append(f"{label}: repository-authored self-source SHA-256 must match the delivered bytes")
         try:
-            if expected_format in {"png", "jpeg"}:
-                metadata = _png_metadata(data) if expected_format == "png" else _jpeg_metadata(data)
+            if expected_format is not None and expected_format not in VALIDATED_FORMATS:
+                raise ValueError(f"active format {expected_format} has no decoder; use a validated PNG export or archived_sources metadata")
+            if expected_format == "png":
+                metadata = _png_metadata(data)
                 for key, actual in metadata.items():
                     if key in asset:
                         declared = asset[key]
@@ -496,6 +624,9 @@ def validate(root: Path) -> dict[str, object]:
                 _json_sidecar(data)
         except ValueError as error:
             errors.append(f"{label}: {error}")
+    archived_sources = manifest.get("archived_sources", [])
+    _archived_source_errors(archived_sources, ids, errors)
+    _source_id_errors({"assets": assets, "archived_sources": archived_sources}, ids, errors)
     for relative in sorted(_managed_images(root, errors) - paths):
         errors.append(f"{relative}: managed image has no manifest entry")
     return {"valid": not errors, "checked": checked, "errors": errors}

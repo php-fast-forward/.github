@@ -104,3 +104,18 @@
 @media (prefers-reduced-motion: reduce) {
   .ff-brand-page *, .ff-brand-page *::before, .ff-brand-page *::after { scroll-behavior: auto; animation: none; transition: none; }
 }
+
+/* Selected fox signature: shared vector-master applications. */
+    .ff-logo-main {display:grid;place-items:center;background:#fff;padding:48px 32px;min-height:260px;border:1px solid var(--color-border,#cbd5e1);border-radius:12px}
+    .ff-logo-main img {width:min(780px,100%);height:auto}
+    .ff-logo-variants {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .ff-logo-surface {display:grid;place-items:center;min-height:200px;padding:36px 24px;background:#fff;border-radius:12px 12px 0 0}
+    .ff-logo-surface img {display:block;width:100%;height:auto;max-height:180px}
+    .ff-logo-surface--navy {background:#050b20}
+    .ff-logo-symbols {display:flex;align-items:center;justify-content:space-around;gap:24px;min-height:200px;padding:24px;background:#fff;border-radius:12px}
+    .ff-logo-symbols img {width:var(--size);height:var(--size)}
+    .ff-logo-application {display:block;width:100%;height:auto;border-radius:12px}
+    .ff-logo-rule-list {padding-left:24px;line-height:1.7}
+    .ff-logo-downloads {display:flex;flex-wrap:wrap;gap:8px 24px;margin-block:20px}
+    .ff-logo-downloads a {font-weight:650}
+    @media(max-width:720px){.ff-logo-variants{grid-template-columns:1fr}.ff-logo-main{padding:24px 16px;min-height:180px}.ff-logo-symbols{gap:12px}.ff-logo-symbols img{max-width:25%}}

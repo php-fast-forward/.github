@@ -52,3 +52,15 @@ test('browser adapter rejects quoted whole stacks and quoted numeric values', ()
   assert.throws(() => verifyBrowserAdapter(theme, theme.replace(': 1.6;', ': "1.6";')), /stale/);
   assert.throws(() => verifyBrowserAdapter(theme, theme.replace('--leading-body-md: 1.6;', '--leading-body-md: 1.6; --leading-body-md: 1.6;')), /duplicates/);
 });
+
+test('browser adapter rejects removed and renamed tokens while preserving local variables', () => {
+  for (const namespace of ['color', 'font', 'font-weight', 'text', 'leading', 'tracking', 'spacing', 'radius']) {
+    const obsolete = `--${namespace}-obsolete`;
+    const current = `--${namespace}-current`;
+    const local = '--doc-local: #aaa; --brand-local: #bbb;';
+    assert.throws(() => verifyBrowserAdapter('@theme {}', `:root { ${obsolete}: 1; ${local} }`), /obsolete token/, `${namespace}: removed token`);
+    const theme = `@theme { ${current}: 1; }`;
+    assert.throws(() => verifyBrowserAdapter(theme, `:root { ${current}: 1; ${obsolete}: 1; ${local} }`), /obsolete token/, `${namespace}: renamed token`);
+    assert.doesNotThrow(() => verifyBrowserAdapter(theme, `:root { ${current}: 1; ${local} }`), `${namespace}: local variables remain valid`);
+  }
+});
