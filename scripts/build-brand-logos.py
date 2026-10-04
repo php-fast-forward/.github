@@ -73,7 +73,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    source = json.loads(SOURCE.read_text())
+    source = json.loads(SOURCE.read_text(encoding="utf-8"))
     for item in source["lettering"]["source_files"]:
         if sha256(ROOT / item["path"]) != item["sha256"]:
             raise SystemExit(f'Font source changed: {item["path"]}')
@@ -83,12 +83,13 @@ def main():
         for variant in ("color", "dark", "ink", "white"):
             suffix = "" if variant == "color" else f"-{variant}"
             target = ROOT / f"assets/brand/{stem}{suffix}.svg"
-            content = render(source, variant, mark_only)
+            # UTF-8 bytes retain the renderer's LF separators on every platform.
+            content = render(source, variant, mark_only).encode("utf-8")
             if args.check:
-                if not target.is_file() or target.read_text() != content:
+                if not target.is_file() or target.read_bytes() != content:
                     raise SystemExit(f"Stale logo export: {target.relative_to(ROOT)}")
             else:
-                target.write_text(content)
+                target.write_bytes(content)
             outputs.append(str(target.relative_to(ROOT)))
     print(f'{"Verified" if args.check else "Built"} {len(outputs)} SVG logo exports.')
 

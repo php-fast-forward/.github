@@ -84,6 +84,32 @@ class PagesTests(unittest.TestCase):
         self.assertIn('href="../../DESIGN.md"', page)
         self.assertIn('href="../../assets/manifest.json"', page)
 
+    def test_awaiting_review_artwork_requires_explicit_gallery_authorization(self):
+        self.asset("assets/draft.png", "exploratory")
+        self.rows[-1]["review_status"] = "awaiting-review"
+        self.asset("assets/gallery.png", "exploratory")
+        self.rows[-1].update({
+            "review_status": "awaiting-review",
+            "publication": {"scope": "brand-review-gallery", "authorization": "maintainer-request"},
+        })
+        self.asset("assets/unconfirmed.png", "exploratory")
+        self.rows[-1].update({
+            "review_status": "awaiting-review",
+            "publication": {"scope": "brand-review-gallery"},
+        })
+        self.asset("assets/string-authorization.png", "exploratory")
+        self.rows[-1].update({"review_status": "awaiting-review", "publication": "local draft"})
+        self.save_manifest()
+        self.build()
+        self.assertFalse((self.output / "assets/draft.png").exists())
+        self.assertFalse((self.output / "assets/unconfirmed.png").exists())
+        self.assertFalse((self.output / "assets/string-authorization.png").exists())
+        self.assertTrue((self.output / "assets/gallery.png").is_file())
+        rows = json.loads((self.output / "assets/manifest.json").read_text())["assets"]
+        gallery = next(row for row in rows if row["path"] == "assets/gallery.png")
+        self.assertEqual(gallery["status"], "exploratory")
+        self.assertEqual(gallery["review_status"], "awaiting-review")
+
     def test_filtered_provenance_preserves_external_ids_and_closes_local_registry(self):
         self.asset("references/source.png", "reference")
         self.asset("assets/legacy.png", "legacy")
@@ -134,6 +160,129 @@ class PagesTests(unittest.TestCase):
         with self.assertRaisesRegex(PAGES.BuildError, "Unpublished resource"):
             self.build()
         self.assertFalse(self.output.exists())
+
+    def test_external_resources_are_rejected_but_navigation_is_preserved(self):
+        for element in (
+            '<img src="https://example.invalid/art.png">',
+            '<img src=//example.invalid/art.png>',
+            '<source srcset="../../assets/current.png 1x, https://example.invalid/art.png 2x">',
+            '<script src="https://example.invalid/code.js"></script>',
+            '<link rel="stylesheet" href="https://example.invalid/style.css">',
+            '<video poster="https://example.invalid/poster.png"></video>',
+            '<object data="https://example.invalid/content.svg"></object>',
+            '<img src="data:image/png;base64,aGVsbG8=">',
+            '<div style="background: url(https://example.invalid/art.png)"></div>',
+            '<style>body { background: url(https://example.invalid/art.png); }</style>',
+            '<svg><image xlink:href="https://example.invalid/art.png" /></svg>',
+        ):
+            with self.subTest(element=element):
+                self.write("docs/brand/index.html", f"<html><body>{element}</body></html>")
+                with self.assertRaisesRegex(PAGES.BuildError, "External resource"):
+                    self.build()
+                self.assertFalse(self.output.exists())
+        self.write("docs/brand/index.html", '<html><body><a href="https://example.invalid/guide">External guide</a></body></html>')
+        self.build()
+        self.assertIn('href="https://example.invalid/guide"', (self.output / "docs/brand/index.html").read_text())
+
+    def test_stylesheets_must_be_selected_resources(self):
+        self.write("references/unpublished.css", "body { color: red; }")
+        for element in (
+            '<link rel="stylesheet" href="../../references/unpublished.css">',
+            '<link rel=stylesheet href=../../references/unpublished.css>',
+            '<link rel="stylesheet" href="../../assets/missing.css" />',
+        ):
+            with self.subTest(element=element):
+                self.write("docs/brand/index.html", f"<html><head>{element}</head></html>")
+                with self.assertRaisesRegex(PAGES.BuildError, "Unpublished resource"):
+                    self.build()
+                self.assertFalse(self.output.exists())
+        self.asset("assets/styles/current.css", "canonical")
+        self.save_manifest()
+        self.write("docs/brand/index.html", '<html><head><link rel="stylesheet" href="../../assets/styles/current.css"></head></html>')
+        self.build()
+        self.assertIn('href="../../assets/styles/current.css"', (self.output / "docs/brand/index.html").read_text())
+
+    def test_output_check_rejects_external_resources(self):
+        self.build()
+        page = self.output / "docs/brand/index.html"
+        for element in (
+            '<img src="https://example.invalid/art.png">',
+            '<link rel="stylesheet" href="https://example.invalid/style.css">',
+            '<source srcset="https://example.invalid/art.png 1x" />',
+            '<svg><image xlink:href="https://example.invalid/art.png" /></svg>',
+            '<div style="background: url(https://example.invalid/art.png)"></div>',
+            '<style>body { background: url(https://example.invalid/art.png); }</style>',
+        ):
+            with self.subTest(element=element):
+                page.write_text(f"<html>{element}</html>")
+                with self.assertRaisesRegex(PAGES.BuildError, "External resource"):
+                    PAGES.check_output(self.output)
+
+    def test_nested_documents_and_alternate_bases_are_not_supported(self):
+        for element in (
+            '<iframe srcdoc="&lt;img src=&quot;https://example.invalid/art.png&quot;&gt;"></iframe>',
+            '<base href="https://example.invalid/">',
+            '<svg xml:base="https://example.invalid/"><image href="art.png" /></svg>',
+        ):
+            with self.subTest(element=element):
+                self.write("docs/brand/index.html", f"<html>{element}</html>")
+                with self.assertRaisesRegex(PAGES.BuildError, "Embedded documents and alternate bases"):
+                    self.build()
+                self.assertFalse(self.output.exists())
+                self.output.mkdir(parents=True)
+                (self.output / "index.html").write_text(f"<html>{element}</html>")
+                with self.assertRaisesRegex(PAGES.BuildError, "Embedded documents and alternate bases"):
+                    PAGES.check_output(self.output)
+                (self.output / "index.html").unlink()
+                self.output.rmdir()
+
+    def test_output_check_rejects_external_css_urls(self):
+        self.build()
+        stylesheet = self.output / "assets/external.css"
+        stylesheet.write_text('body { background-image: url("https://example.invalid/art.png"); }')
+        with self.assertRaisesRegex(PAGES.BuildError, "External resource"):
+            PAGES.check_output(self.output)
+
+    def test_css_dependencies_fail_before_output_is_written(self):
+        for css, error in (
+            ('body { background: url(https://example.invalid/art.png); }', "External resource"),
+            ('body { background: url(../../references/art.png); }', "Unpublished resource"),
+            ('@import "https://example.invalid/style.css";', "CSS imports"),
+            ('body { background: image-set("https://example.invalid/art.png" 1x); }', "image-set"),
+        ):
+            with self.subTest(css=css):
+                self.rows = [row for row in self.rows if row["path"] != "assets/styles/current.css"]
+                self.asset("assets/styles/current.css", "canonical")
+                path = self.write("assets/styles/current.css", css)
+                self.rows[-1]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+                self.save_manifest()
+                with self.assertRaisesRegex(PAGES.BuildError, error):
+                    self.build()
+                self.assertFalse(self.output.exists())
+        path = self.write("assets/styles/current.css", 'body { background: url(../current.png); }')
+        self.rows[-1]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        self.save_manifest()
+        self.build()
+        self.assertTrue((self.output / "assets/styles/current.css").is_file())
+
+    def test_markdown_badges_become_text_links_and_fences_stay_literal(self):
+        badge = '<a href="https://example.invalid/repository"><img src="https://example.invalid/badge.svg" alt="Framework repository"></a>'
+        snippet = '```html\n<link rel="stylesheet" href="https://example.invalid/style.css">\n```'
+        autolink = '<https://example.invalid/Guide>'
+        self.write("README.md", f'# Readme\n\n{badge}\n\n![Remote diagram](https://example.invalid/diagram.png)\n\n{autolink}\n\n{snippet}\n')
+        self.build()
+        source = (self.output / "README.md").read_text()
+        self.assertIn('<a href="https://example.invalid/repository">Framework repository</a>', source)
+        self.assertIn('[View external image: Remote diagram](https://example.invalid/diagram.png)', source)
+        self.assertIn(snippet, source)
+        self.assertIn(autolink, source)
+        self.assertNotIn('<img', source)
+
+    def test_literal_script_content_is_not_rewritten_as_html(self):
+        literal = 'const example = \'<img src="https://example.invalid/art.png">\';'
+        self.write("docs/brand/index.html", f'<html><script>{literal}</script></html>')
+        self.build()
+        self.assertIn(literal, (self.output / "docs/brand/index.html").read_text())
 
     def test_hash_mismatch_blocks_build(self):
         self.write("assets/current.png", "changed fixture")

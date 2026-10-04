@@ -83,14 +83,22 @@ receipt. Selection and local preparation do not imply external publication.
 | `canonical` | Selected current identity, primary Dash references, and reusable styles/marks. |
 | `package-variant` | Secondary editorial references and local/public package variations, with explicit provenance. |
 | `reference` | Composition/icon/layout reference; no product claims are inherited. |
-| `legacy` | Historical profile delivery path retained for compatibility. |
-| `exploratory` | Local proposal awaiting review; not a selected master or publication approval. |
+| `legacy` | Historical delivery path retained for compatibility, or retired source/logo metadata excluded from the current identity. |
+| `exploratory` | Proposal awaiting review; not a selected master. Display in a review gallery requires separate publication authorization. |
 
 Each manifest entry has a stable ID, file path, role, SHA-256, byte length,
 format, status, and source. Raster metadata records the inspected dimensions,
 mode, and alpha availability. SVG metadata records embedded raster presence.
 Copied files keep the source SHA-256; derivatives explain the transformation.
 No private project source text or illustrations were imported.
+
+Awaiting-review proposals are excluded from Pages unless their catalog records
+explicitly set `publication.scope` to `brand-review-gallery` and
+`publication.authorization` to `maintainer-request`. The five current developer
+scene proposals have that display authorization, matching their generation
+receipts and the maintainer's request to publish the asset-visualization HTML.
+They keep `review_status: awaiting-review`; public display is not canonical
+selection. Publication remains pending the Pages workflow running from `main`.
 
 The ignored local `backup/` remains an archive, including Affinity documents and
 unused exports. It is not required by consumers or validation. Do not add it

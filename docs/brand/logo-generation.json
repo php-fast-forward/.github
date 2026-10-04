@@ -58,8 +58,9 @@
         "visual_inspection": {
           "date": "2026-10-03",
           "reviewer": "coordinating repository agent",
+          "scope": "Render and layout inspection before the maintainer selected direction F; this inspection is not a separate approval decision.",
           "evidence": "Coordinating repository agent inspected the native generated board and confirmed browser rendering at its 1774:887 aspect ratio without broken images. Logo review page at 390px had no horizontal overflow and exactly one aria-current navigation item.",
-          "selection": "Awaiting maintainer review; no direction or scene has been approved as canonical."
+          "selection": "The maintainer subsequently selected direction F on 2026-10-03. The record's selection contains the decision evidence; this bitmap board remains historical concept material, not a distributed native master."
         }
       },
       "directions": [

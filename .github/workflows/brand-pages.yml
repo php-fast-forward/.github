@@ -36,7 +36,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: brand-pages-${{ github.event_name == 'pull_request' && github.ref || 'deployment' }}
+  group: brand-pages-${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'deployment' || github.ref }}
   cancel-in-progress: false
 
 jobs:

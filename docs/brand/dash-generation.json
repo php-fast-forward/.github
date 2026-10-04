@@ -350,7 +350,7 @@
     {
       "id": "dash-developer-coding",
       "collection": "developer",
-      "status": "local-not-published",
+      "status": "review-gallery-proposal",
       "destination": "assets/mascot/dash-developer-coding.png",
       "date": "2026-10-03",
       "generator": {
@@ -380,7 +380,7 @@
       "review": {
         "status": "awaiting-review",
         "date": "2026-10-03",
-        "selection": "Local proposal; no canonical selection or publication requested.",
+        "selection": "Not selected as canonical. Display in the labeled brand review gallery is authorized separately by the maintainer's Pages request.",
         "likeness": "Awaiting maintainer review against the developer master.",
         "anatomy": "Awaiting visual review; not an orthographic turnaround.",
         "transparency": "PNG loaded with Pillow; native RGBA alpha inspected without changing pixels. The generated output remains exactly as delivered, including any partially opaque pixels or edge contact.",
@@ -422,13 +422,23 @@
               "pixels_above_alpha_16": 0
             }
           }
-        }
+        },
+        "initial_selection": "Local proposal; no canonical selection or publication requested."
+      },
+      "initial_status": "local-not-published",
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
       }
     },
     {
       "id": "dash-developer-debugging",
       "collection": "developer",
-      "status": "local-not-published",
+      "status": "review-gallery-proposal",
       "destination": "assets/mascot/dash-developer-debugging.png",
       "date": "2026-10-03",
       "generator": {
@@ -458,7 +468,7 @@
       "review": {
         "status": "awaiting-review",
         "date": "2026-10-03",
-        "selection": "Local proposal; no canonical selection or publication requested.",
+        "selection": "Not selected as canonical. Display in the labeled brand review gallery is authorized separately by the maintainer's Pages request.",
         "likeness": "Awaiting maintainer review against the developer master.",
         "anatomy": "Awaiting visual review; not an orthographic turnaround.",
         "transparency": "PNG loaded with Pillow; native RGBA alpha inspected without changing pixels. The generated output remains exactly as delivered, including any partially opaque pixels or edge contact.",
@@ -500,13 +510,23 @@
               "pixels_above_alpha_16": 0
             }
           }
-        }
+        },
+        "initial_selection": "Local proposal; no canonical selection or publication requested."
+      },
+      "initial_status": "local-not-published",
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
       }
     },
     {
       "id": "dash-developer-explaining",
       "collection": "developer",
-      "status": "local-not-published",
+      "status": "review-gallery-proposal",
       "destination": "assets/mascot/dash-developer-explaining.png",
       "date": "2026-10-03",
       "generator": {
@@ -536,7 +556,7 @@
       "review": {
         "status": "awaiting-review",
         "date": "2026-10-03",
-        "selection": "Local proposal; no canonical selection or publication requested.",
+        "selection": "Not selected as canonical. Display in the labeled brand review gallery is authorized separately by the maintainer's Pages request.",
         "likeness": "Awaiting maintainer review against the developer master.",
         "anatomy": "Awaiting visual review; not an orthographic turnaround.",
         "transparency": "PNG loaded with Pillow; native RGBA alpha inspected without changing pixels. The generated output remains exactly as delivered, including any partially opaque pixels or edge contact.",
@@ -578,13 +598,23 @@
               "pixels_above_alpha_16": 0
             }
           }
-        }
+        },
+        "initial_selection": "Local proposal; no canonical selection or publication requested."
+      },
+      "initial_status": "local-not-published",
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
       }
     },
     {
       "id": "dash-developer-portrait-study",
       "collection": "developer",
-      "status": "local-not-published",
+      "status": "review-gallery-proposal",
       "destination": "assets/mascot/dash-developer-portrait-study.png",
       "date": "2026-10-03",
       "generator": {
@@ -614,7 +644,7 @@
       "review": {
         "status": "awaiting-review",
         "date": "2026-10-03",
-        "selection": "Local proposal; no canonical selection or publication requested.",
+        "selection": "Not selected as canonical. Display in the labeled brand review gallery is authorized separately by the maintainer's Pages request.",
         "likeness": "Awaiting maintainer review against the developer master.",
         "anatomy": "Awaiting visual review; not an orthographic turnaround.",
         "transparency": "PNG loaded with Pillow; native RGBA alpha inspected without changing pixels. The generated output remains exactly as delivered, including any partially opaque pixels or edge contact.",
@@ -656,12 +686,22 @@
               "pixels_above_alpha_16": 0
             }
           }
-        }
+        },
+        "initial_selection": "Local proposal; no canonical selection or publication requested."
+      },
+      "initial_status": "local-not-published",
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
       }
     },
     {
       "id": "dash-developer-workstation",
-      "status": "local-not-published",
+      "status": "review-gallery-proposal",
       "destination": "assets/mascot/dash-developer-workstation.png",
       "date": "2026-10-03",
       "generator": {
@@ -701,7 +741,7 @@
       "review": {
         "status": "awaiting-review",
         "date": "2026-10-03",
-        "selection": "Local proposal; canonical identity remains unchanged.",
+        "selection": "Not selected as canonical. Display in the labeled brand review gallery is authorized separately by the maintainer's Pages request.",
         "transparency": "Pillow loaded the original PNG; opaque background is intentional; no pixels were modified.",
         "opacity_inspection": {
           "alpha_channel": false,
@@ -714,9 +754,19 @@
           "reviewer": "coordinating repository agent",
           "evidence": "Coordinating repository agent inspected the native generated workstation output. Intentional opaque navy scene remains awaiting maintainer review.",
           "selection": "Awaiting maintainer review; no direction or scene has been approved as canonical."
-        }
+        },
+        "initial_selection": "Local proposal; canonical identity remains unchanged."
       },
-      "collection": "developer"
+      "collection": "developer",
+      "initial_status": "local-not-published",
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
+      }
     }
   ]
 }

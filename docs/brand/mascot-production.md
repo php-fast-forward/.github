@@ -35,11 +35,14 @@ These eight images are selected reference poses with real alpha. They are not a
 front/side/back orthographic model sheet. New hidden anatomy remains authored
 interpretation requiring visual review.
 
-## Local pose proposals
+## Pose proposals for review
 
-The new developer scenes are local drafts with review status `awaiting-review`
-and publication status `local-not-published`. They remain exploratory candidates until a
-deliberate selection. The eight selected poses above still define the current
+The new developer scenes retain review status `awaiting-review`. They were
+initially local, unpublished drafts; the maintainer's later Pages request
+authorizes display as labeled proposals in the brand review gallery. Catalog
+and generation receipts record this separate publication scope, with deployment
+pending the workflow reaching `main`. They remain exploratory candidates until
+a deliberate selection. The eight selected poses above still define the current
 reference matrix; a generated scene does not replace its identity master.
 
 | Proposal | Intended context | Local PNG |
@@ -64,10 +67,11 @@ local-only reference and hash rather than a personal filesystem path. Screen
 graphics are generated illustration, not executable code or software evidence.
 
 The [developer portrait study](../../assets/mascot/dash-developer-portrait-study.png)
-is an **additional draft for logo applications only**. Review it on the
-[logo composition board](logo-compositions.html); it is not a standalone pose
-master or a replacement for the selected developer welcome reference.
-Existing selected poses and logo assets remain until final selection and an
+is an **additional illustration draft**. Compare it with the
+[selected logo applications](logo-compositions.html); the native fox logo does
+not use this portrait. It is not a standalone pose master or a replacement for
+the selected developer welcome reference.
+Existing selected poses remain until deliberate review and an
 explicit catalog update. This local review round publishes no asset or site.
 
 ## Brief and production

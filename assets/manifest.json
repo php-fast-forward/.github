@@ -932,7 +932,15 @@
       "width": 1024,
       "height": 1536,
       "mode": "RGBA",
-      "has_alpha": true
+      "has_alpha": true,
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
+      }
     },
     {
       "id": "dash-developer-debugging",
@@ -957,7 +965,15 @@
       "width": 1024,
       "height": 1536,
       "mode": "RGBA",
-      "has_alpha": true
+      "has_alpha": true,
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
+      }
     },
     {
       "id": "dash-developer-explaining",
@@ -982,7 +998,15 @@
       "width": 1024,
       "height": 1536,
       "mode": "RGBA",
-      "has_alpha": true
+      "has_alpha": true,
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
+      }
     },
     {
       "id": "dash-developer-portrait-study",
@@ -1007,7 +1031,15 @@
       "width": 1254,
       "height": 1254,
       "mode": "RGBA",
-      "has_alpha": true
+      "has_alpha": true,
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
+      }
     },
     {
       "id": "navigation-style",
@@ -1058,7 +1090,15 @@
       "height": 941,
       "mode": "RGB",
       "has_alpha": false,
-      "family": "developer"
+      "family": "developer",
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-04",
+        "evidence": "Maintainer requested a workflow to publish the asset-visualization HTML on this repository's GitHub Pages. This includes the explicitly labeled proposal gallery.",
+        "deployment": "pending-main",
+        "canonical_selection": false
+      }
     },
     {
       "id": "fast-forward-logo",
@@ -1433,7 +1473,7 @@
       "export_date": "2026-10-04",
       "provenance": {
         "source": "rendered:docs/brand/documentation.html",
-        "source_sha256": "f4ac38cddcf2e6a9329dd8ac61e7d709de509ceb7742f066aa7cda68e5cbbf2b",
+        "source_sha256": "5bfa9e79b188fef782c3cbdb21a2bdfd9072f2ed419bd1094a6064e7f3c8fc08",
         "source_ids": [
           "fast-forward-logo-dark",
           "dash-developer-reading",
@@ -1441,12 +1481,12 @@
           "documentation-style",
           "navigation-style"
         ],
-        "authoring": "Repository HTML rendered in Chromium through Cua; native CDP Page.captureScreenshot with format=png. No input or captured pixels edited.",
-        "transformation": "PNG export of the final HTML viewport; replaces the retired institutional identity while retaining its historical records separately.",
+        "authoring": "Repository HTML rendered in Google Chrome with Playwright CLI 0.1.22; native page.screenshot with type=png and viewport capture. No input or captured pixels edited.",
+        "transformation": "Viewport PNG reexport after correcting the bootstrap call to match the variadic container API; pixels are captured directly without image edits.",
         "rendering": {
-          "tool": "Cua browser",
+          "tool": "Playwright CLI",
           "engine": "Chromium",
-          "capture": "CDP Page.captureScreenshot",
+          "capture": "Playwright page.screenshot",
           "format": "png",
           "date": "2026-10-04",
           "viewport": {
@@ -1455,7 +1495,7 @@
           },
           "source_html": {
             "path": "docs/brand/documentation.html",
-            "sha256": "f4ac38cddcf2e6a9329dd8ac61e7d709de509ceb7742f066aa7cda68e5cbbf2b"
+            "sha256": "5bfa9e79b188fef782c3cbdb21a2bdfd9072f2ed419bd1094a6064e7f3c8fc08"
           },
           "source_stylesheets": [
             {
@@ -1488,12 +1528,22 @@
             "font_sha256": "bad568cea9ed23d6ae4aea41ad3f7747752952aabdd85d7f01474af392a21b32",
             "runtime_font_load": false
           },
-          "personal_photo_used": false
+          "personal_photo_used": false,
+          "generator": "@playwright/cli@0.1.22",
+          "source_ref": "working-tree",
+          "source_base_commit": "646a0fb869c00949795637a932c14a5511b04459",
+          "scale": "css",
+          "full_page": false,
+          "device_pixel_ratio": 1,
+          "scroll": {
+            "x": 0,
+            "y": 0
+          }
         }
       },
       "rights": "Repository-authored composition using the recorded direction F symbol, OFL-1.1 outlined Exo 2 lettering and the recorded Dash artwork. No separate artwork license is declared; source rights and attribution remain in their respective records.",
-      "sha256": "f7a5c123639b1f33ebf29439c8bacea44a76efbcbaf1a92cc1b6fa8a3950fcaa",
-      "bytes": 290675,
+      "sha256": "cc7ee2b77ae139e96ca87508ad31a802ff9c953b4a8b41e17efb73a31ae1d0b5",
+      "bytes": 213592,
       "format": "png",
       "width": 1280,
       "height": 960,
@@ -1534,7 +1584,8 @@
       "id": "brand-mark",
       "path": "assets/brand/mark.png",
       "category": "brand",
-      "status": "canonical",
+      "status": "legacy",
+      "original_status": "canonical",
       "role": "Framework mark",
       "provenance": {
         "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_mark_arrows_transparent_cropped.png",
@@ -1561,7 +1612,8 @@
       "id": "brand-wordmark-light",
       "path": "assets/brand/wordmark-light.png",
       "category": "brand",
-      "status": "canonical",
+      "status": "legacy",
+      "original_status": "canonical",
       "role": "Wordmark for light surfaces",
       "provenance": {
         "source": "supplied-backup:php_fast_forward_clean_assets_transparent/01_brand/logo_horizontal_text_transparent_cropped.png",
@@ -1588,7 +1640,8 @@
       "id": "mark-compact",
       "path": "assets/brand/mark-compact.svg",
       "category": "brand",
-      "status": "canonical",
+      "status": "legacy",
+      "original_status": "canonical",
       "role": "Compact color mark for small UI applications",
       "provenance": {
         "source": "derived:assets/brand/mark.png",
@@ -1614,7 +1667,8 @@
       "id": "mark-compact-ink",
       "path": "assets/brand/mark-compact-ink.svg",
       "category": "brand",
-      "status": "canonical",
+      "status": "legacy",
+      "original_status": "canonical",
       "role": "Compact monochrome mark for light surfaces",
       "provenance": {
         "source": "derived:assets/brand/mark.png",
@@ -1640,7 +1694,8 @@
       "id": "mark-compact-white",
       "path": "assets/brand/mark-compact-white.svg",
       "category": "brand",
-      "status": "canonical",
+      "status": "legacy",
+      "original_status": "canonical",
       "role": "Compact monochrome mark for navy surfaces",
       "provenance": {
         "source": "derived:assets/brand/mark.png",

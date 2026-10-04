@@ -41,7 +41,9 @@ and [custom Pages workflows](https://docs.github.com/en/pages/getting-started-wi
 - The build job has `contents: read`. Only the deployment job also receives
   `pages: write` and `id-token: write`.
 - Actions are pinned to full commit SHAs. Deployment concurrency does not cancel
-  an active run. Uploaded artifacts expire after one day.
+  an active run. Only `main` uses the shared deployment group; PR and manual
+  feature-branch runs have ref-specific groups. Uploaded artifacts expire after
+  one day.
 
 ## Publication boundary
 
@@ -51,12 +53,24 @@ token exports, and cataloged active assets. Canonical, package-variant,
 reference support files, and explicitly labeled exploratory artwork retain
 their classifications in the filtered Pages asset manifest.
 
+Exploratory assets awaiting review are excluded unless their catalog records
+explicitly authorize `brand-review-gallery` display through a
+`maintainer-request`. The five developer scene proposals have this separate
+authorization following the request to publish these asset-visualization pages;
+they remain labeled proposals and are not promoted to canonical references.
+
 The two cataloged profile applications, `brand-hero-banner.png` and
 `docs-installation.png`, retain their `profile/assets` paths. Public font
 sources, their license and metadata, and the logo build script are available
 when present. The multilingual profile sources are included for guide links.
 Guides remain readable Markdown source files; this workflow adds no Markdown
 renderer or application runtime.
+
+Resources loaded by the HTML specimens must belong to the selected local kit.
+External image, script and stylesheet URLs block the build; external navigation
+links remain available. In the staged Markdown sources, remote badge images
+become their text labels inside the existing links, and other remote Markdown
+images become explicit links. The repository READMEs keep their original badges.
 
 The site does not copy `backup/`, `references/`, private directories, historical
 assets marked `legacy`, uncataloged artwork, or the untracked social preview.

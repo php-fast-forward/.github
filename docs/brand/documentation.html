@@ -111,7 +111,7 @@
 
 <span class="ff-docs-code-keyword">require</span> __DIR__ . <span class="ff-docs-code-string">'/vendor/autoload.php'</span>;
 
-$container = container([FrameworkServiceProvider::class]);
+$container = container(FrameworkServiceProvider::class);
 
 $responseFactory = $container-&gt;get(ResponseFactoryInterface::class);
 $dispatcher = $container-&gt;get(EventDispatcherInterface::class);

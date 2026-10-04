@@ -33,13 +33,48 @@ PROFILE_APPLICATIONS = {
 TOKEN_FILES = {"tokens.json", "exports.json", "tailwind.theme.json", "theme.css"}
 PUBLIC_SOURCE_SUFFIXES = {".ttf", ".txt", ".json", ".md"}
 MARKDOWN_LINK = re.compile(r"(!?)\[([^\]]*)\]\(([^\s)]+)([^)]*)\)")
-HTML_ATTRIBUTE = re.compile(r"\b(href|src|srcset)\s*=\s*([\"'])(.*?)\2", re.I)
-IMAGE_TAG = re.compile(r"<img\b[^>]*>", re.I)
 CODE_FENCE = re.compile(r"(```[\s\S]*?```|~~~[\s\S]*?~~~)")
 
 
 class BuildError(ValueError):
     """The source or output would violate the publication boundary."""
+
+
+def is_resource(tag: str, attribute: str) -> bool:
+    """Separate navigation from content the browser loads into a document."""
+    return (attribute in {"src", "srcset", "poster"}
+            or (attribute == "data" and tag == "object")
+            or (attribute in {"href", "xlink:href"} and tag not in {"a", "area"}))
+
+
+def check_embedded_document(tag: str, attrs: list[tuple[str, str | None]], owner: str) -> None:
+    # Nested documents and alternate bases need a separate publication contract.
+    if tag == "base" or any(name in {"srcdoc", "xml:base"} for name, _ in attrs):
+        raise BuildError(f"Embedded documents and alternate bases are not supported in {owner}")
+
+
+def resource_target(owner: str, destination: str) -> tuple[str, object]:
+    parsed = urlsplit(html.unescape(destination))
+    if parsed.scheme or parsed.netloc:
+        raise BuildError(f"External resource in {owner}: {destination}")
+    target = local_target(owner, destination)
+    # An SVG fragment reference remains inside the selected document.
+    if target is None and parsed.fragment:
+        return owner, parsed
+    if target is None:
+        raise BuildError(f"Empty resource in {owner}: {destination}")
+    return target
+
+
+def css_resources(owner: str, css: str) -> list[str]:
+    """Use the same supported CSS resource syntax as the asset validator."""
+    if "\\" in css:
+        raise BuildError(f"CSS escapes are not supported in {owner}")
+    plain = re.sub(r"/\*.*?\*/", "", css, flags=re.DOTALL)
+    if re.search(r"@\s*(?:import|font-face)\b|(?:-webkit-)?image-set\s*\(", plain, re.I):
+        raise BuildError(f"CSS imports, font-face and image-set are not supported in {owner}")
+    return [value.strip().strip("\"'").strip()
+            for value in re.findall(r"url\s*\((.*?)\)", plain, re.I | re.DOTALL)]
 
 
 def safe_file(root: Path, relative: str) -> Path:
@@ -112,6 +147,12 @@ def inventory(root: Path, repository_url: str, ref: str) -> tuple[set[str], dict
         relative = row["path"]
         if row["status"] not in ACTIVE_STATUSES:
             continue
+        publication = row.get("publication", {})
+        if (row["status"] == "exploratory" and row.get("review_status") == "awaiting-review"
+                and not (isinstance(publication, dict)
+                         and publication.get("scope") == "brand-review-gallery"
+                         and publication.get("authorization") == "maintainer-request")):
+            continue
         if not (relative.startswith("assets/") or relative in PROFILE_APPLICATIONS):
             continue
         source = safe_file(root, relative)
@@ -154,7 +195,7 @@ def inventory(root: Path, repository_url: str, ref: str) -> tuple[set[str], dict
 
 def rewrite_document(root: Path, owner: str, text: str, selected: set[str], repository_url: str, ref: str) -> str:
     def link(destination: str, resource: bool = False) -> str:
-        target = local_target(owner, destination)
+        target = resource_target(owner, destination) if resource else local_target(owner, destination)
         if target is None:
             return destination
         relative, parsed = target
@@ -164,45 +205,101 @@ def rewrite_document(root: Path, owner: str, text: str, selected: set[str], repo
             raise BuildError(f"Unpublished resource in {owner}: {destination}")
         return source_url(root, relative, parsed, repository_url, ref)
 
-    def image_tag(match: re.Match[str]) -> str:
-        tag = match.group()
-        class Image(HTMLParser):
-            attrs: dict[str, str] = {}
-            def handle_starttag(self, name, attrs):
-                self.attrs = dict(attrs)
-        parser = Image()
-        parser.feed(tag)
-        target = local_target(owner, parser.attrs.get("src", ""))
-        if target and target[0].startswith("references/"):
-            destination = source_url(root, *target, repository_url, ref)
-            label = parser.attrs.get("alt", "Reference artwork")
-            return f'<a href="{html.escape(destination, quote=True)}">View reference in the repository: {html.escape(label)}</a>'
-        return tag
-
-    def attribute(match: re.Match[str]) -> str:
-        name, delimiter, destination = match.groups()
-        if name.lower() == "srcset":
+    def attribute(tag: str, name: str, destination: str | None) -> tuple[str, bool]:
+        if destination is None:
+            if is_resource(tag, name):
+                raise BuildError(f"Empty resource attribute in {owner}: {name}")
+            return name, False
+        if name == "srcset":
             values = []
             for entry in destination.split(","):
                 parts = entry.strip().split()
                 if parts:
                     values.append(" ".join([link(parts[0], True), *parts[1:]]))
+            if not values:
+                raise BuildError(f"Empty resource in {owner}: srcset")
             replacement = ", ".join(values)
+        elif name in {"href", "xlink:href", "src", "poster"} or (name == "data" and tag == "object"):
+            replacement = link(destination, is_resource(tag, name))
         else:
-            replacement = link(destination, name.lower() == "src")
-        return f"{name}={delimiter}{html.escape(html.unescape(replacement), quote=True)}{delimiter}"
+            replacement = destination
+        if name == "style":
+            for reference in css_resources(owner, destination):
+                link(reference, True)
+        return f'{name}="{html.escape(replacement, quote=True)}"', replacement != destination
+
+    class RewriteHTML(HTMLParser):
+        def __init__(self, source: str):
+            super().__init__(convert_charrefs=False)
+            self.source = source
+            self.offsets = [0]
+            for match in re.finditer("\n", source):
+                self.offsets.append(match.end())
+            self.replacements = []
+            self.in_style = False
+
+        def handle_starttag(self, tag, attrs):
+            check_embedded_document(tag, attrs, owner)
+            self.in_style = tag == "style"
+            original = self.get_starttag_text()
+            values = dict(attrs)
+            replacement = None
+            if tag == "img":
+                destination = values.get("src") or ""
+                parsed = urlsplit(html.unescape(destination))
+                target = local_target(owner, destination)
+                if owner.endswith(".md") and (parsed.scheme or parsed.netloc):
+                    # Markdown files are source downloads. Keep badge labels and
+                    # their surrounding repository links without remote images.
+                    replacement = html.escape(values.get("alt") or "External image")
+                elif target and target[0].startswith("references/"):
+                    destination = source_url(root, *target, repository_url, ref)
+                    label = values.get("alt") or "Reference artwork"
+                    replacement = f'<a href="{html.escape(destination, quote=True)}">View reference in the repository: {html.escape(label)}</a>'
+            if replacement is None:
+                rewritten = [attribute(tag, name, value) for name, value in attrs]
+                if any(changed for _, changed in rewritten):
+                    attributes = "".join(f" {value}" for value, _ in rewritten)
+                    ending = " />" if original.rstrip().endswith("/>") else ">"
+                    replacement = f"<{tag}{attributes}{ending}"
+                else:
+                    replacement = original
+            line, column = self.getpos()
+            start = self.offsets[line - 1] + column
+            self.replacements.append((start, start + len(original), replacement))
+
+        handle_startendtag = handle_starttag
+
+        def handle_endtag(self, tag):
+            if tag == "style":
+                self.in_style = False
+
+        def handle_data(self, data):
+            if self.in_style:
+                for reference in css_resources(owner, data):
+                    link(reference, True)
+
+        def rewrite(self):
+            self.feed(self.source)
+            self.close()
+            result = self.source
+            for start, end, replacement in reversed(self.replacements):
+                result = result[:start] + replacement + result[end:]
+            return result
 
     def markdown(match: re.Match[str]) -> str:
         image, label, destination, suffix = match.groups()
         target = local_target(owner, destination)
+        parsed = urlsplit(html.unescape(destination))
+        if image and (parsed.scheme or parsed.netloc):
+            return f"[View external image: {label}]({link(destination)}{suffix})"
         if image and target and target[0].startswith("references/"):
             return f"[View reference in the repository: {label}]({link(destination)}{suffix})"
         return f"{image}[{label}]({link(destination, bool(image))}{suffix})"
 
     parts = CODE_FENCE.split(text) if owner.endswith(".md") else [text]
     for index in range(0, len(parts), 2):
-        part = IMAGE_TAG.sub(image_tag, parts[index])
-        part = HTML_ATTRIBUTE.sub(attribute, part)
+        part = RewriteHTML(parts[index]).rewrite()
         if owner.endswith(".md"):
             part = MARKDOWN_LINK.sub(markdown, part)
         parts[index] = part
@@ -210,30 +307,46 @@ def rewrite_document(root: Path, owner: str, text: str, selected: set[str], repo
 
 
 class DocumentLinks(HTMLParser):
-    def __init__(self):
+    def __init__(self, owner: str):
         super().__init__()
-        self.links: list[str] = []
+        self.owner = owner
+        self.in_style = False
+        self.links: list[tuple[str, bool]] = []
         self.ids: set[str] = set()
     def handle_starttag(self, tag, attrs):
+        check_embedded_document(tag, attrs, self.owner)
+        self.in_style = tag == "style"
         for name, value in attrs:
             if name == "id":
                 self.ids.add(value)
-            elif name in {"href", "src"}:
-                self.links.append(value)
+            elif name in {"href", "xlink:href", "src", "poster"} or (name == "data" and tag == "object"):
+                self.links.append((value or "", is_resource(tag, name)))
             elif name == "srcset":
-                self.links.extend(entry.strip().split()[0] for entry in value.split(",") if entry.strip())
+                self.links.extend((entry.strip().split()[0], True) for entry in (value or "").split(",") if entry.strip())
+            elif name == "style":
+                self.links.extend((reference, True) for reference in css_resources(self.owner, value or ""))
+
+    handle_startendtag = handle_starttag
+
+    def handle_endtag(self, tag):
+        if tag == "style":
+            self.in_style = False
+
+    def handle_data(self, data):
+        if self.in_style:
+            self.links.extend((reference, True) for reference in css_resources(self.owner, data))
 
 
 def check_output(output: Path) -> None:
     html_documents = {}
     for source in output.rglob("*.html"):
-        parser = DocumentLinks()
+        parser = DocumentLinks(source.relative_to(output).as_posix())
         parser.feed(source.read_text())
         html_documents[source.relative_to(output).as_posix()] = parser
     for relative, parser in html_documents.items():
-        for destination in parser.links:
+        for destination, resource in parser.links:
             parsed = urlsplit(html.unescape(destination))
-            target = local_target(relative, destination)
+            target = resource_target(relative, destination) if resource else local_target(relative, destination)
             target_name = target[0] if target else relative
             if parsed.scheme or parsed.netloc:
                 continue
@@ -243,11 +356,9 @@ def check_output(output: Path) -> None:
                     raise BuildError(f"Missing anchor in {relative}: {destination}")
     for source in output.rglob("*.css"):
         relative = source.relative_to(output).as_posix()
-        for destination in re.findall(r"url\s*\(\s*([^)]*)\)", source.read_text(), re.I):
-            destination = destination.strip().strip("\"'")
-            target = local_target(relative, destination)
-            if target:
-                safe_file(output, target[0])
+        for destination in css_resources(relative, source.read_text()):
+            target = resource_target(relative, destination)
+            safe_file(output, target[0])
 
 
 def build(root: Path, output: Path, repository_url: str, ref: str) -> int:
@@ -265,6 +376,11 @@ def build(root: Path, output: Path, repository_url: str, ref: str) -> int:
         source = safe_file(root, relative)
         if source.suffix in {".html", ".md"}:
             documents[relative] = rewrite_document(root, relative, source.read_text(), selected, repository_url, ref)
+        elif source.suffix == ".css":
+            for destination in css_resources(relative, source.read_text()):
+                target, _ = resource_target(relative, destination)
+                if target not in selected:
+                    raise BuildError(f"Unpublished resource in {relative}: {destination}")
     output.mkdir(parents=True, exist_ok=True)
     for relative in sorted(selected):
         destination = output / relative
