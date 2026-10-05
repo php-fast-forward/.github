@@ -6,6 +6,8 @@ The organization had 40 repositories: 16 PHP libraries with source on `main`, on
 
 Every consumer receives a byte-identical copy of the canonical `dash-developer-welcome` master under `assets/brand/dash.png`, a descriptive image at 320 pixels wide in its root README, and a provenance receipt beside the PNG. Source commit: `e1d43e2af51bcb7aa0b48613830a18d5fa5d4536`; SHA-256: `38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09`. Character and rights definitions remain owned by this kit and its [Dash artwork skill](../../skills/dash-art/SKILL.md).
 
+Each receipt records the maintainer's explicit 2026-10-05 authorization to copy and publicly display Dash in these repository READMEs. That scope does not assert a general asset license or settle historical source rights. `/assets/brand/ export-ignore` keeps the README-only artwork out of package archives while preserving it on GitHub; archive contents were checked after commit.
+
 Local banners were inventoried alongside remote images. Historical banners contain inconsistent eyes, face proportions or hoodie marks; they were preserved, while the approved master supplies a consistent README identity. Existing local working trees and unsubmitted artwork were not modified. All consumer work used isolated checkouts.
 
 | Repository | README PR |
@@ -39,4 +41,3 @@ Validation covered the PNG signature/chunk checksums, exact source hash, image p
 The required local full checks in `framework` and `dev-tools` were attempted but failed in isolated checkouts without project dependencies; the globally resolved tool also had missing dependencies. No local PHP-suite or coverage pass is asserted. Repository CI/reviews remain separate from image validation. At verification, the existing Composer Audit gate failed in `enum`, `framework` and `dev-tools`; `dev-tools` additionally reported an unrelated Rector configuration error. Wiki automation updated only the wiki submodule pointer in `enum` and `dev-tools`; the copied artwork and source receipts remain unchanged. These failures are recorded in their PRs, without unrelated PHP/dependency changes.
 
 All PRs were opened and attached to the originating task. No consumer PR, release or deployment was merged or published by this rollout.
-
