@@ -148,6 +148,8 @@ def inventory(root: Path, repository_url: str, ref: str) -> tuple[set[str], dict
         if row["status"] not in ACTIVE_STATUSES:
             continue
         publication = row.get("publication", {})
+        if publication == "local-not-published":
+            continue
         if (row["status"] == "exploratory" and row.get("review_status") == "awaiting-review"
                 and not (isinstance(publication, dict)
                          and publication.get("scope") == "brand-review-gallery"

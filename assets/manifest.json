@@ -1111,7 +1111,15 @@
       "direction": "F",
       "logo_form": "signature",
       "logo_variant": "color",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "review_status": "direction-selected",
       "role": "PHP Fast Forward outlined signature — color variant",
       "provenance": {
@@ -1144,7 +1152,15 @@
       "direction": "F",
       "logo_form": "signature",
       "logo_variant": "dark",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "review_status": "direction-selected",
       "role": "PHP Fast Forward outlined signature — dark variant",
       "provenance": {
@@ -1177,7 +1193,15 @@
       "direction": "F",
       "logo_form": "signature",
       "logo_variant": "ink",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "review_status": "direction-selected",
       "role": "PHP Fast Forward outlined signature — ink variant",
       "provenance": {
@@ -1210,7 +1234,15 @@
       "direction": "F",
       "logo_form": "signature",
       "logo_variant": "white",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "review_status": "direction-selected",
       "role": "PHP Fast Forward outlined signature — white variant",
       "provenance": {
@@ -1243,7 +1275,15 @@
       "direction": "F",
       "logo_form": "mark",
       "logo_variant": "color",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "review_status": "direction-selected",
       "role": "Dash fox brand symbol — color variant",
       "provenance": {
@@ -1276,7 +1316,15 @@
       "direction": "F",
       "logo_form": "mark",
       "logo_variant": "dark",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "review_status": "direction-selected",
       "role": "Dash fox brand symbol — dark variant",
       "provenance": {
@@ -1309,7 +1357,15 @@
       "direction": "F",
       "logo_form": "mark",
       "logo_variant": "ink",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "review_status": "direction-selected",
       "role": "Dash fox brand symbol — ink variant",
       "provenance": {
@@ -1342,7 +1398,15 @@
       "direction": "F",
       "logo_form": "mark",
       "logo_variant": "white",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "review_status": "direction-selected",
       "role": "Dash fox brand symbol — white variant",
       "provenance": {
@@ -1405,7 +1469,15 @@
       "category": "profile",
       "status": "canonical",
       "role": "Current GitHub profile cover rendered with the direction F dark signature and primary developer Dash master",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "export_date": "2026-10-04",
       "provenance": {
         "source": "rendered:docs/brand/profile-banner.html",
@@ -1469,7 +1541,15 @@
       "category": "profile",
       "status": "canonical",
       "role": "Current documentation reference-page export rendered with the direction F dark signature and developer Dash reading pose",
-      "publication": "local-not-published",
+      "publication": {
+        "status": "authorized",
+        "scope": "brand-public-library",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-05",
+        "initial_status": "local-not-published",
+        "evidence": "The maintainer selected the direction F fox logo and requested GitHub Pages publication of the asset-visualization HTML and its reusable assets.",
+        "deployment": "not-asserted-by-catalog"
+      },
       "export_date": "2026-10-04",
       "provenance": {
         "source": "rendered:docs/brand/documentation.html",

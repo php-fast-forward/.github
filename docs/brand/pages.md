@@ -66,6 +66,12 @@ when present. The multilingual profile sources are included for guide links.
 Guides remain readable Markdown source files; this workflow adds no Markdown
 renderer or application runtime.
 
+The eight selected logo exports and both profile applications explicitly record
+the maintainer's authorization for `brand-public-library` publication. Their
+earlier `local-not-published` state remains historical metadata; authorization
+does not claim that a deployment has occurred. Records still carrying the
+current `local-not-published` state are excluded, even when canonical.
+
 Resources loaded by the HTML specimens must belong to the selected local kit.
 External image, script and stylesheet URLs block the build; external navigation
 links remain available. In the staged Markdown sources, remote badge images

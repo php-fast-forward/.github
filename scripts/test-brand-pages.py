@@ -110,6 +110,21 @@ class PagesTests(unittest.TestCase):
         self.assertEqual(gallery["status"], "exploratory")
         self.assertEqual(gallery["review_status"], "awaiting-review")
 
+    def test_no_publication_state_is_excluded_even_for_canonical_assets(self):
+        self.asset("assets/private-preview.png", "canonical")
+        self.rows[-1]["publication"] = "local-not-published"
+        self.asset("assets/approved-logo.png", "canonical")
+        authorization = {"status": "authorized", "scope": "brand-public-library",
+                         "authorization": "maintainer-request", "initial_status": "local-not-published"}
+        self.rows[-1]["publication"] = authorization
+        self.save_manifest()
+        self.build()
+        self.assertFalse((self.output / "assets/private-preview.png").exists())
+        self.assertTrue((self.output / "assets/approved-logo.png").is_file())
+        rows = json.loads((self.output / "assets/manifest.json").read_text())["assets"]
+        published = next(row for row in rows if row["path"] == "assets/approved-logo.png")
+        self.assertEqual(published["publication"], authorization)
+
     def test_filtered_provenance_preserves_external_ids_and_closes_local_registry(self):
         self.asset("references/source.png", "reference")
         self.asset("assets/legacy.png", "legacy")

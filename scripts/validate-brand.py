@@ -394,13 +394,25 @@ def _css_sidecar(data: bytes, root: Path, relative: str) -> None:
             raise ValueError(f"CSS sidecar URL points to a missing file: {target_relative}")
 
 
+def _unique_json_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"duplicate JSON key {key!r}")
+        result[key] = value
+    return result
+
+
+def _invalid_json_constant(value: str) -> None:
+    raise ValueError(f"invalid JSON constant {value}")
+
+
 def _json_sidecar(data: bytes) -> None:
-    def invalid_constant(value: str) -> None:
-        raise ValueError(f"invalid JSON constant {value}")
     try:
-        document = json.loads(data.decode("utf-8-sig"), parse_constant=invalid_constant)
+        document = json.loads(data.decode("utf-8-sig"), parse_constant=_invalid_json_constant,
+                              object_pairs_hook=_unique_json_object)
     except (UnicodeError, json.JSONDecodeError, ValueError) as error:
-        raise ValueError("JSON sidecar must contain valid UTF-8 JSON") from error
+        raise ValueError(f"JSON sidecar must contain valid UTF-8 JSON ({error})") from error
     if not isinstance(document, (dict, list)):
         raise ValueError("JSON sidecar must contain an object or list")
 
@@ -513,9 +525,11 @@ def validate(root: Path) -> dict[str, object]:
     if path_error:
         return {"valid": False, "checked": 0, "errors": [f"assets/manifest.json: {path_error}"]}
     try:
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as error:
-        return {"valid": False, "checked": 0, "errors": [f"assets/manifest.json: cannot read valid JSON ({type(error).__name__})"]}
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"),
+                              object_pairs_hook=_unique_json_object,
+                              parse_constant=_invalid_json_constant)
+    except (OSError, UnicodeError, ValueError) as error:
+        return {"valid": False, "checked": 0, "errors": [f"assets/manifest.json: cannot read valid JSON ({error})"]}
     if not isinstance(manifest, dict) or not _integer(manifest.get("schema_version")) or manifest["schema_version"] != 1:
         return {"valid": False, "checked": 0, "errors": ["assets/manifest.json: schema_version must be 1"]}
     assets = manifest.get("assets")

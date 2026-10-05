@@ -78,11 +78,12 @@ class BrandAssetTests(unittest.TestCase):
         self.archived_sources.append(source)
         return source
 
-    def run_validator(self, expected_code):
+    def run_validator(self, expected_code, raw_manifest=None):
         manifest = {"schema_version": 1, "assets": self.assets}
         if self.archived_sources is not ARCHIVED_SOURCES_ABSENT:
             manifest["archived_sources"] = self.archived_sources
-        (self.root / "assets" / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        (self.root / "assets" / "manifest.json").write_text(
+            json.dumps(manifest) if raw_manifest is None else raw_manifest, encoding="utf-8")
         execution = subprocess.run([sys.executable, "-B", str(VALIDATOR), "--root", str(self.root)], cwd=self.root, capture_output=True, text=True, check=False, timeout=30)
         self.assertEqual(execution.returncode, expected_code, execution.stdout + execution.stderr)
         self.assertEqual(execution.stderr, "")
@@ -573,6 +574,31 @@ class BrandAssetTests(unittest.TestCase):
     def test_corrupt_json_fails_even_when_its_digest_matches(self):
         self.add_asset("references/icons/sprite.json", b'{"icons": [}', status="reference")
         self.assert_error(self.run_validator(1), "JSON sidecar must contain valid UTF-8 JSON")
+
+    def test_duplicate_manifest_keys_are_rejected_at_every_depth(self):
+        self.add_asset()
+        original = json.dumps({"schema_version": 1, "assets": self.assets})
+        for key, first in (("schema_version", "0"), ("path", '"assets/other.png"'),
+                           ("status", '"legacy"'), ("sha256", '"wrong"'),
+                           ("source_sha256", '"wrong"')):
+            with self.subTest(key=key):
+                raw = original.replace(f'"{key}":', f'"{key}": {first}, "{key}":', 1)
+                result = self.run_validator(1, raw_manifest=raw)
+                self.assert_error(result, "duplicate JSON key")
+                self.assertEqual(result["checked"], 0)
+
+    def test_duplicate_sidecar_keys_are_rejected_even_with_a_matching_digest(self):
+        for content in (b'{"icons": [], "icons": ["docs"]}',
+                        b'{"icons": [{"name": "old", "name": "docs"}]}',
+                        b'{"path": "old", "p\\u0061th": "new"}'):
+            with self.subTest(content=content):
+                self.assets = []
+                self.add_asset("references/icons/sprite.json", content, status="reference")
+                self.assert_error(self.run_validator(1), "duplicate JSON key")
+
+    def test_equal_keys_in_separate_json_objects_are_valid(self):
+        self.add_asset("references/icons/sprite.json", b'{"icons": [{"name": "docs"}, {"name": "terminal"}]}', status="reference")
+        self.assertEqual(self.run_validator(0)["checked"], 1)
 
     def test_json_sidecars_accept_lists_and_reject_scalar_values(self):
         self.add_asset("references/icons/sprite.json", b'["docs", "terminal"]', status="reference")
