@@ -57,12 +57,12 @@ UI colors and full Dash fur/hoodie colors remain governed by [DESIGN.md](../DESI
 
 [brand/logo-source.json](brand/logo-source.json) is the editable source of truth
 for symbol paths, lettering outlines, palette, and layout.
-[build-brand-logos.py](../scripts/build-brand-logos.py) builds all eight SVGs
+[build-brand-logos.php](../scripts/build-brand-logos.php) builds all eight SVGs
 without fontTools or installed fonts at delivery time:
 
 ```sh
-python3 scripts/build-brand-logos.py
-python3 scripts/build-brand-logos.py --check
+php scripts/build-brand-logos.php
+php scripts/build-brand-logos.php --check
 ```
 
 The lettering uses Exo 2 Italic, version 2.010, weight 900. The official variable
@@ -112,8 +112,7 @@ outside this delivery; it was not silently promoted into canon.
 3. Add a new filename and manifest entry; preserve historical delivery URLs.
 4. Inspect transparency, edges, anatomy, contrast, and readable size in the
    specimen. Newly generated poses are derivatives, not automatic canon.
-5. Run `python3 scripts/validate-brand.py` and
-   `python3 -m unittest discover -s tests -p 'test_*.py'` from the repository root.
+5. Run `composer check` from the repository root.
 6. For token changes, regenerate all exports and include the design lint result.
 
 The validator verifies bytes and delivery metadata, rejects unsafe SVG content,
@@ -127,36 +126,38 @@ copyright, alt-text quality, or complete accessibility. Those need review.
 [tokens/tailwind.theme.json](tokens/tailwind.theme.json) (Tailwind v3), and
 [tokens/theme.css](tokens/theme.css) (Tailwind v4).
 
-The export tool was verified at version `0.4.0`. The portable helper runs lint,
-exports all three formats, applies the versioned typography adapter, and records
-source/output/adapter hashes in `exports.json`:
+The PHP exporter reads the normative YAML through Composer's Symfony YAML
+dependency, validates tokens and references, exports all three formats, and
+records source/output/generator hashes in `exports.json`:
 
 ```sh
-node scripts/export-design.mjs
-node scripts/export-design.mjs --check
+php scripts/export-design.php
+php scripts/export-design.php --check
 ```
 
 To prepare a token change while the browser adapter still has old values, use
-`node scripts/export-design.mjs --tokens-only`, update the token declarations in
+`php scripts/export-design.php --tokens-only`, update the token declarations in
 `assets/styles/documentation.css` and its manifest digest, then run `--check` and
 the asset validator. This preparation mode is not the CI validation command.
 
 CI uses `--check` to regenerate and compare the actual outputs with the committed
-exports. Use the helper for committed outputs: direct CLI exports need the
-compatibility adapter in `scripts/design-exports.mjs`.
+exports. The browser adapter must expose every generated token as an active
+top-level `:root` declaration; comments and component-only declarations do not
+satisfy this check.
 
-CLI `0.4.0` drops bare numeric line heights, so the normative YAML quotes unitless
-ratios. All styles declare letter spacing explicitly. The adapter separates font
+All styles declare unitless line-height ratios and letter spacing explicitly.
+The exporter separates font
 fallbacks, converts relative `em` tracking to a supported DTCG dimension, and
 adds the associated typography properties used by Tailwind v4 text utilities.
 It rejects incomplete typography instead of publishing silently missing values.
 See the [DTCG typography contract](https://www.designtokens.org/tr/2025.10/format/#typography)
 and [Tailwind text metadata](https://tailwindcss.com/docs/font-size#customizing-your-theme).
 
-For a standalone lint check:
+Install and run the complete asset, export and regression validation:
 
 ```sh
-npx -y @google/design.md@0.4.0 lint DESIGN.md
+composer install
+composer check
 ```
 
 For RTK-enabled hosts, run these commands through RTK per the local bootstrap.
@@ -164,9 +165,12 @@ The export format follows the [DESIGN.md specification](https://github.com/googl
 
 ## Consumption
 
-Use repository-relative paths inside this repository. Other repositories should
-link the central guidelines and, when copying an image, record its manifest ID,
-source commit, and SHA-256. For remote embeds, pin the raw GitHub asset URL to a
+Use repository-relative paths inside this repository. Consumer repository
+banners live at `docs/_static/mascot-banner.png` and README links use that local
+path. The central artwork catalog retains production details; consumers do not
+need an extra assets guide or generation manifest. Library archives exclude
+`/docs/` and `/README*.md`; runtime assets used by the documentation template live
+with its `data/` files. For remote embeds, pin the raw GitHub asset URL to a
 commit so an unrelated future export cannot change an already released page.
 Preserve asset provenance and any applicable notices with the copy.
 

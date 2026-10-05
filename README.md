@@ -43,7 +43,7 @@ composed separately when needed. References have explicit statuses so
 an old concept or divergent illustration cannot silently redefine the mascot.
 
 Open `docs/brand/index.html` in a browser, or serve the repository with
-`python3 -m http.server 8765 --bind 127.0.0.1` and visit
+`php -S 127.0.0.1:8765` and visit
 `http://127.0.0.1:8765/docs/brand/`. The specimen loads only repository files.
 
 The logo combines the fox symbol and “Fast” in orange
@@ -77,9 +77,8 @@ explicit in the catalog; no inferred license is assigned to supplied artwork.
 ## Validation
 
 ```sh
-python3 scripts/validate-brand.py
-python3 -m unittest discover -s tests -p 'test_*.py'
-npx -y @google/design.md@0.4.0 lint DESIGN.md
+composer install
+composer check
 ```
 
 The [asset guide](assets/README.md#token-exports) describes reproducible token

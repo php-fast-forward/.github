@@ -33,7 +33,7 @@ an untracked file exists in that commit. The manifest records this distinction.
 | Newly authored editorial | Rounder face, larger eyes, compact proportions, painted brown contours, purple hoodie | Secondary welcome/community/softer institutional collection. |
 | Package banners | Thirteen hoodie compositions and one older flat framework banner | Costume/context evidence, not interchangeable character masters or API facts. |
 | Older cute source-pack exports | Different face and mixed lockup interpretations | Seven promoted exports archived in local ignored backup, hashes verified before removal. |
-| Selected F signature | Native fox geometry and Exo 2 outlined lettering; light/dark/color/monochrome applications | Current logo system. Master is `assets/brand/logo-source.json`; eight exports come from `scripts/build-brand-logos.py`. |
+| Selected F signature | Native fox geometry and Exo 2 outlined lettering; light/dark/color/monochrome applications | Current logo system. Master is `assets/brand/logo-source.json`; eight exports come from `scripts/build-brand-logos.php`. |
 | Retired logos and compact chevrons | Earlier identity interpretations and unrecorded legacy lettering | Removed from the visible kit; provenance remains in ignored backup and `archived_sources`. |
 
 Cleaned PNGs have true alpha; their supplied bytes and padding were preserved.

@@ -47,11 +47,16 @@ and [custom Pages workflows](https://docs.github.com/en/pages/getting-started-wi
 
 ## Publication boundary
 
-The [staging script](../../scripts/build-brand-pages.py) copies the HTML, public
+The [staging script](../../scripts/build-brand-pages.php) copies the HTML, public
 guides and receipts in `docs/brand`, approved root guides, the asset guide,
 token exports, and cataloged active assets. Canonical, package-variant,
 reference support files, and explicitly labeled exploratory artwork retain
 their classifications in the filtered Pages asset manifest.
+
+Current contextual repository examples under `references/ecosystem/` are
+included only when their manifest records explicitly authorize the public
+library. The ecosystem gallery shows those 19 images. Historical references
+remain repository links, and local archives are excluded.
 
 Exploratory assets awaiting review are excluded unless their catalog records
 explicitly authorize `brand-review-gallery` display through a
@@ -111,10 +116,10 @@ not change asset approval or licensing status.
 From the repository root, with Python 3 available:
 
 ```sh
-python3 scripts/validate-brand.py
-python3 scripts/test-brand-pages.py
-python3 scripts/build-brand-pages.py --output-dir _site
-python3 -m http.server 8765 --bind 127.0.0.1 --directory _site
+php scripts/validate-brand.php
+composer test -- --filter BrandPagesTest
+php scripts/build-brand-pages.php --output-dir _site
+php -S 127.0.0.1:8765 -t _site
 ```
 
 Open `http://127.0.0.1:8765/`. The root page redirects to

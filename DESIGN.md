@@ -225,7 +225,7 @@ The eight exports contain native vector geometry and outlined lettering.
 | Dark surfaces, monochrome | [fast-forward-logo-white.svg](assets/brand/fast-forward-logo-white.svg) | [fast-forward-mark-white.svg](assets/brand/fast-forward-mark-white.svg) |
 
 Edit [logo-source.json](assets/brand/logo-source.json), then rebuild with
-[build-brand-logos.py](scripts/build-brand-logos.py); do not redraw individual
+[build-brand-logos.php](scripts/build-brand-logos.php); do not redraw individual
 exports independently. The monochrome variants use the same selected geometry.
 Retired logos remain only in the ignored archive and its provenance records.
 

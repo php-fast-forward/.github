@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "date": "2026-10-05",
-  "description": "Repository-specific applications of the approved Dash developer collection.",
+  "description": "Repository-specific applications of the approved Dash developer collection; provenance is maintained in this central kit.",
   "artwork": [
     {
       "pull_request": "https://github.com/php-fast-forward/agents/pull/4",
@@ -53,7 +53,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-agents",
+      "context": "Dash organizes reusable agent roles and skill resources",
+      "central_copy": "references/ecosystem/agents.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/agents",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "cd01df7bc3baa52a4fa91b27ab5d72bc7fa1b048",
+        "git_blob_sha": "3a8fa5aab0c92422aecc1e819ce400f10c9a1413",
+        "url": "https://github.com/php-fast-forward/agents/blob/cd01df7bc3baa52a4fa91b27ab5d72bc7fa1b048/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/changelog/pull/12",
@@ -105,7 +117,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-changelog",
+      "context": "Dash consolidates release fragments into a history ledger",
+      "central_copy": "references/ecosystem/changelog.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/changelog",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "323a35935609fbc4bbaec27490e8710403e69f22",
+        "git_blob_sha": "6c6ad10e9bc9b2a7840028ff38959c379ce58038",
+        "url": "https://github.com/php-fast-forward/changelog/blob/323a35935609fbc4bbaec27490e8710403e69f22/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/clock/pull/1",
@@ -157,7 +181,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-clock",
+      "context": "Dash contrasts live and frozen clocks for deterministic tests",
+      "central_copy": "references/ecosystem/clock.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/clock",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "33be1a9f588a21e5f9523251d9c29c14be2a77db",
+        "git_blob_sha": "32832bddcb6b6c93c791e847ffbac5fa5fe14250",
+        "url": "https://github.com/php-fast-forward/clock/blob/33be1a9f588a21e5f9523251d9c29c14be2a77db/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/composer-installers/pull/10",
@@ -209,7 +245,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-composer-installers",
+      "context": "Dash copies declared resource-bundle payloads into a target folder",
+      "central_copy": "references/ecosystem/composer-installers.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/composer-installers",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "924719aab66311217dc92e10b3dc055e53fd935a",
+        "git_blob_sha": "13e9ace487e6de7e790eef5e48a0adacfe1d4914",
+        "url": "https://github.com/php-fast-forward/composer-installers/blob/924719aab66311217dc92e10b3dc055e53fd935a/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/config/pull/4",
@@ -261,7 +309,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-config",
+      "context": "Dash combines configuration sources into a nested settings tree",
+      "central_copy": "references/ecosystem/config.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/config",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "cdeaa55461a6cfa1564183a5a62f3a90d3e75e61",
+        "git_blob_sha": "da4f4112a6c72faba723491fb178d7475ca655d5",
+        "url": "https://github.com/php-fast-forward/config/blob/cdeaa55461a6cfa1564183a5a62f3a90d3e75e61/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/container/pull/7",
@@ -313,7 +373,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-container",
+      "context": "Dash resolves service components from an aggregate registry",
+      "central_copy": "references/ecosystem/container.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/container",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "ac31a91936a49559d49ab7164e19de8101657e4e",
+        "git_blob_sha": "2321b7fe8a946d73a95fb3efd352a6377e7be673",
+        "url": "https://github.com/php-fast-forward/container/blob/ac31a91936a49559d49ab7164e19de8101657e4e/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/defer/pull/1",
@@ -365,7 +437,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-defer",
+      "context": "Dash performs deferred scope cleanup in reverse stack order",
+      "central_copy": "references/ecosystem/defer.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/defer",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "ca2453a811b84272a1467c7ca25e8aada2be348c",
+        "git_blob_sha": "1baebbba6424e0684a3ffd984596749c45a95e50",
+        "url": "https://github.com/php-fast-forward/defer/blob/ca2453a811b84272a1467c7ca25e8aada2be348c/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/enum/pull/5",
@@ -417,7 +501,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-enum",
+      "context": "Dash organizes a finite set of typed choices",
+      "central_copy": "references/ecosystem/enum.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/enum",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "e43c4fe049a3657cee45fa9ab11a17c092a9c6a5",
+        "git_blob_sha": "e33e66e8ff80058f7cda9d2899381664ff03a342",
+        "url": "https://github.com/php-fast-forward/enum/blob/e43c4fe049a3657cee45fa9ab11a17c092a9c6a5/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/event-dispatcher/pull/1",
@@ -469,7 +565,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-event-dispatcher",
+      "context": "Dash routes a named event through ordered listeners",
+      "central_copy": "references/ecosystem/event-dispatcher.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/event-dispatcher",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "e03e9f30cb42028729c2d073050523468ef0a37b",
+        "git_blob_sha": "1eb2c7db5fe61b99540d199b95c68d68aa357c02",
+        "url": "https://github.com/php-fast-forward/event-dispatcher/blob/e03e9f30cb42028729c2d073050523468ef0a37b/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/fork/pull/2",
@@ -521,7 +629,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-fork",
+      "context": "Dash coordinates child processes and collected outputs",
+      "central_copy": "references/ecosystem/fork.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/fork",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "6032d1bc7ddb24cb08bc426b1b8822f6a6e824cd",
+        "git_blob_sha": "ef44517a825c9be68fa1831a0cfd4912432e7514",
+        "url": "https://github.com/php-fast-forward/fork/blob/6032d1bc7ddb24cb08bc426b1b8822f6a6e824cd/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/framework/pull/9",
@@ -573,7 +693,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-framework",
+      "context": "Dash connects framework components through a shared bootstrap",
+      "central_copy": "references/ecosystem/framework.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/framework",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "bd0d0e1486592d18d9d8db69a7874b6b53823c8d",
+        "git_blob_sha": "7859bbea3e4395f55355ca2118768bee6a15eb7f",
+        "url": "https://github.com/php-fast-forward/framework/blob/bd0d0e1486592d18d9d8db69a7874b6b53823c8d/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/github-actions/pull/3",
@@ -625,7 +757,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-github-actions",
+      "context": "Dash connects reusable workflow stages in CI automation",
+      "central_copy": "references/ecosystem/github-actions.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/github-actions",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "4218dcbaf5e010518016617bee96c3fe6c5a383c",
+        "git_blob_sha": "b2f2641b7758be9ed1227baf9205aa5b08603774",
+        "url": "https://github.com/php-fast-forward/github-actions/blob/4218dcbaf5e010518016617bee96c3fe6c5a383c/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/http/pull/1",
@@ -677,7 +821,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-http",
+      "context": "Dash assembles message, factory and client components",
+      "central_copy": "references/ecosystem/http.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/http",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "e7db743a9f09b277fc110d2179e8b20f28c3cccf",
+        "git_blob_sha": "ea64ffdbff40bea65985289a6d89d3a6082f54a0",
+        "url": "https://github.com/php-fast-forward/http/blob/e7db743a9f09b277fc110d2179e8b20f28c3cccf/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/http-client/pull/1",
@@ -729,7 +885,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-http-client",
+      "context": "Dash exchanges request and response envelopes",
+      "central_copy": "references/ecosystem/http-client.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/http-client",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "c605b8b2ba763f5456bd4df989fc58ddd66fb753",
+        "git_blob_sha": "2797a09dc32ecf61ba11c347b30677e8f939c044",
+        "url": "https://github.com/php-fast-forward/http-client/blob/c605b8b2ba763f5456bd4df989fc58ddd66fb753/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/http-factory/pull/1",
@@ -781,7 +949,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-http-factory",
+      "context": "Dash builds request, response, stream and URI objects",
+      "central_copy": "references/ecosystem/http-factory.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/http-factory",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "ef11ffc9f314a62d7b051ccf76184cb24c3ea6f8",
+        "git_blob_sha": "c3d77e76d638ad3bd11c7cb246aa3d929c7cb29e",
+        "url": "https://github.com/php-fast-forward/http-factory/blob/ef11ffc9f314a62d7b051ccf76184cb24c3ea6f8/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/http-message/pull/1",
@@ -833,7 +1013,19 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-http-message",
+      "context": "Dash inspects immutable message layers and response forms",
+      "central_copy": "references/ecosystem/http-message.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/http-message",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "56c14f67065e444e1d0bde89a19fd63d2eec8cfe",
+        "git_blob_sha": "16063bd2c3694dfa19f5f240b91c7e3e9f2ea212",
+        "url": "https://github.com/php-fast-forward/http-message/blob/56c14f67065e444e1d0bde89a19fd63d2eec8cfe/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/iterators/pull/1",
@@ -885,10 +1077,22 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-iterators",
+      "context": "Dash traverses, filters and groups a stream of data",
+      "central_copy": "references/ecosystem/iterators.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/iterators",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "4e422131389727502f01370901f76eeacc2a9ebd",
+        "git_blob_sha": "887163549eadbeec61a9092f22cbfee81480199d",
+        "url": "https://github.com/php-fast-forward/iterators/blob/4e422131389727502f01370901f76eeacc2a9ebd/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
-      "pull_request": "https://github.com/php-fast-forward/phpdoc-bootstrap-template/pull/3",
+      "pull_request": "https://github.com/php-fast-forward/phpdoc-bootstrap-template/pull/5",
       "schema_version": 1,
       "asset": "docs/_static/mascot-banner.png",
       "repository": "php-fast-forward/phpdoc-bootstrap-template",
@@ -937,7 +1141,20 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "artwork_pull_request": "https://github.com/php-fast-forward/phpdoc-bootstrap-template/pull/3",
+      "id": "reference-dash-package-phpdoc-bootstrap-template",
+      "context": "Dash drafts responsive documentation navigation and page layouts",
+      "central_copy": "references/ecosystem/phpdoc-bootstrap-template.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/phpdoc-bootstrap-template",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "a0ebeefda7fc72a8607e4800d8ba2c817a3d870d",
+        "git_blob_sha": "c817b464e0fe72b674e38e5cbf4e9388c322449e",
+        "url": "https://github.com/php-fast-forward/phpdoc-bootstrap-template/blob/a0ebeefda7fc72a8607e4800d8ba2c817a3d870d/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     },
     {
       "pull_request": "https://github.com/php-fast-forward/dev-tools/pull/360",
@@ -989,7 +1206,32 @@
         "scope": "repository README and documentation",
         "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
       },
-      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted.",
+      "id": "reference-dash-package-dev-tools",
+      "context": "Dash coordinates testing, style, refactoring and documentation tools",
+      "central_copy": "references/ecosystem/dev-tools.png",
+      "consumer_source": {
+        "repository": "php-fast-forward/dev-tools",
+        "path": "docs/_static/mascot-banner.png",
+        "commit": "1ff10624f08642d50437cd33d337a43972203e7e",
+        "git_blob_sha": "7c9909f8aef76259a0f8f6c070c5f343801c3e7e",
+        "url": "https://github.com/php-fast-forward/dev-tools/blob/1ff10624f08642d50437cd33d337a43972203e7e/docs/_static/mascot-banner.png",
+        "source_scope": "public-pull-request-head",
+        "verified_on": "2026-10-05"
+      }
     }
-  ]
+  ],
+  "storage_policy": {
+    "generation_receipts": "central-catalog-only",
+    "contextual_references": "references/ecosystem",
+    "consumer_contract": {
+      "readme_image": "docs/_static/mascot-banner.png",
+      "readme_reference": "repository-relative",
+      "archive_exclusions": [
+        "/docs/",
+        "/README*.md"
+      ]
+    },
+    "verified_on": "2026-10-05"
+  }
 }

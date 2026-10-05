@@ -32,7 +32,8 @@ combining this pattern with another design system.
 </div>
 ```
 
-The reference defaults to a light reading surface. `data-reading-theme="navy"`
+The reference defaults to a light reading surface. A compact sun/moon button
+provides the theme action with an accessible label. `data-reading-theme="navy"`
 switches the reading palette; the navigation and code surfaces remain navy.
 The optional toggle uses `aria-pressed`. It does not change a consumer's theme
 preferences or impose persistence.
@@ -48,7 +49,7 @@ It preserves the exported `--color-*`, `--font-*`, `--text-*`, `--radius-*`, and
 metadata. The export helper normalizes the upstream CLI's font lists before
 writing reusable tokens, so both consumers receive the same fallback order.
 
-When tokens change, run `node scripts/export-design.mjs --tokens-only` first.
+When tokens change, run `php scripts/export-design.php --tokens-only` first.
 This explicit preparation mode writes normalized exports without checking the
 browser adapter, which still contains the previous values. Update this
 adapter from `theme.css`, and review the normalization of font stacks. Compare
