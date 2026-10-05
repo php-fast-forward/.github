@@ -1,0 +1,995 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-05",
+  "description": "Repository-specific applications of the approved Dash developer collection.",
+  "artwork": [
+    {
+      "pull_request": "https://github.com/php-fast-forward/agents/pull/4",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/agents",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is a thoughtful coordinator in an agent-resource library. He arranges reusable role cards and folded instruction booklets on a collaboration planning wall, each card with a different simple abstract role symbol; connections form an organized team map. He selects one booklet from a tidy resource-bundle case. Show packaged prompts and skills as curated resources, not autonomous robots or several cloned foxes. Purpose: reusable Fast Forward agent prompts and skill assets.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "9fba44c597619d136eba58eb1af537226be6914804ae832c52d1dd77a51e2765",
+        "bytes": 2336856,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/changelog/pull/12",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/changelog",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is a release editor assembling a clean history book. He sits on a tall stool at an editorial desk, gathering several separate small Markdown-like paper fragments carrying only abstract colored strokes into one open chronological release ledger. A tidy release timeline of cards arcs behind the desk and a closed review seal tray sits nearby. One paw places a fragment, one holds the ledger. Purpose: independent changelog fragments, reviewed consolidation and exact release notes, not arbitrary code writing.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "a5e740350c79961311f8d12ecac1831c69b5ca59dc86efc80a0109586e2a9239",
+        "bytes": 2033274,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/clock/pull/1",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/clock",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is a precise timekeeper in a contemporary developer clock workshop. He holds a small warm analog clock with simple tick marks and no numerals in one paw, and adjusts a second glass-encased clock locked inside translucent ice with the other. A flowing warm timeline contrasts with a frozen cyan time marker. Dark violet studio, thoughtful attentive expression, elegant full-body three-quarter pose, complete single tail. The purpose is the distinction between SystemClock and FrozenClock for deterministic tests.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "33d5e5fb41e58824999aad9b2f6ca0ff2b3dd90caf6798072d985b013f019dde",
+        "bytes": 2200571,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/composer-installers/pull/10",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/composer-installers",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash materializes a resource bundle in a precise package workshop. He opens one clearly bounded shipping box of small resource tiles and carefully places only those tiles into a target folder cabinet, while a separate intact source box remains on a vendor shelf. A small inventory checklist panel has only blank geometric rows. Show copy-to-target with preserved existing folders, not destructive replacement. Wide full-body three-quarter action, violet/orange/cyan accents. Purpose: Composer resource-bundle installers copying declared payloads to consumer-owned paths.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "b4c6e762f7ca106fc17925d2b0742bf8998352b3cad62159edb404520b67d668",
+        "bytes": 2060693,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/config/pull/4",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/config",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash assembles an application configuration at a clean developer control desk. He stands sideways, sliding neatly colored configuration tiles into a central transparent settings board. Tree-shaped nested folder branches feed into the board from the left; a small tuning panel with sliders stands beside him. Show the concrete action of combining several sources into one organized hierarchy, not a package installation factory. Cool navy office, orange rim light, methodical expression and one full tail.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "d42da519e554495d93374013b8a9fafb0a9fcf46ae80db8a6527d287b623cbab",
+        "bytes": 1964606,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/container/pull/7",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/container",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is a services librarian in a stylish modular developer workshop. He reaches to retrieve one glowing component cube from a well-organized cabinet of different modular service cubes; elegant connection lines lead from several separate small cabinets into one central service registry desk. Different shapes fit together without duplication. Three-quarter full-body pose, grown-up confident demeanor. Purpose: PSR-11 aggregate dependency container, resolving and wiring services.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "3a1fd8f79f2c7a87a1d4a76173f8329163c5f51d5864053182d7fe0e88106b36",
+        "bytes": 1980932,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/defer/pull/1",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/defer",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash finishes work at a scope-bound developer desk and tidies a clearly ordered stack of task tokens. One paw lifts the very top token of a vertical stack while older tokens remain beneath; completed tokens travel down an orderly reverse-order cleanup chute into a safe tray. A small boundary arch around the desk represents leaving a scope, with a subtle hourglass. No arrows implying FIFO. Wide side-view action, calm methodical fox, single complete tail. Purpose: deferred cleanup callbacks in LIFO order at the end of scope.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "d4e00106c2da461663fb8dd0cc2cd2cc2863e8ca12997ed5518c1eee348c3916",
+        "bytes": 2176575,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/enum/pull/5",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/enum",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash curates a finite collection of precise choices on a designer's taxonomy table. He confidently places one colored rounded choice tile into a fixed three-slot catalog, with small nearby calendar, sorting and state-transition symbols rendered only as abstract geometry. Closed limited choice set, ordered colored swatches, neatly mapped counterparts. Warm amber eyes exactly like the primary master, never purple eyes. Rich navy/violet studio, elegant standing angled pose. Purpose: typed enum cases, catalogs, lookup and mapping.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "c764b8a558442b857ce419e6767a6f5c671de969ab3b26ef2d96c95eeae6ce2f",
+        "bytes": 1910263,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/event-dispatcher/pull/1",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/event-dispatcher",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is an event-routing conductor at a modern observability console. In one paw he holds a glowing event capsule shaped like an envelope; with the other paw he directs luminous purple paths from that single source toward three distinct listener terminals. Priority is represented by vertically ordered small terminal lights, and a separate stop switch is visible. Camera three-quarter view, Dash standing slightly left of center, flow diagram taking the right half. The purpose is PHP event dispatch, named events and ordered listeners, not telecommunications.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "9b5e6e4d482ebbe2b427b343e8d2b31209a2b942b92fe9cb202cf2a11b610050",
+        "bytes": 1947485,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/fork/pull/2",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/fork",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash manages parallel child processes at a spacious workstation. He stands behind a central orchestration console, calmly operating its controls, while three separate worker consoles run independent abstract tasks connected to a parent node above. Thin cyan return paths converge into one output collector below, and a physical stop control sits on the central console. A visual process tree, each worker a terminal, not three fox copies. Wide symmetrical landscape, Dash complete and recognizably the reference. The purpose is forked worker orchestration, signals, groups and captured outputs.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "167b3c043276f8b20afdc3299f4c35c47776a8997b223ea0fb81fbe5b64d908b",
+        "bytes": 1832377,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/framework/pull/9",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/framework",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is an architect connecting the Fast Forward framework foundation. He stands on a modular platform, placing a final bridge between component stations representing a service registry, event routing, a clock and paired web message terminals. A single central bootstrap pillar connects the entire compact system. Isometric architectural environment, coherent warm lighting, one mature fox only, all of his silhouette inside the frame. Purpose: aggregate metapackage wiring core components through one service-provider bootstrap.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "e3a2ca0606ab886aa6aea8047a5fef9f5e35cc842321d15a9fbcca7e880491b2",
+        "bytes": 2092421,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/github-actions/pull/3",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/github-actions",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash operates a shared CI automation control room. He confidently connects a sequence of stage tiles on an elevated workflow rail: a PHP runtime terminal, a version-selector dial, an output collector and a summary document station. Small reusable modules feed the rail from a library shelf. Distinct from the dev-tools workshop: workflow orchestration and reusable automation stages, not code editing. Purpose: Symfony Console runtime for shared GitHub Actions automation; no invented GitHub or vendor logo.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "970a84991d63709eccd5c9da7c4a346df675ed124fdf682cfc84c44b8b9f1e16",
+        "bytes": 1994037,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/http/pull/1",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/http",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash connects an aggregate web stack in a polished web engineering lab. He stands at the center of an arc of coordinated stations: request builder, paired inbound/outbound web-message lanes, stream reservoir and client transport terminal, all wired into one hub. His paws plug one final connector into the hub. Abstract envelope cards and flowing payload lines, clean distinct modules. Purpose: a unified HTTP provider assembling factories, messages and a PSR-18 client.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "921a9dc1d0c0e7a0a1d9b75f00876be893c3497504aaac3a747ce16242d4beba",
+        "bytes": 2064674,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/http-client/pull/1",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/http-client",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash works at a clean client-side networking desk, actively sending one glowing request envelope toward a remote server tower and receiving a differently colored response envelope along a return path. A small application terminal connects through a transport adapter dock. Clear two-way request/response exchange over a bridge, not a full web factory or browser logo. Full-body three-quarter pose, forward open-paw gesture, single tail, warm confident expression. Purpose: PSR-18 HTTP client integration backed by a transport layer.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "5565275d75e23a28e5b6bbb28b99f335d88a8d66ae10655493d8b229b0baf079",
+        "bytes": 1936246,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/http-factory/pull/1",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/http-factory",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is an HTTP object craftsman at a small elegant fabrication bench. He assembles several distinct web object forms from one shared factory station: envelope-shaped requests, response cards, a coiled stream spool and a polished URI-link loop. The molds are empty abstract shapes without labels; a soft branching tree leads from one factory to these different objects. Purpose: creating PSR-17/PSR-7 HTTP objects and reusable response/stream factories, not sending messages across a network.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "0e63c41e7f841255aa44ec9bfc94312bed1a4c3613ce30947ce4a7ac085d2ca1",
+        "bytes": 2169191,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/http-message/pull/1",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/http-message",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash inspects a carefully sealed immutable message capsule on a web communications desk. The capsule has three visible layers: a thin metadata/header card, a thicker payload chamber and a readable flow ribbon made of abstract colored stripes. Several response containers of distinct shapes are neatly arranged nearby, representing structured JSON, document, text, redirect and empty responses without any letters. Dash holds a capsule gently rather than editing its contents. Purpose: immutable PSR-7 messages and payload-aware response types.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "76dfd3ddb316d8196d5316805a6153f8a6d109b8c85ec49de8e2f3ff8557e745",
+        "bytes": 2035002,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/iterators/pull/1",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/iterators",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash guides a stream of data beads through a clear sorting workbench. He leans slightly forward while gently inspecting the next bead with a small magnifying lens; a branching filter separates colors and the resulting beads collect into tidy groups of three in modular trays. A looped rail indicates sequential traversal without a chaotic conveyor factory. Sideways full-body pose, all paws/tail visible. Purpose: peeking/lookahead, filtering, grouping and chunking iterators.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "53160b1b44918cde59236a2ee0e47a01b49c13851e87bf8a711e63bb146aa7d4",
+        "bytes": 2176138,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/phpdoc-bootstrap-template/pull/3",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/phpdoc-bootstrap-template",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is a documentation designer at a large browser-layout drafting desk. He points to a beautiful open documentation page mockup on a widescreen display: left navigation, central guide cards, a right on-this-page outline, a search field and visually formatted code strips with no letters. A smaller narrow device displays the same responsive layout. Neat books and design rulers on desk, thoughtful full-body stance, professional violet/navy/cyan palette. Purpose: a Bootstrap/Twig phpDocumentor documentation template, navigation and readable responsive API docs.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "7dfd57f6a8df627a41d05e1a8229f6c3602c3fed313fb680241f33f6fe950f82",
+        "bytes": 2021717,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    },
+    {
+      "pull_request": "https://github.com/php-fast-forward/dev-tools/pull/360",
+      "schema_version": 1,
+      "asset": "docs/_static/mascot-banner.png",
+      "repository": "php-fast-forward/dev-tools",
+      "collection": "developer",
+      "character": "Dash",
+      "source_kit_commit": "654e4a463533f1d8b8223369b3b0bbc1a4a0badf",
+      "references": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09"
+        },
+        {
+          "id": "dash-developer-build",
+          "path": "assets/mascot/dash-developer-build.png",
+          "sha256": "3cca06ae5f82e33a97855ddcb38b3e59c4b750743e7bdb16103a122c492ea303"
+        }
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "model": "not reported by tool",
+        "prompt": "Use case: stylized-concept. Asset type: contextual repository README illustration, landscape PNG around 1536x1024. Reference image 1 (dash-developer-welcome) is the authoritative face, anatomy and adult developer identity. Reference image 2 (dash-developer-build) only supports the established 3D materials and paws; do not copy its seated pose. Create a unique contextual illustration with one Dash, the PHP Fast Forward fox. Preserve mature developer proportions, amber/brown eyes, orange fur, cream muzzle/cheeks, forehead tuft, triangular dark-tipped ears, small dark nose, one complete fluffy cream-tipped tail, plain purple hoodie with exactly two cream drawstrings, polished 3D shading and detailed soft fur. Keep both ears, all limbs and the entire tail inside the canvas with safe margins. Friendly capable professional, never toddler/chibi. Clean high-end navy/violet developer environment with warm orange key lighting, subtle cyan accent highlights, excellent contrast at an 840px README width. Purposeful props and readable silhouette, restrained detail. No generated text, letters, numbers, code, package labels, hoodie emblems, logos, watermarks or multiple foxes. This must illustrate the specific software concept, not reuse a waving mascot portrait. Scene: Dash is a developer quality engineer in a robust code workshop. He stands at a multi-monitor workbench and uses a diagnostic stylus to coordinate a pipeline of abstract test-check tiles, code-style alignment rulers, a refactoring puzzle jig and a documentation book station. A central compact console controls all those quality tools. No assertion of real test results; conceptual green geometric check tokens only, no metrics text. Purpose: unified development quality checks, reports, documentation and repository bootstrap.",
+        "transparent_background": false
+      },
+      "output": {
+        "sha256": "b8b569a5cfd84474f3d2d9a6d411bdf0aa00a6188c2e5c0734b1f9ce173c13ec",
+        "bytes": 2092029,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "visual_review": {
+        "status": "reviewed",
+        "checks": [
+          "Recognizable orange fox with cream muzzle and tail tip, amber eyes and plain purple hoodie",
+          "Single Dash and repository-specific scene",
+          "Readable at README size; no generated package title or logo"
+        ],
+        "limitations": "Contextual illustration, not an anatomy reference sheet."
+      },
+      "publication": {
+        "status": "authorized",
+        "authority": "maintainer-request",
+        "date": "2026-10-05",
+        "scope": "repository README and documentation",
+        "evidence": "Maintainer requested contextual Dash artwork for each implemented repository, public PRs, and replacement of the previous banner at docs/_static/mascot-banner.png."
+      },
+      "rights": "Generated for authorized repository identity work. Historical reference-art rights remain unrecorded; no independent third-party asset license is asserted."
+    }
+  ]
+}
