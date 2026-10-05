@@ -90,7 +90,9 @@ class PagesTests(unittest.TestCase):
         self.asset("assets/gallery.png", "exploratory")
         self.rows[-1].update({
             "review_status": "awaiting-review",
-            "publication": {"scope": "brand-review-gallery", "authorization": "maintainer-request"},
+            "publication": {"scope": "brand-review-gallery", "authorization": "maintainer-request",
+                            "recorded_at": "2026-10-05", "evidence": "Maintainer requested the gallery.",
+                            "canonical_selection": False},
         })
         self.asset("assets/unconfirmed.png", "exploratory")
         self.rows[-1].update({
@@ -115,7 +117,8 @@ class PagesTests(unittest.TestCase):
         self.rows[-1]["publication"] = "local-not-published"
         self.asset("assets/approved-logo.png", "canonical")
         authorization = {"status": "authorized", "scope": "brand-public-library",
-                         "authorization": "maintainer-request", "initial_status": "local-not-published"}
+                         "authorization": "maintainer-request", "initial_status": "local-not-published",
+                         "recorded_at": "2026-10-05", "evidence": "Maintainer requested publication."}
         self.rows[-1]["publication"] = authorization
         self.save_manifest()
         self.build()
@@ -124,6 +127,43 @@ class PagesTests(unittest.TestCase):
         rows = json.loads((self.output / "assets/manifest.json").read_text())["assets"]
         published = next(row for row in rows if row["path"] == "assets/approved-logo.png")
         self.assertEqual(published["publication"], authorization)
+
+    def test_unknown_publication_metadata_is_excluded_for_all_active_statuses(self):
+        record = {"status": "authorized", "scope": "brand-public-library",
+                  "authorization": "maintainer-request", "recorded_at": "2026-10-05",
+                  "evidence": "Maintainer requested publication."}
+        invalid = ["not-published", "authorized", None, [], {},
+                   {**record, "scope": "unknown"}, {**record, "status": "denied"},
+                   {**record, "authorization": "unknown"}, {**record, "evidence": ""},
+                   {**record, "recorded_at": None},
+                   {"scope": "brand-review-gallery", "authorization": "maintainer-request"}]
+        paths = []
+        for status in ("canonical", "package-variant", "reference", "exploratory"):
+            for index, publication in enumerate(invalid):
+                relative = f"assets/{status}-{index}.png"
+                self.asset(relative, status)
+                self.rows[-1]["publication"] = publication
+                paths.append(relative)
+        self.save_manifest()
+        self.build()
+        for relative in paths:
+            self.assertFalse((self.output / relative).exists(), relative)
+        rows = json.loads((self.output / "assets/manifest.json").read_text())["assets"]
+        self.assertEqual([row["path"] for row in rows], ["assets/current.png"])
+
+    def test_gallery_authorization_cannot_publish_canonical_or_selected_artwork(self):
+        record = {"scope": "brand-review-gallery", "authorization": "maintainer-request",
+                  "recorded_at": "2026-10-05", "evidence": "Maintainer requested the gallery.",
+                  "canonical_selection": False}
+        self.asset("assets/canonical-with-gallery.png", "canonical")
+        self.rows[-1]["publication"] = record
+        self.asset("assets/selected-gallery.png", "exploratory")
+        self.rows[-1].update({"review_status": "awaiting-review",
+                              "publication": {**record, "canonical_selection": True}})
+        self.save_manifest()
+        self.build()
+        self.assertFalse((self.output / "assets/canonical-with-gallery.png").exists())
+        self.assertFalse((self.output / "assets/selected-gallery.png").exists())
 
     def test_filtered_provenance_preserves_external_ids_and_closes_local_registry(self):
         self.asset("references/source.png", "reference")

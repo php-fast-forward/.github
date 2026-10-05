@@ -139,6 +139,28 @@ def scope_provenance(manifest: dict[str, object], repository_url: str, ref: str)
             provenance["repository_manifest"] = repository_manifest
 
 
+def publication_allowed(row: dict[str, object]) -> bool:
+    """Fail closed on present metadata; absent records retain the legacy policy."""
+    if "publication" not in row:
+        return True
+    publication = row["publication"]
+    if not isinstance(publication, dict):
+        return False
+    if publication.get("authorization") != "maintainer-request":
+        return False
+    if not all(isinstance(publication.get(field), str) and publication[field].strip()
+               for field in ("recorded_at", "evidence")):
+        return False
+    if publication.get("scope") == "brand-public-library":
+        return publication.get("status") == "authorized"
+    if publication.get("scope") == "brand-review-gallery":
+        return (row.get("status") == "exploratory"
+                and row.get("review_status") == "awaiting-review"
+                and publication.get("canonical_selection") is False
+                and publication.get("status", "authorized") == "authorized")
+    return False
+
+
 def inventory(root: Path, repository_url: str, ref: str) -> tuple[set[str], dict[str, object]]:
     manifest = json.loads(safe_file(root, "assets/manifest.json").read_text())
     selected: set[str] = set()
@@ -148,7 +170,7 @@ def inventory(root: Path, repository_url: str, ref: str) -> tuple[set[str], dict
         if row["status"] not in ACTIVE_STATUSES:
             continue
         publication = row.get("publication", {})
-        if publication == "local-not-published":
+        if not publication_allowed(row):
             continue
         if (row["status"] == "exploratory" and row.get("review_status") == "awaiting-review"
                 and not (isinstance(publication, dict)

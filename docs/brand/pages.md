@@ -72,6 +72,14 @@ earlier `local-not-published` state remains historical metadata; authorization
 does not claim that a deployment has occurred. Records still carrying the
 current `local-not-published` state are excluded, even when canonical.
 
+When `publication` is present, the builder accepts only an authorization record
+with `maintainer-request`, nonempty `recorded_at` and `evidence`, and a recognized
+scope. `brand-public-library` also requires `status: authorized`.
+`brand-review-gallery` applies only to exploratory, awaiting-review proposals
+with `canonical_selection: false`. Unknown strings, scopes, incomplete records
+and other value types are excluded. Absent metadata retains the existing active
+asset policy; an absent record never authorizes an awaiting-review proposal.
+
 Resources loaded by the HTML specimens must belong to the selected local kit.
 External image, script and stylesheet URLs block the build; external navigation
 links remain available. In the staged Markdown sources, remote badge images
