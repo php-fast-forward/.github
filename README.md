@@ -1,29 +1,97 @@
 <p align="center">
-  <img src="./profile/assets/mascot-wordmark-horizontal.svg" alt="PHP Fast Forward" width="760">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/brand/fast-forward-logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/brand/fast-forward-logo.svg">
+    <img src="./assets/brand/fast-forward-logo.svg" alt="PHP Fast Forward — Dash fox signature, with Fast in orange" width="640">
+  </picture>
 </p>
 
-# PHP Fast Forward Organization Profile
+# PHP Fast Forward identity and organization profile
 
-This repository holds the public GitHub organization profile and shared GitHub
-metadata for [`php-fast-forward`](https://github.com/php-fast-forward).
+This repository is the public home of PHP Fast Forward's visual identity,
+mascot references, design assets, organization profile, and community defaults.
+Framework code and tooling belong in their own
+[organization repositories](https://github.com/php-fast-forward).
 
-It exists so the organization page can have a proper manifesto, visual identity,
-and sponsorship metadata without mixing that content into the framework or
-tooling repositories themselves.
+## Start here
 
-## What lives here
+| Source | Responsibility |
+| --- | --- |
+| [DESIGN.md](DESIGN.md) | Visual canon, UI tokens, logo applications, mascot anatomy, and pose/use matrix. |
+| [STYLE.md](STYLE.md) | Public voice, language, terminology, and evidence in product claims. |
+| [SOUL.md](SOUL.md) | Character, values, and the Fast Forward fox's relationship with people. |
+| [Asset library](assets/README.md) | Reusable exports, metadata, provenance, and consumption rules. |
+| [Asset manifest](assets/manifest.json) | Stable asset IDs, hashes, dimensions, and classifications. |
+| [Public visual library](https://php-fast-forward.github.io/.github/) | GitHub Pages publication target for the visual specimens and reusable asset kit. |
+| [Visual specimen](docs/brand/index.html) | Browsable mascot matrix, light/dark previews, and reference families. |
+| [Documentation pattern](docs/brand/documentation.html) | Executable reading/navigation/code style and reusable CSS. |
+| [Logo kit](docs/brand/logo-compositions.html) | Fox signature, orange Fast, dark-surface and monochrome variants. |
+| [Vector master](assets/brand/logo-source.json) | Source geometry, outlined Exo 2 lettering, palette, and reproducible SVG variants. |
+| [Pages setup](docs/brand/pages.md) | Workflow, publication target, and deployment setup for the local brand pages. |
+| [Dash artwork skill](skills/dash-art/SKILL.md) | Generate consistent repository illustrations using verified masters and recorded prompts. |
+| [References](references/README.md) | Website concepts, package art, and icon references. |
+| [Design assessment](docs/brand/assessment.md) | Audit findings, decisions, and next artwork/website work. |
+| [Mascot production guide](docs/brand/mascot-production.md) | Reference stack, planned pose matrix, and reusable illustration briefs. |
 
-- [`profile/README.md`](./profile/README.md) is the organization profile shown on
-  the GitHub organization page
-- [`profile/assets`](./profile/assets) contains the public assets used by that
-  profile
-- [`.github/FUNDING.yml`](./.github/FUNDING.yml) defines the organization
-  sponsorship links
+<p align="center">
+  <img src="./assets/mascot/dash-developer-welcome.png" alt="Dash, the Fast Forward fox, welcoming the reader in a purple hoodie" width="260">
+</p>
 
-## Notes
+Dash developer is the primary character reference; the new editorial collection
+is a secondary choice. Both wear the shared purple hoodie; package emblems are
+composed separately when needed. References have explicit statuses so
+an old concept or divergent illustration cannot silently redefine the mascot.
 
-- Private or spoiler assets can be kept outside versioned profile assets
-- The organization manifesto itself lives in [`profile/README.md`](./profile/README.md)
-- Framework code and developer tooling live in their own repositories, especially
-  [`framework`](https://github.com/php-fast-forward/framework) and
-  [`dev-tools`](https://github.com/php-fast-forward/dev-tools)
+Open `docs/brand/index.html` in a browser, or serve the repository with
+`php -S 127.0.0.1:8765` and visit
+`http://127.0.0.1:8765/docs/brand/`. The specimen loads only repository files.
+
+The logo combines the fox symbol and “Fast” in orange
+`#FF641B`. Eight native SVG exports cover full signatures and standalone marks
+on light/dark surfaces and in ink/white monochrome. The lettering uses licensed
+Exo 2 Italic at weight 900, converted to paths; interface typography stays on the
+system-font tokens. See the [asset guide](assets/README.md#logo-masters).
+
+## Organization surfaces
+
+- [profile/README.md](profile/README.md) is the default English organization profile, with links to [Português (Brasil)](profile/README.pt-BR.md) and [Español](profile/README.es.md).
+- [profile/assets](profile/assets) delivers the organization-profile artwork.
+- [.github/FUNDING.yml](.github/FUNDING.yml) holds sponsorship links.
+- [CONTRIBUTING.md](CONTRIBUTING.md), [SUPPORT.md](SUPPORT.md),
+  [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SECURITY.md](SECURITY.md), and
+  [ACCESSIBILITY.md](ACCESSIBILITY.md) provide community defaults.
+- [.github/ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE) and
+  [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md) support
+  issue and review preparation.
+
+GitHub can inherit these defaults in organization repositories that do not
+provide their own corresponding files. Repository-specific files take precedence;
+templates and files are not copied into consumer clones. See
+[GitHub's default community file rules](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file).
+
+This repository is public. Keep private materials in an appropriate private
+repository or local archive. The ignored `backup/` is not a publication surface
+or a dependency of the reusable kit. Artwork rights and authoring gaps remain
+explicit in the catalog; no inferred license is assigned to supplied artwork.
+
+## Validation
+
+```sh
+composer install
+composer check
+```
+
+The [asset guide](assets/README.md#token-exports) describes reproducible token
+exports. The brand workflow verifies delivered files and validator failure
+modes. Visual likeness and complete accessibility still require review.
+
+Dash is the Fast Forward fox. The developer collection is the primary reference;
+the newly authored cute editorial collection supports community and softer
+institutional moments. Both have welcome, reading, guiding, and composing poses.
+The original cute source-pack exports and retired logos are retained in the
+ignored local backup, with provenance in the manifest's archive metadata. See the
+[production guide](docs/brand/mascot-production.md) and
+[generation receipts](docs/brand/dash-generation.json) for exact references.
+
+The versioned `dash-art` package is source for reuse, not a host installation.
+Set `DASH_BRAND_ROOT` to this checkout when using it from another repository.

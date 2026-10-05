@@ -1,0 +1,82 @@
+/* Shared local brand-library navigation. Token fallbacks follow DESIGN.md.
+ * No JavaScript, external fonts, imports, or requests are required.
+ */
+.ff-kit-header {
+  --ff-kit-navy: var(--color-navy, #050b20);
+  --ff-kit-white: var(--color-white, #ffffff);
+  --ff-kit-line: var(--color-muted, #475569);
+  --ff-kit-primary: var(--color-primary, #6d28d9);
+  --ff-kit-primary-hover: var(--color-primary-hover, #5b21b6);
+  --ff-kit-focus: var(--color-cyan, #22d3ee);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ff-kit-line);
+  background: var(--ff-kit-navy);
+  color: var(--ff-kit-white);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.ff-kit-header *, .ff-kit-header *::before, .ff-kit-header *::after { box-sizing: border-box; }
+.ff-kit-header .ff-kit-header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  width: min(1200px, calc(100% - 48px));
+  margin-inline: auto;
+}
+.ff-kit-header .ff-kit-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  gap: 8px;
+  color: var(--ff-kit-white);
+  font-size: 1rem;
+  font-weight: 750;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.ff-kit-header .ff-kit-brand-symbol { display: inline-flex; flex: 0 0 auto; padding: 8px; }
+.ff-kit-header .ff-kit-brand-symbol img { display: block; width: 48px; height: 32px; object-fit: contain; }
+.ff-kit-header .ff-kit-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; min-width: 0; }
+.ff-kit-header .ff-kit-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--ff-kit-white);
+  font-size: .8125rem;
+  font-weight: 550;
+  line-height: 1.3;
+  text-decoration: none;
+}
+.ff-kit-header .ff-kit-link:hover { background: var(--ff-kit-primary-hover); }
+.ff-kit-header .ff-kit-link[aria-current="page"] { background: var(--ff-kit-primary); border-color: var(--ff-kit-primary); font-weight: 750; }
+.ff-kit-header :is(.ff-kit-brand, .ff-kit-link, .ff-kit-button):focus-visible { outline: 2px solid var(--ff-kit-focus); outline-offset: 3px; }
+.ff-kit-header .ff-kit-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.ff-kit-header .ff-kit-button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--ff-kit-focus);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ff-kit-white);
+  font: inherit;
+  font-size: .8125rem;
+  cursor: pointer;
+}
+.ff-kit-header .ff-kit-button:hover { background: var(--ff-kit-primary-hover); }
+.ff-kit-header [hidden] { display: none !important; }
+.ff-docs > .ff-kit-header { margin-bottom: 24px; padding: 0 0 16px; }
+.ff-docs > .ff-kit-header .ff-kit-header-inner { width: min(1200px, 100%); }
+@media (max-width: 720px) {
+  .ff-kit-header .ff-kit-header-inner { width: calc(100% - 32px); align-items: flex-start; gap: 12px; }
+  .ff-kit-header .ff-kit-nav { width: 100%; }
+  .ff-kit-header .ff-kit-link { justify-content: flex-start; }
+  .ff-docs > .ff-kit-header .ff-kit-header-inner { width: 100%; }
+}
+@media print { .ff-kit-header { display: none; } }
+
+.ff-kit-header .ff-kit-logo { display:block; width:224px; height:auto; max-width:100%; }

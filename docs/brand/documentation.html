@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The PHP Fast Forward documentation pattern: a reusable navigation, reading, code, and component reference.">
+  <title>Installation · PHP Fast Forward documentation pattern</title>
+  <link rel="stylesheet" href="../../assets/styles/documentation.css">
+  <link rel="stylesheet" href="../../assets/styles/navigation.css">
+</head>
+<body class="ff-docs" data-reading-theme="light">
+  <a class="ff-docs-skip" href="#main">Skip to content</a>
+  <header class="ff-kit-header">
+    <div class="ff-kit-header-inner">
+      <a class="ff-kit-brand" href="index.html"><img class="ff-kit-logo" src="../../assets/brand/fast-forward-logo-dark.svg" alt="PHP Fast Forward" width="224" height="72"></a>
+      <nav class="ff-kit-nav" aria-label="Brand library">
+        <a class="ff-kit-link" href="index.html">Brand library</a>
+        <a class="ff-kit-link" href="index.html#matrix">Dash matrix</a>
+        <a class="ff-kit-link" href="index.html#system">Visual system</a>
+        <a class="ff-kit-link" href="logo-compositions.html">Logo compositions</a>
+        <a class="ff-kit-link" href="documentation.html" aria-current="page">Documentation</a>
+        <a class="ff-kit-link" href="ecosystem.html">Ecosystem</a>
+        <a class="ff-kit-link" href="../../assets/README.md">Asset guide</a>
+      </nav>
+      <div class="ff-kit-actions"><button class="ff-docs-theme ff-kit-button" type="button" aria-label="Switch to navy theme" title="Switch to navy theme" aria-pressed="false" hidden><svg class="ff-docs-theme-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg><svg class="ff-docs-theme-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg></button></div>
+    </div>
+  </header>
+
+  <div class="ff-docs-shell">
+    <aside class="ff-docs-rail" aria-label="Documentation navigation">
+      <div class="ff-docs-rail-inner">
+        <a class="ff-docs-brand ff-docs-brand--signature" href="../../README.md"><img src="../../assets/brand/fast-forward-logo-dark.svg" alt="PHP Fast Forward" width="200" height="64"></a>
+        <details class="ff-docs-navigation" open>
+          <summary>Browse documentation</summary>
+          <nav aria-label="Documentation">
+            <div class="ff-docs-nav-group">
+              <p class="ff-docs-nav-label">Getting started</p>
+              <ul>
+                <li><a class="ff-docs-nav-link" href="#main" aria-current="page">Installation</a></li>
+                <li><a class="ff-docs-nav-link" href="#composition">Compose the core services</a></li>
+                <li><a class="ff-docs-nav-link" href="#next-steps">Choose your next step</a></li>
+              </ul>
+            </div>
+            <div class="ff-docs-nav-group">
+              <p class="ff-docs-nav-label">Reference</p>
+              <ul>
+                <li><a class="ff-docs-nav-link" href="https://github.com/php-fast-forward/framework">Framework repository</a></li>
+                <li><a class="ff-docs-nav-link" href="documentation.md">Documentation components</a></li>
+                <li><a class="ff-docs-nav-link" href="../../assets/README.md">Design assets</a></li>
+              </ul>
+            </div>
+          </nav>
+          <p class="ff-docs-rail-note">Shared interfaces.<br>Small, useful steps.<br>A clear way forward.</p>
+        </details>
+      </div>
+    </aside>
+
+    <main class="ff-docs-content" id="main" tabindex="-1">
+      <nav class="ff-docs-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Brand library</a></li>
+          <li><a href="documentation.md">Documentation</a></li>
+          <li><span aria-current="page">Installation</span></li>
+        </ol>
+      </nav>
+
+      <div class="ff-docs-reading-grid">
+        <article class="ff-docs-article" aria-labelledby="page-title">
+          <p class="ff-docs-kicker">Getting started</p>
+          <h1 id="page-title">Installation</h1>
+          <p class="ff-docs-lead">Start with the core Fast Forward packages, then compose the services your application needs.</p>
+          <div class="ff-docs-page-meta">
+            <span><strong>Package</strong> <code>fast-forward/framework</code></span>
+            <span><strong>Format</strong> Documentation reference</span>
+          </div>
+
+          <section id="requirements" aria-labelledby="requirements-title">
+            <h2 id="requirements-title">Before you start</h2>
+            <p>The documented framework example requires PHP 8.3 or higher and Composer. Work in your PHP project's directory.</p>
+            <div class="ff-docs-callout" data-kind="important">
+              <strong>Check the release you intend to use</strong>
+              <p>Requirements can change between releases. The <a href="https://github.com/php-fast-forward/framework/blob/dac7ef8e4cfd8d39f36d526a6a4345958bcc83eb/README.md">framework README used for this reference</a> supplies the installation and bootstrap examples below.</p>
+            </div>
+          </section>
+
+          <section id="installation" aria-labelledby="installation-title">
+            <h2 id="installation-title">1. Install with Composer</h2>
+            <p>Add the framework metapackage to your project:</p>
+            <div class="ff-docs-code" data-code-panel>
+              <div class="ff-docs-code-header"><span class="ff-docs-window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ff-docs-code-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-16-2 20"/></svg>Terminal</span><button class="ff-docs-copy" type="button" aria-label="Copy installation command" title="Copy installation command" hidden><svg class="ff-docs-copy-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6" y="5" width="13" height="16" rx="2"/><path d="M9 5V3h7v2"/></svg><svg class="ff-docs-copy-check" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></button></div>
+              <pre tabindex="0" role="region" aria-label="Installation command"><code>composer require fast-forward/framework</code></pre>
+              <span class="ff-docs-copy-status" role="status" aria-live="polite"></span>
+            </div>
+            <p>Composer resolves the package's declared dependencies. Keep the generated lock file with your application's normal dependency workflow.</p>
+          </section>
+
+          <section id="composition" aria-labelledby="composition-title">
+            <h2 id="composition-title">2. Compose the core services</h2>
+            <p>Pass the framework provider's class name to the container factory. The example then retrieves the response factory, event dispatcher, and clock through their interfaces.</p>
+            <div class="ff-docs-code" data-code-panel>
+              <div class="ff-docs-code-header"><span class="ff-docs-window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ff-docs-code-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-16-2 20"/></svg>PHP · bootstrap example</span><button class="ff-docs-copy" type="button" aria-label="Copy PHP bootstrap example" title="Copy PHP bootstrap example" hidden><svg class="ff-docs-copy-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6" y="5" width="13" height="16" rx="2"/><path d="M9 5V3h7v2"/></svg><svg class="ff-docs-copy-check" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></button></div>
+              <pre tabindex="0" role="region" aria-label="PHP bootstrap example"><code><span class="ff-docs-code-keyword">&lt;?php</span>
+
+<span class="ff-docs-code-keyword">declare</span>(strict_types=1);
+
+<span class="ff-docs-code-keyword">use</span> FastForward\Framework\ServiceProvider\FrameworkServiceProvider;
+<span class="ff-docs-code-keyword">use</span> Psr\Clock\ClockInterface;
+<span class="ff-docs-code-keyword">use</span> Psr\EventDispatcher\EventDispatcherInterface;
+<span class="ff-docs-code-keyword">use</span> Psr\Http\Message\ResponseFactoryInterface;
+
+<span class="ff-docs-code-keyword">use function</span> FastForward\Container\container;
+
+<span class="ff-docs-code-keyword">require</span> __DIR__ . <span class="ff-docs-code-string">'/vendor/autoload.php'</span>;
+
+$container = container(FrameworkServiceProvider::class);
+
+$responseFactory = $container-&gt;get(ResponseFactoryInterface::class);
+$dispatcher = $container-&gt;get(EventDispatcherInterface::class);
+$clock = $container-&gt;get(ClockInterface::class);</code></pre>
+              <span class="ff-docs-copy-status" role="status" aria-live="polite"></span>
+            </div>
+            <div class="ff-docs-callout">
+              <strong>A foundation for your application</strong>
+              <p>This example creates the container and obtains services. Add application behavior through the relevant components and their documented contracts.</p>
+            </div>
+          </section>
+
+          <section id="next-steps" aria-labelledby="next-steps-title">
+            <h2 id="next-steps-title">Choose your next step</h2>
+            <p>Use the package repository to explore the provider and component documentation. Keep the responsibility of each dependency clear as your application grows.</p>
+            <div class="ff-docs-package">
+              <span class="ff-docs-package-name">fast-forward/framework</span>
+              <p>An aggregate metapackage that brings the core stack together through one service-provider entry point.</p>
+              <a href="https://github.com/php-fast-forward/framework">Explore the framework repository <span aria-hidden="true">&nbsp;→</span></a>
+            </div>
+          </section>
+
+          <footer class="ff-docs-page-footer">
+            <a href="documentation.md">Read the component contract</a>
+            <a href="../../DESIGN.md">View the visual system</a>
+          </footer>
+        </article>
+
+        <aside class="ff-docs-side" aria-label="Page navigation and learning companion">
+          <div class="ff-docs-side-inner">
+            <nav class="ff-docs-toc" aria-labelledby="toc-title">
+              <h2 id="toc-title">On this page</h2>
+              <ol>
+                <li><a href="#requirements">Before you start</a></li>
+                <li><a href="#installation">Install with Composer</a></li>
+                <li><a href="#composition">Compose the core services</a></li>
+                <li><a href="#next-steps">Choose your next step</a></li>
+              </ol>
+            </nav>
+            <figure class="ff-docs-companion">
+              <img src="../../assets/mascot/dash-developer-reading.png" alt="Dash, the Fast Forward fox, in the developer reading pose">
+              <figcaption><strong>A little curiosity helps.</strong>Follow one example, then explore the interfaces behind it.</figcaption>
+            </figure>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.querySelector('.ff-docs');
+      const themeButton = document.querySelector('.ff-docs-theme');
+      const navigation = document.querySelector('.ff-docs-navigation');
+      const narrowViewport = window.matchMedia('(max-width: 760px)');
+
+      themeButton.hidden = false;
+      themeButton.addEventListener('click', () => {
+        const useNavy = root.dataset.readingTheme !== 'navy';
+        root.dataset.readingTheme = useNavy ? 'navy' : 'light';
+        themeButton.setAttribute('aria-pressed', String(useNavy));
+        const label = useNavy ? 'Switch to light theme' : 'Switch to navy theme';
+        themeButton.setAttribute('aria-label', label);
+        themeButton.title = label;
+      });
+
+      const setNavigationForViewport = () => { navigation.open = !narrowViewport.matches; };
+      setNavigationForViewport();
+      narrowViewport.addEventListener('change', setNavigationForViewport);
+      navigation.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && narrowViewport.matches && navigation.open) {
+          navigation.open = false;
+          navigation.querySelector('summary').focus();
+        }
+      });
+      navigation.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (!narrowViewport.matches) return;
+          navigation.open = false;
+          const target = document.getElementById(link.hash.slice(1));
+          if (!target) return;
+          if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+        });
+      });
+
+      const updateLocation = () => {
+        document.querySelectorAll('.ff-docs-toc a').forEach((link) => {
+          if (link.hash === window.location.hash) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      };
+      updateLocation();
+      window.addEventListener('hashchange', updateLocation);
+
+      document.querySelectorAll('[data-code-panel]').forEach((panel) => {
+        const button = panel.querySelector('.ff-docs-copy');
+        const code = panel.querySelector('pre code');
+        const status = panel.querySelector('.ff-docs-copy-status');
+        button.hidden = false;
+        button.addEventListener('click', async () => {
+          status.textContent = '';
+          try {
+            if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+            await navigator.clipboard.writeText(code.textContent);
+            status.textContent = 'Copied to clipboard.';
+            button.dataset.copied = 'true';
+            button.title = 'Copied to clipboard';
+            setTimeout(() => {
+              delete button.dataset.copied;
+              button.title = button.getAttribute('aria-label');
+            }, 2000);
+          } catch {
+            const selection = window.getSelection();
+            if (!selection) {
+              status.textContent = 'Copy unavailable. Select the code and use your system copy command.';
+              return;
+            }
+            const range = document.createRange();
+            range.selectNodeContents(code);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            status.textContent = 'Code selected. Use your system copy command.';
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

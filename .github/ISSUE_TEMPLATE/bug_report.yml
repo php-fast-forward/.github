@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible problem in the affected PHP Fast Forward repository.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use the affected repository for package behavior, documentation, or accessibility barriers.
+        For central profile, mascot, and design assets, use [php-fast-forward/.github](https://github.com/php-fast-forward/.github/issues).
+        Follow the affected repository's security policy for vulnerabilities. Remove secrets, personal information, and private URLs from examples, logs, and screenshots.
+  - type: textarea
+    id: affected_component
+    attributes:
+      label: Affected repository, package, and version
+      description: Identify the repository, package or page, and version. Use a commit or branch when no version applies.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: PHP version and environment
+      description: Include relevant PHP, operating system, dependency, browser, or assistive technology versions. Write not applicable for fields unrelated to this report.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Provide the smallest public-safe example or steps, including the command or page location.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: Expected result
+      description: Explain the behavior or access you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: actual_result
+    attributes:
+      label: Actual result
+      description: Explain what happened. Include only relevant, redacted output or screenshots; never upload credentials, personal data, or confidential logs.
+    validations:
+      required: true

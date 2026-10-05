@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "font-exo2-italic",
+  "family": "Exo 2",
+  "style": "Italic",
+  "version": "Version 2.010",
+  "font_revision": 2.0099945068359375,
+  "upstream": {
+    "repository": "https://github.com/google/fonts",
+    "commit": "9710da1eacb3be272583c3224dcb70f9da6eadbb",
+    "path": "ofl/exo2/Exo2-Italic[wght].ttf",
+    "url": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/exo2/Exo2-Italic%5Bwght%5D.ttf"
+  },
+  "file": {
+    "path": "assets/brand/source/Exo2-Italic.ttf",
+    "sha256": "bad568cea9ed23d6ae4aea41ad3f7747752952aabdd85d7f01474af392a21b32",
+    "bytes": 302556,
+    "preservation": "official variable font bytes, unmodified"
+  },
+  "license": {
+    "identifier": "OFL-1.1",
+    "path": "assets/brand/source/OFL-Exo2.txt",
+    "upstream_url": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/exo2/OFL.txt",
+    "sha256": "7f95a8eeecc6904ffc81cd10cc8ebc7fcee72a67922924bf45f02dff03b88127",
+    "bytes": 4386
+  },
+  "axes": [
+    {
+      "tag": "wght",
+      "minimum": 100.0,
+      "default": 400.0,
+      "maximum": 900.0
+    }
+  ],
+  "lettering_instance": {
+    "wght": 900
+  },
+  "authoring": {
+    "tool": "fontTools",
+    "version": "4.66.1",
+    "operation": "instantiateVariableFont in memory; SVGPathPen outlines; no modified font distributed"
+  },
+  "scope": "Logo lettering only. Interface typography remains the system-font design tokens."
+}

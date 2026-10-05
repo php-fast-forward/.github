@@ -1,0 +1,34 @@
+{
+    "name": "php-fast-forward/brand-kit",
+    "description": "Fast Forward visual identity, assets and PHP publication tooling",
+    "type": "project",
+    "require": {
+        "php": ">=8.4",
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-zlib": "*",
+        "symfony/yaml": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpFastForward\\Brand\\": "scripts/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check": [
+            "@php scripts/validate-brand.php",
+            "@php scripts/build-brand-logos.php --check",
+            "@php scripts/export-design.php --check",
+            "@test"
+        ],
+        "build:pages": "@php scripts/build-brand-pages.php --output-dir _site"
+    },
+    "config": {
+        "allow-plugins": false,
+        "sort-packages": true
+    }
+}

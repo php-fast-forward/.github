@@ -1,0 +1,2 @@
+# Preserve the pinned upstream license bytes, including its original trailing space.
+assets/brand/source/OFL-Exo2.txt -text whitespace=-blank-at-eol

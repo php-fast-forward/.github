@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "fixture_status": "ready-not-generated",
+  "examples": [
+    {
+      "id": "developer-documentation-guide",
+      "audience": "PHP developers reading an installation guide",
+      "purpose": "Guide attention toward the next documentation section",
+      "family": "developer",
+      "package": "PHP Fast Forward",
+      "status": "ready-not-generated",
+      "required_master_id": "dash-developer-welcome",
+      "preferred_pose_id": "dash-developer-guide",
+      "pose": "Calm open-paw presentation toward the right",
+      "props": [],
+      "surface": "Documentation page on light or navy backgrounds",
+      "text_surface": "Editable HTML beside the illustration; no generated text",
+      "output": {"format": "png", "width": 1024, "height": 1536, "transparent_background": true},
+      "source_hashes": [
+        {
+          "id": "reference-package-dev-tools",
+          "path": "references/ecosystem/dev-tools.png",
+          "role": "Established developer hoodie and shading context; does not replace the family master",
+          "sha256": "12fe5ab6b4e53a616c7f2589c0262c9daca98642a4b99a5b048f60ab7fbacdca"
+        }
+      ],
+      "prompt": "Create mature developer Dash presenting an open paw toward empty space on the right. Use the resolved developer welcome master as face and anatomy authority, and the guide pose when available. Preserve amber/brown eyes, orange and cream markings, purple hoodie with plain chest, one complete fluffy tail and polished 3D shading. Keep the entire character in frame. Deliver a PNG cutout with real alpha. No text, code, logo, watermark or editorial face proportions.",
+      "validation": {"reference_resolution": "Resolve and verify the required family master before generation", "likeness_review": "Not run; no image generated", "cataloging": "Not performed"}
+    },
+    {
+      "id": "developer-event-dispatcher-header",
+      "audience": "PHP developers evaluating event-dispatcher composition",
+      "purpose": "Represent one event reaching several listeners without inventing API details",
+      "family": "developer",
+      "package": "fast-forward/event-dispatcher",
+      "status": "ready-not-generated",
+      "required_master_id": "dash-developer-welcome",
+      "preferred_pose_id": "dash-developer-build",
+      "pose": "Dash confidently arranging four simple connected blocks: one source and three recipients",
+      "props": ["One source block", "Three recipient blocks", "Simple connection lines"],
+      "surface": "Repository header with navy background and empty title area on the left",
+      "text_surface": "Separately composed title and reviewed package emblem; no code in the raster",
+      "output": {"format": "png", "width": 1536, "height": 1024, "transparent_background": false},
+      "source_hashes": [
+        {
+          "id": "reference-package-dev-tools",
+          "path": "references/ecosystem/dev-tools.png",
+          "role": "Developer rendering context only",
+          "sha256": "12fe5ab6b4e53a616c7f2589c0262c9daca98642a4b99a5b048f60ab7fbacdca"
+        }
+      ],
+      "prompt": "Create a repository header featuring mature developer Dash arranging one source block connected to three recipient blocks. Use the resolved developer welcome master as identity authority and the build pose if available. Preserve the same mature face, amber/brown eyes, orange/cream fur, purple hoodie with plain chest, one tail and polished 3D finish. Use a restrained navy scene and leave the left third clear for editable title text. Blocks carry no labels. No API, code, metrics, letters, logos, watermark or cute editorial proportions.",
+      "validation": {"reference_resolution": "Resolve and verify the required family master before generation", "technical_copy": "Review any later title or emblem separately against package documentation", "likeness_review": "Not run; no image generated", "cataloging": "Not performed"}
+    },
+    {
+      "id": "editorial-community-thanks",
+      "audience": "Contributors receiving a community thank-you",
+      "purpose": "Express friendly appreciation in the explicitly requested secondary collection",
+      "family": "editorial",
+      "family_selection": "Explicit request for the new cute editorial collection",
+      "package": "PHP Fast Forward community",
+      "status": "ready-not-generated",
+      "required_master_id": "dash-editorial-hoodie",
+      "pose": "Seated wave with a warm composed smile",
+      "props": [],
+      "surface": "Community card on a light neutral background",
+      "text_surface": "Editable thank-you sentence beside the PNG; no lettering in the illustration",
+      "output": {"format": "png", "width": 1024, "height": 1024, "transparent_background": true},
+      "source_hashes": [
+        {
+          "id": "dash-editorial-hoodie",
+          "path": "assets/mascot/dash-editorial-hoodie.png",
+          "role": "Secondary collection face, proportions and drawing reference",
+          "sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090"
+        }
+      ],
+      "prompt": "Create new cute editorial Dash seated and waving for a community thank-you card. Use the attached verified editorial hoodie master for face, compact proportions and 2D drawing. Preserve amber/brown eyes, orange fur, cream muzzle and cheeks, triangular ears, tuft, dark nose and paws, one full cream-tipped tail, and purple hoodie with cream drawstrings and plain chest. Keep the whole character inside the square canvas with padding. Deliver a PNG with real alpha. No text, logos, watermark, developer 3D face or archived cute reference.",
+      "validation": {"reference_resolution": "Recheck the pinned master hash against the current manifest before generation", "likeness_review": "Not run; no image generated", "cataloging": "Not performed"}
+    }
+  ]
+}

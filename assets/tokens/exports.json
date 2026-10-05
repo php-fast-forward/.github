@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "source": "DESIGN.md",
+  "source_sha256": "ba539bae82386db1e8ff65ad15ff8b52fc13eb1ede4634778295241f73592d63",
+  "generator": "php scripts/export-design.php",
+  "normalization": "scripts/DesignExports.php",
+  "normalization_sha256": "beffa76726c84f0335be8e85f5a8c567ddd3508f916d7a3c0e4b1e3d04c579f7",
+  "outputs": [
+    {
+      "path": "tokens.json",
+      "format": "dtcg",
+      "sha256": "426941e7ae029805fb5454ec0359c9f818233d0c806831653f8b824b3dc972e5"
+    },
+    {
+      "path": "tailwind.theme.json",
+      "format": "json-tailwind",
+      "sha256": "08732a06756125c7d54e1d7280d36cc73c773969aeb162b201a22156bf19d2b7"
+    },
+    {
+      "path": "theme.css",
+      "format": "css-tailwind",
+      "sha256": "3192e1a9d7228300e0be0a23b95df8297439f440df74fac2abd53383c3cea2f2"
+    }
+  ]
+}

@@ -1,1 +1,8 @@
 backup/
+.DS_Store
+._*
+vendor/
+.phpunit.cache/
+
+# Generated GitHub Pages staging output
+_site/

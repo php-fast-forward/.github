@@ -1,0 +1,59 @@
+name: Brand assets
+
+on:
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'DESIGN.md'
+      - 'SOUL.md'
+      - 'STYLE.md'
+      - 'docs/brand/**'
+      - 'skills/dash-art/**'
+      - 'references/**'
+      - 'profile/assets/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'composer.json'
+      - 'composer.lock'
+      - 'phpunit.xml'
+      - '.gitattributes'
+      - '.github/workflows/brand-assets.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/**'
+      - 'DESIGN.md'
+      - 'SOUL.md'
+      - 'STYLE.md'
+      - 'docs/brand/**'
+      - 'skills/dash-art/**'
+      - 'references/**'
+      - 'profile/assets/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'composer.json'
+      - 'composer.lock'
+      - 'phpunit.xml'
+      - '.gitattributes'
+      - '.github/workflows/brand-assets.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up PHP
+        uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: '8.4'
+          extensions: dom, mbstring, zlib
+          tools: composer:v2
+          coverage: none
+      - name: Install locked development dependencies
+        run: composer install --no-interaction --no-plugins --no-scripts --prefer-dist --no-progress
+      - name: Verify assets, exports and publication regression tests
+        run: composer check
