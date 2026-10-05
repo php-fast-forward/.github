@@ -387,6 +387,32 @@ class PagesTests(unittest.TestCase):
         with self.assertRaisesRegex(PAGES.BuildError, "Missing anchor"):
             self.build()
 
+    def test_invalid_uncataloged_receipt_blocks_build_before_writing(self):
+        self.write("docs/brand/dash-generation.json", "{not valid json")
+        with self.assertRaisesRegex(PAGES.BuildError, "Invalid public JSON"):
+            self.build()
+        self.assertFalse(self.output.exists())
+
+    def test_duplicate_nested_receipt_keys_block_publication(self):
+        self.write("docs/brand/dash-generation.json", '{"output":{"sha256":"first","sha256":"second"}}')
+        with self.assertRaisesRegex(PAGES.BuildError, "duplicate JSON key"):
+            self.build()
+        self.assertFalse(self.output.exists())
+
+    def test_nonstandard_constants_and_scalar_receipts_are_rejected(self):
+        for payload in ('{"value":NaN}', '{"value":Infinity}', '"scalar"'):
+            with self.subTest(payload=payload):
+                self.write("docs/brand/dash-generation.json", payload)
+                with self.assertRaises(PAGES.BuildError):
+                    self.build()
+                self.assertFalse(self.output.exists())
+
+    def test_valid_uncataloged_receipt_is_published_unchanged(self):
+        payload = '{"output":{"sha256":"recorded"},"references":[{"id":"Dash"}]}'
+        self.write("docs/brand/dash-generation.json", payload)
+        self.build()
+        self.assertEqual((self.output / "docs/brand/dash-generation.json").read_text(), payload)
+
 
 if __name__ == "__main__":
     unittest.main()

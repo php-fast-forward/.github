@@ -72,7 +72,10 @@ is an **additional illustration draft**. Compare it with the
 not use this portrait. It is not a standalone pose master or a replacement for
 the selected developer welcome reference.
 Existing selected poses remain until deliberate review and an
-explicit catalog update. This local review round publishes no asset or site.
+explicit catalog update. The maintainer authorized the five review-gallery
+drafts for the public brand gallery on 2026-10-05. The Pages workflow publishes
+that gallery from main; gallery publication does not select a draft as a
+canonical character reference.
 
 ## Brief and production
 

@@ -40,6 +40,32 @@ class BuildError(ValueError):
     """The source or output would violate the publication boundary."""
 
 
+def read_public_json(root: Path, relative: str) -> object:
+    """Reject unreadable or ambiguous metadata before creating the artifact."""
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"duplicate JSON key {key!r}")
+            result[key] = value
+        return result
+
+    def invalid_constant(value):
+        raise ValueError(f"invalid JSON constant {value}")
+
+    try:
+        document = json.loads(
+            safe_file(root, relative).read_text(encoding="utf-8-sig"),
+            object_pairs_hook=unique_object,
+            parse_constant=invalid_constant,
+        )
+    except (UnicodeError, json.JSONDecodeError, ValueError) as error:
+        raise BuildError(f"Invalid public JSON in {relative}: {error}") from error
+    if not isinstance(document, (dict, list)):
+        raise BuildError(f"Public JSON must contain an object or list: {relative}")
+    return document
+
+
 def is_resource(tag: str, attribute: str) -> bool:
     """Separate navigation from content the browser loads into a document."""
     return (attribute in {"src", "srcset", "poster"}
@@ -162,7 +188,7 @@ def publication_allowed(row: dict[str, object]) -> bool:
 
 
 def inventory(root: Path, repository_url: str, ref: str) -> tuple[set[str], dict[str, object]]:
-    manifest = json.loads(safe_file(root, "assets/manifest.json").read_text())
+    manifest = read_public_json(root, "assets/manifest.json")
     selected: set[str] = set()
     rows = []
     for row in manifest["assets"]:
@@ -211,6 +237,8 @@ def inventory(root: Path, repository_url: str, ref: str) -> tuple[set[str], dict
             selected.add(f"profile/{name}")
     for relative in selected:
         safe_file(root, relative)
+        if relative.endswith(".json"):
+            read_public_json(root, relative)
     manifest["assets"] = rows
     scope_provenance(manifest, repository_url, ref)
     manifest["description"] += " Pages export: active public assets only; references remain in the repository."
