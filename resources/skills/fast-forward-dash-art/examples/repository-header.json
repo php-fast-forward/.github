@@ -1,0 +1,23 @@
+{
+  "family": "developer",
+  "required_master_id": "dash-developer-welcome",
+  "preferred_pose_id": "dash-developer-build",
+  "audience": "PHP developers evaluating the event dispatcher",
+  "purpose": "Show one event reaching several independent listeners",
+  "package": "fast-forward/event-dispatcher",
+  "pose": "Dash arranging one source block and three recipient blocks",
+  "props": [
+    "one source block",
+    "three recipient blocks",
+    "connection lines"
+  ],
+  "surface": "repository header on navy with an empty title area",
+  "text_surface": "separately composed editable title; no generated code",
+  "output": {
+    "format": "png",
+    "width": 1536,
+    "height": 1024,
+    "transparent_background": false
+  }
+}
+

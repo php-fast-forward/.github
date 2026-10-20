@@ -108,9 +108,13 @@ not prove a deployed website, replace package artwork, or change organization se
 
 ## Production package responsibility
 
-The supplied bootstrap remains the instruction authority; this repository has
-no scoped AGENTS contracts. The new `skills/dash-art/SKILL.md` owns the portable
-artwork procedure, with linked prompt/receipt and example-brief resources.
-README navigation leads to the package. No host skill installation or agent
-configuration was changed. Rollback removes the package and its navigation
-together; the asset contracts remain in the root identity documents.
+Current package location: [fast-forward-dash-art](../../resources/skills/fast-forward-dash-art/SKILL.md).
+The installation procedure is in [skill-installation.md](skill-installation.md).
+
+The supplied bootstrap and root AGENTS.md govern repository maintenance.
+The single `resources/skills/fast-forward-dash-art/SKILL.md` source owns the
+portable artwork procedure, prompt/receipt references and PHP/JSON examples.
+README navigation leads to its installation guide. Source integration installs
+no host skill or alias; consumers choose their own project installation.
+Rollback restores the package, metadata and navigation together; the visual
+contracts remain in the root identity documents.

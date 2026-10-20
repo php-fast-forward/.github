@@ -28,7 +28,7 @@ Framework code and tooling belong in their own
 | [Logo kit](docs/brand/logo-compositions.html) | Fox signature, orange Fast, dark-surface and monochrome variants. |
 | [Vector master](assets/brand/logo-source.json) | Source geometry, outlined Exo 2 lettering, palette, and reproducible SVG variants. |
 | [Pages setup](docs/brand/pages.md) | Workflow, publication target, and deployment setup for the local brand pages. |
-| [Dash artwork skill](skills/dash-art/SKILL.md) | Generate consistent repository illustrations using verified masters and recorded prompts. |
+| [Dash artwork skill](resources/skills/fast-forward-dash-art/SKILL.md) | Generate consistent repository illustrations using verified masters and recorded prompts. |
 | [References](references/README.md) | Website concepts, package art, and icon references. |
 | [Design assessment](docs/brand/assessment.md) | Audit findings, decisions, and next artwork/website work. |
 | [Mascot production guide](docs/brand/mascot-production.md) | Reference stack, planned pose matrix, and reusable illustration briefs. |
@@ -93,5 +93,5 @@ ignored local backup, with provenance in the manifest's archive metadata. See th
 [production guide](docs/brand/mascot-production.md) and
 [generation receipts](docs/brand/dash-generation.json) for exact references.
 
-The versioned `dash-art` package is source for reuse, not a host installation.
-Set `DASH_BRAND_ROOT` to this checkout when using it from another repository.
+The versioned `fast-forward-dash-art` package is the single reusable source.
+Use [the installation guide](docs/brand/skill-installation.md) for optional LLM Skills project setup. Set `DASH_BRAND_ROOT` to a reviewed kit when using the procedure from another repository.

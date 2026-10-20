@@ -12,6 +12,7 @@ Releases were published on those dates. Pending contributions stay in
 ### Added
 
 - Add separate developer and editorial Dash model/expression studies, dedicated avatar and favicon exports, and explicit visual-review and artwork-rights records. ([#14](https://github.com/php-fast-forward/.github/pull/14))
+- Distribute the portable fast-forward-dash-art skill from resources/skills, with optional LLM Skills discovery, complete consumer installation guidance and checked PHP reference-resolution examples. ([#16](https://github.com/php-fast-forward/.github/pull/16))
 
 ### Changed
 
@@ -53,7 +54,7 @@ Releases were published on those dates. Pending contributions stay in
 - Correct SVG artwork transparency, badge links and underline spacing.
 - Refine image alignment, cropping and responsive sizing in the profile.
 
-[0.3.0]: https://github.com/php-fast-forward/.github/releases/tag/v0.3.0
+[0.3.0]: https://github.com/php-fast-forward/.github/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/php-fast-forward/.github/compare/ea130ec1af8c01e4b13d7767f7dc51ec216e3087...e1c4dd7d9c25c61f36c8a93bea85ab241853b086
 [0.1.1]: https://github.com/php-fast-forward/.github/compare/12a38b2f7f55e08e719269fba559c0bc9cbfdbb6...ea130ec1af8c01e4b13d7767f7dc51ec216e3087
 [0.1.0]: https://github.com/php-fast-forward/.github/tree/12a38b2f7f55e08e719269fba559c0bc9cbfdbb6
