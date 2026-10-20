@@ -21,11 +21,17 @@ Use public, sanitized material in examples, screenshots, and logs. Exclude secre
 ## Changelog in this repository
 
 For this organization profile and design repository, add one unique
-`.changelog/*.md` fragment per observable change. With PHP 8.5+ and CPX, inspect
-`cpx --skip-local fast-forward/changelog help add`, then create the note
-with `add "Describe the change." --category=fixed --no-interaction`.
-Run `check --no-interaction`; after committing, also run
-`check --since=origin/main --no-interaction` through the same CPX package.
+`.changelog/*.md` fragment per observable change. With PHP 8.5+ and CPX:
+
+```sh
+cpx --skip-local fast-forward/changelog help add
+cpx --skip-local fast-forward/changelog add "Describe the change." --category=fixed --no-interaction
+cpx --skip-local fast-forward/changelog check --no-interaction
+```
+
+After committing, validate the contribution with
+`cpx --skip-local fast-forward/changelog check --since=origin/main --no-interaction`.
+
 Run `composer install` to fetch the project skill into
 `.agents/skills/fast-forward-changelog`. The committed `skills.json` selects its
 GitHub source through `llm/skills`; generated `.agents` files stay out of Git.
