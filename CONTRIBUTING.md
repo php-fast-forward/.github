@@ -22,7 +22,7 @@ Use public, sanitized material in examples, screenshots, and logs. Exclude secre
 
 For this organization profile and design repository, add one unique
 `.changelog/*.md` fragment per observable change. With PHP 8.5+ and CPX, inspect
-`cpx --skip-local fast-forward/changelog:0.3.0 help add`, then create the note
+`cpx --skip-local fast-forward/changelog help add`, then create the note
 with `add "Describe the change." --category=fixed --no-interaction`.
 Run `check --no-interaction`; after committing, also run
 `check --since=origin/main --no-interaction` through the same CPX package.
