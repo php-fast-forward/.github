@@ -18,6 +18,33 @@ Keep changes focused. Explain what changed and why, link a related issue when on
 
 Use public, sanitized material in examples, screenshots, and logs. Exclude secrets, personal data, private links, and content you are not authorized to publish. Keep operating-system files, editor metadata, and unrelated changes out of the diff.
 
+## Changelog in this repository
+
+For this organization profile and design repository, add one unique
+`.changelog/*.md` fragment per observable change. With PHP 8.5+ and CPX:
+
+```sh
+cpx --skip-local fast-forward/changelog help add
+cpx --skip-local fast-forward/changelog add "Describe the change." --category=fixed --no-interaction
+cpx --skip-local fast-forward/changelog check --no-interaction
+```
+
+After committing, validate the contribution with
+`cpx --skip-local fast-forward/changelog check --since=origin/main --no-interaction`.
+
+Run `composer install` to fetch the project skill into
+`.agents/skills/fast-forward-changelog`. The committed `skills.json` selects its
+GitHub source through `llm/skills`; generated `.agents` files stay out of Git.
+This does not install Changelog's runtime dependencies into the library.
+Inspect the copy with `composer skills:show` and refresh compatible versions with
+`composer skills:update --from=github`. Keep the skill under this manager's
+ownership; do not run the legacy Changelog skill installer on it.
+
+The workflow checks contributions, maintains PR feedback and prepares a version
+PR. Review that PR before merging; its approved merge creates the version tag and
+GitHub Release automatically. Installation publishes nothing. Preserve published
+history and pending fragments instead of adding an `Unreleased` section.
+
 ## Brand and asset contributions
 
 For work in the design repository, read [DESIGN.md](https://github.com/php-fast-forward/.github/blob/main/DESIGN.md), [STYLE.md](https://github.com/php-fast-forward/.github/blob/main/STYLE.md), [SOUL.md](https://github.com/php-fast-forward/.github/blob/main/SOUL.md), and [the asset guide](https://github.com/php-fast-forward/.github/blob/main/assets/README.md). The [asset manifest](https://github.com/php-fast-forward/.github/blob/main/assets/manifest.json) records asset identity, origin, and reuse status.
