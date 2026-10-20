@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "purpose": "Issue 8: deliberate model and expression reference candidates; not automatic replacement masters.",
+  "records": [
+    {
+      "id": "dash-developer-turnaround",
+      "collection": "developer",
+      "status": "generated-visually-reviewed-awaiting-maintainer-selection",
+      "destination": "assets/mascot/dash-developer-turnaround.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": null,
+        "version": null
+      },
+      "sources": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+          "role": "identity master",
+          "source_commit": "73090d580698837503363116f66b4f055e2873fc"
+        },
+        {
+          "id": "dash-developer-reading",
+          "path": "assets/mascot/dash-developer-reading.png",
+          "sha256": "bb87dc5d6a8bbcde4510ca5f99e19a6a216a577b9c83aac2c5947454e2b1e982",
+          "role": "same-family support",
+          "source_commit": "73090d580698837503363116f66b4f055e2873fc"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Purpose: reusable reference sheet for Dash, the PHP Fast Forward fox. PRIMARY image 1 controls Dash's mature upright body, longer muzzle, almond-rounded amber-brown eyes, dimensional orange fur, warm cream muzzle/cheeks, big triangular brown-rimmed pink/cream ears, swept forehead tuft, dark nose and dark brown paws. Image 2 corroborates the exact same family. Preserve its polished, softly lit 3D fur and cloth rendering, not the compact cute editorial family. Invariants: orange fur, cream muzzle/cheeks, amber-brown eyes, small dark nose, plain violet hoodie with two cream drawstrings, one fluffy cream-tipped tail in full-body views. Create one deliberate orthographic MODEL SHEET, wide landscape canvas, a single horizontal row of exactly FOUR complete views of the SAME fox model: straight front, exact left profile facing left, straight back, three-quarter front. Same scale, same ground baseline, neutral relaxed standing pose, arms slightly away from body. No perspective lens distortion. The editorial model may stand naturally while retaining its compact original proportions. Show the entire ears, feet and complete single cream-tipped tail in each view, clearly connected behind the body; in front view it may appear beside the body, never two tails. The hoodie hood rests on upper back, chest has exactly two cream drawstrings in front and none on back. Keep body, head and ear sizes consistent across the four views. This is new authored side/back design consistent with the provided visible anatomy, not a claim to recover unseen original artwork. Plain opaque warm off-white studio background, even lighting without glow, no ground scenery, roomy margins, no overlapping figures. PNG, wide landscape high resolution. NO generated text, letters, numbers, titles, labels, marks, symbols, watermark, emblems, accessories, headphones, additional characters, extra limbs or tails. Preserve family identity; do not blend styles.",
+      "output": {
+        "path": "assets/mascot/dash-developer-turnaround.png",
+        "sha256": "48d1acaa22a68f8802a9aaa96b59b8a0150223f4c50fbff8774380df7c0b95e9",
+        "bytes": 1985225,
+        "format": "png",
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "has_alpha": false
+      },
+      "edits": [],
+      "transparency": {
+        "requested": "opaque warm off-white sheet",
+        "actual": "RGB opaque; not intended as a cutout"
+      },
+      "review": {
+        "reviewer": "Codex visual inspection during authorized issue implementation",
+        "date": "2026-10-20",
+        "result": "Family likeness, warm eyes, cream markings, complete ears, plain hoodie and separate figures inspected. Turnarounds contain four authored views with one tail each; expression grids contain six portraits.",
+        "limitation": "New profile/back anatomy is an authored proposal; the final oblique view is near-frontal, especially in the editorial sheet. Not a measured animation/3D rig turnaround.",
+        "master_promotion": false
+      },
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-20",
+        "evidence": "Maintainer requested implementation and a pull request for issue 8, including authored Dash reference sheets for review.",
+        "canonical_selection": false,
+        "status": "authorized"
+      }
+    },
+    {
+      "id": "dash-developer-expressions",
+      "collection": "developer",
+      "status": "generated-visually-reviewed-awaiting-maintainer-selection",
+      "destination": "assets/mascot/dash-developer-expressions.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": null,
+        "version": null
+      },
+      "sources": [
+        {
+          "id": "dash-developer-welcome",
+          "path": "assets/mascot/dash-developer-welcome.png",
+          "sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+          "role": "identity master",
+          "source_commit": "73090d580698837503363116f66b4f055e2873fc"
+        },
+        {
+          "id": "dash-developer-reading",
+          "path": "assets/mascot/dash-developer-reading.png",
+          "sha256": "bb87dc5d6a8bbcde4510ca5f99e19a6a216a577b9c83aac2c5947454e2b1e982",
+          "role": "same-family support",
+          "source_commit": "73090d580698837503363116f66b4f055e2873fc"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Purpose: reusable reference sheet for Dash, the PHP Fast Forward fox. PRIMARY image 1 controls Dash's mature upright body, longer muzzle, almond-rounded amber-brown eyes, dimensional orange fur, warm cream muzzle/cheeks, big triangular brown-rimmed pink/cream ears, swept forehead tuft, dark nose and dark brown paws. Image 2 corroborates the exact same family. Preserve its polished, softly lit 3D fur and cloth rendering, not the compact cute editorial family. Invariants: orange fur, cream muzzle/cheeks, amber-brown eyes, small dark nose, plain violet hoodie with two cream drawstrings, one fluffy cream-tipped tail in full-body views. Create one deliberate EXPRESSION SHEET, wide landscape canvas, a clean 3-column by 2-row grid of exactly SIX same-sized head-and-upper-shoulder portraits of the SAME fox model. Reading order: calm friendly neutral, delighted gentle smile, focused concentration, curious questioning (one eyebrow slightly raised), mild puzzled uncertainty, reassuring confident smile. Keep head/ear/muzzle proportions and fur markings IDENTICAL in all six portraits. Expressions come from eyelids/eyebrows/mouth, not changing eye color or skull size. Include both complete ears and a little plain violet hoodie collar in every portrait, with generous separation. No hands, props, tail or body in these head studies. No anger, aggression or exaggerated teeth. Plain opaque warm off-white studio background, even lighting without glow, no ground scenery, roomy margins, no overlapping figures. PNG, wide landscape high resolution. NO generated text, letters, numbers, titles, labels, marks, symbols, watermark, emblems, accessories, headphones, additional characters, extra limbs or tails. Preserve family identity; do not blend styles.",
+      "output": {
+        "path": "assets/mascot/dash-developer-expressions.png",
+        "sha256": "0cbc24b54d653ce44cc551f4a0f0c68f22fefe78aa51897c0218e77888dc0226",
+        "bytes": 2163685,
+        "format": "png",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGB",
+        "has_alpha": false
+      },
+      "edits": [],
+      "transparency": {
+        "requested": "opaque warm off-white sheet",
+        "actual": "RGB opaque; not intended as a cutout"
+      },
+      "review": {
+        "reviewer": "Codex visual inspection during authorized issue implementation",
+        "date": "2026-10-20",
+        "result": "Family likeness, warm eyes, cream markings, complete ears, plain hoodie and separate figures inspected. Turnarounds contain four authored views with one tail each; expression grids contain six portraits.",
+        "limitation": "Expressions preserve the selected family; editorial reassurance is shown with closed smiling eyes.",
+        "master_promotion": false
+      },
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-20",
+        "evidence": "Maintainer requested implementation and a pull request for issue 8, including authored Dash reference sheets for review.",
+        "canonical_selection": false,
+        "status": "authorized"
+      }
+    },
+    {
+      "id": "dash-editorial-turnaround",
+      "collection": "editorial",
+      "status": "generated-visually-reviewed-awaiting-maintainer-selection",
+      "destination": "assets/mascot/dash-editorial-turnaround.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": null,
+        "version": null
+      },
+      "sources": [
+        {
+          "id": "dash-editorial-hoodie",
+          "path": "assets/mascot/dash-editorial-hoodie.png",
+          "sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+          "role": "identity master",
+          "source_commit": "73090d580698837503363116f66b4f055e2873fc"
+        },
+        {
+          "id": "dash-editorial-reading",
+          "path": "assets/mascot/dash-editorial-reading.png",
+          "sha256": "e0389e36c14d7d4176a82db0e08461ec364c4d45c00d31247947970d8d218551",
+          "role": "same-family support",
+          "source_commit": "73090d580698837503363116f66b4f055e2873fc"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Purpose: reusable reference sheet for Dash, the PHP Fast Forward fox. PRIMARY image 1 controls Dash's compact cute body, round broad cream cheeks and muzzle, very large round amber-brown eyes, big brown-rimmed pink/cream triangular ears, orange forehead tuft, tiny brown nose, brown drawing outlines and brown paws. Image 2 corroborates the exact same family. Preserve the hand-painted dimensional 2D finish and compact proportions, not the mature developer 3D family. Invariants: orange fur, cream muzzle/cheeks, amber-brown eyes, small dark nose, plain violet hoodie with two cream drawstrings, one fluffy cream-tipped tail in full-body views. Create one deliberate orthographic MODEL SHEET, wide landscape canvas, a single horizontal row of exactly FOUR complete views of the SAME fox model: straight front, exact left profile facing left, straight back, three-quarter front. Same scale, same ground baseline, neutral relaxed standing pose, arms slightly away from body. No perspective lens distortion. The editorial model may stand naturally while retaining its compact original proportions. Show the entire ears, feet and complete single cream-tipped tail in each view, clearly connected behind the body; in front view it may appear beside the body, never two tails. The hoodie hood rests on upper back, chest has exactly two cream drawstrings in front and none on back. Keep body, head and ear sizes consistent across the four views. This is new authored side/back design consistent with the provided visible anatomy, not a claim to recover unseen original artwork. Plain opaque warm off-white studio background, even lighting without glow, no ground scenery, roomy margins, no overlapping figures. PNG, wide landscape high resolution. NO generated text, letters, numbers, titles, labels, marks, symbols, watermark, emblems, accessories, headphones, additional characters, extra limbs or tails. Preserve family identity; do not blend styles.",
+      "output": {
+        "path": "assets/mascot/dash-editorial-turnaround.png",
+        "sha256": "77f7cf3ad9604593418ed5eabcc3e0469cdd6e532b9964327c2dddddd75ab11b",
+        "bytes": 1643454,
+        "format": "png",
+        "width": 2048,
+        "height": 768,
+        "mode": "RGB",
+        "has_alpha": false
+      },
+      "edits": [],
+      "transparency": {
+        "requested": "opaque warm off-white sheet",
+        "actual": "RGB opaque; not intended as a cutout"
+      },
+      "review": {
+        "reviewer": "Codex visual inspection during authorized issue implementation",
+        "date": "2026-10-20",
+        "result": "Family likeness, warm eyes, cream markings, complete ears, plain hoodie and separate figures inspected. Turnarounds contain four authored views with one tail each; expression grids contain six portraits.",
+        "limitation": "New profile/back anatomy is an authored proposal; the final oblique view is near-frontal, especially in the editorial sheet. Not a measured animation/3D rig turnaround.",
+        "master_promotion": false
+      },
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-20",
+        "evidence": "Maintainer requested implementation and a pull request for issue 8, including authored Dash reference sheets for review.",
+        "canonical_selection": false,
+        "status": "authorized"
+      }
+    },
+    {
+      "id": "dash-editorial-expressions",
+      "collection": "editorial",
+      "status": "generated-visually-reviewed-awaiting-maintainer-selection",
+      "destination": "assets/mascot/dash-editorial-expressions.png",
+      "generator": {
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "model": null,
+        "version": null
+      },
+      "sources": [
+        {
+          "id": "dash-editorial-hoodie",
+          "path": "assets/mascot/dash-editorial-hoodie.png",
+          "sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+          "role": "identity master",
+          "source_commit": "73090d580698837503363116f66b4f055e2873fc"
+        },
+        {
+          "id": "dash-editorial-reading",
+          "path": "assets/mascot/dash-editorial-reading.png",
+          "sha256": "e0389e36c14d7d4176a82db0e08461ec364c4d45c00d31247947970d8d218551",
+          "role": "same-family support",
+          "source_commit": "73090d580698837503363116f66b4f055e2873fc"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Purpose: reusable reference sheet for Dash, the PHP Fast Forward fox. PRIMARY image 1 controls Dash's compact cute body, round broad cream cheeks and muzzle, very large round amber-brown eyes, big brown-rimmed pink/cream triangular ears, orange forehead tuft, tiny brown nose, brown drawing outlines and brown paws. Image 2 corroborates the exact same family. Preserve the hand-painted dimensional 2D finish and compact proportions, not the mature developer 3D family. Invariants: orange fur, cream muzzle/cheeks, amber-brown eyes, small dark nose, plain violet hoodie with two cream drawstrings, one fluffy cream-tipped tail in full-body views. Create one deliberate EXPRESSION SHEET, wide landscape canvas, a clean 3-column by 2-row grid of exactly SIX same-sized head-and-upper-shoulder portraits of the SAME fox model. Reading order: calm friendly neutral, delighted gentle smile, focused concentration, curious questioning (one eyebrow slightly raised), mild puzzled uncertainty, reassuring confident smile. Keep head/ear/muzzle proportions and fur markings IDENTICAL in all six portraits. Expressions come from eyelids/eyebrows/mouth, not changing eye color or skull size. Include both complete ears and a little plain violet hoodie collar in every portrait, with generous separation. No hands, props, tail or body in these head studies. No anger, aggression or exaggerated teeth. Plain opaque warm off-white studio background, even lighting without glow, no ground scenery, roomy margins, no overlapping figures. PNG, wide landscape high resolution. NO generated text, letters, numbers, titles, labels, marks, symbols, watermark, emblems, accessories, headphones, additional characters, extra limbs or tails. Preserve family identity; do not blend styles.",
+      "output": {
+        "path": "assets/mascot/dash-editorial-expressions.png",
+        "sha256": "c92b2bec2cc248a09c1e9fbf43c007660848439ec1ff2a93d4b0f93f8dd7711c",
+        "bytes": 1879883,
+        "format": "png",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGB",
+        "has_alpha": false
+      },
+      "edits": [],
+      "transparency": {
+        "requested": "opaque warm off-white sheet",
+        "actual": "RGB opaque; not intended as a cutout"
+      },
+      "review": {
+        "reviewer": "Codex visual inspection during authorized issue implementation",
+        "date": "2026-10-20",
+        "result": "Family likeness, warm eyes, cream markings, complete ears, plain hoodie and separate figures inspected. Turnarounds contain four authored views with one tail each; expression grids contain six portraits.",
+        "limitation": "Expressions preserve the selected family; editorial reassurance is shown with closed smiling eyes.",
+        "master_promotion": false
+      },
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-20",
+        "evidence": "Maintainer requested implementation and a pull request for issue 8, including authored Dash reference sheets for review.",
+        "canonical_selection": false,
+        "status": "authorized"
+      }
+    }
+  ]
+}

@@ -106,8 +106,15 @@ identifier was asserted when the tool did not expose it.
 
 ## Next reference work
 
-A deliberate future sheet can add expressions and orthographic front/profile/
-back views per collection. Keep the developer and editorial sheets separate and
-review each new view before promoting it to the kit. Record rights, source/tool
-information and any separately composed font or symbol. Logo lettering masters
-and broader source-rights work remain tracked in issue #8.
+Deliberately authored [model and expression sheets](dash-reference-sheets.md)
+now cover both collections separately. The [reference board](dash-references.html)
+also shows dedicated small icon exports. These are new reviewed proposals;
+the selected welcome images remain the masters until maintainer selection.
+The review record covers coding, debugging, explaining, portrait and workstation
+scenes without promoting occluded/cropped anatomy.
+
+The [rights record](artwork-rights.md) records the maintainer's confirmation
+that the original illustrations were AI-generated. Original provider/model and
+applicable service/reuse terms remain unknown where not supplied; they are not
+inferred from the font's OFL notice. Issue #8 remains open for PR review and
+any remaining rights/selection decisions.

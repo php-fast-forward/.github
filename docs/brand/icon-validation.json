@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "generator": "scripts/build-brand-icons.php",
+  "renderer": "rsvg-convert 2.63.2; Cairo 1.18.6",
+  "purpose": "Dedicated favicon and avatar exports from the selected native mark.",
+  "review": {
+    "reviewer": "Codex visual inspection",
+    "method": "Inspect actual-size PNGs at 16, 32, 64 and 128 pixels; browser specimen also exposes 48, 256 and 512 downloads. Navy backing is intrinsic to each icon and separates the symbol on light/navy surroundings.",
+    "favicon16": "Recognizable orange fox silhouette and ears; small eye/muzzle details collapse. Suitable only as a browser favicon, not a detailed character reference.",
+    "favicon32": "Orange/cream fox and ear separation remain recognizable.",
+    "avatar64": "Head, ears, muzzle and forward curl remain readable with clear space.",
+    "avatar128": "Contour and color separation remain readable; use for profile avatars.",
+    "limitations": "Not a full browser/OS favicon integration audit. No .ico or platform-specific app icon claim."
+  },
+  "exports": [
+    {
+      "path": "assets/icons/dash-avatar-128.png",
+      "sha256": "6bd2928540d7a1b14b97d4cf6d8d3462bf35747a8db3731cac8ba3db703a0ceb",
+      "bytes": 5240,
+      "format": "png",
+      "width": 128,
+      "height": 128,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "source_svg": "assets/icons/dash-avatar.svg",
+      "source_sha256": "6109bab2ef9983fcfa4d4a98c51d14afde1decc4b6bad0f64135519e00249476"
+    },
+    {
+      "path": "assets/icons/dash-avatar-256.png",
+      "sha256": "c94025eed0fe88faf3c3b1e72c22ba3e03a39f1cf2bebf60feb4b7cc10b1de61",
+      "bytes": 11060,
+      "format": "png",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "source_svg": "assets/icons/dash-avatar.svg",
+      "source_sha256": "6109bab2ef9983fcfa4d4a98c51d14afde1decc4b6bad0f64135519e00249476"
+    },
+    {
+      "path": "assets/icons/dash-avatar-512.png",
+      "sha256": "085d4ff76b42fa943f5a4727e5434a5b954fcf00a90e23ec11aee538ba891772",
+      "bytes": 23865,
+      "format": "png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "source_svg": "assets/icons/dash-avatar.svg",
+      "source_sha256": "6109bab2ef9983fcfa4d4a98c51d14afde1decc4b6bad0f64135519e00249476"
+    },
+    {
+      "path": "assets/icons/dash-avatar-64.png",
+      "sha256": "b85d890d48590468872a3f6d07cede92ed517487958bbe5635493b0d7257e5d5",
+      "bytes": 2532,
+      "format": "png",
+      "width": 64,
+      "height": 64,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "source_svg": "assets/icons/dash-avatar.svg",
+      "source_sha256": "6109bab2ef9983fcfa4d4a98c51d14afde1decc4b6bad0f64135519e00249476"
+    },
+    {
+      "path": "assets/icons/dash-avatar.svg",
+      "sha256": "6109bab2ef9983fcfa4d4a98c51d14afde1decc4b6bad0f64135519e00249476",
+      "bytes": 1391,
+      "format": "svg",
+      "embedded_raster": false,
+      "source_svg": null,
+      "source_sha256": null
+    },
+    {
+      "path": "assets/icons/favicon-16.png",
+      "sha256": "be3a6faa73af42c9b1ae27f2b72543bfd1a822ef42f15b8c94537a304d46ec99",
+      "bytes": 695,
+      "format": "png",
+      "width": 16,
+      "height": 16,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "source_svg": "assets/icons/favicon.svg",
+      "source_sha256": "14b7787347464496f993b63a5d0b5832cf7cb76208937f58f6530b921bcd03e6"
+    },
+    {
+      "path": "assets/icons/favicon-32.png",
+      "sha256": "47040369d5516028e73168ad405b3291fd56f3b5f2961cfe89e45904eb825172",
+      "bytes": 1448,
+      "format": "png",
+      "width": 32,
+      "height": 32,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "source_svg": "assets/icons/favicon.svg",
+      "source_sha256": "14b7787347464496f993b63a5d0b5832cf7cb76208937f58f6530b921bcd03e6"
+    },
+    {
+      "path": "assets/icons/favicon-48.png",
+      "sha256": "dc39c0936d6939c7e52cdd586c7d1dce7b06c21eb477b8f0fe20bc0c39682c60",
+      "bytes": 2281,
+      "format": "png",
+      "width": 48,
+      "height": 48,
+      "mode": "RGBA",
+      "has_alpha": true,
+      "source_svg": "assets/icons/favicon.svg",
+      "source_sha256": "14b7787347464496f993b63a5d0b5832cf7cb76208937f58f6530b921bcd03e6"
+    },
+    {
+      "path": "assets/icons/favicon.svg",
+      "sha256": "14b7787347464496f993b63a5d0b5832cf7cb76208937f58f6530b921bcd03e6",
+      "bytes": 1391,
+      "format": "svg",
+      "embedded_raster": false,
+      "source_svg": null,
+      "source_sha256": null
+    }
+  ]
+}

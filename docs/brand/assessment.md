@@ -1,5 +1,12 @@
 # Identity assessment — 2026-10-03
 
+Follow-up, 2026-10-20: issue #8 was not delivered by PR #7. Separate
+[model/expression proposals and dedicated small icons](dash-reference-sheets.md)
+now have a review board and export records. The maintainer confirmed generative-AI
+origin for the original Dash illustrations; [the rights record](artwork-rights.md)
+keeps provider/model/reuse-term gaps explicit. The historical findings below
+describe the original delivery.
+
 ## Findings and decisions
 
 The source archive contained a coherent neutral fox, forward chevrons, navy
