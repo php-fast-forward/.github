@@ -26,7 +26,7 @@ For this organization profile and design repository, add one unique
 with `add "Describe the change." --category=fixed --no-interaction`.
 Run `check --no-interaction`; after committing, also run
 `check --since=origin/main --no-interaction` through the same CPX package.
-Read [.agents/skills/fast-forward-changelog/SKILL.md](.agents/skills/fast-forward-changelog/SKILL.md)
+Read `.agents/skills/fast-forward-changelog/SKILL.md` in your checkout
 for the complete flow and explicit skill checks/updates.
 
 The workflow checks contributions, maintains PR feedback and prepares a version
