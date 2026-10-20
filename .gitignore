@@ -6,3 +6,4 @@ vendor/
 
 # Generated GitHub Pages staging output
 _site/
+/.agents/

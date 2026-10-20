@@ -10,6 +10,7 @@
         "symfony/yaml": "^7.4"
     },
     "require-dev": {
+        "llm/skills": "^1.15",
         "phpunit/phpunit": "^12.5"
     },
     "autoload": {
@@ -28,7 +29,9 @@
         "build:pages": "@php scripts/build-brand-pages.php --output-dir _site"
     },
     "config": {
-        "allow-plugins": false,
+        "allow-plugins": {
+            "llm/skills": true
+        },
         "sort-packages": true
     }
 }

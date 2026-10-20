@@ -26,8 +26,13 @@ For this organization profile and design repository, add one unique
 with `add "Describe the change." --category=fixed --no-interaction`.
 Run `check --no-interaction`; after committing, also run
 `check --since=origin/main --no-interaction` through the same CPX package.
-Read `.agents/skills/fast-forward-changelog/SKILL.md` in your checkout
-for the complete flow and explicit skill checks/updates.
+Run `composer install` to fetch the project skill into
+`.agents/skills/fast-forward-changelog`. The committed `skills.json` selects its
+GitHub source through `llm/skills`; generated `.agents` files stay out of Git.
+This does not install Changelog's runtime dependencies into the library.
+Inspect the copy with `composer skills:show` and refresh compatible versions with
+`composer skills:update --from=github`. Keep the skill under this manager's
+ownership; do not run the legacy Changelog skill installer on it.
 
 The workflow checks contributions, maintains PR feedback and prepares a version
 PR. Review that PR before merging; its approved merge creates the version tag and
