@@ -78,6 +78,14 @@ receipt. Selection and local preparation do not imply external publication.
 
 ## Status and provenance
 
+The [reference board](../docs/brand/dash-references.html) adds separate developer
+and editorial model/expression sheets as reviewed proposals and dedicated
+favicon/avatar exports. [Production and review notes](../docs/brand/dash-reference-sheets.md)
+record actual-size limits and why scene proposals do not replace anatomy masters.
+The [rights record](../docs/brand/artwork-rights.md) includes the maintainer's
+confirmation of generative-AI origin and distinguishes unknown historical terms
+from the font's recorded OFL license.
+
 | Status | Meaning |
 | --- | --- |
 | `canonical` | Selected current identity, primary Dash references, and reusable styles/marks. |

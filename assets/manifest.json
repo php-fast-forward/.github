@@ -2,7 +2,325 @@
   "schema_version": 1,
   "identity_version": "2026-10-03",
   "description": "Selected reusable assets and classified references; visual canon is DESIGN.md.",
+  "illustration_authorship": {
+    "method": "generative AI",
+    "confirmed_by": "maintainer",
+    "recorded_at": "2026-10-20",
+    "evidence": "Maintainer confirmed: Tudo foi gerado com IA generativa.",
+    "scope": "Supplied original Dash illustrations; excludes font licensing and third-party reference marks.",
+    "limits": "Original provider, model and applicable reuse terms are not established for every supplied image. See docs/brand/artwork-rights.md."
+  },
   "assets": [
+    {
+      "id": "dash-developer-turnaround",
+      "path": "assets/mascot/dash-developer-turnaround.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "family": "developer",
+      "role": "Authored developer turnaround sheet; new views require maintainer selection",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-model-generation.json#dash-developer-turnaround",
+        "source_sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+        "generation_receipt": "docs/brand/dash-model-generation.json",
+        "source_ids": [
+          "dash-developer-welcome",
+          "dash-developer-reading"
+        ]
+      },
+      "rights": "Generated during authorized identity work; inherited illustration authorship/reuse terms remain unresolved. See docs/brand/artwork-rights.md.",
+      "sha256": "48d1acaa22a68f8802a9aaa96b59b8a0150223f4c50fbff8774380df7c0b95e9",
+      "bytes": 1985225,
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "has_alpha": false,
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-20",
+        "evidence": "Maintainer requested implementation and a pull request for issue 8, including authored Dash reference sheets for review.",
+        "canonical_selection": false,
+        "status": "authorized"
+      }
+    },
+    {
+      "id": "dash-editorial-turnaround",
+      "path": "assets/mascot/dash-editorial-turnaround.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "family": "editorial",
+      "role": "Authored editorial turnaround sheet; new views require maintainer selection",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-model-generation.json#dash-editorial-turnaround",
+        "source_sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+        "generation_receipt": "docs/brand/dash-model-generation.json",
+        "source_ids": [
+          "dash-editorial-hoodie",
+          "dash-editorial-reading"
+        ]
+      },
+      "rights": "Generated during authorized identity work; inherited illustration authorship/reuse terms remain unresolved. See docs/brand/artwork-rights.md.",
+      "sha256": "77f7cf3ad9604593418ed5eabcc3e0469cdd6e532b9964327c2dddddd75ab11b",
+      "bytes": 1643454,
+      "format": "png",
+      "width": 2048,
+      "height": 768,
+      "mode": "RGB",
+      "has_alpha": false,
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-20",
+        "evidence": "Maintainer requested implementation and a pull request for issue 8, including authored Dash reference sheets for review.",
+        "canonical_selection": false,
+        "status": "authorized"
+      }
+    },
+    {
+      "id": "dash-developer-expressions",
+      "path": "assets/mascot/dash-developer-expressions.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "family": "developer",
+      "role": "Authored developer expressions sheet; new views require maintainer selection",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-model-generation.json#dash-developer-expressions",
+        "source_sha256": "38b2c5bb87c94326bcab6463f74fc785414d8539e9175e088b5a5c797a466e09",
+        "generation_receipt": "docs/brand/dash-model-generation.json",
+        "source_ids": [
+          "dash-developer-welcome",
+          "dash-developer-reading"
+        ]
+      },
+      "rights": "Generated during authorized identity work; inherited illustration authorship/reuse terms remain unresolved. See docs/brand/artwork-rights.md.",
+      "sha256": "0cbc24b54d653ce44cc551f4a0f0c68f22fefe78aa51897c0218e77888dc0226",
+      "bytes": 2163685,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false,
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-20",
+        "evidence": "Maintainer requested implementation and a pull request for issue 8, including authored Dash reference sheets for review.",
+        "canonical_selection": false,
+        "status": "authorized"
+      }
+    },
+    {
+      "id": "dash-editorial-expressions",
+      "path": "assets/mascot/dash-editorial-expressions.png",
+      "category": "mascot",
+      "status": "exploratory",
+      "review_status": "awaiting-review",
+      "family": "editorial",
+      "role": "Authored editorial expressions sheet; new views require maintainer selection",
+      "provenance": {
+        "source": "generated:image_gen.imagegen; docs/brand/dash-model-generation.json#dash-editorial-expressions",
+        "source_sha256": "32da08a9e6c868687887e2557885d27e4e1f43b99dddf26787da1d8aa4798090",
+        "generation_receipt": "docs/brand/dash-model-generation.json",
+        "source_ids": [
+          "dash-editorial-hoodie",
+          "dash-editorial-reading"
+        ]
+      },
+      "rights": "Generated during authorized identity work; inherited illustration authorship/reuse terms remain unresolved. See docs/brand/artwork-rights.md.",
+      "sha256": "c92b2bec2cc248a09c1e9fbf43c007660848439ec1ff2a93d4b0f93f8dd7711c",
+      "bytes": 1879883,
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "has_alpha": false,
+      "publication": {
+        "scope": "brand-review-gallery",
+        "authorization": "maintainer-request",
+        "recorded_at": "2026-10-20",
+        "evidence": "Maintainer requested implementation and a pull request for issue 8, including authored Dash reference sheets for review.",
+        "canonical_selection": false,
+        "status": "authorized"
+      }
+    },
+    {
+      "id": "icon-dash-avatar-128-png",
+      "path": "assets/icons/dash-avatar-128.png",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "6bd2928540d7a1b14b97d4cf6d8d3462bf35747a8db3731cac8ba3db703a0ceb",
+      "bytes": 5240,
+      "format": "png",
+      "width": 128,
+      "height": 128,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "icon-dash-avatar-256-png",
+      "path": "assets/icons/dash-avatar-256.png",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "c94025eed0fe88faf3c3b1e72c22ba3e03a39f1cf2bebf60feb4b7cc10b1de61",
+      "bytes": 11060,
+      "format": "png",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "icon-dash-avatar-512-png",
+      "path": "assets/icons/dash-avatar-512.png",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "085d4ff76b42fa943f5a4727e5434a5b954fcf00a90e23ec11aee538ba891772",
+      "bytes": 23865,
+      "format": "png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "icon-dash-avatar-64-png",
+      "path": "assets/icons/dash-avatar-64.png",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "b85d890d48590468872a3f6d07cede92ed517487958bbe5635493b0d7257e5d5",
+      "bytes": 2532,
+      "format": "png",
+      "width": 64,
+      "height": 64,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "icon-dash-avatar-svg",
+      "path": "assets/icons/dash-avatar.svg",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "6109bab2ef9983fcfa4d4a98c51d14afde1decc4b6bad0f64135519e00249476",
+      "bytes": 1391,
+      "format": "svg",
+      "embedded_raster": false
+    },
+    {
+      "id": "icon-favicon-16-png",
+      "path": "assets/icons/favicon-16.png",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "be3a6faa73af42c9b1ae27f2b72543bfd1a822ef42f15b8c94537a304d46ec99",
+      "bytes": 695,
+      "format": "png",
+      "width": 16,
+      "height": 16,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "icon-favicon-32-png",
+      "path": "assets/icons/favicon-32.png",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "47040369d5516028e73168ad405b3291fd56f3b5f2961cfe89e45904eb825172",
+      "bytes": 1448,
+      "format": "png",
+      "width": 32,
+      "height": 32,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "icon-favicon-48-png",
+      "path": "assets/icons/favicon-48.png",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "dc39c0936d6939c7e52cdd586c7d1dce7b06c21eb477b8f0fe20bc0c39682c60",
+      "bytes": 2281,
+      "format": "png",
+      "width": 48,
+      "height": 48,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "id": "icon-favicon-svg",
+      "path": "assets/icons/favicon.svg",
+      "category": "icon",
+      "status": "canonical",
+      "role": "Dedicated small fox symbol export; no full-body mascot",
+      "provenance": {
+        "source": "derived:assets/brand/logo-source.json; scripts/build-brand-icons.php",
+        "source_sha256": "cf3880d262868728b5c24241b5ab317b659559a70ded29b06077cb2590b694d2",
+        "validation_receipt": "docs/brand/icon-validation.json"
+      },
+      "rights": "Generated from the selected native fox geometry; no separate artwork license is asserted. See docs/brand/artwork-rights.md.",
+      "sha256": "14b7787347464496f993b63a5d0b5832cf7cb76208937f58f6530b921bcd03e6",
+      "bytes": 1391,
+      "format": "svg",
+      "embedded_raster": false
+    },
     {
       "id": "background-footer",
       "path": "assets/backgrounds/footer-trails.png",

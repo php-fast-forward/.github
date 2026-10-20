@@ -23,6 +23,7 @@
         "check": [
             "@php scripts/validate-brand.php",
             "@php scripts/build-brand-logos.php --check",
+            "@php scripts/build-brand-icons.php --check",
             "@php scripts/export-design.php --check",
             "@test"
         ],
