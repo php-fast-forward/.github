@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "DESIGN.md",
-  "source_sha256": "ba539bae82386db1e8ff65ad15ff8b52fc13eb1ede4634778295241f73592d63",
+  "source_sha256": "360d6a22876cde58df5d8c32b70161825816ec55e5c584dcbb6a51456c94e0da",
   "generator": "php scripts/export-design.php",
   "normalization": "scripts/DesignExports.php",
   "normalization_sha256": "beffa76726c84f0335be8e85f5a8c567ddd3508f916d7a3c0e4b1e3d04c579f7",

@@ -209,8 +209,10 @@ softer editorial collection: rounder face, compact seated proportions, larger
 eyes, and painted brown contours. Choose that collection deliberately for
 welcome, community, or a softer institutional context. Do not blend the models.
 
-These are authored reference poses, not an orthographic turnaround. New side/back
-views remain new derivatives; none can be inferred from a banner alone.
+These selected poses are not an orthographic turnaround. The new
+[model and expression sheets](docs/brand/dash-reference-sheets.md) propose
+separate front/profile/back views for each family. Hidden anatomy remains
+authored interpretation awaiting maintainer selection.
 
 ## Components
 
@@ -231,9 +233,10 @@ Retired logos remain only in the ignored archive and its provenance records.
 
 Reserve clear space of at least 25% of mark height. Start the native symbol at
 32px high, full signatures at 200px wide, and standalone Dash at 160px high.
-These are initial application minima; inspect the actual consumer size and
-review smaller icon use separately. Do not use detailed full-body Dash artwork
-as a favicon.
+These remain the full mark/signature application minima. Dedicated
+[favicon and avatar exports](docs/brand/dash-reference-sheets.md#small-icons)
+have a separate actual-size review; the 16px favicon communicates a silhouette,
+not facial detail. Do not use detailed full-body Dash artwork as a favicon.
 
 **Mascot lockups.** Compose Dash beside the selected signature while preserving
 clear space and hierarchy. Keep full-body artwork separate from the vector
