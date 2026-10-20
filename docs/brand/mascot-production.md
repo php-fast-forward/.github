@@ -2,7 +2,7 @@
 
 Read [DESIGN.md](../../DESIGN.md), [SOUL.md](../../SOUL.md), [STYLE.md](../../STYLE.md),
 and the [pose matrix](index.html#matrix). Use the versioned
-[dash-art skill](../../skills/dash-art/SKILL.md) for a new repository illustration.
+[dash-art skill](../../resources/skills/fast-forward-dash-art/SKILL.md) for a new repository illustration.
 The [manifest](../../assets/manifest.json) resolves each reference to actual bytes.
 
 ## Reference hierarchy
@@ -85,7 +85,7 @@ same-collection pose. Preserve amber/brown eyes, orange and cream markings,
 triangular ears, nose, paws, exactly one cream-tipped tail, and the purple hoodie
 with two cream drawstrings. Keep the shared chest plain; separately compose a
 reviewed package emblem when needed. The skill's
-[prompt/receipt template](../../skills/dash-art/references/prompt-and-receipt.md)
+[prompt/receipt template](../../resources/skills/fast-forward-dash-art/references/prompt-and-receipt.md)
 contains the reusable production fields.
 
 Use the image capability for raster illustration. Add exact titles, commands,
