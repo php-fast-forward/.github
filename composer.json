@@ -2,6 +2,14 @@
     "name": "php-fast-forward/brand-kit",
     "description": "Fast Forward visual identity, assets and PHP publication tooling",
     "type": "project",
+    "suggest": {
+        "llm/skills": "Optionally synchronize the bundled Dash artwork skill in consumer projects."
+    },
+    "extra": {
+        "skills": {
+            "source": "resources/skills"
+        }
+    },
     "require": {
         "php": ">=8.4",
         "ext-dom": "*",

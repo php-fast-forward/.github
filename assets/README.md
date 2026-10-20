@@ -190,7 +190,7 @@ can combine these vectors with raster Dash artwork.
 
 ## Generate consistent Dash artwork
 
-Use the versioned [dash-art skill](../skills/dash-art/SKILL.md), the
+Use the versioned [fast-forward-dash-art skill](../resources/skills/fast-forward-dash-art/SKILL.md), the
 [production guide](../docs/brand/mascot-production.md), and actual master images.
 The [generation receipts](../docs/brand/dash-generation.json) preserve exact
 prompts, source hashes, edits, output identity, and the tool information exposed
@@ -198,5 +198,7 @@ during production. The built-in image generator was used; no model/version was
 invented when the tool did not expose one. A file-integrity check does not prove
 likeness or clear rights.
 
-The skill is source in this repository; this change installs nothing in a host's
-skill collection. A consumer can provide this checkout as `DASH_BRAND_ROOT`.
+The skill has one source in resources/skills. Follow the
+[installation guide](../docs/brand/skill-installation.md) for optional LLM Skills
+project installation. A copied procedure still needs a reviewed kit supplied
+through `DASH_BRAND_ROOT`; installing instructions does not install artwork.
