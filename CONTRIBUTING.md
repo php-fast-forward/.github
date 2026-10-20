@@ -18,6 +18,22 @@ Keep changes focused. Explain what changed and why, link a related issue when on
 
 Use public, sanitized material in examples, screenshots, and logs. Exclude secrets, personal data, private links, and content you are not authorized to publish. Keep operating-system files, editor metadata, and unrelated changes out of the diff.
 
+## Changelog in this repository
+
+For this organization profile and design repository, add one unique
+`.changelog/*.md` fragment per observable change. With PHP 8.5+ and CPX, inspect
+`cpx --skip-local fast-forward/changelog:0.3.0 help add`, then create the note
+with `add "Describe the change." --category=fixed --no-interaction`.
+Run `check --no-interaction`; after committing, also run
+`check --since=origin/main --no-interaction` through the same CPX package.
+Read [.agents/skills/fast-forward-changelog/SKILL.md](.agents/skills/fast-forward-changelog/SKILL.md)
+for the complete flow and explicit skill checks/updates.
+
+The workflow checks contributions, maintains PR feedback and prepares a version
+PR. Review that PR before merging; its approved merge creates the version tag and
+GitHub Release automatically. Installation publishes nothing. Preserve published
+history and pending fragments instead of adding an `Unreleased` section.
+
 ## Brand and asset contributions
 
 For work in the design repository, read [DESIGN.md](https://github.com/php-fast-forward/.github/blob/main/DESIGN.md), [STYLE.md](https://github.com/php-fast-forward/.github/blob/main/STYLE.md), [SOUL.md](https://github.com/php-fast-forward/.github/blob/main/SOUL.md), and [the asset guide](https://github.com/php-fast-forward/.github/blob/main/assets/README.md). The [asset manifest](https://github.com/php-fast-forward/.github/blob/main/assets/manifest.json) records asset identity, origin, and reuse status.
