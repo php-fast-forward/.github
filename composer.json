@@ -15,7 +15,7 @@
         "ext-dom": "*",
         "ext-json": "*",
         "ext-zlib": "*",
-        "symfony/yaml": "^7.4"
+        "symfony/yaml": "^8.1"
     },
     "require-dev": {
         "llm/skills": "^1.15",
