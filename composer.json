@@ -18,8 +18,8 @@
         "symfony/yaml": "^8.1"
     },
     "require-dev": {
-        "llm/skills": "^1.15",
-        "phpunit/phpunit": "^12.5"
+        "llm/skills": "^1.21",
+        "phpunit/phpunit": "^13.4"
     },
     "autoload": {
         "psr-4": {
