@@ -7,6 +7,25 @@ milestones. Dates identify the source commits, not an assertion that GitHub
 Releases were published on those dates. Pending contributions stay in
 `.changelog/`; the existing automated version workflow owns their next release.
 
+## [0.3.1] - 2026-11-25
+
+### Changed
+
+- Bump the github-actions group with 2 updates
+
+  Update dependencies: `actions/checkout`, `shivammathur/setup-php`.
+
+  ([#18](https://github.com/php-fast-forward/.github/pull/18), @dependabot[bot])
+
+- Bump symfony/yaml from 7.4.20 to 8.1.11 in the composer-production group
+
+  Update dependencies: `symfony/yaml`.
+
+  ([#19](https://github.com/php-fast-forward/.github/pull/19), @dependabot[bot])
+
+- Group Dependabot dependency updates by ecosystem and dependency type. ([#17](https://github.com/php-fast-forward/.github/pull/17))
+- Raise the minimum requirement of directly updated Composer dependencies in Dependabot version updates. ([#21](https://github.com/php-fast-forward/.github/pull/21))
+
 ## [0.3.0] - 2026-10-20
 
 ### Added
@@ -54,6 +73,7 @@ Releases were published on those dates. Pending contributions stay in
 - Correct SVG artwork transparency, badge links and underline spacing.
 - Refine image alignment, cropping and responsive sizing in the profile.
 
+[0.3.1]: https://github.com/php-fast-forward/.github/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/php-fast-forward/.github/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/php-fast-forward/.github/compare/ea130ec1af8c01e4b13d7767f7dc51ec216e3087...e1c4dd7d9c25c61f36c8a93bea85ab241853b086
 [0.1.1]: https://github.com/php-fast-forward/.github/compare/12a38b2f7f55e08e719269fba559c0bc9cbfdbb6...ea130ec1af8c01e4b13d7767f7dc51ec216e3087
