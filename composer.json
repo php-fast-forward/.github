@@ -18,7 +18,7 @@
         "symfony/yaml": "^8.1"
     },
     "require-dev": {
-        "llm/skills": "^1.21",
+        "llm/skills": "^1.22",
         "phpunit/phpunit": "^13.4"
     },
     "autoload": {

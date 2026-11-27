@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03b518647b6333375cb18fc942474f8e",
+    "content-hash": "73c9b6971041695dfed8aec0ca742ee0",
     "packages": [
         {
             "name": "symfony/polyfill-ctype",
@@ -235,16 +235,16 @@
         },
         {
             "name": "llm/skills",
-            "version": "1.21.0",
+            "version": "1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roxblnfk/skills.git",
-                "reference": "72827e83a479ec573595b5fe374e75da7e7bd6ff"
+                "reference": "067431ca02dd6e5c1636025f11ca84a3d005235f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roxblnfk/skills/zipball/72827e83a479ec573595b5fe374e75da7e7bd6ff",
-                "reference": "72827e83a479ec573595b5fe374e75da7e7bd6ff",
+                "url": "https://api.github.com/repos/roxblnfk/skills/zipball/067431ca02dd6e5c1636025f11ca84a3d005235f",
+                "reference": "067431ca02dd6e5c1636025f11ca84a3d005235f",
                 "shasum": ""
             },
             "require": {
@@ -313,7 +313,7 @@
                     "type": "boosty"
                 }
             ],
-            "time": "2026-11-21T09:04:04+00:00"
+            "time": "2026-11-23T11:47:24+00:00"
         },
         {
             "name": "myclabs/deep-copy",
